@@ -3,10 +3,13 @@ require 'rails_helper'
 RSpec.describe Order, :type => :model do
 
   before :each do
-    @seven = Store.create( name: '7-11' )
+    @seven  = Store.create( name: '7-11' )
     @family = Store.create( name: 'family mart' )
-    @coke  = Item.create( name: 'coke' )
-    @fai   = User.create( email: 'fai@abctech-thailand.com', password: '12345678', password_confirmation: '12345678' )
+    @coke   = Item.create( name: 'coke' )
+    @pepsi  = Item.create( name: 'pepsi' )
+    @lays   = Item.create( name: 'lays' )
+    @fai    = User.create( email: 'fai@abctech-thailand.com', password: '12345678', password_confirmation: '12345678' )
+    @ping   = User.create( email: 'ping@abctech-thailand.com', password: '12345678', password_confirmation: '12345678' )
   end
 
   it 'has a working relationship' do
@@ -76,6 +79,15 @@ RSpec.describe Order, :type => :model do
 
     fai_order.fullfill!
     expect( fai_order.completed ).to eq completed
+  end
+
+  it 'Can be filter by user' do
+    fai_order1 = Order.place( user: @fai, item: @coke, stores: [ @seven, @family ] )
+    fai_order2 = Order.place( user: @fai, item: @lays, stores: [ @seven, @family ] )
+    ping_order1 = Order.place( user: @ping, item: @pepsi, stores: [ @seven, @family ] )
+
+    expect( Order.by_user( @fai ).count ).to eq 2
+    expect( Order.by_user( @ping ).count ).to eq 1
   end
 
 end

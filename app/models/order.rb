@@ -23,6 +23,10 @@ class Order < ActiveRecord::Base
     self.where( completed: nil )
   end
 
+  def self.by_user( user )
+    self.where( user_id: user.id )
+  end
+
   # Instance methods
   def fullfill!
     if not fullfilled?
