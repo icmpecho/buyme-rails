@@ -6,13 +6,25 @@ var ActionTypes = require('../constants/ActionTypes');
 var OrderApi = require('../utils/OrderApi');
 
 var OrderActions = {
-    getOrders: function () {
-        OrderApi.getOrders().end(function (error, res) {
+    //getOrders: function () {
+    //    OrderApi.getOrders().end(function (error, res) {
+    //        if (!!error) {
+    //            return console.log(error);
+    //        }
+    //        AppDispatcher.handleApiAction({
+    //            actionType: ActionTypes.GET_ORDERS_SUCCESS,
+    //            data: res.body
+    //        })
+    //    });
+    //},
+    getMyOrders: function (pending) {
+        console.log('getMyOrders');
+        OrderApi.getMyOrders(pending).end(function (error, res) {
             if (!!error) {
                 return console.log(error);
             }
             AppDispatcher.handleApiAction({
-                actionType: ActionTypes.GET_ORDERS_SUCCESS,
+                actionType: !!pending ? ActionTypes.GET_MY_ORDERS_SUCCESS : ActionTypes.GET_MY_HISTORY_ORDERS_SUCCESS,
                 data: res.body
             })
         });

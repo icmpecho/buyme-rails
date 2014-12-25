@@ -16,24 +16,24 @@ var Me = React.createClass({
         };
     },
     render: function () {
-    	var menuItems = [
-                { payload: '1', text: 'All' },
-                { payload: '2', text: 'Current' },
-                { payload: '3', text: 'History' }
-            ];
+        var menuItems = [
+            {payload: '1', text: 'All'},
+            {payload: '2', text: 'Current'},
+            {payload: '3', text: 'History'}
+        ];
         return (
             <div className="me">
                 <div className="mui-toolbar">
-                <div className="mui-toolbar-group mui-left">
-	                    <DropDownMenu menuItems={menuItems} />
-	                </div>
-	                <div className="mui-toolbar-group mui-right">
-	                    <RaisedButton label="Add Order" primary={true} onClick={this._showOrderAdd}/>
-	                </div>
-	            </div>
-	            <OrderAdd ref="orderAdd"/>
-                <OrderList title="Current"/>
-                <OrderList title="History"/>
+                    <div className="mui-toolbar-group mui-left">
+                        <DropDownMenu menuItems={menuItems} />
+                    </div>
+                    <div className="mui-toolbar-group mui-right">
+                        <RaisedButton label="Add Order" primary={true} onClick={this._showOrderAdd}/>
+                    </div>
+                </div>
+                <OrderAdd ref="orderAdd"/>
+                <OrderList title="Current" pending={true}/>
+                <OrderList title="History" pending={false}/>
             </div>
         );
     },

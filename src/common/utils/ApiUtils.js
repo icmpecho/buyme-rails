@@ -9,8 +9,7 @@ var ApiUtils = {
         return request
             .get(API_URL + path)
             .set('Accept', 'application/json')
-            .timeout(TIMEOUT)
-            .query();
+            .timeout(TIMEOUT);
     },
     post: function (path) {
         return request

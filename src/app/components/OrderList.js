@@ -2,13 +2,14 @@
 
 var React = require('react');
 
-var MeOrderStore = require('../stores/MeOrderStore');
+var MyOrderStore = require('../stores/MyOrderStore');
 var OrderActions = require('../actions/OrderActions');
 var OrderItem = require('./OrderItem');
 
 var OrderList = React.createClass({
     propTypes: {
-        title: React.PropTypes.string.isRequired
+        title: React.PropTypes.string.isRequired,
+        pending: React.PropTypes.bool.isRequired
     },
     getInitialState: function () {
         return {
@@ -16,14 +17,14 @@ var OrderList = React.createClass({
         };
     },
     componentWillMount: function () {
-        OrderActions.getOrders();
+        OrderActions.getMyOrders(this.props.pending)
     },
     componentDidMount: function () {
-        MeOrderStore.addChangeListener(this._onChange);
+        MyOrderStore.addChangeListener(this._onChange);
     },
 
     componentWillUnmount: function () {
-        MeOrderStore.removeChangeListener(this._onChange);
+        MyOrderStore.removeChangeListener(this._onChange);
     },
     render: function () {
         return (
@@ -39,7 +40,7 @@ var OrderList = React.createClass({
     },
     _onChange: function () {
         this.setState({
-            orders: MeOrderStore.getOrders()
+            orders: MyOrderStore.getMyOrders(this.props.pending)
         });
     }
 });

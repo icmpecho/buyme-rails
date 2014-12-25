@@ -8,6 +8,11 @@ var OrderApi = assign({}, ApiUtils, {
     getOrders: function () {
         return this.get('/orders');
     },
+    getMyOrders: function (pending) {
+        return this.get('/orders/me').query({
+            pending: pending
+        });
+    },
     addOrder: function (itemId, itemName, storeIds) {
         var data = {
             id: itemId,
