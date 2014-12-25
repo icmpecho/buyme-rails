@@ -17,7 +17,7 @@ var Menu = React.createClass({
         };
     },
     render: function () {
-        var header = <div onClick={this._onHeaderClick}>Buy Me</div>;
+        var header = <div className={"logo"} onClick={this._onHeaderClick}>Buy Me</div>;
         var menuItems = [
             {route: 'home', text: 'Home'},
             {route: 'me', text: 'Me'},
