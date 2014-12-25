@@ -9,10 +9,6 @@ var Menu = require('./../../common/components/Menu');
 var Footer = require('./../../common/components/Footer');
 var Home = require('./Home');
 
-var ItemApi = require('../utils/ItemApi');
-
-ItemApi.getItems();
-
 var App = React.createClass({
     render: function () {
         var menuItems = [

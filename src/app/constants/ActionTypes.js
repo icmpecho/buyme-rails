@@ -3,7 +3,8 @@
 var keyMirror = require('keymirror');
 
 var ActionTypes = keyMirror({
-    RECEIVE_ITEMS_SUCCESS: null
+    RECEIVE_ITEMS_SUCCESS: null,
+    RECEIVE_ORDERS_SUCCESS: null
 });
 
 module.exports = ActionTypes;

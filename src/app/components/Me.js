@@ -2,11 +2,21 @@
 
 var React = require('react');
 
+var ItemStore = require('../stores/ItemStore');
+
+var OrderList = require('./OrderList');
+
 var Me = React.createClass({
+    getInitialState: function () {
+        return {
+            items: ItemStore.getItems()
+        };
+    },
     render: function () {
         return (
             <div className="me">
-                Me Page
+                <OrderList title="Current"/>
+                <OrderList title="History"/>
             </div>
         );
     }

@@ -1,0 +1,15 @@
+.order-list {
+    width: 50%;
+    float: left;
+    padding: 0 10px;
+}
+
+.order-item {
+    list-style: none;
+    padding: 10px 0;
+    margin: 0 auto;
+}
+
+.order-item-details {
+    padding: 10px;
+}
