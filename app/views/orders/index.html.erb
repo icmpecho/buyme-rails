@@ -1,3 +1,13 @@
+<style>
+    table, th, td {
+        border: 1px solid black;
+        border-collapse: collapse;
+    }
+    th, td {
+        padding: 5px;
+    }
+</style>
+
 <p id="notice"><%= notice %></p>
 
 <h1>Listing Orders</h1>
@@ -15,9 +25,9 @@
   <tbody>
     <% @orders.each do |order| %>
       <tr>
-        <td><%= order.item %></td>
-        <td><%= order.user %></td>
-        <td><%= order.completed %></td>
+        <td><%= order.item.name %></td>
+        <td><%= order.user.email %></td>
+        <td><%= order.completed.to_formatted_s(:db) %></td>
         <td><%= link_to 'Show', order %></td>
         <td><%= link_to 'Edit', edit_order_path(order) %></td>
         <td><%= link_to 'Destroy', order, method: :delete, data: { confirm: 'Are you sure?' } %></td>
