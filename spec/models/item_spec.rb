@@ -1,5 +1,12 @@
 require 'rails_helper'
 
 RSpec.describe Item, :type => :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  describe 'new' do
+    it "should have a working constructor" do
+      # setup
+      coke = Item.new(name: 'coke')
+      # expect
+      expect(coke).to be_valid
+    end
+  end
 end
