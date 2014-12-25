@@ -11,6 +11,18 @@ var ApiUtils = {
             .set('Accept', 'application/json')
             .timeout(TIMEOUT)
             .query();
+    },
+    post: function (path) {
+        return request
+            .post(API_URL + path)
+            .set('Accept', 'application/json')
+            .timeout(TIMEOUT);
+    },
+    del: function (path) {
+        return request
+            .del(API_URL + path)
+            .set('Accept', 'application/json')
+            .timeout(TIMEOUT);
     }
 };
 

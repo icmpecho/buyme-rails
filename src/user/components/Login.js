@@ -7,6 +7,8 @@ var Input = mui.Input;
 var RaisedButton = mui.RaisedButton;
 var Checkbox = mui.Checkbox;
 
+var UserApi = require('./../../common/utils/UserApi');
+
 var Login = React.createClass({
     propTypes: {
         changePage: React.PropTypes.func.isRequired
@@ -21,7 +23,7 @@ var Login = React.createClass({
                         <Input ref="email" type="text" name="email" placeholder="Email" description="Your account email address."/>
                         <Input ref="password" type="password" name="password" placeholder="Password" description="Your account password."/>
                         <label for="remember">Remember me</label>
-                        <Checkbox name="remember"/>
+                        <Checkbox ref="remember" name="remember"/>
                         <RaisedButton ref="login" label="Log in" primary={true} onClick={this._onLoginButtonClick}/>
                         <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
                         <RaisedButton ref="signup" label="Sign up" onClick={this._onSignupButtonClick}/>
@@ -31,6 +33,7 @@ var Login = React.createClass({
         );
     },
     _onLoginButtonClick: function () {
+        UserApi.login(this.refs.email.getValue(), this.refs.password.getValue(), this.refs.remember.state.checked);
     },
     _onSignupButtonClick: function () {
         this.props.changePage('signup');
