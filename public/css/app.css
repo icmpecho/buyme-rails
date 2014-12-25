@@ -13,3 +13,7 @@
 .order-item-details {
     padding: 10px;
 }
+
+.order-add .mui-dialog-window-contents {
+    width: 370px;
+}
