@@ -1,6 +1,6 @@
 class StaticController < ApplicationController
     def index
-        render :file => 'public/login.html', :layout => false
+        render :file => 'public/user.html', :layout => false
     end
 
     def app

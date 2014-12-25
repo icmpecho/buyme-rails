@@ -1,0 +1,17 @@
+.login {
+    width: 400px;
+    margin: 50px auto;
+}
+
+.login > div {
+    padding: 40px;
+}
+
+.signup {
+    width: 400px;
+    margin: 50px auto;
+}
+
+.signup > div {
+    padding: 40px;
+}
