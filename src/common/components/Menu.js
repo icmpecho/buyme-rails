@@ -12,7 +12,8 @@ var Menu = React.createClass({
         Router.State
     ],
     propTypes: {
-        menuItems: React.PropTypes.array.isRequired
+        menuItems: React.PropTypes.array.isRequired,
+        changeTitle: React.PropTypes.func
     },
     getInitialState: function () {
         return {
@@ -33,14 +34,16 @@ var Menu = React.createClass({
         for (var index = menuItems.length - 1; index >= 0; index--) {
             currentItem = menuItems[index];
             if (currentItem.route && this.isActive(currentItem.route)) {
-                return index
+                return index;
             }
         }
     },
     _onLeftNavChange: function (e, key, payload) {
+        this.props.changeTitle(payload.text);
         this.transitionTo(payload.route);
     },
     _onHeaderClick: function () {
+        this.props.changeTitle();
         this.transitionTo('home');
         this.refs.leftNav.close();
     }

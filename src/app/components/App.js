@@ -10,16 +10,18 @@ var Footer = require('./../../common/components/Footer');
 var Home = require('./Home');
 
 var App = React.createClass({
+    getInitialState: function () {
+        return {};
+    },
     render: function () {
         var menuItems = [
-            {route: 'home', text: 'Home'},
             {route: 'me', text: 'Me'},
             {route: 'shop', text: 'Shop'}
         ];
         return (
             <div>
-                <Header onMenuIconButtonClick={this._onMenuIconButtonClick}/>
-                <Menu ref="leftNav" menuItems={menuItems}/>
+                <Header ref="header" onMenuIconButtonClick={this._onMenuIconButtonClick} title={this.state.title}/>
+                <Menu ref="leftNav" menuItems={menuItems} changeTitle={this.changeTitle}/>
                 <div className="content clearfix">
                     <RouteHandler />
                 </div>
@@ -29,6 +31,11 @@ var App = React.createClass({
     },
     _onMenuIconButtonClick: function () {
         this.refs.leftNav.toggle();
+    },
+    changeTitle: function (title) {
+        this.setState({
+            title: title
+        });
     }
 });
 
