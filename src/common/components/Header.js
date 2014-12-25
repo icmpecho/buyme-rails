@@ -10,12 +10,17 @@ var Header = React.createClass({
         onMenuIconButtonClick: React.PropTypes.func,
         title: React.PropTypes.string
     },
+    getDefaultProps: function () {
+        return {
+            title: 'Buy Me'
+        };
+    },
     render: function () {
         return (
             <div className="header mui-app-bar">
                 <div className="mui-paper-container">
                     <IconButton className="mui-app-bar-navigation-icon-button mui-icon-button mui-enhanced-button" icon="navigation-menu" onClick={this.props.onMenuIconButtonClick}/>
-                    <h1 className="mui-app-bar-title">Buy Me</h1>
+                    <h1 className="mui-app-bar-title">{this.props.title}</h1>
                 </div>
             </div>
         );

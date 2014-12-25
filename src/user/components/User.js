@@ -1,6 +1,8 @@
 'use strict';
 
 var React = require('react');
+var Header = require('./../../common/components/Header');
+var Footer = require('./../../common/components/Footer');
 var Login = require('./Login');
 var Signup = require('./Signup');
 
@@ -15,7 +17,11 @@ var User = React.createClass({
 
         return (
             <div>
-                {page}
+                <Header/>
+                <div className="content clearfix">
+                    <div className="user">{page}</div>
+                </div>
+                <Footer />
             </div>
         );
     },

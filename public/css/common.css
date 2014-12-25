@@ -1,0 +1,42 @@
+* {
+    margin: 0;
+}
+
+html, body {
+    height: 100%;
+}
+
+.header {
+    background-color: #286090;
+    color: #ffffff;
+    position: fixed;
+    height: 64px;
+}
+
+.logo {
+    background-color: #286090;
+    color: #ffffff;
+    cursor: pointer;
+    font-size: 24px;
+    font-weight: 300;
+    letter-spacing: 0;
+    line-height: 64px;
+    margin-bottom: 8px;
+    padding-left: 24px;
+    padding-top: 0;
+}
+
+.content {
+    padding-top: 64px;
+}
+
+.footer {
+    text-align: center;
+    padding: 20px 30px;
+    background-color: #286090;
+    color: #ffffff;
+}
+
+.clearfix {
+    clear: both;
+}

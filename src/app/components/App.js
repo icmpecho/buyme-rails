@@ -4,9 +4,9 @@ var React = require('react');
 var Router = require('react-router');
 var RouteHandler = Router.RouteHandler;
 
-var Header = require('./Header');
-var Menu = require('./Menu');
-var Footer = require('./Footer');
+var Header = require('./../../common/components/Header');
+var Menu = require('./../../common/components/Menu');
+var Footer = require('./../../common/components/Footer');
 var Home = require('./Home');
 
 var ItemApi = require('../utils/ItemApi');
