@@ -15,10 +15,15 @@ ItemApi.getItems();
 
 var App = React.createClass({
     render: function () {
+        var menuItems = [
+            {route: 'home', text: 'Home'},
+            {route: 'me', text: 'Me'},
+            {route: 'shop', text: 'Shop'}
+        ];
         return (
             <div>
                 <Header onMenuIconButtonClick={this._onMenuIconButtonClick}/>
-                <Menu ref="leftNav"/>
+                <Menu ref="leftNav" menuItems={menuItems}/>
                 <div className="content clearfix">
                     <RouteHandler />
                 </div>

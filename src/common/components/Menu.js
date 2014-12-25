@@ -11,6 +11,9 @@ var Menu = React.createClass({
         Router.Navigation,
         Router.State
     ],
+    propTypes: {
+        menuItems: React.PropTypes.array.isRequired
+    },
     getInitialState: function () {
         return {
             selectedIndex: null
@@ -18,14 +21,8 @@ var Menu = React.createClass({
     },
     render: function () {
         var header = <div className={"logo"} onClick={this._onHeaderClick}>Buy Me</div>;
-        var menuItems = [
-            {route: 'home', text: 'Home'},
-            {route: 'me', text: 'Me'},
-            {route: 'shop', text: 'Shop'},
-            {route: 'user', text: 'User'}
-        ];
         return (
-            <LeftNav ref="leftNav" docked={false} menuItems={menuItems} header={header} selectedIndex={this._getSelectedIndex} onChange={this._onLeftNavChange}/>
+            <LeftNav ref="leftNav" docked={false} menuItems={this.props.menuItems} header={header} selectedIndex={this._getSelectedIndex} onChange={this._onLeftNavChange}/>
         );
     },
     toggle: function () {
