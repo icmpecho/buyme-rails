@@ -2,17 +2,17 @@
 
 <p>
   <strong>Item:</strong>
-  <%= @order.item %>
+  <%= @order.item.name %>
 </p>
 
 <p>
   <strong>User:</strong>
-  <%= @order.user %>
+  <%= @order.user.email %>
 </p>
 
 <p>
   <strong>Completed:</strong>
-  <%= @order.completed %>
+  <%= @order.completed.to_formatted_s(:db) %>
 </p>
 
 <%= link_to 'Edit', edit_order_path(@order) %> |
