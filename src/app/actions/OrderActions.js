@@ -7,13 +7,16 @@ var OrderApi = require('../utils/OrderApi');
 
 var OrderActions = {
     getOrders: function () {
-        OrderApi.getOrders();
-    },
-    receiveOrders: function (data) {
-        AppDispatcher.handleApiAction({
-            actionType: ActionTypes.RECEIVE_ORDERS_SUCCESS,
-            data: data
-        })
+        OrderApi.getOrders().end(function (error, res) {
+            if (!!error) {
+                return console.log(error);
+            }
+            var OrderActions = require('../actions/OrderActions');
+            AppDispatcher.handleApiAction({
+                actionType: ActionTypes.RECEIVE_ORDERS_SUCCESS,
+                data: res.body
+            })
+        });
     }
 };
 

@@ -7,13 +7,16 @@ var StoreApi = require('../utils/StoreApi');
 
 var StoreActions = {
     getStores: function () {
-        StoreApi.getStores();
-    },
-    receiveStores: function (data) {
-        AppDispatcher.handleApiAction({
-            actionType: ActionTypes.RECEIVE_STORE_SUCCESS,
-            data: data
-        })
+        StoreApi.getStores().end(function (error, res) {
+            if (!!error) {
+                return console.log(error);
+            }
+            var StoreActions = require('../actions/StoreActions');
+            AppDispatcher.handleApiAction({
+                actionType: ActionTypes.RECEIVE_STORE_SUCCESS,
+                data: res.body
+            })
+        });
     }
 };
 
