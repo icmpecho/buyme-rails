@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component name="dataSourceStorage">
+  <data-source name="Rails buyme-rails: development" uuid="e6744e6c-c7e9-4d8f-a25d-5e25589fb98d">
+    <database-info product="" version="" jdbc-version="" driver-name="" driver-version=""/>
+  </data-source>
+  <data-source name="Rails buyme-rails: test" uuid="9106eabf-1f63-4a77-b61d-e48e31b64917">
+    <database-info product="" version="" jdbc-version="" driver-name="" driver-version=""/>
+  </data-source>
+</component>

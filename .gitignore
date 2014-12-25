@@ -18,3 +18,19 @@
 
 # Ignore database.yml
 database.yml
+
+
+### JetBrains template
+*.iml
+.idea/workspace.xml
+.idea/tasks.xml
+.idea/dictionaries
+
+# Node.js
+node_modules
+npm-debug.log
+
+public/js/
+public/lib
+
+thout-pg-config

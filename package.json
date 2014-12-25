@@ -1,0 +1,43 @@
+{
+  "name": "BuyMe",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "start": "nodemon --harmony server.js",
+    "watch": "watchify src/app/*.js src/app/**/*.js -o public/js/app.js -d -v",
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@bitbucket.org:buy-me/buyme-rails.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "flux": "^2.0.1",
+    "keymirror": "^0.1.1",
+    "material-ui": "^0.4.0",
+    "object-assign": "^2.0.0",
+    "react": "^0.12.2",
+    "react-router": "^0.11.6",
+    "superagent": "^0.21.0"
+  },
+  "devDependencies": {
+    "browserify": "^7.0.3",
+    "envify": "^3.2.0",
+    "jest-cli": "^0.2.1",
+    "reactify": "^0.17.1",
+    "uglify-js": "^2.4.16",
+    "watchify": "^2.2.1"
+  },
+  "browserify": {
+    "transform": [
+      "reactify",
+      "envify"
+    ]
+  },
+  "jest": {
+    "rootDir": "./js"
+  }
+}

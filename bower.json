@@ -1,0 +1,10 @@
+{
+  "name": "BuyMe",
+  "version": "0.0.0",
+  "authors": [],
+  "license": "MIT",
+  "ignore": [],
+  "dependencies": {
+    "material-design-fonticons": "~1.0.0"
+  }
+}
