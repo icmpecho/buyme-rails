@@ -2,11 +2,13 @@
 
 var React = require('react');
 
+var StoreList = require('./StoreList');
+
 var Shop = React.createClass({
     render: function () {
         return (
-            <div className="shop">
-                Shop Page
+            <div>
+                <StoreList/>
             </div>
         );
     }
