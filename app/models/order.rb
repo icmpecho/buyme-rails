@@ -18,4 +18,12 @@ class Order < ActiveRecord::Base
 
   end
 
+  def fullfill!
+    self.completed = Time.zone.now
+    self.save
+  end
+
+  def self.pendings
+    self.where( completed: nil )
+  end
 end
