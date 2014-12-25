@@ -27,7 +27,11 @@
       <tr>
         <td><%= order.item.name %></td>
         <td><%= order.user.email %></td>
-        <td><%= order.completed.to_formatted_s(:db) %></td>
+        <% if order.fullfilled? %>
+          <td><%= order.completed.to_formatted_s(:db) %></td>
+        <% else%>
+          <td></td>
+        <% end %>
         <td><%= link_to 'Show', order %></td>
         <td><%= link_to 'Edit', edit_order_path(order) %></td>
         <td><%= link_to 'Destroy', order, method: :delete, data: { confirm: 'Are you sure?' } %></td>

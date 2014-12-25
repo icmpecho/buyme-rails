@@ -12,7 +12,9 @@
 
 <p>
   <strong>Completed:</strong>
-  <%= @order.completed.to_formatted_s(:db) %>
+  <% if @order.fullfilled? %>
+    <%= @order.completed.to_formatted_s(:db) %>
+  <% else%> - <% end %>
 </p>
 
 <%= link_to 'Edit', edit_order_path(@order) %> |
