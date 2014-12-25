@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   resources :orders
+  post 'orders/:id/buy' => 'orders#buy'
 
   devise_for :users
   resources :stores
