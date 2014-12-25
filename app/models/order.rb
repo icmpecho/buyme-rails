@@ -29,9 +29,10 @@ class Order < ActiveRecord::Base
   end
 
   # Instance methods
-  def fullfill!
+  def fullfill!( user )
     if not fullfilled?
       self.completed = Time.zone.now
+      self.buyer_id  = user.id
       self.save
     end
   end

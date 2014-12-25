@@ -37,7 +37,7 @@ class OrdersController < ApplicationController
   end
 
   def buy
-    @order.fullfill!
+    @order.fullfill!(current_user)
     respond_with(@order)
   end
 
