@@ -7,6 +7,8 @@ var Input = mui.Input;
 var RaisedButton = mui.RaisedButton;
 var Checkbox = mui.Checkbox;
 
+var UserApi = require('./../../common/utils/UserApi');
+
 var Signup = React.createClass({
     propTypes: {
         changePage: React.PropTypes.func.isRequired
@@ -20,7 +22,7 @@ var Signup = React.createClass({
                         <br/>
                         <Input ref="email" type="text" name="email" placeholder="Email" description="Enter your email address."/>
                         <Input ref="password" type="password" name="password" placeholder="Password" description="Enter a password with 8 characters minimum."/>
-                        <Input ref="confirm" type="password" name="confirm" placeholder="Password confirmation" description="Enter the password again."/>
+                        <Input ref="confirmation" type="password" name="confirmation" placeholder="Password confirmation" description="Enter the confirmation password."/>
                         <RaisedButton ref="signup" label="Sign up" primary={true} onClick={this._onSignupButtonClick}/>
                         <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
                         <RaisedButton ref="login" label="Log in" onClick={this._onLoginButtonClick}/>
@@ -30,6 +32,7 @@ var Signup = React.createClass({
         );
     },
     _onSignupButtonClick: function () {
+        UserApi.signup(this.refs.email.getValue(), this.refs.password.getValue(), this.refs.confirmation.getValue());
     },
     _onLoginButtonClick: function () {
         this.props.changePage('login');
