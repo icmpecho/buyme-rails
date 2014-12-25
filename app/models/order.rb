@@ -3,6 +3,7 @@ class Order < ActiveRecord::Base
   belongs_to :user
   has_and_belongs_to_many :stores
 
+  # Class methods
   def self.place( args )
     user = args[:user]
     item = args[:item]
@@ -18,12 +19,17 @@ class Order < ActiveRecord::Base
 
   end
 
+  def self.pendings
+    self.where( completed: nil )
+  end
+
+  # Instance methods
   def fullfill!
     self.completed = Time.zone.now
     self.save
   end
 
-  def self.pendings
-    self.where( completed: nil )
+  def fullfilled?
+    self.completed != nil
   end
 end

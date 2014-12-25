@@ -61,4 +61,12 @@ RSpec.describe Order, :type => :model do
 
   end
 
+  it 'know if item already fullfilled' do
+    fai_order = Order.place( user: @fai, item: @coke, stores: [ @seven, @family ] )
+    expect( fai_order ).not_to be_fullfilled
+
+    fai_order.fullfill!
+    expect( fai_order ).to be_fullfilled
+  end
+
 end
