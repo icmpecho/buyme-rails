@@ -19,7 +19,9 @@ var App = React.createClass({
             <div>
                 <Header onMenuIconButtonClick={this._onMenuIconButtonClick}/>
                 <Menu ref="leftNav"/>
-                <RouteHandler />
+                <div className="content clearfix">
+                    <RouteHandler />
+                </div>
                 <Footer />
             </div>
         );

@@ -2,7 +2,7 @@
 
 var React = require('react');
 var mui = require('material-ui');
-var Icon = mui.Icon;
+var IconButton = mui.IconButton;
 var Menu = require('./Menu');
 
 var Header = React.createClass({
@@ -12,9 +12,11 @@ var Header = React.createClass({
     },
     render: function () {
         return (
-            <div className="header">
-                <Icon icon="navigation-menu" onClick={this.props.onMenuIconButtonClick}/>
-                Buy Me
+            <div className="header mui-app-bar">
+                <div className="mui-paper-container">
+                    <IconButton className="mui-app-bar-navigation-icon-button mui-icon-button mui-enhanced-button" icon="navigation-menu" onClick={this.props.onMenuIconButtonClick}/>
+                    <h1 className="mui-app-bar-title">Buy Me</h1>
+                </div>
             </div>
         );
     }
