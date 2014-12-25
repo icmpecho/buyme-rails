@@ -25,8 +25,10 @@ class Order < ActiveRecord::Base
 
   # Instance methods
   def fullfill!
-    self.completed = Time.zone.now
-    self.save
+    if not fullfilled?
+      self.completed = Time.zone.now
+      self.save
+    end
   end
 
   def fullfilled?

@@ -69,4 +69,13 @@ RSpec.describe Order, :type => :model do
     expect( fai_order ).to be_fullfilled
   end
 
+  it 'check fullfilled before mark buy' do
+    fai_order = Order.place( user: @fai, item: @coke, stores: [ @seven, @family ] )
+    fai_order.fullfill!
+    completed = fai_order.completed
+
+    fai_order.fullfill!
+    expect( fai_order.completed ).to eq completed
+  end
+
 end
