@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'orders/me' => 'orders#me'
+
   resources :orders
   post 'orders/:id/buy' => 'orders#buy'
 

@@ -41,6 +41,11 @@ class OrdersController < ApplicationController
     respond_with(@order)
   end
 
+  def me
+    @orders = Order.by_user(current_user)
+    respond_with( @orders, template: 'orders/index' )
+  end
+
   private
     def set_order
       @order = Order.find(params[:id])
