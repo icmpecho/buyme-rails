@@ -42,7 +42,11 @@ class OrdersController < ApplicationController
   end
 
   def me
+    pending = params[ :pending ]
     @orders = Order.by_user(current_user)
+    if pending == 'true'
+      @orders = @orders.pendings
+    end
     respond_with( @orders, template: 'orders/index' )
   end
 
