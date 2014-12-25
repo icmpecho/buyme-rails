@@ -2,7 +2,7 @@
 
 var assign = require('object-assign');
 
-var ApiUtils = require('./ApiUtils');
+var ApiUtils = require('./../../common/utils/ApiUtils');
 var ItemActions = require('../actions/ItemActions');
 
 var ItemApi = assign({}, ApiUtils, {

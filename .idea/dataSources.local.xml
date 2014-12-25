@@ -3,6 +3,8 @@
   <component name="dataSourceStorageLocal">
     <data-source name="Rails buyme-rails: development" uuid="e6744e6c-c7e9-4d8f-a25d-5e25589fb98d">
       <first-sync>true</first-sync>
+      <user-name>fai</user-name>
+      <user-password>dfdadfc5dfd9dfdedfcddfd8dfcfdfd9</user-password>
     </data-source>
     <data-source name="Rails buyme-rails: test" uuid="9106eabf-1f63-4a77-b61d-e48e31b64917">
       <first-sync>true</first-sync>
