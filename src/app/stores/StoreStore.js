@@ -7,7 +7,7 @@ var assign = require('object-assign');
 
 var _stores = [];
 
-function receiveStores(data) {
+function getStores(data) {
     _stores = data;
 }
 
@@ -29,8 +29,8 @@ var StoreStore = assign({}, EventEmitter.prototype, {
 AppDispatcher.register(function (payload) {
     var action = payload.action;
     switch (action.actionType) {
-        case ActionTypes.RECEIVE_STORE_SUCCESS:
-            receiveStores(action.data);
+        case ActionTypes.GET_STORE_SUCCESS:
+            getStores(action.data);
             break;
         default:
             return true;

@@ -2,7 +2,7 @@
 
 var React = require('react');
 
-var OrderStore = require('../stores/OrderStore');
+var MeOrderStore = require('../stores/MeOrderStore');
 var OrderActions = require('../actions/OrderActions');
 var OrderItem = require('./OrderItem');
 
@@ -19,11 +19,11 @@ var OrderList = React.createClass({
         OrderActions.getOrders();
     },
     componentDidMount: function () {
-        OrderStore.addChangeListener(this._onChange);
+        MeOrderStore.addChangeListener(this._onChange);
     },
 
     componentWillUnmount: function () {
-        OrderStore.removeChangeListener(this._onChange);
+        MeOrderStore.removeChangeListener(this._onChange);
     },
     render: function () {
         return (
@@ -39,7 +39,7 @@ var OrderList = React.createClass({
     },
     _onChange: function () {
         this.setState({
-            orders: OrderStore.getOrders()
+            orders: MeOrderStore.getOrders()
         });
     }
 });

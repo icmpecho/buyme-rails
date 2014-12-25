@@ -11,12 +11,26 @@ var OrderActions = {
             if (!!error) {
                 return console.log(error);
             }
-            var OrderActions = require('../actions/OrderActions');
             AppDispatcher.handleApiAction({
-                actionType: ActionTypes.RECEIVE_ORDERS_SUCCESS,
+                actionType: ActionTypes.GET_ORDERS_SUCCESS,
                 data: res.body
             })
         });
+    },
+    addOrder: function (itemId, itemName, storeIds) {
+        AppDispatcher.handleApiAction({
+            actionType: ActionTypes.ADD_ORDER_SUCCESS,
+            data: {}
+        });
+        //OrderApi.addOrder(itemId, itemName, storeIds).end(function (error, res) {
+        //    if (!!error) {
+        //        return console.log(error);
+        //    }
+        //    AppDispatcher.handleApiAction({
+        //        actionType: ActionTypes.ADD_ORDER_SUCCESS,
+        //        data: res.body
+        //    })
+        //});
     }
 };
 

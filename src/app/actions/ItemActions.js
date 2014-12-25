@@ -12,7 +12,7 @@ var ItemActions = {
                 return console.log(error);
             }
             AppDispatcher.handleApiAction({
-                actionType: ActionTypes.RECEIVE_ITEMS_SUCCESS,
+                actionType: ActionTypes.GET_ITEMS_SUCCESS,
                 data: res.body
             })
         });

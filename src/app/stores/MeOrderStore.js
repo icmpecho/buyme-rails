@@ -7,11 +7,15 @@ var assign = require('object-assign');
 
 var _orders = [];
 
-function receiveOrders(data) {
+function getOrders(data) {
     _orders = data;
 }
 
-var OrderStore = assign({}, EventEmitter.prototype, {
+function addOrder(data) {
+    _orders.push(data);
+}
+
+var MeOrderStore = assign({}, EventEmitter.prototype, {
     getOrders: function () {
         return _orders;
     },
@@ -29,14 +33,17 @@ var OrderStore = assign({}, EventEmitter.prototype, {
 AppDispatcher.register(function (payload) {
     var action = payload.action;
     switch (action.actionType) {
-        case ActionTypes.RECEIVE_ORDERS_SUCCESS:
-            receiveOrders(action.data);
+        case ActionTypes.GET_ORDERS_SUCCESS:
+            getOrders(action.data);
+            break;
+        case ActionTypes.ADD_ORDER_SUCCESS:
+            addOrder(action.data);
             break;
         default:
             return true;
     }
-    OrderStore.emitChange();
+    MeOrderStore.emitChange();
     return true;
 });
 
-module.exports = OrderStore;
+module.exports = MeOrderStore;

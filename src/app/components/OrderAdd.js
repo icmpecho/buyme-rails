@@ -8,6 +8,7 @@ var Checkbox = mui.Checkbox;
 
 var StoreStore = require('../stores/StoreStore');
 var StoreActions = require('../actions/StoreActions');
+var OrderActions = require('../actions/OrderActions');
 
 var OrderAdd = React.createClass({
     getInitialState: function () {
@@ -35,7 +36,8 @@ var OrderAdd = React.createClass({
                 <Input ref="item" type="text" name="item" placeholder="Item" description="Enter item name."/>
                 <h5>Select Stores</h5>
                 {this.state.stores.map(function (store) {
-                    return <label><Checkbox/>{store.name}</label>;
+                    return <label>
+                        <Checkbox ref={'store-' + store.id}/>{store.name}</label>;
                 })}
             </Dialog>
         );
@@ -44,7 +46,22 @@ var OrderAdd = React.createClass({
         this.refs.dialog.show();
     },
     _addOrder: function () {
-        console.log('_addOrder');
+        var itemName = this.refs.item.getValue();
+        if (!itemName) {
+            alert('Enter item name.');
+            return;
+        }
+        var storeIds = [];
+        for (var ref in this.refs) {
+            if (ref.indexOf('store-') === 0 && this.refs[ref].state.checked) {
+                storeIds.push(ref.replace('store-', ''));
+            }
+        }
+        if (storeIds.length === 0) {
+            alert('Select stores.');
+            return;
+        }
+        OrderActions.addOrder(undefined, itemName, storeIds);
     },
     _onChange: function () {
         this.setState({

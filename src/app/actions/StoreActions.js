@@ -11,9 +11,8 @@ var StoreActions = {
             if (!!error) {
                 return console.log(error);
             }
-            var StoreActions = require('../actions/StoreActions');
             AppDispatcher.handleApiAction({
-                actionType: ActionTypes.RECEIVE_STORE_SUCCESS,
+                actionType: ActionTypes.GET_STORE_SUCCESS,
                 data: res.body
             })
         });
