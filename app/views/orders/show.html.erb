@@ -17,3 +17,7 @@
 
 <%= link_to 'Edit', edit_order_path(@order) %> |
 <%= link_to 'Back', orders_path %>
+
+<form action="/orders/<%= @order.id %>/buy" method='POST'>
+    <input type="submit" value="Buy">
+</form>

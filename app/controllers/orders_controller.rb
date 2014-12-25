@@ -1,5 +1,5 @@
 class OrdersController < ApplicationController
-  before_action :set_order, only: [:show, :edit, :update, :destroy]
+  before_action :set_order, only: [:show, :edit, :update, :destroy, :buy]
 
   respond_to :html
 
@@ -33,6 +33,11 @@ class OrdersController < ApplicationController
 
   def destroy
     @order.destroy
+    respond_with(@order)
+  end
+
+  def buy
+    @order.fullfill!
     respond_with(@order)
   end
 
