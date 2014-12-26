@@ -3,6 +3,7 @@
 var React = require('react');
 var mui = require('material-ui');
 var Paper = mui.Paper;
+var moment = require('moment');
 
 var OrderItems = React.createClass({
     propTypes: {
@@ -15,7 +16,7 @@ var OrderItems = React.createClass({
                 <Paper zDepth={3} rounded={false}>
                     <div className="order-item-details">
                         {JSON.stringify(order)}
-                        <div>Completed - {order.completed}</div>
+                        <div>Completed - {moment(order.completed).fromNow()}</div>
                     </div>
                 </Paper>
             </li>
