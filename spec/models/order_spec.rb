@@ -85,7 +85,7 @@ RSpec.describe Order, :type => :model do
     expect( fai_order.completed ).to eq completed
   end
 
-  it 'Can be filter by user' do
+  it 'can be filter by user' do
     fai_order1 = Order.place( user: @fai, item: @coke, stores: [ @seven, @family ] )
     fai_order2 = Order.place( user: @fai, item: @lays, stores: [ @seven, @family ] )
     ping_order1 = Order.place( user: @ping, item: @pepsi, stores: [ @seven, @family ] )
@@ -113,4 +113,8 @@ RSpec.describe Order, :type => :model do
     expect( fai_order.canceled_at ).not_to be_nil
   end
 
+  it 'can set expire time' do
+    fai_order = Order.place( user: @fai, item: @coke, stores: [ @seven, @family ], expire_at: 10.days.from_now )
+    expect( fai_order ).not_to be_nil
+  end
 end

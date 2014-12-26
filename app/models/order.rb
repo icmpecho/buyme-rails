@@ -9,12 +9,16 @@ class Order < ActiveRecord::Base
     user = args[:user]
     item = args[:item]
     stores = args[:stores]
+    expire_at = args[:expire_at]
 
     raise ArgumentError unless user.class == User
     raise ArgumentError unless item.class == Item
     raise ArgumentError unless stores.class == Array
+    if expire_at
+      raise ArgumentError unless expire_at.to_datetime
+    end
 
-    order = self.new( user_id: user.id, item_id: item.id)
+    order = self.new( user_id: user.id, item_id: item.id, expire_at: expire_at )
 
     stores.each do |store|
       order.stores << store
