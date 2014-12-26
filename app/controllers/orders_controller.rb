@@ -13,16 +13,19 @@ class OrdersController < ApplicationController
   end
 
   def new
-    @order = Order.new
-    respond_with(@order)
   end
 
   def edit
   end
 
   def create
-    @order = Order.new(order_params)
-    @order.save
+    item = Item.find( params[ :item_id ] )
+    store_ids = params[ :store_ids ]
+    stores = []
+    store_ids.each do |store_id|
+      stores << Store.find( store_id )
+    end
+    @order = Order.place( user: current_user, item: item, stores: stores )
     respond_with(@order)
   end
 
