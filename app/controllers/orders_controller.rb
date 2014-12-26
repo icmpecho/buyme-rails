@@ -26,7 +26,7 @@ class OrdersController < ApplicationController
       stores << Store.find( store_id )
     end
     @order = Order.place( user: current_user, item: item, stores: stores )
-    respond_with(@order)
+    respond_with(@order, template: 'orders/show')
   end
 
   def update
