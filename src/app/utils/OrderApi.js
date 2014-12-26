@@ -25,8 +25,11 @@ var OrderApi = assign({}, ApiUtils, {
     },
     cancelOrder: function () {
     },
-    removeOrder: function (id) {
+    removeMyOrder: function (id) {
         return this.del('/orders/' + id);
+    },
+    removeStoreOrder: function (id) {
+        return this.post('/orders/' + id + '/buy');
     }
 });
 

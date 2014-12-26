@@ -35,7 +35,11 @@ var OrderItems = React.createClass({
                         <div className="mui-right">
                             {deleteButton}
                             {buyButton}
-                            <div className="date mui-font-style-caption">{createdAt}{createdBy}{completedAt}</div>
+                            <div className="date mui-font-style-caption">
+                                {createdAt}
+                                {completedAt}
+                                {createdBy}
+                            </div>
                         </div>
                         <h2>{order.item_name}</h2>
                         <div>
@@ -57,14 +61,14 @@ var OrderItems = React.createClass({
     },
     _onDeleteButtonClick: function (id) {
         if (this.props.orderType === 'current') {
-            OrderActions.cancelMyOrder(id)
+            OrderActions.cancelMyOrder(id);
         }
         else if (this.props.orderType === 'history') {
-            OrderActions.removeMyOldOrder(id)
+            OrderActions.removeMyOldOrder(id);
         }
     },
-    _onBuyButtonClick: function () {
-
+    _onBuyButtonClick: function (id) {
+        OrderActions.removeStoreOrder(id);
     }
 });
 

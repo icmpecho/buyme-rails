@@ -44,7 +44,6 @@ AppDispatcher.register(function (payload) {
             getStoreOrders(action.data);
             break;
         case ActionTypes.REMOVE_STORE_ORDER_SUCCESS:
-            alert('REMOVE_STORE_ORDER_SUCCESS');
             removeStoreOrder(action.data);
             break;
         default:
