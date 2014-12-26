@@ -22,17 +22,18 @@ function addMyOrder(data) {
 
 function removeMyOrder(data) {
     for (var index = 0; index < _orders.length; index++) {
-        if (_orders[index].id = data.id) {
-            _orders = _orders.splice(index, 1);
+        if (_orders[index].id === data.id) {
+            _orders.splice(index, 1);
             break;
         }
     }
 }
 
 function removeMyOldOrder(data) {
-    for (var index = 0; index < _orders.length; index++) {
-        if (_oldOrders[index].id = data.id) {
-            _oldOrders = _oldOrders.splice(index, 1);
+    for (var index = 0; index < _oldOrders.length; index++) {
+        console.log(_oldOrders[index].id);
+        if (_oldOrders[index].id === data.id) {
+            _oldOrders.splice(index, 1);
             break;
         }
     }
@@ -71,7 +72,7 @@ AppDispatcher.register(function (payload) {
         case ActionTypes.REMOVE_MY_ORDER_SUCCESS:
             removeMyOrder(action.data);
             break;
-        case ActionTypes.REMOVE_MY_ORDER_SUCCESS:
+        case ActionTypes.REMOVE_MY_OLD_ORDER_SUCCESS:
             removeMyOldOrder(action.data);
             break;
         default:

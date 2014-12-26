@@ -43,16 +43,20 @@ var OrderActions = {
         //    })
         //});
     },
-    removeMyOrder: function () {
+    removeMyOrder: function (id) {
         AppDispatcher.handleApiAction({
             actionType: ActionTypes.REMOVE_MY_ORDER_SUCCESS,
-            data: {}
+            data: {
+                id: id
+            }
         });
     },
-    removeMyOldOrder: function () {
+    removeMyOldOrder: function (id) {
         AppDispatcher.handleApiAction({
             actionType: ActionTypes.REMOVE_MY_OLD_ORDER_SUCCESS,
-            data: {}
+            data: {
+                id: id
+            }
         });
     },
     getShopOrders: function () {

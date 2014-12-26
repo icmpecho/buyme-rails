@@ -27,12 +27,13 @@ var OrderList = React.createClass({
         MyOrderStore.removeChangeListener(this._onChange);
     },
     render: function () {
+        var orderType = this.props.orderType;
         return (
             <div className="order-list">
                 <h3>{this.props.title}</h3>
                 <ul>
                     {this.state.orders.map(function (order) {
-                        return <OrderItem order={order}></OrderItem>;
+                        return <OrderItem order={order} orderType={orderType}></OrderItem>;
                     })}
                 </ul>
             </div>
@@ -49,7 +50,6 @@ var OrderList = React.createClass({
                 orders: MyOrderStore.getMyOldOrders()
             });
         }
-
     },
     refreshOrders: function () {
         if (this.props.orderType === 'current') {

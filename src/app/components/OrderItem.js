@@ -6,9 +6,12 @@ var Paper = mui.Paper;
 var FloatingActionButton = mui.FloatingActionButton;
 var moment = require('moment');
 
+var OrderActions = require('../actions/OrderActions');
+
 var OrderItems = React.createClass({
     propTypes: {
-        order: React.PropTypes.object.isRequired
+        order: React.PropTypes.object.isRequired,
+        orderType: React.PropTypes.string.isRequired
     },
     render: function () {
         var order = this.props.order;
@@ -27,11 +30,19 @@ var OrderItems = React.createClass({
                                   })}
                             </ul>
                         </div>
-                        <FloatingActionButton icon="action-delete"/>
+                        <FloatingActionButton icon="action-delete" onClick={this._onDeleteButtonClick.bind(this, order.id)}/>
                     </div>
                 </Paper>
             </li>
         );
+    },
+    _onDeleteButtonClick: function (id) {
+        if (this.props.orderType === 'current') {
+            OrderActions.removeMyOrder(id)
+        }
+        else if (this.props.orderType === 'history') {
+            OrderActions.removeMyOldOrder(id)
+        }
     }
 });
 
