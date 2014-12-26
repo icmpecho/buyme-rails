@@ -30,7 +30,7 @@ var OrderItems = React.createClass({
                                   })}
                             </ul>
                         </div>
-                        <FloatingActionButton icon="action-delete" onClick={this._onDeleteButtonClick.bind(this, order.id)}/>
+                        <FloatingActionButton icon="action-delete" secondary={true} onClick={this._onDeleteButtonClick.bind(this, order.id)}/>
                     </div>
                 </Paper>
             </li>

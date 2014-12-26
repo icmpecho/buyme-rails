@@ -3198,6 +3198,237 @@ hr {
   transition-delay: 0.1s;
   width: 18px;
 }
+.mui-date-picker-calendar {
+  font-size: 12px;
+}
+.mui-date-picker-calendar .mui-date-picker-calendar-week-title {
+  font-weight: 500;
+  color: rgba(0, 0, 0, 0.5);
+  line-height: 12px;
+  padding: 0 14px;
+}
+.mui-date-picker-calendar .mui-date-picker-calendar-week-title:before,
+.mui-date-picker-calendar .mui-date-picker-calendar-week-title:after {
+  content: " ";
+  display: table;
+}
+.mui-date-picker-calendar .mui-date-picker-calendar-week-title:after {
+  clear: both;
+}
+.mui-date-picker-calendar .mui-date-picker-calendar-week-title-day {
+  list-style: none;
+  float: left;
+  width: 32px;
+  text-align: center;
+  margin: 0 2px;
+}
+.mui-date-picker-calendar .mui-date-picker-calendar-container {
+  -webkit-transition: height 150ms cubic-bezier(0.23, 1, 0.32, 1) 0ms;
+  -moz-transition: height 150ms cubic-bezier(0.23, 1, 0.32, 1) 0ms;
+  -o-transition: height 150ms cubic-bezier(0.23, 1, 0.32, 1) 0ms;
+  transition: height 150ms cubic-bezier(0.23, 1, 0.32, 1) 0ms;
+}
+.mui-date-picker-calendar.mui-is-4week .mui-date-picker-calendar-container {
+  height: 228px;
+}
+.mui-date-picker-calendar.mui-is-5week .mui-date-picker-calendar-container {
+  height: 268px;
+}
+.mui-date-picker-calendar.mui-is-6week .mui-date-picker-calendar-container {
+  height: 308px;
+}
+.mui-is-landscape .mui-date-picker-calendar:before,
+.mui-is-landscape .mui-date-picker-calendar:after {
+  content: " ";
+  display: table;
+}
+.mui-is-landscape .mui-date-picker-calendar:after {
+  clear: both;
+}
+.mui-is-landscape .mui-date-picker-calendar-date-display {
+  width: 280px;
+  height: 100%;
+  float: left;
+}
+.mui-is-landscape .mui-date-picker-calendar-container {
+  width: 280px;
+  float: right;
+}
+.mui-date-picker-calendar-month {
+  line-height: 32px;
+  text-align: center;
+  padding: 8px 14px 0 14px;
+  background-color: #ffffff;
+}
+.mui-date-picker-calendar-month .mui-date-picker-calendar-month-week:before,
+.mui-date-picker-calendar-month .mui-date-picker-calendar-month-week:after {
+  content: " ";
+  display: table;
+}
+.mui-date-picker-calendar-month .mui-date-picker-calendar-month-week:after {
+  clear: both;
+}
+.mui-date-picker-calendar-toolbar {
+  height: 48px;
+  position: relative;
+}
+.mui-date-picker-calendar-toolbar .mui-date-picker-calendar-toolbar-title {
+  line-height: 48px;
+  font-size: 14px;
+  text-align: center;
+  font-weight: 500;
+}
+.mui-date-picker-calendar-toolbar .mui-date-picker-calendar-toolbar-button-left {
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+.mui-date-picker-calendar-toolbar .mui-date-picker-calendar-toolbar-button-right {
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+.mui-date-picker-date-display {
+  text-align: center;
+  position: relative;
+}
+.mui-date-picker-date-display .mui-date-picker-date-display-dow {
+  font-size: 13px;
+  height: 32px;
+  line-height: 32px;
+  background-color: #0097a7;
+  color: #ffffff;
+  -webkit-border-radius: 2px 2px 0 0;
+  -webkit-background-clip: padding-box;
+  -moz-border-radius: 2px 2px 0 0;
+  -moz-background-clip: padding;
+  border-radius: 2px 2px 0 0;
+  background-clip: padding-box;
+}
+.mui-date-picker-date-display .mui-date-picker-date-display-date {
+  padding: 16px 0;
+  background-color: #00bcd4;
+  color: #ffffff;
+}
+.mui-date-picker-date-display .mui-date-picker-date-display-month,
+.mui-date-picker-date-display .mui-date-picker-date-display-year {
+  font-size: 22px;
+  line-height: 24px;
+  height: 24px;
+  text-transform: uppercase;
+}
+.mui-date-picker-date-display .mui-date-picker-date-display-day {
+  margin: 6px 0;
+  line-height: 58px;
+  height: 58px;
+  font-size: 58px;
+}
+.mui-date-picker-date-display .mui-date-picker-date-display-year {
+  color: rgba(255, 255, 255, 0.7);
+}
+.mui-is-landscape .mui-date-picker-date-display * {
+  -webkit-transition: all 450ms cubic-bezier(0.23, 1, 0.32, 1) 0ms;
+  -moz-transition: all 450ms cubic-bezier(0.23, 1, 0.32, 1) 0ms;
+  -o-transition: all 450ms cubic-bezier(0.23, 1, 0.32, 1) 0ms;
+  transition: all 450ms cubic-bezier(0.23, 1, 0.32, 1) 0ms;
+}
+.mui-is-landscape .mui-date-picker-date-display-dow {
+  -webkit-border-radius: 2px 0 0 0;
+  -webkit-background-clip: padding-box;
+  -moz-border-radius: 2px 0 0 0;
+  -moz-background-clip: padding;
+  border-radius: 2px 0 0 0;
+  background-clip: padding-box;
+}
+.mui-is-landscape .mui-date-picker-date-display-date {
+  padding: 24px 0;
+}
+.mui-is-landscape .mui-date-picker-date-display-day {
+  font-size: 76px;
+  line-height: 76px;
+  height: 76px;
+}
+.mui-is-landscape .mui-date-picker-date-display-month,
+.mui-is-landscape .mui-date-picker-date-display-year {
+  font-size: 26px;
+  line-height: 26px;
+  height: 26px;
+}
+.mui-is-landscape .mui-is-5week .mui-date-picker-date-display-date {
+  padding: 30px 0;
+}
+.mui-is-landscape .mui-is-5week .mui-date-picker-date-display-day {
+  margin: 24px 0;
+}
+.mui-is-landscape .mui-is-6week .mui-date-picker-date-display-date {
+  padding: 50px 0;
+}
+.mui-is-landscape .mui-is-6week .mui-date-picker-date-display-day {
+  margin: 24px 0;
+}
+.mui-date-picker-dialog {
+  font-size: 14px;
+  color: rgba(0, 0, 0, 0.87);
+}
+.mui-date-picker-dialog .mui-date-picker-dialog-window.mui-dialog-window-contents {
+  width: 280px;
+}
+.mui-is-landscape .mui-date-picker-dialog-window.mui-dialog-window-contents {
+  width: 560px;
+}
+.mui-date-picker-day-button {
+  position: relative;
+  float: left;
+  width: 36px;
+  padding: 4px 2px;
+}
+.mui-date-picker-day-button .mui-date-picker-day-button-select {
+  position: absolute;
+  background-color: #0097a7;
+  height: 32px;
+  width: 32px;
+  -webkit-transition: all 450ms cubic-bezier(0.23, 1, 0.32, 1) 0ms;
+  -moz-transition: all 450ms cubic-bezier(0.23, 1, 0.32, 1) 0ms;
+  -o-transition: all 450ms cubic-bezier(0.23, 1, 0.32, 1) 0ms;
+  transition: all 450ms cubic-bezier(0.23, 1, 0.32, 1) 0ms;
+  zoom: 1;
+  filter: alpha(opacity=0);
+  -webkit-opacity: 0;
+  -moz-opacity: 0;
+  opacity: 0;
+  -webkit-border-radius: 50%;
+  -webkit-background-clip: padding-box;
+  -moz-border-radius: 50%;
+  -moz-background-clip: padding;
+  border-radius: 50%;
+  background-clip: padding-box;
+  -webkit-transform: scale(0);
+  -moz-transform: scale(0);
+  -ms-transform: scale(0);
+  -o-transform: scale(0);
+  transform: scale(0);
+}
+.mui-date-picker-day-button .mui-date-picker-day-button-label {
+  position: relative;
+}
+.mui-date-picker-day-button.mui-is-selected .mui-date-picker-day-button-label {
+  color: #ffffff;
+}
+.mui-date-picker-day-button.mui-is-selected .mui-date-picker-day-button-select {
+  zoom: 1;
+  filter: alpha(opacity=100);
+  -webkit-opacity: 1;
+  -moz-opacity: 1;
+  opacity: 1;
+  -webkit-transform: scale(1);
+  -moz-transform: scale(1);
+  -ms-transform: scale(1);
+  -o-transform: scale(1);
+  transform: scale(1);
+}
+.mui-date-picker-day-button.mui-is-current-date {
+  color: #00bcd4;
+}
 .mui-dialog-window {
   position: fixed;
   z-index: 10;
@@ -3223,6 +3454,15 @@ hr {
   background: #ffffff;
   opacity: 0;
 }
+.mui-dialog-window .mui-dialog-window-actions {
+  padding: 8px;
+  margin-bottom: 8px;
+  width: 100%;
+  text-align: right;
+}
+.mui-dialog-window .mui-dialog-window-actions .mui-dialog-window-action {
+  margin-right: 8px;
+}
 .mui-dialog-window.mui-is-shown {
   left: 0px;
   -webkit-transition: left 0ms cubic-bezier(0.23, 1, 0.32, 1) 0ms;
@@ -3245,26 +3485,6 @@ hr {
 }
 .mui-dialog .mui-dialog-content {
   padding: 24px;
-}
-.mui-dialog .mui-dialog-actions {
-  padding: 8px;
-  margin-bottom: 8px;
-  width: 100%;
-}
-.mui-dialog .mui-dialog-actions:before,
-.mui-dialog .mui-dialog-actions:after {
-  content: " ";
-  display: table;
-}
-.mui-dialog .mui-dialog-actions:after {
-  clear: both;
-}
-.mui-dialog .mui-dialog-actions .mui-dialog-actions-right {
-  float: right;
-}
-.mui-dialog .mui-dialog-actions .mui-dialog-action {
-  margin-right: 8px;
-  float: left;
 }
 .mui-drop-down-icon {
   display: inline-block;
@@ -3363,7 +3583,7 @@ hr {
   clear: both;
 }
 .mui-drop-down-menu .mui-menu-control .mui-menu-control-bg {
-  background-color: white;
+  background-color: #ffffff;
   height: 100%;
   width: 100%;
   zoom: 1;
@@ -3417,6 +3637,7 @@ hr {
 .mui-enhanced-button.mui-is-link-button {
   display: inline-block;
   cursor: pointer;
+  text-decoration: none;
 }
 .mui-enhanced-button.mui-is-link-button:hover {
   text-decoration: none;
@@ -3456,10 +3677,10 @@ hr {
   margin: 0;
 }
 .mui-flat-button .mui-flat-button-ripple.mui-is-visible {
-  -webkit-animation: 'flat-button-ripple-click' 0.7s;
-  -moz-animation: 'flat-button-ripple-click' 0.7s;
-  -o-animation: 'flat-button-ripple-click' 0.7s;
-  animation: 'flat-button-ripple-click' 0.7s;
+  -webkit-animation: flat-button-ripple-click 0.7s ease 0s;
+  -moz-animation: flat-button-ripple-click 0.7s ease 0s;
+  -o-animation: flat-button-ripple-click 0.7s ease 0s;
+  animation: flat-button-ripple-click 0.7s ease 0s;
 }
 .mui-flat-button .mui-flat-button-ripple.mui-is-visible lesshat-selector {
   -lh-property: 0; } 
@@ -3484,10 +3705,10 @@ margin-top:calc(-50% + 18px);
   width: 100%;
   padding-bottom: 100%;
   padding-top: 32px;
-  -webkit-animation: 'ripple-button-focus' 1.5s infinite;
-  -moz-animation: 'ripple-button-focus' 1.5s infinite;
-  -o-animation: 'ripple-button-focus' 1.5s infinite;
-  animation: 'ripple-button-focus' 1.5s infinite;
+  -webkit-animation: ripple-button-focus 1.5s ease 0s infinite;
+  -moz-animation: ripple-button-focus 1.5s ease 0s infinite;
+  -o-animation: ripple-button-focus 1.5s ease 0s infinite;
+  animation: ripple-button-focus 1.5s ease 0s infinite;
 }
 .mui-flat-button.mui-is-keyboard-focused .mui-flat-button-focus-ripple lesshat-selector {
   -lh-property: 0; } 
@@ -3514,10 +3735,10 @@ margin-top:calc(-50% + 18px);
   background-color: #ffe3ed;
 }
 .mui-flat-button.mui-is-primary .mui-flat-button-ripple.mui-is-visible {
-  -webkit-animation: 'flat-primary-button-ripple-click' 0.7s;
-  -moz-animation: 'flat-primary-button-ripple-click' 0.7s;
-  -o-animation: 'flat-primary-button-ripple-click' 0.7s;
-  animation: 'flat-primary-button-ripple-click' 0.7s;
+  -webkit-animation: flat-primary-button-ripple-click 0.7s ease 0s;
+  -moz-animation: flat-primary-button-ripple-click 0.7s ease 0s;
+  -o-animation: flat-primary-button-ripple-click 0.7s ease 0s;
+  animation: flat-primary-button-ripple-click 0.7s ease 0s;
 }
 .mui-flat-button.mui-is-primary .mui-flat-button-ripple.mui-is-visible lesshat-selector {
   -lh-property: 0; } 
@@ -3528,6 +3749,29 @@ margin-top:calc(-50% + 18px);
 }
 .mui-flat-button.mui-is-primary.mui-is-keyboard-focused .mui-flat-button-focus-ripple {
   background-color: rgba(217, 0, 74, 0.07);
+}
+.mui-flat-button.mui-is-secondary {
+  color: #00bcd4;
+}
+.mui-flat-button.mui-is-secondary:hover,
+.mui-flat-button.mui-is-secondary.mui-is-keyboard-focused {
+  background-color: #defbff;
+}
+.mui-flat-button.mui-is-secondary .mui-flat-button-ripple.mui-is-visible {
+  -webkit-animation: flat-secondary-button-ripple-click 0.7s ease 0s;
+  -moz-animation: flat-secondary-button-ripple-click 0.7s ease 0s;
+  -o-animation: flat-secondary-button-ripple-click 0.7s ease 0s;
+  animation: flat-secondary-button-ripple-click 0.7s ease 0s;
+}
+.mui-flat-button.mui-is-secondary .mui-flat-button-ripple.mui-is-visible lesshat-selector {
+  -lh-property: 0; } 
+@-webkit-keyframes flat-secondary-button-ripple-click{ 0% { background-color: rgba(0, 0, 0, 0); } 50% { background-color: rgba(0, 98, 110, 0.1); }  100% { width: 150px; height: 150px; background-color: rgba(0, 0, 0, 0); }}
+@-moz-keyframes flat-secondary-button-ripple-click{ 0% { background-color: rgba(0, 0, 0, 0); } 50% { background-color: rgba(0, 98, 110, 0.1); }  100% { width: 150px; height: 150px; background-color: rgba(0, 0, 0, 0); }}
+@-o-keyframes flat-secondary-button-ripple-click{ 0% { background-color: rgba(0, 0, 0, 0); } 50% { background-color: rgba(0, 98, 110, 0.1); }  100% { width: 150px; height: 150px; background-color: rgba(0, 0, 0, 0); }}
+@keyframes flat-secondary-button-ripple-click{ 0% { background-color: rgba(0, 0, 0, 0); } 50% { background-color: rgba(0, 98, 110, 0.1); }  100% { width: 150px; height: 150px; background-color: rgba(0, 0, 0, 0); };
+}
+.mui-flat-button.mui-is-secondary.mui-is-keyboard-focused .mui-flat-button-focus-ripple {
+  background-color: rgba(0, 98, 110, 0.07);
 }
 .mui-floating-action-button {
   display: inline-block;
@@ -3556,10 +3800,10 @@ margin-top:calc(-50% + 18px);
   background-color: #f30053;
 }
 .mui-floating-action-button .mui-floating-action-button-container.mui-is-keyboard-focused .mui-floating-action-button-focus-ripple {
-  -webkit-animation: 'floating-action-button-focus-ripple' 1.5s infinite;
-  -moz-animation: 'floating-action-button-focus-ripple' 1.5s infinite;
-  -o-animation: 'floating-action-button-focus-ripple' 1.5s infinite;
-  animation: 'floating-action-button-focus-ripple' 1.5s infinite;
+  -webkit-animation: floating-action-button-focus-ripple 1.5s ease 0s infinite;
+  -moz-animation: floating-action-button-focus-ripple 1.5s ease 0s infinite;
+  -o-animation: floating-action-button-focus-ripple 1.5s ease 0s infinite;
+  animation: floating-action-button-focus-ripple 1.5s ease 0s infinite;
   zoom: 1;
   filter: alpha(opacity=100);
   -webkit-opacity: 1;
@@ -3599,10 +3843,10 @@ margin-top:calc(-50% + 18px);
   width: 56px;
   margin-top: -28px;
   margin-left: -28px;
-  -webkit-animation: 'floating-action-button-ripple-click' 0.5s;
-  -moz-animation: 'floating-action-button-ripple-click' 0.5s;
-  -o-animation: 'floating-action-button-ripple-click' 0.5s;
-  animation: 'floating-action-button-ripple-click' 0.5s;
+  -webkit-animation: floating-action-button-ripple-click 0.5s ease 0s;
+  -moz-animation: floating-action-button-ripple-click 0.5s ease 0s;
+  -o-animation: floating-action-button-ripple-click 0.5s ease 0s;
+  animation: floating-action-button-ripple-click 0.5s ease 0s;
 }
 .mui-floating-action-button .mui-floating-action-button-ripple.mui-is-visible lesshat-selector {
   -lh-property: 0; } 
@@ -3641,10 +3885,10 @@ margin-top:calc(-50% + 18px);
   width: 40px;
   margin-top: -20px;
   margin-left: -20px;
-  -webkit-animation: 'floating-action-button-mini-ripple-click' 0.5s;
-  -moz-animation: 'floating-action-button-mini-ripple-click' 0.5s;
-  -o-animation: 'floating-action-button-mini-ripple-click' 0.5s;
-  animation: 'floating-action-button-mini-ripple-click' 0.5s;
+  -webkit-animation: floating-action-button-mini-ripple-click 0.5s ease 0s;
+  -moz-animation: floating-action-button-mini-ripple-click 0.5s ease 0s;
+  -o-animation: floating-action-button-mini-ripple-click 0.5s ease 0s;
+  animation: floating-action-button-mini-ripple-click 0.5s ease 0s;
 }
 .mui-floating-action-button.mui-is-mini .mui-floating-action-button-ripple.mui-is-visible lesshat-selector {
   -lh-property: 0; } 
@@ -3656,6 +3900,55 @@ margin-top:calc(-50% + 18px);
 .mui-floating-action-button.mui-is-mini .mui-floating-action-button-focus-ripple {
   width: 40px;
   height: 40px;
+}
+.mui-floating-action-button.mui-is-secondary .mui-floating-action-button-container {
+  background-color: #00bcd4;
+}
+.mui-floating-action-button.mui-is-secondary .mui-floating-action-button-container:hover {
+  background-color: #00aac0;
+}
+.mui-floating-action-button.mui-is-secondary.mui-is-keyboard-focused {
+  background-color: #00aac0;
+}
+.mui-floating-action-button.mui-is-secondary .mui-floating-action-button-icon {
+  color: #ffffff;
+}
+.mui-floating-action-button.mui-is-secondary .mui-floating-action-button-ripple.mui-is-visible {
+  height: 56px;
+  width: 56px;
+  margin-top: -28px;
+  margin-left: -28px;
+  -webkit-animation: floating-action-button-secondary-ripple-click 0.5s ease 0s;
+  -moz-animation: floating-action-button-secondary-ripple-click 0.5s ease 0s;
+  -o-animation: floating-action-button-secondary-ripple-click 0.5s ease 0s;
+  animation: floating-action-button-secondary-ripple-click 0.5s ease 0s;
+}
+.mui-floating-action-button.mui-is-secondary .mui-floating-action-button-ripple.mui-is-visible lesshat-selector {
+  -lh-property: 0; } 
+@-webkit-keyframes floating-action-button-secondary-ripple-click{ 0% { -webkit-transform: scale(0); background-color: rgba(0, 0, 0, 0); } 50% { background-color: rgba(0, 0, 0, 0.15); }  100% { -webkit-transform: scale(1); background-color: rgba(0, 0, 0, 0); }}
+@-moz-keyframes floating-action-button-secondary-ripple-click{ 0% { -moz-transform: scale(0); background-color: rgba(0, 0, 0, 0); } 50% { background-color: rgba(0, 0, 0, 0.15); }  100% { -moz-transform: scale(1); background-color: rgba(0, 0, 0, 0); }}
+@-o-keyframes floating-action-button-secondary-ripple-click{ 0% { -o-transform: scale(0); background-color: rgba(0, 0, 0, 0); } 50% { background-color: rgba(0, 0, 0, 0.15); }  100% { -o-transform: scale(1); background-color: rgba(0, 0, 0, 0); }}
+@keyframes floating-action-button-secondary-ripple-click{ 0% {-webkit-transform: scale(0);-moz-transform: scale(0);-ms-transform: scale(0);transform: scale(0); background-color: rgba(0, 0, 0, 0); } 50% { background-color: rgba(0, 0, 0, 0.15); }  100% {-webkit-transform: scale(1);-moz-transform: scale(1);-ms-transform: scale(1);transform: scale(1); background-color: rgba(0, 0, 0, 0); };
+}
+.mui-floating-action-button.mui-is-secondary.mui-is-mini .mui-floating-action-button-ripple.mui-is-visible {
+  height: 40px;
+  width: 40px;
+  margin-top: -20px;
+  margin-left: -20px;
+  -webkit-animation: floating-action-button-mini-secondary-ripple-click 0.5s ease 0s;
+  -moz-animation: floating-action-button-mini-secondary-ripple-click 0.5s ease 0s;
+  -o-animation: floating-action-button-mini-secondary-ripple-click 0.5s ease 0s;
+  animation: floating-action-button-mini-secondary-ripple-click 0.5s ease 0s;
+}
+.mui-floating-action-button.mui-is-secondary.mui-is-mini .mui-floating-action-button-ripple.mui-is-visible lesshat-selector {
+  -lh-property: 0; } 
+@-webkit-keyframes floating-action-button-mini-secondary-ripple-click{ 0% { -webkit-transform: scale(0); background-color: rgba(0, 0, 0, 0); } 50% { background-color: rgba(0, 0, 0, 0.15); }  100% { -webkit-transform: scale(1); background-color: rgba(0, 0, 0, 0); }}
+@-moz-keyframes floating-action-button-mini-secondary-ripple-click{ 0% { -moz-transform: scale(0); background-color: rgba(0, 0, 0, 0); } 50% { background-color: rgba(0, 0, 0, 0.15); }  100% { -moz-transform: scale(1); background-color: rgba(0, 0, 0, 0); }}
+@-o-keyframes floating-action-button-mini-secondary-ripple-click{ 0% { -o-transform: scale(0); background-color: rgba(0, 0, 0, 0); } 50% { background-color: rgba(0, 0, 0, 0.15); }  100% { -o-transform: scale(1); background-color: rgba(0, 0, 0, 0); }}
+@keyframes floating-action-button-mini-secondary-ripple-click{ 0% {-webkit-transform: scale(0);-moz-transform: scale(0);-ms-transform: scale(0);transform: scale(0); background-color: rgba(0, 0, 0, 0); } 50% { background-color: rgba(0, 0, 0, 0.15); }  100% {-webkit-transform: scale(1);-moz-transform: scale(1);-ms-transform: scale(1);transform: scale(1); background-color: rgba(0, 0, 0, 0); };
+}
+.mui-floating-action-button.mui-is-secondary .mui-floating-action-button-focus-ripple {
+  background-color: rgba(0, 0, 0, 0.15);
 }
 .mui-icon-button {
   position: relative;
@@ -3675,10 +3968,10 @@ margin-top:calc(-50% + 18px);
   width: 48px;
   margin-top: -24px;
   margin-left: -24px;
-  -webkit-animation: 'icon-button-ripple-animation' 0.7s;
-  -moz-animation: 'icon-button-ripple-animation' 0.7s;
-  -o-animation: 'icon-button-ripple-animation' 0.7s;
-  animation: 'icon-button-ripple-animation' 0.7s;
+  -webkit-animation: icon-button-ripple-animation 0.7s ease 0s;
+  -moz-animation: icon-button-ripple-animation 0.7s ease 0s;
+  -o-animation: icon-button-ripple-animation 0.7s ease 0s;
+  animation: icon-button-ripple-animation 0.7s ease 0s;
 }
 .mui-icon-button .mui-icon-button-ripple.mui-is-visible lesshat-selector {
   -lh-property: 0; } 
@@ -3713,10 +4006,10 @@ margin-top:calc(-50% + 18px);
   color: rgba(191, 191, 191, 0.87);
 }
 .mui-icon-button.mui-is-keyboard-focused .mui-icon-button-focus-ripple {
-  -webkit-animation: 'ripple-icon-button-focus' 1.5s infinite;
-  -moz-animation: 'ripple-icon-button-focus' 1.5s infinite;
-  -o-animation: 'ripple-icon-button-focus' 1.5s infinite;
-  animation: 'ripple-icon-button-focus' 1.5s infinite;
+  -webkit-animation: ripple-icon-button-focus 1.5s ease 0s infinite;
+  -moz-animation: ripple-icon-button-focus 1.5s ease 0s infinite;
+  -o-animation: ripple-icon-button-focus 1.5s ease 0s infinite;
+  animation: ripple-icon-button-focus 1.5s ease 0s infinite;
   zoom: 1;
   filter: alpha(opacity=100);
   -webkit-opacity: 1;
@@ -3735,10 +4028,10 @@ margin-top:calc(-50% + 18px);
   width: 48px;
   margin-top: -24px;
   margin-left: -24px;
-  -webkit-animation: 'icon-button-ripple-animation-dark' 0.7s;
-  -moz-animation: 'icon-button-ripple-animation-dark' 0.7s;
-  -o-animation: 'icon-button-ripple-animation-dark' 0.7s;
-  animation: 'icon-button-ripple-animation-dark' 0.7s;
+  -webkit-animation: icon-button-ripple-animation-dark 0.7s ease 0s;
+  -moz-animation: icon-button-ripple-animation-dark 0.7s ease 0s;
+  -o-animation: icon-button-ripple-animation-dark 0.7s ease 0s;
+  animation: icon-button-ripple-animation-dark 0.7s ease 0s;
 }
 .mui-dark-theme .mui-icon-button-ripple.mui-is-visible lesshat-selector {
   -lh-property: 0; } 
@@ -3777,49 +4070,59 @@ margin-top:calc(-50% + 18px);
   width: 320px;
 }
 .mui-input textarea:focus,
-.mui-input textarea:valid {
+.mui-input textarea.mui-is-not-empty,
+.mui-input textarea:disabled[value]:not([value=""]) {
   outline: none;
   box-shadow: none;
   padding: 0;
   margin: 0;
 }
 .mui-input textarea:focus + .mui-input-placeholder,
-.mui-input textarea:valid + .mui-input-placeholder {
+.mui-input textarea.mui-is-not-empty + .mui-input-placeholder,
+.mui-input textarea:disabled[value]:not([value=""]) + .mui-input-placeholder {
   font-size: 13px;
   color: blue;
   top: -27px;
 }
 .mui-input textarea:focus + .mui-input-placeholder + .mui-input-highlight,
-.mui-input textarea:valid + .mui-input-placeholder + .mui-input-highlight {
+.mui-input textarea.mui-is-not-empty + .mui-input-placeholder + .mui-input-highlight,
+.mui-input textarea:disabled[value]:not([value=""]) + .mui-input-placeholder + .mui-input-highlight {
   width: 0;
   background-color: blue;
   left: 0;
   top: 1px;
 }
 .mui-input textarea:focus + .mui-input-placeholder + .mui-input-highlight + .mui-input-bar::before,
-.mui-input textarea:valid + .mui-input-placeholder + .mui-input-highlight + .mui-input-bar::before,
+.mui-input textarea.mui-is-not-empty + .mui-input-placeholder + .mui-input-highlight + .mui-input-bar::before,
+.mui-input textarea:disabled[value]:not([value=""]) + .mui-input-placeholder + .mui-input-highlight + .mui-input-bar::before,
 .mui-input textarea:focus + .mui-input-placeholder + .mui-input-highlight + .mui-input-bar::after,
-.mui-input textarea:valid + .mui-input-placeholder + .mui-input-highlight + .mui-input-bar::after {
+.mui-input textarea.mui-is-not-empty + .mui-input-placeholder + .mui-input-highlight + .mui-input-bar::after,
+.mui-input textarea:disabled[value]:not([value=""]) + .mui-input-placeholder + .mui-input-highlight + .mui-input-bar::after {
   background-color: blue;
   width: 50%;
 }
 .mui-input textarea:focus + .mui-input-placeholder + .mui-input-highlight + .mui-input-bar + .mui-input-description,
-.mui-input textarea:valid + .mui-input-placeholder + .mui-input-highlight + .mui-input-bar + .mui-input-description {
+.mui-input textarea.mui-is-not-empty + .mui-input-placeholder + .mui-input-highlight + .mui-input-bar + .mui-input-description,
+.mui-input textarea:disabled[value]:not([value=""]) + .mui-input-placeholder + .mui-input-highlight + .mui-input-bar + .mui-input-description {
   display: block;
 }
 .mui-input textarea:not(:focus) + .mui-input-placeholder {
   font-size: 16px;
   color: gray;
 }
-.mui-input textarea:not(:focus):valid + .mui-input-placeholder {
+.mui-input textarea:not(:focus).mui-is-not-empty + .mui-input-placeholder,
+.mui-input textarea:disabled[value]:not([value=""]) + .mui-input-placeholder {
   font-size: 13px;
   color: gray;
 }
-.mui-input textarea:not(:focus):valid + .mui-input-placeholder + .mui-input-highlight + .mui-input-bar::before,
-.mui-input textarea:not(:focus):valid + .mui-input-placeholder + .mui-input-highlight + .mui-input-bar::after {
+.mui-input textarea:not(:focus).mui-is-not-empty + .mui-input-placeholder + .mui-input-highlight + .mui-input-bar::before,
+.mui-input textarea:disabled[value]:not([value=""]) + .mui-input-placeholder + .mui-input-highlight + .mui-input-bar::before,
+.mui-input textarea:not(:focus).mui-is-not-empty + .mui-input-placeholder + .mui-input-highlight + .mui-input-bar::after,
+.mui-input textarea:disabled[value]:not([value=""]) + .mui-input-placeholder + .mui-input-highlight + .mui-input-bar::after {
   width: 0;
 }
-.mui-input textarea:not(:focus):valid + .mui-input-placeholder + .mui-input-highlight + .mui-input-bar + .mui-input-description {
+.mui-input textarea:not(:focus).mui-is-not-empty + .mui-input-placeholder + .mui-input-highlight + .mui-input-bar + .mui-input-description,
+.mui-input textarea:disabled[value]:not([value=""]) + .mui-input-placeholder + .mui-input-highlight + .mui-input-bar + .mui-input-description {
   display: none;
 }
 .mui-input textarea + .mui-input-placeholder {
@@ -3842,17 +4145,20 @@ margin-top:calc(-50% + 18px);
   padding-bottom: 14px;
 }
 .mui-input input[type='text'],
-.mui-input input[type='password'] {
+.mui-input input[type='password'],
+.mui-input input[type='email'] {
   display: block;
   width: 320px;
 }
 .mui-input input:focus,
-.mui-input input:valid {
+.mui-input input.mui-is-not-empty,
+.mui-input input:disabled[value]:not([value=""]) {
   outline: none;
   box-shadow: none;
 }
 .mui-input input:focus ~ .mui-input-placeholder,
-.mui-input input:valid ~ .mui-input-placeholder {
+.mui-input input.mui-is-not-empty ~ .mui-input-placeholder,
+.mui-input input:disabled[value]:not([value=""]) ~ .mui-input-placeholder {
   color: blue;
   font-size: 13px !important;
   font-weight: 300;
@@ -3863,7 +4169,8 @@ margin-top:calc(-50% + 18px);
   transition: all 450ms cubic-bezier(0.23, 1, 0.32, 1) 0ms;
 }
 .mui-input input:focus ~ .mui-input-highlight,
-.mui-input input:valid ~ .mui-input-highlight {
+.mui-input input.mui-is-not-empty ~ .mui-input-highlight,
+.mui-input input:disabled[value]:not([value=""]) ~ .mui-input-highlight {
   width: 0;
   background-color: blue;
   -webkit-transition: all 450ms cubic-bezier(0.23, 1, 0.32, 1) 0ms;
@@ -3872,24 +4179,31 @@ margin-top:calc(-50% + 18px);
   transition: all 450ms cubic-bezier(0.23, 1, 0.32, 1) 0ms;
 }
 .mui-input input:focus ~ .mui-input-bar::before,
-.mui-input input:valid ~ .mui-input-bar::before,
+.mui-input input.mui-is-not-empty ~ .mui-input-bar::before,
+.mui-input input:disabled[value]:not([value=""]) ~ .mui-input-bar::before,
 .mui-input input:focus ~ .mui-input-bar::after,
-.mui-input input:valid ~ .mui-input-bar::after {
+.mui-input input.mui-is-not-empty ~ .mui-input-bar::after,
+.mui-input input:disabled[value]:not([value=""]) ~ .mui-input-bar::after {
   background-color: blue;
   width: 50%;
 }
 .mui-input input:focus ~ .mui-input-description,
-.mui-input input:valid ~ .mui-input-description {
+.mui-input input.mui-is-not-empty ~ .mui-input-description,
+.mui-input input:disabled[value]:not([value=""]) ~ .mui-input-description {
   display: block;
 }
-.mui-input input:not(:focus):valid + .mui-input-placeholder {
+.mui-input input:not(:focus).mui-is-not-empty + .mui-input-placeholder,
+.mui-input input:disabled[value]:not([value=""]) + .mui-input-placeholder {
   color: gray;
 }
-.mui-input input:not(:focus):valid + .mui-input-placeholder + .mui-input-highlight + .mui-input-bar::before,
-.mui-input input:not(:focus):valid + .mui-input-placeholder + .mui-input-highlight + .mui-input-bar::after {
+.mui-input input:not(:focus).mui-is-not-empty + .mui-input-placeholder + .mui-input-highlight + .mui-input-bar::before,
+.mui-input input:disabled[value]:not([value=""]) + .mui-input-placeholder + .mui-input-highlight + .mui-input-bar::before,
+.mui-input input:not(:focus).mui-is-not-empty + .mui-input-placeholder + .mui-input-highlight + .mui-input-bar::after,
+.mui-input input:disabled[value]:not([value=""]) + .mui-input-placeholder + .mui-input-highlight + .mui-input-bar::after {
   width: 0;
 }
-.mui-input input:not(:focus):valid + .mui-input-placeholder + .mui-input-highlight + .mui-input-bar + .mui-input-description {
+.mui-input input:not(:focus).mui-is-not-empty + .mui-input-placeholder + .mui-input-highlight + .mui-input-bar + .mui-input-description,
+.mui-input input:disabled[value]:not([value=""]) + .mui-input-placeholder + .mui-input-highlight + .mui-input-bar + .mui-input-description {
   display: none;
 }
 .mui-input input + .mui-input-placeholder {
@@ -3952,22 +4266,22 @@ margin-top:calc(-50% + 18px);
   top: 36px;
 }
 .mui-input.mui-error textarea:focus + .mui-input-placeholder,
-.mui-input.mui-error textarea:valid + .mui-input-placeholder {
+.mui-input.mui-error textarea.mui-is-not-empty + .mui-input-placeholder {
   color: red;
 }
 .mui-input.mui-error textarea:focus + .mui-input-placeholder + .mui-input-highlight,
-.mui-input.mui-error textarea:valid + .mui-input-placeholder + .mui-input-highlight {
+.mui-input.mui-error textarea.mui-is-not-empty + .mui-input-placeholder + .mui-input-highlight {
   width: 0;
   background-color: red;
 }
 .mui-input.mui-error textarea:focus + .mui-input-placeholder + .mui-input-highlight + .mui-input-bar::before,
-.mui-input.mui-error textarea:valid + .mui-input-placeholder + .mui-input-highlight + .mui-input-bar::before,
+.mui-input.mui-error textarea.mui-is-not-empty + .mui-input-placeholder + .mui-input-highlight + .mui-input-bar::before,
 .mui-input.mui-error textarea:focus + .mui-input-placeholder + .mui-input-highlight + .mui-input-bar::after,
-.mui-input.mui-error textarea:valid + .mui-input-placeholder + .mui-input-highlight + .mui-input-bar::after {
+.mui-input.mui-error textarea.mui-is-not-empty + .mui-input-placeholder + .mui-input-highlight + .mui-input-bar::after {
   background-color: red;
 }
 .mui-input.mui-error textarea:focus + .mui-input-placeholder + .mui-input-highlight + .mui-input-bar + .mui-input-description,
-.mui-input.mui-error textarea:valid + .mui-input-placeholder + .mui-input-highlight + .mui-input-bar + .mui-input-description {
+.mui-input.mui-error textarea.mui-is-not-empty + .mui-input-placeholder + .mui-input-highlight + .mui-input-bar + .mui-input-description {
   display: none;
 }
 .mui-input.mui-error textarea + .mui-input-placeholder + .mui-input-highlight + .mui-input-bar + .mui-input-description + .mui-input-error {
@@ -3975,22 +4289,22 @@ margin-top:calc(-50% + 18px);
   top: 8px;
 }
 .mui-input.mui-error input:focus + .mui-input-placeholder,
-.mui-input.mui-error input:valid + .mui-input-placeholder {
+.mui-input.mui-error input.mui-is-not-empty + .mui-input-placeholder {
   color: red;
 }
 .mui-input.mui-error input:focus + .mui-input-placeholder + .mui-input-highlight,
-.mui-input.mui-error input:valid + .mui-input-placeholder + .mui-input-highlight {
+.mui-input.mui-error input.mui-is-not-empty + .mui-input-placeholder + .mui-input-highlight {
   width: 0;
   background-color: red;
 }
 .mui-input.mui-error input:focus + .mui-input-placeholder + .mui-input-highlight + .mui-input-bar::before,
-.mui-input.mui-error input:valid + .mui-input-placeholder + .mui-input-highlight + .mui-input-bar::before,
+.mui-input.mui-error input.mui-is-not-empty + .mui-input-placeholder + .mui-input-highlight + .mui-input-bar::before,
 .mui-input.mui-error input:focus + .mui-input-placeholder + .mui-input-highlight + .mui-input-bar::after,
-.mui-input.mui-error input:valid + .mui-input-placeholder + .mui-input-highlight + .mui-input-bar::after {
+.mui-input.mui-error input.mui-is-not-empty + .mui-input-placeholder + .mui-input-highlight + .mui-input-bar::after {
   background-color: red;
 }
 .mui-input.mui-error input:focus + .mui-input-placeholder + .mui-input-highlight + .mui-input-bar + .mui-input-description,
-.mui-input.mui-error input:valid + .mui-input-placeholder + .mui-input-highlight + .mui-input-bar + .mui-input-description {
+.mui-input.mui-error input.mui-is-not-empty + .mui-input-placeholder + .mui-input-highlight + .mui-input-bar + .mui-input-description {
   display: none;
 }
 .mui-input.mui-error .mui-input-error {
@@ -4006,11 +4320,14 @@ margin-top:calc(-50% + 18px);
   font-weight: 400;
   top: -4px;
 }
-.mui-input.mui-floating input:focus:valid + .mui-input-placeholder {
+.mui-input.mui-floating input:focus.mui-is-not-empty + .mui-input-placeholder {
   display: none;
 }
-.mui-input.mui-floating input:valid + .mui-input-placeholder {
+.mui-input.mui-floating input.mui-is-not-empty + .mui-input-placeholder {
   display: none;
+}
+.mui-input.mui-disabled {
+  opacity: 0.4;
 }
 ::-webkit-input-placeholder {
   position: absolute !important;
@@ -4046,7 +4363,7 @@ margin-top:calc(-50% + 18px);
   transform: translate3d(-266px, 0, 0);
 }
 .mui-menu {
-  background-color: white;
+  background-color: #ffffff;
 }
 .mui-menu * {
   -webkit-transition: all 450ms cubic-bezier(0.23, 1, 0.32, 1) 0ms;
@@ -4104,10 +4421,10 @@ margin-top:calc(-50% + 18px);
   background-color: rgba(0, 0, 0, 0.035);
 }
 .mui-menu .mui-menu-item .mui-ripple.mui-show {
-  -webkit-animation: 'menu-item-ripple-animation' 0.7s;
-  -moz-animation: 'menu-item-ripple-animation' 0.7s;
-  -o-animation: 'menu-item-ripple-animation' 0.7s;
-  animation: 'menu-item-ripple-animation' 0.7s;
+  -webkit-animation: 'menu-item-ripple-animation' 0.7s ease 0s;
+  -moz-animation: 'menu-item-ripple-animation' 0.7s ease 0s;
+  -o-animation: 'menu-item-ripple-animation' 0.7s ease 0s;
+  animation: 'menu-item-ripple-animation' 0.7s ease 0s;
 }
 .mui-menu .mui-menu-item .mui-ripple.mui-show lesshat-selector {
   -lh-property: 0; } 
@@ -4356,10 +4673,10 @@ margin-top:calc(-50% + 18px);
   width: 100%;
   padding-bottom: 100%;
   padding-top: 32px;
-  -webkit-animation: 'ripple-button-focus' 1.5s infinite;
-  -moz-animation: 'ripple-button-focus' 1.5s infinite;
-  -o-animation: 'ripple-button-focus' 1.5s infinite;
-  animation: 'ripple-button-focus' 1.5s infinite;
+  -webkit-animation: ripple-button-focus 1.5s ease 0s infinite;
+  -moz-animation: ripple-button-focus 1.5s ease 0s infinite;
+  -o-animation: ripple-button-focus 1.5s ease 0s infinite;
+  animation: ripple-button-focus 1.5s ease 0s infinite;
   padding-top: 0;
 }
 .mui-raised-button .mui-raised-button-container.mui-is-keyboard-focused .mui-raised-button-focus-ripple lesshat-selector {
@@ -4370,10 +4687,10 @@ margin-top:calc(-50% + 18px);
 @keyframes ripple-button-focus{ 0%, 100% {-webkit-transform: scale(0.75);-moz-transform: scale(0.75);-ms-transform: scale(0.75);transform: scale(0.75); } 50% {-webkit-transform: scale(0.85);-moz-transform: scale(0.85);-ms-transform: scale(0.85);transform: scale(0.85); };
 }
 .mui-raised-button .mui-raised-button-container .mui-raised-button-ripple.mui-is-visible {
-  -webkit-animation: 'raised-button-ripple-click' 0.7s;
-  -moz-animation: 'raised-button-ripple-click' 0.7s;
-  -o-animation: 'raised-button-ripple-click' 0.7s;
-  animation: 'raised-button-ripple-click' 0.7s;
+  -webkit-animation: raised-button-ripple-click 0.7s ease 0s;
+  -moz-animation: raised-button-ripple-click 0.7s ease 0s;
+  -o-animation: raised-button-ripple-click 0.7s ease 0s;
+  animation: raised-button-ripple-click 0.7s ease 0s;
 }
 .mui-raised-button .mui-raised-button-container .mui-raised-button-ripple.mui-is-visible lesshat-selector {
   -lh-property: 0; } 
@@ -4416,10 +4733,10 @@ margin-top:calc(-50% + 18px);
   background-color: #ff4081;
 }
 .mui-raised-button.mui-is-primary .mui-raised-button-container .mui-raised-button-ripple.mui-is-visible {
-  -webkit-animation: 'raised-button-primary-ripple-click' 0.7s;
-  -moz-animation: 'raised-button-primary-ripple-click' 0.7s;
-  -o-animation: 'raised-button-primary-ripple-click' 0.7s;
-  animation: 'raised-button-primary-ripple-click' 0.7s;
+  -webkit-animation: raised-button-primary-ripple-click 0.7s ease 0s;
+  -moz-animation: raised-button-primary-ripple-click 0.7s ease 0s;
+  -o-animation: raised-button-primary-ripple-click 0.7s ease 0s;
+  animation: raised-button-primary-ripple-click 0.7s ease 0s;
 }
 .mui-raised-button.mui-is-primary .mui-raised-button-container .mui-raised-button-ripple.mui-is-visible lesshat-selector {
   -lh-property: 0; } 
@@ -4438,6 +4755,34 @@ margin-top:calc(-50% + 18px);
   background-color: #f30053;
 }
 .mui-raised-button.mui-is-primary .mui-raised-button-label {
+  color: #ffffff;
+}
+.mui-raised-button.mui-is-secondary .mui-raised-button-container {
+  background-color: #00bcd4;
+}
+.mui-raised-button.mui-is-secondary .mui-raised-button-container .mui-raised-button-ripple.mui-is-visible {
+  -webkit-animation: raised-button-secondary-ripple-click 0.7s ease 0s;
+  -moz-animation: raised-button-secondary-ripple-click 0.7s ease 0s;
+  -o-animation: raised-button-secondary-ripple-click 0.7s ease 0s;
+  animation: raised-button-secondary-ripple-click 0.7s ease 0s;
+}
+.mui-raised-button.mui-is-secondary .mui-raised-button-container .mui-raised-button-ripple.mui-is-visible lesshat-selector {
+  -lh-property: 0; } 
+@-webkit-keyframes raised-button-secondary-ripple-click{ 0% { background-color: rgba(0, 0, 0, 0); } 50% { background-color: rgba(0, 0, 0, 0.15); }  100% { width: 150px; height: 150px; background-color: rgba(0, 0, 0, 0); }}
+@-moz-keyframes raised-button-secondary-ripple-click{ 0% { background-color: rgba(0, 0, 0, 0); } 50% { background-color: rgba(0, 0, 0, 0.15); }  100% { width: 150px; height: 150px; background-color: rgba(0, 0, 0, 0); }}
+@-o-keyframes raised-button-secondary-ripple-click{ 0% { background-color: rgba(0, 0, 0, 0); } 50% { background-color: rgba(0, 0, 0, 0.15); }  100% { width: 150px; height: 150px; background-color: rgba(0, 0, 0, 0); }}
+@keyframes raised-button-secondary-ripple-click{ 0% { background-color: rgba(0, 0, 0, 0); } 50% { background-color: rgba(0, 0, 0, 0.15); }  100% { width: 150px; height: 150px; background-color: rgba(0, 0, 0, 0); };
+}
+.mui-raised-button.mui-is-secondary .mui-raised-button-container.mui-is-keyboard-focused {
+  background-color: #00aac0;
+}
+.mui-raised-button.mui-is-secondary .mui-raised-button-container.mui-is-keyboard-focused .mui-raised-button-focus-ripple {
+  background-color: rgba(0, 0, 0, 0.15);
+}
+.mui-raised-button.mui-is-secondary:hover .mui-raised-button-container {
+  background-color: #00aac0;
+}
+.mui-raised-button.mui-is-secondary .mui-raised-button-label {
   color: #ffffff;
 }
 .mui-ripple {
@@ -4900,4 +5245,160 @@ margin-top:calc(-50% + 18px);
 .mui-tooltip.mui-is-touch.mui-is-shown .mui-tooltip-ripple {
   height: 105px;
   width: 105px;
+}
+.mui-transition-slide-in {
+  position: relative;
+  overflow: hidden;
+  height: 100%;
+}
+.mui-transition-slide-in .mui-transition-slide-in-child {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  top: 0px;
+  left: 0px;
+  -webkit-transition: all 450ms cubic-bezier(0.23, 1, 0.32, 1) 0ms;
+  -moz-transition: all 450ms cubic-bezier(0.23, 1, 0.32, 1) 0ms;
+  -o-transition: all 450ms cubic-bezier(0.23, 1, 0.32, 1) 0ms;
+  transition: all 450ms cubic-bezier(0.23, 1, 0.32, 1) 0ms;
+}
+.mui-transition-slide-in .mui-transition-slide-in-enter {
+  zoom: 1;
+  filter: alpha(opacity=0);
+  -webkit-opacity: 0;
+  -moz-opacity: 0;
+  opacity: 0;
+}
+.mui-transition-slide-in .mui-transition-slide-in-enter-active {
+  zoom: 1;
+  filter: alpha(opacity=100);
+  -webkit-opacity: 1;
+  -moz-opacity: 1;
+  opacity: 1;
+}
+.mui-transition-slide-in .mui-transition-slide-in-leave {
+  zoom: 1;
+  filter: alpha(opacity=100);
+  -webkit-opacity: 1;
+  -moz-opacity: 1;
+  opacity: 1;
+}
+.mui-transition-slide-in .mui-transition-slide-in-leave-active {
+  zoom: 1;
+  filter: alpha(opacity=0);
+  -webkit-opacity: 0;
+  -moz-opacity: 0;
+  opacity: 0;
+}
+.mui-transition-slide-in.mui-is-left .mui-transition-slide-in-enter {
+  -webkit-transform: translate3d(100%, 0, 0);
+  -moz-transform: translate3d(100%, 0, 0);
+  -ms-transform: translate3d(100%, 0, 0);
+  -o-transform: translate3d(100%, 0, 0);
+  transform: translate3d(100%, 0, 0);
+}
+.mui-transition-slide-in.mui-is-left .mui-transition-slide-in-enter-active {
+  -webkit-transform: translate3d(0, 0, 0);
+  -moz-transform: translate3d(0, 0, 0);
+  -ms-transform: translate3d(0, 0, 0);
+  -o-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
+}
+.mui-transition-slide-in.mui-is-left .mui-transition-slide-in-leave {
+  -webkit-transform: translate3d(0, 0, 0);
+  -moz-transform: translate3d(0, 0, 0);
+  -ms-transform: translate3d(0, 0, 0);
+  -o-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
+}
+.mui-transition-slide-in.mui-is-left .mui-transition-slide-in-leave-active {
+  -webkit-transform: translate3d(-100%, 0, 0);
+  -moz-transform: translate3d(-100%, 0, 0);
+  -ms-transform: translate3d(-100%, 0, 0);
+  -o-transform: translate3d(-100%, 0, 0);
+  transform: translate3d(-100%, 0, 0);
+}
+.mui-transition-slide-in.mui-is-right .mui-transition-slide-in-enter {
+  -webkit-transform: translate3d(-100%, 0, 0);
+  -moz-transform: translate3d(-100%, 0, 0);
+  -ms-transform: translate3d(-100%, 0, 0);
+  -o-transform: translate3d(-100%, 0, 0);
+  transform: translate3d(-100%, 0, 0);
+}
+.mui-transition-slide-in.mui-is-right .mui-transition-slide-in-enter-active {
+  -webkit-transform: translate3d(0, 0, 0);
+  -moz-transform: translate3d(0, 0, 0);
+  -ms-transform: translate3d(0, 0, 0);
+  -o-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
+}
+.mui-transition-slide-in.mui-is-right .mui-transition-slide-in-leave {
+  -webkit-transform: translate3d(0, 0, 0);
+  -moz-transform: translate3d(0, 0, 0);
+  -ms-transform: translate3d(0, 0, 0);
+  -o-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
+}
+.mui-transition-slide-in.mui-is-right .mui-transition-slide-in-leave-active {
+  -webkit-transform: translate3d(100%, 0, 0);
+  -moz-transform: translate3d(100%, 0, 0);
+  -ms-transform: translate3d(100%, 0, 0);
+  -o-transform: translate3d(100%, 0, 0);
+  transform: translate3d(100%, 0, 0);
+}
+.mui-transition-slide-in.mui-is-up .mui-transition-slide-in-enter {
+  -webkit-transform: translate3d(0, 100%, 0);
+  -moz-transform: translate3d(0, 100%, 0);
+  -ms-transform: translate3d(0, 100%, 0);
+  -o-transform: translate3d(0, 100%, 0);
+  transform: translate3d(0, 100%, 0);
+}
+.mui-transition-slide-in.mui-is-up .mui-transition-slide-in-enter-active {
+  -webkit-transform: translate3d(0, 0, 0);
+  -moz-transform: translate3d(0, 0, 0);
+  -ms-transform: translate3d(0, 0, 0);
+  -o-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
+}
+.mui-transition-slide-in.mui-is-up .mui-transition-slide-in-leave {
+  -webkit-transform: translate3d(0, 0, 0);
+  -moz-transform: translate3d(0, 0, 0);
+  -ms-transform: translate3d(0, 0, 0);
+  -o-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
+}
+.mui-transition-slide-in.mui-is-up .mui-transition-slide-in-leave-active {
+  -webkit-transform: translate3d(0, -100%, 0);
+  -moz-transform: translate3d(0, -100%, 0);
+  -ms-transform: translate3d(0, -100%, 0);
+  -o-transform: translate3d(0, -100%, 0);
+  transform: translate3d(0, -100%, 0);
+}
+.mui-transition-slide-in.mui-is-down .mui-transition-slide-in-enter {
+  -webkit-transform: translate3d(0, -100%, 0);
+  -moz-transform: translate3d(0, -100%, 0);
+  -ms-transform: translate3d(0, -100%, 0);
+  -o-transform: translate3d(0, -100%, 0);
+  transform: translate3d(0, -100%, 0);
+}
+.mui-transition-slide-in.mui-is-down .mui-transition-slide-in-enter-active {
+  -webkit-transform: translate3d(0, 0, 0);
+  -moz-transform: translate3d(0, 0, 0);
+  -ms-transform: translate3d(0, 0, 0);
+  -o-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
+}
+.mui-transition-slide-in.mui-is-down .mui-transition-slide-in-leave {
+  -webkit-transform: translate3d(0, 0, 0);
+  -moz-transform: translate3d(0, 0, 0);
+  -ms-transform: translate3d(0, 0, 0);
+  -o-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
+}
+.mui-transition-slide-in.mui-is-down .mui-transition-slide-in-leave-active {
+  -webkit-transform: translate3d(0, 100%, 0);
+  -moz-transform: translate3d(0, 100%, 0);
+  -ms-transform: translate3d(0, 100%, 0);
+  -o-transform: translate3d(0, 100%, 0);
+  transform: translate3d(0, 100%, 0);
 }

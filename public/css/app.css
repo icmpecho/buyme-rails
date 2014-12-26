@@ -1,6 +1,4 @@
 .order-list {
-    width: 50%;
-    float: left;
     padding: 0 10px;
 }
 
@@ -11,9 +9,14 @@
 }
 
 .order-item-details {
-    padding: 10px;
+    padding: 20px;
 }
 
-.order-add .mui-dialog-window-contents {
-    width: 370px;
+.order-add {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.order-add > div {
+    padding: 20px;
 }

@@ -14,6 +14,7 @@ var Me = React.createClass({
     getInitialState: function () {
         return {
             items: ItemStore.getItems(),
+            showAdd: false,
             showCurrent: true,
             showHistory: true
         };
@@ -24,6 +25,7 @@ var Me = React.createClass({
             {payload: '2', text: 'Current'},
             {payload: '3', text: 'History'}
         ];
+        var orderAdd = !!this.state.showAdd ? <OrderAdd toggleOrderAdd={this.toggleOrderAdd}/> : undefined;
         var current = !!this.state.showCurrent ? <OrderList ref="orders" title="Current" orderType="current"/> : undefined;
         var history = !!this.state.showHistory ? <OrderList ref="oldOrders" title="History" orderType="history"/> : undefined;
         return (
@@ -37,18 +39,20 @@ var Me = React.createClass({
                         <DropDownMenu menuItems={menuItems} />
                     </div>
                     <div className="mui-toolbar-group mui-right">
-                        <RaisedButton label="Add Order" primary={true} onClick={this._showOrderAdd}/>
+                        <RaisedButton label="Add Order" primary={true} onClick={this.toggleOrderAdd} disabled={this.state.showAdd}/>
                         <RaisedButton label="Refresh" primary={false} onClick={this._refreshOrders}/>
                     </div>
                 </div>
-                <OrderAdd ref="orderAdd"/>
+                {orderAdd}
                 {current}
                 {history}
             </div>
         );
     },
-    _showOrderAdd: function () {
-        this.refs.orderAdd.show();
+    toggleOrderAdd: function () {
+        this.setState({
+            showAdd: !this.state.showAdd
+        });
     },
     _refreshOrders: function () {
         if (this.refs.orders) {
