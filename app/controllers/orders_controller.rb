@@ -19,6 +19,7 @@ class OrdersController < ApplicationController
   end
 
   def create
+    raise ActionController::RoutingError.new('Not Found') if params[ :item_name ].empty?
     item = Item.find_or_create_by( name: params[ :item_name ] )
     store_ids = params[ :store_ids ]
     stores = []
