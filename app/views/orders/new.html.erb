@@ -1,7 +1,7 @@
 <h1>New Order</h1>
 
 <form action="<%= orders_path %>" method="post">
-  Item_id: <input type="text" name="item_id"><br>
+  Item: <input type="text" name="item_name"><br>
   Store_ids:
   <% Store.all.each do |store| %>
       <input type="checkbox" name="store_ids[]" value="<%= store.id %>" ><%= store.name %><br>
