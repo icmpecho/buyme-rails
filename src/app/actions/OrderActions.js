@@ -46,7 +46,7 @@ var OrderActions = {
         });
     },
     addMyOrder: function (itemName, storeIds) {
-        OrderApi.addOrder(itemName, storeIds).end(function (error, res) {
+        OrderApi.addMyOrder(itemName, storeIds).end(function (error, res) {
             if (!!error) {
                 return console.log(error);
             }
@@ -65,10 +65,17 @@ var OrderActions = {
         })
     },
     cancelMyOrder: function (id) {
-        AppDispatcher.handleApiAction({
-            actionType: ActionTypes.CANCEL_MY_ORDER_SUCCESS,
-            data: {
-                id: id
+        OrderApi.cancelMyOrder(id).end(function (error, res) {
+            if (!!error) {
+                return console.log(error);
+            }
+            if (res.status === 200) {
+                AppDispatcher.handleApiAction({
+                    actionType: ActionTypes.CANCEL_MY_ORDER_SUCCESS,
+                    data: {
+                        id: id
+                    }
+                });
             }
         });
     },

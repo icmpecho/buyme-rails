@@ -13,17 +13,15 @@ var OrderApi = assign({}, ApiUtils, {
             pending: pending
         });
     },
-    getShopOrders: function () {
-        return this.get('/orders');
-    },
-    addOrder: function (itemName, storeIds) {
+    addMyOrder: function (itemName, storeIds) {
         var data = {
             item_name: itemName,
             store_ids: storeIds
         };
         return this.post('/orders').send(data);
     },
-    cancelOrder: function () {
+    cancelMyOrder: function (id) {
+        return this.post('/orders/' + id + '/cancel');
     },
     removeMyOrder: function (id) {
         return this.del('/orders/' + id);

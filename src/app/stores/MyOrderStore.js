@@ -33,7 +33,7 @@ function readMyAddedOrder(data) {
 function removeMyOrder(data) {
     for (var index = 0; index < _orders.length; index++) {
         if (_orders[index].id === data.id) {
-            _orders.splice(index, 1);
+            _oldOrders.unshift(_orders.splice(index, 1)[0]);
             break;
         }
     }
@@ -84,7 +84,7 @@ MyOrderStore.dispatchToken = AppDispatcher.register(function (payload) {
         case ActionTypes.READ_MY_ADDED_ORDER_SUCCESS:
             readMyAddedOrder();
             break;
-        case ActionTypes.REMOVE_MY_ORDER_SUCCESS:
+        case ActionTypes.CANCEL_MY_ORDER_SUCCESS:
             removeMyOrder(action.data);
             break;
         case ActionTypes.REMOVE_MY_OLD_ORDER_SUCCESS:
