@@ -16,13 +16,11 @@ var OrderApi = assign({}, ApiUtils, {
     getShopOrders: function () {
         return this.get('/orders');
     },
-    addOrder: function (itemId, itemName, storeIds) {
+    addOrder: function (itemName, storeIds) {
         var data = {
-            item_id: itemId,
-            name: itemName,
+            item_name: itemName,
             store_ids: storeIds
         };
-        console.log(data);
         return this.post('/orders').send(data);
     },
     removeOrder: function () {

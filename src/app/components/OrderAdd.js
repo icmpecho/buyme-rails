@@ -38,8 +38,7 @@ var OrderAdd = React.createClass({
             <Paper zDepth={3} rounded={false} className="order-add">
                 <div>
                     <div className="half">
-                        <Input ref="itemId" type="text" name="itemId" placeholder="Item Id" description="Enter item ID."/>
-                        <Input ref="item" type="text" name="item" placeholder="Item" description="Enter item name."/>
+                        <Input ref="itemName" type="text" name="itemName" placeholder="Item Name" description="Enter item name."/>
                     </div>
                     <div className="half">
                         <h5>Select Stores</h5>
@@ -52,22 +51,17 @@ var OrderAdd = React.createClass({
                     <div className="clearfix"></div>
                     <RaisedButton label="Confirm" secondary={true} onClick={this._addOrder}/>
                     <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
-                    <RaisedButton label="Cancel" primary={false} onClick={this.props.toggleOrderAdd}/>
+                    <RaisedButton label="Close" primary={false} onClick={this.props.toggleOrderAdd}/>
                 </div>
             </Paper>
         );
     },
     _addOrder: function () {
-        var itemId = this.refs.itemId.getValue();
-        if (!itemId) {
-            alert('Enter item ID name.');
+        var itemName = this.refs.itemName.getValue();
+        if (!itemName) {
+            alert('Enter item name.');
             return;
         }
-        var itemName = this.refs.item.getValue();
-        //if (!itemName) {
-        //    alert('Enter item name.');
-        //    return;
-        //}
         var storeIds = [];
         for (var ref in this.refs) {
             if (ref.indexOf('store-') === 0 && this.refs[ref].state.checked) {
@@ -78,7 +72,7 @@ var OrderAdd = React.createClass({
             alert('Select stores.');
             return;
         }
-        OrderActions.addMyOrder(itemId, itemName, storeIds);
+        OrderActions.addMyOrder(itemName, storeIds);
     },
     _onStoreStoreChange: function () {
         this.setState({
@@ -90,6 +84,12 @@ var OrderAdd = React.createClass({
             setTimeout(function () {
                 OrderActions.readMyAddedOrder();
             }, 1000);
+            this.refs.itemName.setValue('');
+            for (var ref in this.refs) {
+                if (ref.indexOf('store-') === 0 && this.refs[ref].state.checked) {
+                    this.refs[ref].check();
+                }
+            }
         }
     }
 });
