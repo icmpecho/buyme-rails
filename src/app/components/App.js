@@ -22,7 +22,7 @@ var App = React.createClass({
         ];
         return (
             <div>
-                <Header ref="header" onMenuIconButtonClick={this._onMenuIconButtonClick} title={this.state.title}/>
+                <Header ref="header" onMenuIconButtonClick={this._onMenuIconButtonClick} title={this.state.title} showButtons={true}/>
                 <Menu ref="leftNav" menuItems={menuItems} changeTitle={this.changeTitle}/>
                 <div className="content clearfix">
                     <RouteHandler />

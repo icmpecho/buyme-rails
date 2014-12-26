@@ -59,14 +59,18 @@ var UserApi = assign({}, ApiUtils, {
     },
     logout: function () {
         var data = {
-            user: {
-                id: 2
-            }
+            _method: 'delete'
         };
-        this.del('/users/sign_out')
+        this.post('/users/sign_out')
             .send(data)
+            .set('Accept', 'text/html')
+            .set('Content-Type', 'application/x-www-form-urlencoded')
             .end(function (res) {
-                console.log(res.status);
+                if (res.status !== 200) {
+                    alert('Failed to log out.');
+                    return;
+                }
+                window.location = '/';
             });
     }
 });

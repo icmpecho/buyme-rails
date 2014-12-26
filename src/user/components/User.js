@@ -16,10 +16,9 @@ var User = React.createClass({
     },
     render: function () {
         var page = this.state.page === 'login' ? <Login changePage={this.changePage}/> : <Signup changePage={this.changePage}/>;
-
         return (
             <div>
-                <Header/>
+                <Header showButtons={false}/>
                 <div className="content clearfix">
                     <div className="user">{page}</div>
                 </div>
