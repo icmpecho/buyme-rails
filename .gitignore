@@ -34,3 +34,5 @@ public/js/
 public/lib
 
 thout-pg-config
+
+.DS_Store

@@ -3,9 +3,10 @@
 }
 
 html, body {
+    margin: 0;
+    padding: 0;
     height: 100%;
 }
-
 .header {
     background-color: #286090;
     color: #ffffff;
@@ -32,11 +33,19 @@ html, body {
     margin: 0 auto;
 }
 
+#app {
+    height: 100%;
+    position: relative;
+}
+
 .footer {
+    position: absolute;
     text-align: center;
     padding: 20px 30px;
     background-color: #286090;
     color: #ffffff;
+    bottom: 0;
+    width: 100%;
 }
 
 .clearfix {
@@ -58,6 +67,5 @@ html, body {
 @media (max-width: 980px) {
     .content {
         width: 100%;
-    }   
+    }
 }
-
