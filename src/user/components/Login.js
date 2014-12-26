@@ -16,7 +16,7 @@ var Login = React.createClass({
     render: function () {
         return (
             <div>
-                <Paper zDepth={5} rounded={false} className="login">
+                <Paper zDepth={3} rounded={false} className="login">
                     <div>
                         <h1>Log In</h1>
                         <br/>

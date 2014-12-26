@@ -35,7 +35,6 @@ function removeMyOrder(data) {
 
 function removeMyOldOrder(data) {
     for (var index = 0; index < _oldOrders.length; index++) {
-        console.log(_oldOrders[index].id);
         if (_oldOrders[index].id === data.id) {
             _oldOrders.splice(index, 1);
             break;

@@ -11,6 +11,16 @@
 </p>
 
 <p>
+    <strong>Store:</strong>
+    <%= @order.stores.each.map{ |store| store.name }.join(', ') %>
+</p>
+
+<p>
+  <strong>Created:</strong>
+  <%= @order.created_at.to_formatted_s(:db) %>
+</p>
+
+<p>
   <strong>Completed:</strong>
   <% if @order.fullfilled? %>
     <%= @order.completed.to_formatted_s(:db) %>

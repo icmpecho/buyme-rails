@@ -1,5 +1,5 @@
 json.array!(@orders) do |order|
-  json.extract! order, :id, :item_id, :user_id, :completed
+  json.extract! order, :id, :item_id, :user_id, :created_at, :completed
   json.item_name order.item.name
   json.user_email order.user.email
   json.stores order.stores do |store|

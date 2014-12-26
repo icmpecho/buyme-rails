@@ -2,15 +2,19 @@
 
 var React = require('react');
 var mui = require('material-ui');
-var Dialog = mui.Dialog;
+var Paper = mui.Paper;
 var Input = mui.Input;
 var Checkbox = mui.Checkbox;
+var RaisedButton = mui.RaisedButton;
 
 var StoreStore = require('../stores/StoreStore');
 var StoreActions = require('../actions/StoreActions');
 var OrderActions = require('../actions/OrderActions');
 
 var OrderAdd = React.createClass({
+    propTypes: {
+        toggleOrderAdd: React.PropTypes.func.isRequired
+    },
     getInitialState: function () {
         return {
             stores: []
@@ -27,23 +31,27 @@ var OrderAdd = React.createClass({
         StoreStore.removeChangeListener(this._onChange);
     },
     render: function () {
-        var dialogActions = [
-            {text: 'ADD', onClick: this._addOrder},
-            {text: 'CANCEL'},
-        ];
         return (
-            <Dialog ref="dialog" title="Add Order" actions={dialogActions} className="order-add">
-                <Input ref="item" type="text" name="item" placeholder="Item" description="Enter item name."/>
-                <h5>Select Stores</h5>
-                {this.state.stores.map(function (store) {
-                    return <label>
-                        <Checkbox ref={'store-' + store.id}/>{store.name}</label>;
-                })}
-            </Dialog>
+            <Paper zDepth={3} rounded={false} className="order-add">
+                <div>
+                    <div className="half">
+                        <Input ref="item" type="text" name="item" placeholder="Item" description="Enter item name."/>
+                    </div>
+                    <div className="half">
+                        <h5>Select Stores</h5>
+                        {this.state.stores.map(function (store) {
+                            return <label>
+                                <Checkbox ref={'store-' + store.id}/>{store.name}</label>;
+                        })}
+                    </div>
+                    <br/>
+                    <div className="clearfix"></div>
+                    <RaisedButton label="Confirm" secondary={true} onClick={this._addOrder}/>
+                    <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                    <RaisedButton label="Cancel" primary={false} onClick={this.props.toggleOrderAdd}/>
+                </div>
+            </Paper>
         );
-    },
-    show: function () {
-        this.refs.dialog.show();
     },
     _addOrder: function () {
         var itemName = this.refs.item.getValue();

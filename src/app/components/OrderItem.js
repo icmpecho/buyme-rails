@@ -11,10 +11,12 @@ var OrderActions = require('../actions/OrderActions');
 var OrderItems = React.createClass({
     propTypes: {
         order: React.PropTypes.object.isRequired,
-        orderType: React.PropTypes.string.isRequired
+        orderType: React.PropTypes.string.isRequired,
+        deletable: React.PropTypes.bool.isRequired
     },
     render: function () {
         var order = this.props.order;
+        var deleteButton = !!this.props.deletable ? <FloatingActionButton icon="action-delete" secondary={true} onClick={this._onDeleteButtonClick.bind(this, order.id)}/> : undefined;
         return (
             <li className="order-item">
                 <Paper zDepth={3} rounded={false}>
@@ -30,7 +32,7 @@ var OrderItems = React.createClass({
                                   })}
                             </ul>
                         </div>
-                        <FloatingActionButton icon="action-delete" onClick={this._onDeleteButtonClick.bind(this, order.id)}/>
+                        {deleteButton}
                     </div>
                 </Paper>
             </li>
