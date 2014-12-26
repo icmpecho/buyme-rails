@@ -14,12 +14,19 @@ var OrderItems = React.createClass({
         orderType: React.PropTypes.string.isRequired,
         deletable: React.PropTypes.bool.isRequired
     },
+    getDefaultProps: function () {
+        return {
+            deletable: false,
+            buyable: false
+        };
+    },
     render: function () {
         var order = this.props.order;
         var createdAt = this.props.orderType === 'all' || this.props.orderType === 'current' ? <div>Created At - {moment(order.created_at).fromNow()}</div> : undefined;
         var createdBy = this.props.orderType === 'all' ? <div>Ordered By - {order.user_name}</div> : undefined;
         var completedAt = this.props.orderType === 'history' ? <div>Completed - {moment(order.completed).fromNow()}</div> : undefined;
         var deleteButton = !!this.props.deletable ? <FloatingActionButton icon="action-delete" secondary={true} onClick={this._onDeleteButtonClick.bind(this, order.id)}/> : undefined;
+        var buyButton = !!this.props.buyable ? <FloatingActionButton icon="action-done" secondary={true} onClick={this._onBuyButtonClick.bind(this, order.id)}/> : undefined;
         return (
             <li className="order-item">
                 <Paper zDepth={3} rounded={false}>
@@ -37,6 +44,7 @@ var OrderItems = React.createClass({
                             </ul>
                         </div>
                         {deleteButton}
+                        {buyButton}
                     </div>
                 </Paper>
             </li>
@@ -49,6 +57,9 @@ var OrderItems = React.createClass({
         else if (this.props.orderType === 'history') {
             OrderActions.removeMyOldOrder(id)
         }
+    },
+    _onBuyButtonClick: function () {
+
     }
 });
 

@@ -7,6 +7,9 @@ var StoreActions = require('../actions/StoreActions');
 var StoreItem = require('./StoreItem');
 
 var StoreList = React.createClass({
+    propTypes: {
+        showOrderList: React.PropTypes.func.isRequired
+    },
     getInitialState: function () {
         return {
             stores: []
@@ -23,11 +26,12 @@ var StoreList = React.createClass({
         StoreStore.removeChangeListener(this._onChange);
     },
     render: function () {
+        var showOrderList = this.props.showOrderList;
         return (
             <div className="store-list">
                 <ul>
                     {this.state.stores.map(function (store) {
-                        return <StoreItem key={'store-' + store.id} store={store}></StoreItem>;
+                        return <StoreItem key={'store-' + store.id} store={store} showOrderList={showOrderList}></StoreItem>;
                     })}
                 </ul>
             </div>

@@ -7,13 +7,13 @@ var assign = require('object-assign');
 
 var _orders = [];
 
-function getShopOrders(data) {
+function getStoreOrders(data) {
     _orders = data.sort(function (a, b) {
         return b.id - a.id
     });
 }
 
-function removeShopOrder(data) {
+function removeStoreOrder(data) {
     for (var index = 0; index < _orders.length; index++) {
         if (_orders[index].id === data.id) {
             _orders.splice(index, 1);
@@ -22,8 +22,8 @@ function removeShopOrder(data) {
     }
 }
 
-var ShopOrderStore = assign({}, EventEmitter.prototype, {
-    getShopOrders: function () {
+var StoreOrderStore = assign({}, EventEmitter.prototype, {
+    getStoreOrders: function () {
         return _orders;
     },
     emitChange: function () {
@@ -40,17 +40,18 @@ var ShopOrderStore = assign({}, EventEmitter.prototype, {
 AppDispatcher.register(function (payload) {
     var action = payload.action;
     switch (action.actionType) {
-        case ActionTypes.GET_SHOP_ORDERS_SUCCESS:
-            getShopOrders(action.data);
+        case ActionTypes.GET_STORE_ORDERS_SUCCESS:
+            getStoreOrders(action.data);
             break;
-        case ActionTypes.REMOVE_SHOP_ORDER_SUCCESS:
-            removeShopOrder(action.data);
+        case ActionTypes.REMOVE_STORE_ORDER_SUCCESS:
+            alert('REMOVE_STORE_ORDER_SUCCESS');
+            removeStoreOrder(action.data);
             break;
         default:
             return true;
     }
-    ShopOrderStore.emitChange();
+    StoreOrderStore.emitChange();
     return true;
 });
 
-module.exports = ShopOrderStore;
+module.exports = StoreOrderStore;

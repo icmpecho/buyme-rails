@@ -29,7 +29,7 @@ var StoreStore = assign({}, EventEmitter.prototype, {
 AppDispatcher.register(function (payload) {
     var action = payload.action;
     switch (action.actionType) {
-        case ActionTypes.GET_STORE_SUCCESS:
+        case ActionTypes.GET_STORES_SUCCESS:
             getStores(action.data);
             break;
         default:

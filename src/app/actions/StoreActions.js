@@ -13,8 +13,21 @@ var StoreActions = {
             }
             if (res.status === 200) {
                 AppDispatcher.handleApiAction({
-                    actionType: ActionTypes.GET_STORE_SUCCESS,
+                    actionType: ActionTypes.GET_STORES_SUCCESS,
                     data: res.body
+                })
+            }
+        });
+    },
+    getStoreOrders: function (id) {
+        StoreApi.getStoreOrders(id).end(function (error, res) {
+            if (!!error) {
+                return console.log(error);
+            }
+            if (res.status === 200) {
+                AppDispatcher.handleApiAction({
+                    actionType: ActionTypes.GET_STORE_ORDERS_SUCCESS,
+                    data: res.body.orders
                 })
             }
         });

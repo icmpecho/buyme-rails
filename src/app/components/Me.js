@@ -26,8 +26,8 @@ var Me = React.createClass({
             {payload: '3', text: 'History'}
         ];
         var orderAdd = !!this.state.showAdd ? <OrderAdd toggleOrderAdd={this.toggleOrderAdd}/> : undefined;
-        var current = !!this.state.showCurrent ? <OrderList ref="orders" title="Current" orderType="current"/> : undefined;
-        var history = !!this.state.showHistory ? <OrderList ref="oldOrders" title="History" orderType="history"/> : undefined;
+        var currentOrderList = !!this.state.showCurrent ? <OrderList ref="orders" title="Current" orderType="currentOrderList"/> : undefined;
+        var historyOrderList = !!this.state.showHistory ? <OrderList ref="oldOrders" title="History" orderType="historyOrderList"/> : undefined;
         var addOrderLabel = !this.state.showAdd ? 'Add Order' : 'Cancel';
         return (
             <div className="me">
@@ -45,8 +45,8 @@ var Me = React.createClass({
                     </div>
                 </div>
                 {orderAdd}
-                {current}
-                {history}
+                {currentOrderList}
+                {historyOrderList}
             </div>
         );
     },

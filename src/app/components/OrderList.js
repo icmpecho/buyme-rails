@@ -1,10 +1,14 @@
 'use strict';
 
 var React = require('react');
+var mui = require('material-ui');
+var FlatButton = mui.FlatButton;
 
 var OrderStore = require('../stores/OrderStore');
 var MyOrderStore = require('../stores/MyOrderStore');
+var StoreOrderStore = require('../stores/StoreOrderStore');
 var OrderActions = require('../actions/OrderActions');
+var StoreActions = require('../actions/StoreActions');
 var OrderItem = require('./OrderItem');
 
 var OrderList = React.createClass({
@@ -18,7 +22,7 @@ var OrderList = React.createClass({
         };
     },
     componentWillMount: function () {
-        this.refreshOrders();
+        this.refreshOrders(this.props.storeId);
     },
     componentDidMount: function () {
         switch (this.props.orderType) {
@@ -29,12 +33,16 @@ var OrderList = React.createClass({
             case 'history':
                 MyOrderStore.addChangeListener(this._onChange);
                 break;
+            case 'store':
+                StoreOrderStore.addChangeListener(this._onChange);
+                break;
             default:
                 return;
         }
         var _refreshOrders = this.refreshOrders;
+        var _storeId = this.props.storeId;
         this.interval = setInterval(function () {
-            _refreshOrders();
+            _refreshOrders(_storeId);
         }, 30000);
     },
 
@@ -47,6 +55,9 @@ var OrderList = React.createClass({
             case 'history':
                 MyOrderStore.removeChangeListener(this._onChange);
                 break;
+            case 'store':
+                StoreOrderStore.removeChangeListener(this._onChange);
+                break;
             default:
                 return;
         }
@@ -54,13 +65,15 @@ var OrderList = React.createClass({
     },
     render: function () {
         var orderType = this.props.orderType;
+        var buyable = this.props.orderType === 'store';
+        var backButton = !!buyable ? <FlatButton label="Back" primary={true} onClick={this.props.onBackButtonClick}/> : undefined;
         var deletable = this.props.orderType === 'current' || this.props.orderType === 'history';
         return (
             <div className="order-list">
-                <h3>{this.props.title}</h3>
+                <h3>{this.props.title} {backButton}</h3>
                 <ul>
                     {this.state.orders.map(function (order) {
-                        return <OrderItem key={'order-' + order.id} order={order} orderType={orderType} deletable={deletable}></OrderItem>;
+                        return <OrderItem key={'order-' + order.id} order={order} orderType={orderType} deletable={deletable} buyable={buyable}></OrderItem>;
                     })}
                 </ul>
             </div>
@@ -83,11 +96,16 @@ var OrderList = React.createClass({
                     orders: MyOrderStore.getMyOldOrders()
                 });
                 break;
+            case 'store':
+                this.setState({
+                    orders: StoreOrderStore.getStoreOrders()
+                });
+                break;
             default:
                 return;
         }
     },
-    refreshOrders: function () {
+    refreshOrders: function (storeId) {
         switch (this.props.orderType) {
             case 'all':
                 OrderActions.getOrders();
@@ -97,6 +115,9 @@ var OrderList = React.createClass({
                 break;
             case 'history':
                 OrderActions.getMyOldOrders();
+                break;
+            case 'store':
+                StoreActions.getStoreOrders(storeId);
                 break;
             default:
                 return;

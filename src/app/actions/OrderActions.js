@@ -87,25 +87,6 @@ var OrderActions = {
                 });
             }
         });
-    },
-    getShopOrders: function () {
-        OrderApi.getShopOrders().end(function (error, res) {
-            if (!!error) {
-                return console.log(error);
-            }
-            if (res.status === 200) {
-                AppDispatcher.handleApiAction({
-                    actionType: ActionTypes.GET_SHOP_ORDERS_SUCCESS,
-                    data: res.body
-                })
-            }
-        });
-    },
-    removeShopOrder: function () {
-        AppDispatcher.handleApiAction({
-            actionType: ActionTypes.REMOVE_SHOP_ORDER_SUCCESS,
-            data: {}
-        });
     }
 };
 

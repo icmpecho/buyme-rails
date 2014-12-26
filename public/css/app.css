@@ -23,3 +23,13 @@
 .order-add > div {
     padding: 20px;
 }
+
+.store-item {
+    list-style: none;
+    padding: 10px 0;
+    margin: 0 auto;
+}
+
+.store-item-details {
+    padding: 20px;
+}
