@@ -9,7 +9,7 @@ var OrderItem = require('./OrderItem');
 var OrderList = React.createClass({
     propTypes: {
         title: React.PropTypes.string.isRequired,
-        pending: React.PropTypes.bool.isRequired
+        orderType: React.PropTypes.string.isRequired
     },
     getInitialState: function () {
         return {
@@ -17,7 +17,7 @@ var OrderList = React.createClass({
         };
     },
     componentWillMount: function () {
-        OrderActions.getMyOrders(this.props.pending)
+        this.refreshOrders();
     },
     componentDidMount: function () {
         MyOrderStore.addChangeListener(this._onChange);
@@ -39,9 +39,25 @@ var OrderList = React.createClass({
         );
     },
     _onChange: function () {
-        this.setState({
-            orders: !!this.props.pending ? MyOrderStore.getMyOrders() : MyOrderStore.getMyOldOrders()
-        });
+        if (this.props.orderType === 'current') {
+            this.setState({
+                orders: MyOrderStore.getMyOrders()
+            });
+        }
+        else if (this.props.orderType === 'history') {
+            this.setState({
+                orders: MyOrderStore.getMyOldOrders()
+            });
+        }
+
+    },
+    refreshOrders: function () {
+        if (this.props.orderType === 'current') {
+            OrderActions.getMyOrders()
+        }
+        else if (this.props.orderType === 'history') {
+            OrderActions.getMyOldOrders()
+        }
     }
 });
 

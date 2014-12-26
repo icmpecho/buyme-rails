@@ -29,16 +29,21 @@ var Me = React.createClass({
                     </div>
                     <div className="mui-toolbar-group mui-right">
                         <RaisedButton label="Add Order" primary={true} onClick={this._showOrderAdd}/>
+                        <RaisedButton label="Refresh" primary={false} onClick={this._refreshOrders}/>
                     </div>
                 </div>
                 <OrderAdd ref="orderAdd"/>
-                <OrderList title="Current" pending={true}/>
-                <OrderList title="History" pending={false}/>
+                <OrderList ref="orders" title="Current" orderType="current"/>
+                <OrderList ref="oldOrders" title="History" orderType="history"/>
             </div>
         );
     },
     _showOrderAdd: function () {
         this.refs.orderAdd.show();
+    },
+    _refreshOrders: function () {
+        this.refs.orders.refreshOrders();
+        this.refs.oldOrders.refreshOrders();
     }
 });
 

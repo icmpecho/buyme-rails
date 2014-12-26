@@ -10,6 +10,7 @@ var ActionTypes = keyMirror({
     REMOVE_MY_ORDER_SUCCESS: null,
     REMOVE_MY_OLD_ORDER_SUCCESS: null,
     GET_SHOP_ORDERS_SUCCESS: null,
+    REMOVE_SHOP_ORDER_SUCCESS: null,
     GET_STORE_SUCCESS: null
 });
 

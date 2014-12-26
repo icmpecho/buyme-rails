@@ -6,14 +6,24 @@ var ActionTypes = require('../constants/ActionTypes');
 var OrderApi = require('../utils/OrderApi');
 
 var OrderActions = {
-    getMyOrders: function (pending) {
-        console.log('getMyOrders');
-        OrderApi.getMyOrders(pending).end(function (error, res) {
+    getMyOrders: function () {
+        OrderApi.getMyOrders(true).end(function (error, res) {
             if (!!error) {
                 return console.log(error);
             }
             AppDispatcher.handleApiAction({
-                actionType: !!pending ? ActionTypes.GET_MY_ORDERS_SUCCESS : ActionTypes.GET_MY_OLD_ORDERS_SUCCESS,
+                actionType: ActionTypes.GET_MY_ORDERS_SUCCESS,
+                data: res.body
+            })
+        });
+    },
+    getMyOldOrders: function () {
+        OrderApi.getMyOrders(false).end(function (error, res) {
+            if (!!error) {
+                return console.log(error);
+            }
+            AppDispatcher.handleApiAction({
+                actionType: ActionTypes.GET_MY_OLD_ORDERS_SUCCESS,
                 data: res.body
             })
         });
@@ -33,9 +43,15 @@ var OrderActions = {
         //    })
         //});
     },
-    removeMyOrder: function (pending) {
+    removeMyOrder: function () {
         AppDispatcher.handleApiAction({
-            actionType: !!pending ? ActionTypes.REMOVE_MY_ORDER_SUCCESS : ActionTypes.REMOVE_MY_OLD_ORDER_SUCCESS,
+            actionType: ActionTypes.REMOVE_MY_ORDER_SUCCESS,
+            data: {}
+        });
+    },
+    removeMyOldOrder: function () {
+        AppDispatcher.handleApiAction({
+            actionType: ActionTypes.REMOVE_MY_OLD_ORDER_SUCCESS,
             data: {}
         });
     },
@@ -48,6 +64,12 @@ var OrderActions = {
                 actionType: ActionTypes.GET_SHOP_ORDERS_SUCCESS,
                 data: res.body
             })
+        });
+    },
+    removeShopOrder: function () {
+        AppDispatcher.handleApiAction({
+            actionType: ActionTypes.REMOVE_SHOP_ORDER_SUCCESS,
+            data: {}
         });
     }
 };
