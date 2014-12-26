@@ -1,6 +1,8 @@
 'use strict';
 
 var React = require('react');
+var injectTapEventPlugin = require("react-tap-event-plugin");
+injectTapEventPlugin();
 var Router = require('react-router');
 var RouteHandler = Router.RouteHandler;
 

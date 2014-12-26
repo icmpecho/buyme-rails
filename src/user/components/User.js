@@ -1,6 +1,8 @@
 'use strict';
 
 var React = require('react');
+var injectTapEventPlugin = require("react-tap-event-plugin");
+injectTapEventPlugin();
 var Header = require('./../../common/components/Header');
 var Footer = require('./../../common/components/Footer');
 var Login = require('./Login');

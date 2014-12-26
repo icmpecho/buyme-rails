@@ -4,6 +4,7 @@ var React = require('react');
 var mui = require('material-ui');
 var RaisedButton = mui.RaisedButton;
 var DropDownMenu = mui.DropDownMenu;
+var Toggle = mui.Toggle;
 var ItemStore = require('../stores/ItemStore');
 
 var OrderList = require('./OrderList');
@@ -12,7 +13,9 @@ var OrderAdd = require('./OrderAdd');
 var Me = React.createClass({
     getInitialState: function () {
         return {
-            items: ItemStore.getItems()
+            items: ItemStore.getItems(),
+            showCurrent: true,
+            showHistory: true
         };
     },
     render: function () {
@@ -21,8 +24,14 @@ var Me = React.createClass({
             {payload: '2', text: 'Current'},
             {payload: '3', text: 'History'}
         ];
+        var current = !!this.state.showCurrent ? <OrderList ref="orders" title="Current" orderType="current"/> : undefined;
+        var history = !!this.state.showHistory ? <OrderList ref="oldOrders" title="History" orderType="history"/> : undefined;
         return (
             <div className="me">
+                Show Current
+                <Toggle toggled={this.state.showCurrent} onToggle={this._onCurrentToggleChange}/>
+                Show History
+                <Toggle toggled={this.state.showHistory} onToggle={this._onHistoryToggleChange}/>
                 <div className="mui-toolbar">
                     <div className="mui-toolbar-group mui-left">
                         <DropDownMenu menuItems={menuItems} />
@@ -33,8 +42,8 @@ var Me = React.createClass({
                     </div>
                 </div>
                 <OrderAdd ref="orderAdd"/>
-                <OrderList ref="orders" title="Current" orderType="current"/>
-                <OrderList ref="oldOrders" title="History" orderType="history"/>
+                {current}
+                {history}
             </div>
         );
     },
@@ -42,8 +51,24 @@ var Me = React.createClass({
         this.refs.orderAdd.show();
     },
     _refreshOrders: function () {
-        this.refs.orders.refreshOrders();
-        this.refs.oldOrders.refreshOrders();
+        if (this.refs.orders) {
+            this.refs.orders.refreshOrders();
+        }
+        if (this.refs.oldOrders) {
+            this.refs.oldOrders.refreshOrders();
+        }
+    },
+    _onCurrentToggleChange: function (e, toggled) {
+        this.setState({
+                showCurrent: toggled
+            }
+        )
+    },
+    _onHistoryToggleChange: function (e, toggled) {
+        this.setState({
+                showHistory: toggled
+            }
+        )
     }
 });
 
