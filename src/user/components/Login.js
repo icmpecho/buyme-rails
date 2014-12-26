@@ -25,7 +25,9 @@ var Login = React.createClass({
                         <label for="remember">Remember me</label>
                         <Checkbox ref="remember" name="remember"/>
                         <RaisedButton ref="login" label="Log in" primary={true} onClick={this._onLoginButtonClick}/>
-                        <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                        <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                        <RaisedButton label="Google+" primary={false} onClick={this._onGoogleButtonClick}/>
+                        <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
                         <RaisedButton ref="signup" label="Sign up" onClick={this._onSignupButtonClick}/>
                     </div>
                 </Paper>
@@ -34,6 +36,9 @@ var Login = React.createClass({
     },
     _onLoginButtonClick: function () {
         UserApi.login(this.refs.email.getValue(), this.refs.password.getValue(), this.refs.remember.state.checked);
+    },
+    _onGoogleButtonClick: function () {
+        window.location = '/users/auth/google_oauth2';
     },
     _onSignupButtonClick: function () {
         this.props.changePage('signup');
