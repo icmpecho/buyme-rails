@@ -21,13 +21,17 @@ class OrdersController < ApplicationController
   def create
     raise ActionController::RoutingError.new('Not Found') if params[ :item_name ].empty?
     item = Item.find_or_create_by( name: params[ :item_name ].downcase )
+    count = params[ :count ].to_i || 1
     store_ids = params[ :store_ids ]
     stores = []
     store_ids.each do |store_id|
       stores << Store.find( store_id )
     end
-    @order = Order.place( user: current_user, item: item, stores: stores )
-    respond_with(@order, template: 'orders/show')
+    @orders = []
+    count.times do
+      @orders << Order.place( user: current_user, item: item, stores: stores )
+    end
+    respond_with(@orders, template: 'orders/index')
   end
 
   def update

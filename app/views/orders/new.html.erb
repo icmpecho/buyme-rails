@@ -2,6 +2,7 @@
 
 <form action="<%= orders_path %>" method="post">
   Item: <input type="text" name="item_name"><br>
+  Count: <input type="text" name="count"><br>
   Store_ids:
   <% Store.all.each do |store| %>
       <input type="checkbox" name="store_ids[]" value="<%= store.id %>" ><%= store.name %><br>
