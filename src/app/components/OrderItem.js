@@ -16,14 +16,18 @@ var OrderItems = React.createClass({
     },
     render: function () {
         var order = this.props.order;
+        var createdAt = this.props.orderType === 'all' || this.props.orderType === 'current' ? <div>Created At - {moment(order.created_at).fromNow()}</div> : undefined;
+        var createdBy = this.props.orderType === 'all' ? <div>Ordered By - {order.user_name}</div> : undefined;
+        var completedAt = this.props.orderType === 'history' ? <div>Completed - {moment(order.completed).fromNow()}</div> : undefined;
         var deleteButton = !!this.props.deletable ? <FloatingActionButton icon="action-delete" secondary={true} onClick={this._onDeleteButtonClick.bind(this, order.id)}/> : undefined;
         return (
             <li className="order-item">
                 <Paper zDepth={3} rounded={false}>
                     <div className="order-item-details">
-                        {JSON.stringify(order)}
                         <div>Item - {order.item_name}</div>
-                        <div>Completed - {moment(order.completed).fromNow()}</div>
+                        {createdAt}
+                        {createdBy}
+                        {completedAt}
                         <div>
                             Stores
                             <ul>
