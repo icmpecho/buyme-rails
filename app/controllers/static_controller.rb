@@ -6,5 +6,8 @@ class StaticController < ApplicationController
         render 'static/user', :layout => false
       end
     end
+
+    def sign_out
+    end
 end
 
