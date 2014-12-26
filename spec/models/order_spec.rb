@@ -60,8 +60,11 @@ RSpec.describe Order, :type => :model do
     expect( Order.pendings.count ).to eq 3
 
     fai_order2.fullfill!( @ping )
-
     expect( Order.pendings.count ).to eq 2
+
+    fai_order3.cancel!
+    expect( Order.pendings.count ).to eq 1
+
 
   end
 

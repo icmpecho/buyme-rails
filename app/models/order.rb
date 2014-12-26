@@ -25,7 +25,7 @@ class Order < ActiveRecord::Base
   end
 
   def self.pendings
-    self.where( completed: nil )
+    self.where( completed: nil ).where( canceled_at: nil )
   end
 
   def self.completed
@@ -53,4 +53,5 @@ class Order < ActiveRecord::Base
     self.canceled_at = Time.zone.now
     self.save
   end
+
 end
