@@ -1,6 +1,6 @@
 class OrdersController < ApplicationController
   before_action :set_order, only: [:show, :edit, :update, :destroy, :buy, :cancel]
-
+  before_action :authenticate_user!, except: [:index]
   respond_to :html
 
   def index
