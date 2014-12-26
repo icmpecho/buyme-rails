@@ -64,19 +64,27 @@ var OrderActions = {
             data: {}
         })
     },
-    removeMyOrder: function (id) {
+    cancelMyOrder: function (id) {
         AppDispatcher.handleApiAction({
-            actionType: ActionTypes.REMOVE_MY_ORDER_SUCCESS,
+            actionType: ActionTypes.CANCEL_MY_ORDER_SUCCESS,
             data: {
                 id: id
             }
         });
     },
     removeMyOldOrder: function (id) {
-        AppDispatcher.handleApiAction({
-            actionType: ActionTypes.REMOVE_MY_OLD_ORDER_SUCCESS,
-            data: {
-                id: id
+        OrderApi.removeOrder(id).end(function (error, res) {
+            if (!!error) {
+                return console.log(error);
+            }
+            console.log(res);
+            if (res.status === 204) {
+                AppDispatcher.handleApiAction({
+                    actionType: ActionTypes.REMOVE_MY_OLD_ORDER_SUCCESS,
+                    data: {
+                        id: id
+                    }
+                });
             }
         });
     },

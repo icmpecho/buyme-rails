@@ -23,7 +23,10 @@ var OrderApi = assign({}, ApiUtils, {
         };
         return this.post('/orders').send(data);
     },
-    removeOrder: function () {
+    cancelOrder: function () {
+    },
+    removeOrder: function (id) {
+        return this.del('/orders/' + id);
     }
 });
 

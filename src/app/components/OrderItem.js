@@ -40,7 +40,7 @@ var OrderItems = React.createClass({
     },
     _onDeleteButtonClick: function (id) {
         if (this.props.orderType === 'current') {
-            OrderActions.removeMyOrder(id)
+            OrderActions.cancelMyOrder(id)
         }
         else if (this.props.orderType === 'history') {
             OrderActions.removeMyOldOrder(id)
