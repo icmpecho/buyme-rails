@@ -6,6 +6,9 @@ class ItemsController < ApplicationController
   # GET /items.json
   def index
     @items = Item.all
+    if params[:name]
+      @items = @items.suggest(params[:name])
+    end
   end
 
   # GET /items/1
