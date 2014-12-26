@@ -6,8 +6,8 @@ var ActionTypes = require('../constants/ActionTypes');
 var ItemApi = require('../utils/ItemApi');
 
 var ItemActions = {
-    getItems: function () {
-        ItemApi.getItems().end(function (error, res) {
+    getItems: function (name) {
+        ItemApi.getItems(name).end(function (error, res) {
             if (!!error) {
                 return console.log(error);
             }

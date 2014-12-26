@@ -5,7 +5,6 @@ var mui = require('material-ui');
 var RaisedButton = mui.RaisedButton;
 var DropDownMenu = mui.DropDownMenu;
 var Toggle = mui.Toggle;
-var ItemStore = require('../stores/ItemStore');
 
 var OrderList = require('./OrderList');
 var OrderAdd = require('./OrderAdd');
@@ -13,7 +12,6 @@ var OrderAdd = require('./OrderAdd');
 var Me = React.createClass({
     getInitialState: function () {
         return {
-            items: ItemStore.getItems(),
             showAdd: false,
             showCurrent: true,
             showHistory: true
