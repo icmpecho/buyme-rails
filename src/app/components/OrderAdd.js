@@ -41,13 +41,13 @@ var OrderAdd = React.createClass({
                     <div className="half">
                         <h5>Select Stores</h5>
                         {this.state.stores.map(function (store) {
-                            return <label key={'store-' + store.id}>
-                                <Checkbox ref={'store-' + store.id} name={'store-' + store.id} value={'store-' + store.id}/>{store.name}</label>;
+                            return <div className="form-checkbox" key={'store-' + store.id}>
+                                <Checkbox ref={'store-' + store.id} name={'store-' + store.id} value={'store-' + store.id}/>{store.name}</div>;
                         })}
                     </div>
                     <br/>
                     <div className="clearfix"></div>
-                    <RaisedButton label="Confirm" secondary={true} onClick={this._addOrder}/>
+                        <RaisedButton label="Confirm" secondary={true} onClick={this._addOrder}/>
                 </div>
             </Paper>
         );
