@@ -19,7 +19,7 @@ class OrdersController < ApplicationController
   end
 
   def create
-    item = Item.find( params[ :item_id ] )
+    item = Item.find_or_create_by( name: params[ :item_name ] )
     store_ids = params[ :store_ids ]
     stores = []
     store_ids.each do |store_id|
