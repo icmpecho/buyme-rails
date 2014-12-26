@@ -31,10 +31,10 @@ var Menu = React.createClass({
     },
     _getSelectedIndex: function () {
         var currentItem;
-        for (var index = menuItems.length - 1; index >= 0; index--) {
-            currentItem = menuItems[index];
+        for (var index = this.props.menuItems.length - 1; index >= 0; index--) {
+            currentItem = this.props.menuItems[index];
             if (currentItem.route && this.isActive(currentItem.route)) {
-                return index;
+                return parseInt(index);
             }
         }
     },

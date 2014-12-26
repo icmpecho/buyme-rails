@@ -28,7 +28,7 @@ var OrderItems = React.createClass({
                             Stores
                             <ul>
                                   {order.stores.map(function (store) {
-                                      return <li>{store.name}</li>;
+                                      return <li key={'store-' + store.id}>{store.name}</li>;
                                   })}
                             </ul>
                         </div>

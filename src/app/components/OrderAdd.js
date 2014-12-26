@@ -13,9 +13,6 @@ var MyOrderStore = require('../stores/MyOrderStore');
 var OrderActions = require('../actions/OrderActions');
 
 var OrderAdd = React.createClass({
-    propTypes: {
-        toggleOrderAdd: React.PropTypes.func.isRequired
-    },
     getInitialState: function () {
         return {
             stores: []
@@ -43,15 +40,12 @@ var OrderAdd = React.createClass({
                     <div className="half">
                         <h5>Select Stores</h5>
                         {this.state.stores.map(function (store) {
-                            return <label>
-                                <Checkbox ref={'store-' + store.id}/>{store.name}</label>;
+                            return <label key={'store-' + store.id}><Checkbox ref={'store-' + store.id} name={'store-' + store.id} value={'store-' + store.id}/>{store.name}</label>;
                         })}
                     </div>
                     <br/>
                     <div className="clearfix"></div>
                     <RaisedButton label="Confirm" secondary={true} onClick={this._addOrder}/>
-                    <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
-                    <RaisedButton label="Close" primary={false} onClick={this.props.toggleOrderAdd}/>
                 </div>
             </Paper>
         );

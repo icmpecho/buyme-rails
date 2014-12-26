@@ -28,6 +28,7 @@ var Me = React.createClass({
         var orderAdd = !!this.state.showAdd ? <OrderAdd toggleOrderAdd={this.toggleOrderAdd}/> : undefined;
         var current = !!this.state.showCurrent ? <OrderList ref="orders" title="Current" orderType="current"/> : undefined;
         var history = !!this.state.showHistory ? <OrderList ref="oldOrders" title="History" orderType="history"/> : undefined;
+        var addOrderLabel = !this.state.showAdd ? 'Add Order' : 'Cancel';
         return (
             <div className="me">
                 Show Current
@@ -39,7 +40,7 @@ var Me = React.createClass({
                         <DropDownMenu menuItems={menuItems} />
                     </div>
                     <div className="mui-toolbar-group mui-right">
-                        <RaisedButton label="Add Order" primary={true} onClick={this.toggleOrderAdd} disabled={this.state.showAdd}/>
+                        <RaisedButton label={addOrderLabel} primary={true} onClick={this.toggleOrderAdd}/>
                         <RaisedButton label="Refresh" primary={false} onClick={this._refreshOrders}/>
                     </div>
                 </div>

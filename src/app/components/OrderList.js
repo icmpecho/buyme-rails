@@ -60,7 +60,7 @@ var OrderList = React.createClass({
                 <h3>{this.props.title}</h3>
                 <ul>
                     {this.state.orders.map(function (order) {
-                        return <OrderItem order={order} orderType={orderType} deletable={deletable}></OrderItem>;
+                        return <OrderItem key={'order-' + order.id} order={order} orderType={orderType} deletable={deletable}></OrderItem>;
                     })}
                 </ul>
             </div>

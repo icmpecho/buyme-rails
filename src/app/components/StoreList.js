@@ -27,7 +27,7 @@ var StoreList = React.createClass({
             <div className="store-list">
                 <ul>
                     {this.state.stores.map(function (store) {
-                        return <StoreItem store={store}></StoreItem>;
+                        return <StoreItem key={'store-' + store.id} store={store}></StoreItem>;
                     })}
                 </ul>
             </div>
