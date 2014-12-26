@@ -17,6 +17,7 @@
     <tr>
       <th>Item</th>
       <th>User</th>
+      <th>Created</th>
       <th>Completed</th>
       <th colspan="3"></th>
     </tr>
@@ -27,6 +28,7 @@
       <tr>
         <td><%= order.item.name %></td>
         <td><%= order.user.name %></td>
+        <td><%= order.created_at.to_formatted_s(:db) %></td>
         <% if order.fullfilled? %>
           <td><%= order.completed.to_formatted_s(:db) %></td>
         <% else%>
