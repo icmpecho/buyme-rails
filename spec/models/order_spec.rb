@@ -93,13 +93,16 @@ RSpec.describe Order, :type => :model do
 
   it 'can return only completed orders' do
     fai_order = Order.place( user: @fai, item: @coke, stores: [ @seven, @family ] )
-
     expect( Order.completed.count ).to eq 0
-
     fai_order.fullfill!( @ping )
-
     expect( Order.completed.count ).to eq 1
+  end
 
+  it 'can be canceled' do
+    fai_order = Order.place( user: @fai, item: @coke, stores: [ @seven, @family ] )
+    expect( fai_order.canceled_at ).to be_nil
+    fai_order.cancel!
+    expect( fai_order.canceled_at ).not_to be_nil
   end
 
 end

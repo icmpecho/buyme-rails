@@ -48,4 +48,9 @@ class Order < ActiveRecord::Base
   def fullfilled?
     self.completed != nil
   end
+
+  def cancel!
+    self.canceled_at = Time.zone.now
+    self.save
+  end
 end
