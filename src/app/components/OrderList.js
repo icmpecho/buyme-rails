@@ -21,10 +21,15 @@ var OrderList = React.createClass({
     },
     componentDidMount: function () {
         MyOrderStore.addChangeListener(this._onChange);
+        var _refreshOrders = this.refreshOrders;
+        this.interval = setInterval(function () {
+            _refreshOrders();
+        }, 5000);
     },
 
     componentWillUnmount: function () {
         MyOrderStore.removeChangeListener(this._onChange);
+        clearInterval(this.interval);
     },
     render: function () {
         var orderType = this.props.orderType;

@@ -9,11 +9,15 @@ var _orders = [];
 var _oldOrders = [];
 
 function getMyOrders(data) {
-    _orders = data;
+    _orders = data.sort(function (a, b) {
+        return b.id - a.id
+    });
 }
 
 function getMyOldOrders(data) {
-    _oldOrders = data;
+    _oldOrders = data.sort(function (a, b) {
+        return b.id - a.id
+    });
 }
 
 function addMyOrder(data) {

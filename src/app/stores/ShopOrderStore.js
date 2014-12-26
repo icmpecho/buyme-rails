@@ -8,13 +8,15 @@ var assign = require('object-assign');
 var _orders = [];
 
 function getShopOrders(data) {
-    _orders = data;
+    _orders = data.sort(function (a, b) {
+        return b.id - a.id
+    });
 }
 
 function removeShopOrder(data) {
     for (var index = 0; index < _orders.length; index++) {
-        if (_orders[index].id = data.id) {
-            _orders = _orders.splice(index, 1);
+        if (_orders[index].id === data.id) {
+            _orders.splice(index, 1);
             break;
         }
     }
