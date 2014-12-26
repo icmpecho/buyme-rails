@@ -49,6 +49,8 @@ class OrdersController < ApplicationController
     @orders = Order.by_user(current_user)
     if pending == 'true'
       @orders = @orders.pendings
+    elsif pending == 'false'
+      @orders = @orders.completed
     end
     respond_with( @orders, template: 'orders/index' )
   end
