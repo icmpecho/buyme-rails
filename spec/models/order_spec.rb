@@ -91,4 +91,15 @@ RSpec.describe Order, :type => :model do
     expect( Order.by_user( @ping ).count ).to eq 1
   end
 
+  it 'can return only completed orders' do
+    fai_order = Order.place( user: @fai, item: @coke, stores: [ @seven, @family ] )
+
+    expect( Order.completed.count ).to eq 0
+
+    fai_order.fullfill!( @ping )
+
+    expect( Order.completed.count ).to eq 1
+
+  end
+
 end
