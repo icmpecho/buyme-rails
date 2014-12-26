@@ -6,6 +6,14 @@ html, body {
     margin: 0;
     padding: 0;
     height: 100%;
+    font-size: 16px;
+}
+ul li, ol li {
+    list-style: none;
+}
+h2 {
+    font-size: 2em;
+    padding-top: 0;
 }
 .header {
     background-color: #286090;
@@ -39,12 +47,10 @@ html, body {
 }
 
 .footer {
-    position: absolute;
     text-align: center;
     padding: 20px 30px;
     background-color: #286090;
     color: #ffffff;
-    bottom: 0;
     width: 100%;
 }
 
@@ -68,16 +74,28 @@ html, body {
     margin-bottom: 20px;
 }
 
-.mui-toolbar-group.mui-left {
+.mui-left {
     float: left;
 }
 
-.mui-toolbar-group.mui-right {
+.mui-right {
     float: right;
+    text-align: right;
 }
-
+.store-list li {
+    display: inline-block;
+    margin-right: 10px;
+}
+.date {
+    margin-top: 10px;
+}
 @media (max-width: 980px) {
     .content {
         width: 100%;
+    }
+}
+@media (max-width: 767px) {
+    .half {
+        float: none;
     }
 }

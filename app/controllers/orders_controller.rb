@@ -1,5 +1,5 @@
 class OrdersController < ApplicationController
-  before_action :set_order, only: [:show, :edit, :update, :destroy, :buy]
+  before_action :set_order, only: [:show, :edit, :update, :destroy, :buy, :cancel]
 
   respond_to :html
 
@@ -42,7 +42,12 @@ class OrdersController < ApplicationController
 
   def buy
     @order.fullfill!(current_user)
-    respond_with(@order)
+    respond_with(@order, template: 'orders/show')
+  end
+
+  def cancel
+    @order.cancel!
+    respond_with(@order, template: 'orders/show')
   end
 
   def me

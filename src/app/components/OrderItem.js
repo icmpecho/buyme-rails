@@ -1,6 +1,7 @@
 'use strict';
 
 var React = require('react');
+var ImageLoader = require('react-imageloader');
 var mui = require('material-ui');
 var Paper = mui.Paper;
 var FloatingActionButton = mui.FloatingActionButton;
@@ -31,20 +32,24 @@ var OrderItems = React.createClass({
             <li className="order-item">
                 <Paper zDepth={3} rounded={false}>
                     <div className="order-item-details">
-                        <div>Item - {order.item_name}</div>
-                        {createdAt}
-                        {createdBy}
-                        {completedAt}
+                        <div className="mui-right">
+                            {deleteButton}
+                            {buyButton}
+                            <div className="date mui-font-style-caption">{createdAt}{createdBy}{completedAt}</div>
+                        </div>
+                        <h2>{order.item_name}</h2>
                         <div>
-                            Stores
-                            <ul>
-                                  {order.stores.map(function (store) {
-                                      return <li key={'store-' + store.id}>{store.name}</li>;
-                                  })}
+                            <ul className="store-list">
+                                {order.stores.map(function (store) {
+                                    return <li key={'store-' + store.id}>
+                                        <ImageLoader src={"../images/" + store.name + ".png"}/>
+                                    </li>;
+                                })}
+                                <li>
+                                    <span className="mui-font-style-caption">Available stores</span>
+                                </li>
                             </ul>
                         </div>
-                        {deleteButton}
-                        {buyButton}
                     </div>
                 </Paper>
             </li>
