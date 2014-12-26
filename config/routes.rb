@@ -3,6 +3,7 @@ Rails.application.routes.draw do
 
   resources :orders
   post 'orders/:id/buy' => 'orders#buy'
+  post 'orders/:id/cancel' => 'orders#cancel'
 
   devise_for :users
   resources :stores
