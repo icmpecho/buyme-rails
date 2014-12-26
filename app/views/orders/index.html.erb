@@ -26,7 +26,7 @@
     <% @orders.each do |order| %>
       <tr>
         <td><%= order.item.name %></td>
-        <td><%= order.user.email %></td>
+        <td><%= order.user.name %></td>
         <% if order.fullfilled? %>
           <td><%= order.completed.to_formatted_s(:db) %></td>
         <% else%>

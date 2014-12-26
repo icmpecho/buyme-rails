@@ -10,6 +10,10 @@ class Order < ActiveRecord::Base
     item = args[:item]
     stores = args[:stores]
 
+    raise ArgumentError unless user.class == User
+    raise ArgumentError unless item.class == Item
+    raise ArgumentError unless stores.class == Array
+
     order = self.new( user_id: user.id, item_id: item.id)
 
     stores.each do |store|
