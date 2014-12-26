@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141226070540) do
+ActiveRecord::Schema.define(version: 20141226082953) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -32,6 +32,7 @@ ActiveRecord::Schema.define(version: 20141226070540) do
     t.datetime "updated_at",  null: false
     t.integer  "buyer_id"
     t.datetime "canceled_at"
+    t.datetime "expire_at"
   end
 
   add_index "orders", ["buyer_id"], name: "index_orders_on_buyer_id", using: :btree
