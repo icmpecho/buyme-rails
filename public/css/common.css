@@ -82,12 +82,17 @@ h2 {
     float: right;
     text-align: right;
 }
-.store-list li {
+.mui-togglebar {
+    margin: 0 10px;
+    border-bottom: 1px solid #e1e1e1;
+}
+.mui-togglebar-wrap {
+    display: inline-block;
+    margin-right: 8px;
+}
+.order-store-list li {
     display: inline-block;
     margin-right: 10px;
-}
-.date {
-    margin-top: 10px;
 }
 @media (max-width: 980px) {
     .content {

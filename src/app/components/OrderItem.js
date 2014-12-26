@@ -43,7 +43,7 @@ var OrderItems = React.createClass({
                         </div>
                         <h2>{order.item_name}</h2>
                         <div>
-                            <ul className="store-list">
+                            <ul className="order-store-list">
                                 {order.stores.map(function (store) {
                                     return <li key={'store-' + store.id}>
                                         <ImageLoader src={"../images/" + store.name + ".png"}>

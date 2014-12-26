@@ -16,8 +16,10 @@ var StoreItems = React.createClass({
             <li className="store-item">
                 <Paper zDepth={3} rounded={false}>
                     <div className="store-item-details">
-                        <div>Name - {store.name}</div>
-                        <FloatingActionButton icon="action-shopping-cart" secondary={true} onClick={this._onButtonClick}/>
+                        <div className="mui-right">
+                            <FloatingActionButton icon="action-shopping-cart" secondary={true} onClick={this._onButtonClick}/>
+                        </div>
+                        <h2>Name - {store.name}</h2>
                     </div>
                 </Paper>
             </li>

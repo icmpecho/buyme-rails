@@ -31,18 +31,23 @@ var Me = React.createClass({
         var addOrderLabel = !this.state.showAdd ? 'Add Order' : 'Cancel';
         return (
             <div className="me">
-                Show Current
-                <Toggle toggled={this.state.showCurrent} onToggle={this._onCurrentToggleChange}/>
-                Show History
-                <Toggle toggled={this.state.showHistory} onToggle={this._onHistoryToggleChange}/>
                 <div className="mui-toolbar">
                     <div className="mui-toolbar-group mui-left">
-                        <DropDownMenu menuItems={menuItems} />
+                        <RaisedButton label="Refresh" primary={false} onClick={this._refreshOrders}/>
                     </div>
                     <div className="mui-toolbar-group mui-right">
                         <RaisedButton label={addOrderLabel} primary={true} onClick={this.toggleOrderAdd}/>
-                        <RaisedButton label="Refresh" primary={false} onClick={this._refreshOrders}/>
                     </div>
+                </div>
+                <div className="mui-togglebar">
+                	<div className="mui-togglebar-wrap mui-font-style-caption">Show Current</div>
+	                <div className="mui-togglebar-wrap">
+	                	<Toggle toggled={this.state.showCurrent} onToggle={this._onCurrentToggleChange}/>
+                	</div>
+	                <div className="mui-togglebar-wrap mui-font-style-caption">Show History</div>
+	                <div className="mui-togglebar-wrap">
+	                	<Toggle toggled={this.state.showHistory} onToggle={this._onHistoryToggleChange}/>
+                	</div>
                 </div>
                 {orderAdd}
                 {currentOrderList}
