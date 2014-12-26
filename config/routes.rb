@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   post 'orders/:id/buy' => 'orders#buy'
   post 'orders/:id/cancel' => 'orders#cancel'
 
-  devise_for :users
+  devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
   resources :stores
   resources :items
 
