@@ -29,7 +29,7 @@ class Order < ActiveRecord::Base
   end
 
   def self.completed
-    self.where.not( completed: nil )
+    self.where( "completed is not null or canceled_at is not null" )
   end
 
   def self.by_user( user )
