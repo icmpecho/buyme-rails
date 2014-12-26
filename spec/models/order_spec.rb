@@ -117,4 +117,15 @@ RSpec.describe Order, :type => :model do
     fai_order = Order.place( user: @fai, item: @coke, stores: [ @seven, @family ], expire_at: 10.days.from_now )
     expect( fai_order ).not_to be_nil
   end
+
+  it 'can return expired orders' do
+    fai_order1 = Order.place( user: @fai, item: @coke, stores: [ @seven, @family ] )
+    fai_order2 = Order.place( user: @fai, item: @coke, stores: [ @seven, @family ], expire_at: 10.days.from_now )
+
+    expect( Order.expired.count ).to eq 0
+
+    Timecop.freeze( 11.days.from_now ) do
+      expect( Order.expired.count ).to eq 1
+    end
+  end
 end

@@ -40,6 +40,10 @@ class Order < ActiveRecord::Base
     self.where( user_id: user.id )
   end
 
+  def self.expired
+    self.where( "expire_at < ?", Time.zone.now )
+  end
+
   # Instance methods
   def fullfill!( user )
     if not fullfilled?
