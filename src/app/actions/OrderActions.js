@@ -45,8 +45,8 @@ var OrderActions = {
             }
         });
     },
-    addMyOrder: function (itemName, storeIds) {
-        OrderApi.addMyOrder(itemName, storeIds).end(function (error, res) {
+    addMyOrders: function (itemName, quantity, storeIds) {
+        OrderApi.addMyOrders(itemName, quantity, storeIds).end(function (error, res) {
             if (!!error) {
                 return console.log(error);
             }

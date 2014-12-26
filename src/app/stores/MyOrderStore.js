@@ -21,8 +21,8 @@ function getMyOldOrders(data) {
     });
 }
 
-function addMyOrder(data) {
-    _orders.unshift(data);
+function addMyOrders(data) {
+    _orders = _orders.concat(data);
     _hasOrderAdded = true;
 }
 
@@ -79,7 +79,7 @@ MyOrderStore.dispatchToken = AppDispatcher.register(function (payload) {
             getMyOldOrders(action.data);
             break;
         case ActionTypes.ADD_MY_ORDER_SUCCESS:
-            addMyOrder(action.data);
+            addMyOrders(action.data);
             break;
         case ActionTypes.READ_MY_ADDED_ORDER_SUCCESS:
             readMyAddedOrder();

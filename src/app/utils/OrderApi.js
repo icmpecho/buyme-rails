@@ -13,9 +13,10 @@ var OrderApi = assign({}, ApiUtils, {
             pending: pending
         });
     },
-    addMyOrder: function (itemName, storeIds) {
+    addMyOrders: function (itemName, count, storeIds) {
         var data = {
             item_name: itemName,
+            count: count,
             store_ids: storeIds
         };
         return this.post('/orders').send(data);

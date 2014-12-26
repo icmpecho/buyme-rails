@@ -36,11 +36,13 @@ var OrderAdd = React.createClass({
                 <div>
                     <div className="half">
                         <Input ref="itemName" type="text" name="itemName" placeholder="Item Name" description="Enter item name."/>
+                        <Input ref="quantity" type="text" name="quantity" placeholder="Quantity" description="Enter quantity." defaultValue="1"/>
                     </div>
                     <div className="half">
                         <h5>Select Stores</h5>
                         {this.state.stores.map(function (store) {
-                            return <label key={'store-' + store.id}><Checkbox ref={'store-' + store.id} name={'store-' + store.id} value={'store-' + store.id}/>{store.name}</label>;
+                            return <label key={'store-' + store.id}>
+                                <Checkbox ref={'store-' + store.id} name={'store-' + store.id} value={'store-' + store.id}/>{store.name}</label>;
                         })}
                     </div>
                     <br/>
@@ -56,6 +58,11 @@ var OrderAdd = React.createClass({
             alert('Enter item name.');
             return;
         }
+        var quantity = this.refs.quantity.getValue();
+        if (isNaN(quantity)) {
+            alert('Enter quantity.');
+            return;
+        }
         var storeIds = [];
         for (var ref in this.refs) {
             if (ref.indexOf('store-') === 0 && this.refs[ref].state.checked) {
@@ -66,7 +73,7 @@ var OrderAdd = React.createClass({
             alert('Select stores.');
             return;
         }
-        OrderActions.addMyOrder(itemName, storeIds);
+        OrderActions.addMyOrders(itemName, quantity, storeIds);
     },
     _onStoreStoreChange: function () {
         this.setState({
@@ -79,6 +86,7 @@ var OrderAdd = React.createClass({
                 OrderActions.readMyAddedOrder();
             }, 1000);
             this.refs.itemName.setValue('');
+            this.refs.quantity.setValue('');
             for (var ref in this.refs) {
                 if (ref.indexOf('store-') === 0 && this.refs[ref].state.checked) {
                     this.refs[ref].check();
