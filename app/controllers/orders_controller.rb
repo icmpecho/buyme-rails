@@ -20,7 +20,7 @@ class OrdersController < ApplicationController
 
   def create
     raise ActionController::RoutingError.new('Not Found') if params[ :item_name ].empty?
-    item = Item.find_or_create_by( name: params[ :item_name ] )
+    item = Item.find_or_create_by( name: params[ :item_name ].downcase )
     store_ids = params[ :store_ids ]
     stores = []
     store_ids.each do |store_id|
