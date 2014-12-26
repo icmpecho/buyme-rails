@@ -11,10 +11,12 @@ var OrderActions = {
             if (!!error) {
                 return console.log(error);
             }
-            AppDispatcher.handleApiAction({
-                actionType: ActionTypes.GET_ORDERS_SUCCESS,
-                data: res.body
-            })
+            if (res.status === 200) {
+                AppDispatcher.handleApiAction({
+                    actionType: ActionTypes.GET_ORDERS_SUCCESS,
+                    data: res.body
+                })
+            }
         });
     },
     getMyOrders: function () {
@@ -22,10 +24,12 @@ var OrderActions = {
             if (!!error) {
                 return console.log(error);
             }
-            AppDispatcher.handleApiAction({
-                actionType: ActionTypes.GET_MY_ORDERS_SUCCESS,
-                data: res.body
-            })
+            if (res.status === 200) {
+                AppDispatcher.handleApiAction({
+                    actionType: ActionTypes.GET_MY_ORDERS_SUCCESS,
+                    data: res.body
+                })
+            }
         });
     },
     getMyOldOrders: function () {
@@ -33,10 +37,12 @@ var OrderActions = {
             if (!!error) {
                 return console.log(error);
             }
-            AppDispatcher.handleApiAction({
-                actionType: ActionTypes.GET_MY_OLD_ORDERS_SUCCESS,
-                data: res.body
-            })
+            if (res.status === 200) {
+                AppDispatcher.handleApiAction({
+                    actionType: ActionTypes.GET_MY_OLD_ORDERS_SUCCESS,
+                    data: res.body
+                })
+            }
         });
     },
     addMyOrder: function (itemId, itemName, storeIds) {
@@ -44,11 +50,12 @@ var OrderActions = {
             if (!!error) {
                 return console.log(error);
             }
-            console.log(res.body);
-            AppDispatcher.handleApiAction({
-                actionType: ActionTypes.ADD_MY_ORDER_SUCCESS,
-                data: res.body
-            })
+            if (res.status === 200) {
+                AppDispatcher.handleApiAction({
+                    actionType: ActionTypes.ADD_MY_ORDER_SUCCESS,
+                    data: res.body
+                })
+            }
         });
     },
     readMyAddedOrder: function () {
@@ -78,10 +85,12 @@ var OrderActions = {
             if (!!error) {
                 return console.log(error);
             }
-            AppDispatcher.handleApiAction({
-                actionType: ActionTypes.GET_SHOP_ORDERS_SUCCESS,
-                data: res.body
-            })
+            if (res.status === 200) {
+                AppDispatcher.handleApiAction({
+                    actionType: ActionTypes.GET_SHOP_ORDERS_SUCCESS,
+                    data: res.body
+                })
+            }
         });
     },
     removeShopOrder: function () {

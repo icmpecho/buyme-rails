@@ -11,10 +11,12 @@ var StoreActions = {
             if (!!error) {
                 return console.log(error);
             }
-            AppDispatcher.handleApiAction({
-                actionType: ActionTypes.GET_STORE_SUCCESS,
-                data: res.body
-            })
+            if (res.status === 200) {
+                AppDispatcher.handleApiAction({
+                    actionType: ActionTypes.GET_STORE_SUCCESS,
+                    data: res.body
+                })
+            }
         });
     }
 };
