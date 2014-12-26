@@ -25,9 +25,7 @@ var UserApi = assign({}, ApiUtils, {
                     alert(JSON.parse(res.text).error);
                     return;
                 }
-                window.location = '/app';
-                //console.log(res);
-                //alert('login ok');
+                window.location = '/';
             });
     },
     signup: function (email, password, confirmation) {
@@ -56,9 +54,7 @@ var UserApi = assign({}, ApiUtils, {
                     }
                     return;
                 }
-                window.location = '/app';
-                //console.log(res);
-                //alert('signup ok');
+                window.location = '/';
             });
     },
     logout: function () {
