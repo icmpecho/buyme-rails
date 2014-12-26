@@ -40,7 +40,7 @@ var OrderList = React.createClass({
     },
     _onChange: function () {
         this.setState({
-            orders: MyOrderStore.getMyOrders(this.props.pending)
+            orders: !!this.props.pending ? MyOrderStore.getMyOrders() : MyOrderStore.getMyOldOrders()
         });
     }
 });

@@ -61,7 +61,7 @@ var OrderAdd = React.createClass({
             alert('Select stores.');
             return;
         }
-        OrderActions.addOrder(undefined, itemName, storeIds);
+        OrderActions.addMyOrder(undefined, itemName, storeIds);
     },
     _onChange: function () {
         this.setState({

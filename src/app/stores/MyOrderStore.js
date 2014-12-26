@@ -6,26 +6,44 @@ var ActionTypes = require('../constants/ActionTypes');
 var assign = require('object-assign');
 
 var _orders = [];
-var _historyOrders = [];
+var _oldOrders = [];
 
-function getMyOrders(data, pending) {
-    if (!!pending) {
-        _orders = data;
-        return;
-    }
-    _historyOrders = data;
+function getMyOrders(data) {
+    _orders = data;
 }
 
-function addOrder(data) {
-    _orders.push(data);
+function getMyOldOrders(data) {
+    _oldOrders = data;
+}
+
+function addMyOrder(data) {
+    _orders.unshift(data);
+}
+
+function removeMyOrder(data) {
+    for (var index = 0; index < _orders.length; index++) {
+        if (_orders[index].id = data.id) {
+            _orders = _orders.splice(index, 1);
+            break;
+        }
+    }
+}
+
+function removeMyOldOrder(data) {
+    for (var index = 0; index < _orders.length; index++) {
+        if (_oldOrders[index].id = data.id) {
+            _oldOrders = _oldOrders.splice(index, 1);
+            break;
+        }
+    }
 }
 
 var MyOrderStore = assign({}, EventEmitter.prototype, {
-    getMyOrders: function (pending) {
-        if (!!pending) {
-            return _orders;
-        }
-        return _historyOrders;
+    getMyOrders: function () {
+        return _orders;
+    },
+    getMyOldOrders: function () {
+        return _oldOrders;
     },
     emitChange: function () {
         this.emit('change');
@@ -41,17 +59,20 @@ var MyOrderStore = assign({}, EventEmitter.prototype, {
 AppDispatcher.register(function (payload) {
     var action = payload.action;
     switch (action.actionType) {
-        //case ActionTypes.GET_ORDERS_SUCCESS:
-        //    getOrders(action.data);
-        //    break;
         case ActionTypes.GET_MY_ORDERS_SUCCESS:
-            getMyOrders(action.data, true);
+            getMyOrders(action.data);
             break;
-        case ActionTypes.GET_MY_HISTORY_ORDERS_SUCCESS:
-            getMyOrders(action.data, false);
+        case ActionTypes.GET_MY_OLD_ORDERS_SUCCESS:
+            getMyOldOrders(action.data);
             break;
-        case ActionTypes.ADD_ORDER_SUCCESS:
-            addOrder(action.data);
+        case ActionTypes.ADD_MY_ORDER_SUCCESS:
+            addMyOrder(action.data);
+            break;
+        case ActionTypes.REMOVE_MY_ORDER_SUCCESS:
+            removeMyOrder(action.data);
+            break;
+        case ActionTypes.REMOVE_MY_ORDER_SUCCESS:
+            removeMyOldOrder(action.data);
             break;
         default:
             return true;
