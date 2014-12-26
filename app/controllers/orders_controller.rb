@@ -13,16 +13,19 @@ class OrdersController < ApplicationController
   end
 
   def new
-    @order = Order.new
-    respond_with(@order)
   end
 
   def edit
   end
 
   def create
-    @order = Order.new(order_params)
-    @order.save
+    item = Item.find( params[ :item_id ] )
+    store_ids = params[ :store_ids ]
+    stores = []
+    store_ids.each do |store_id|
+      stores << Store.find( store_id )
+    end
+    @order = Order.place( user: current_user, item: item, stores: stores )
     respond_with(@order)
   end
 
@@ -37,7 +40,7 @@ class OrdersController < ApplicationController
   end
 
   def buy
-    @order.fullfill!
+    @order.fullfill!(current_user)
     respond_with(@order)
   end
 
@@ -46,6 +49,8 @@ class OrdersController < ApplicationController
     @orders = Order.by_user(current_user)
     if pending == 'true'
       @orders = @orders.pendings
+    elsif pending == 'false'
+      @orders = @orders.completed
     end
     respond_with( @orders, template: 'orders/index' )
   end

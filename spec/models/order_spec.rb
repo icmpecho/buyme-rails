@@ -45,8 +45,9 @@ RSpec.describe Order, :type => :model do
     fai_order = Order.place( user: @fai, item: @coke, stores: [ @seven, @family ] )
 
     Timecop.freeze( Time.zone.now ) do
-        fai_order.fullfill!
+        fai_order.fullfill!( @ping )
         expect( fai_order.completed ).to eq Time.zone.now
+        expect( fai_order.buyer.email ).to eq 'ping@abctech-thailand.com'
     end
 
   end
@@ -58,7 +59,7 @@ RSpec.describe Order, :type => :model do
 
     expect( Order.pendings.count ).to eq 3
 
-    fai_order2.fullfill!
+    fai_order2.fullfill!( @ping )
 
     expect( Order.pendings.count ).to eq 2
 
@@ -68,16 +69,16 @@ RSpec.describe Order, :type => :model do
     fai_order = Order.place( user: @fai, item: @coke, stores: [ @seven, @family ] )
     expect( fai_order ).not_to be_fullfilled
 
-    fai_order.fullfill!
+    fai_order.fullfill!( @ping )
     expect( fai_order ).to be_fullfilled
   end
 
   it 'check fullfilled before mark buy' do
     fai_order = Order.place( user: @fai, item: @coke, stores: [ @seven, @family ] )
-    fai_order.fullfill!
+    fai_order.fullfill!( @ping )
     completed = fai_order.completed
 
-    fai_order.fullfill!
+    fai_order.fullfill!( @ping )
     expect( fai_order.completed ).to eq completed
   end
 
@@ -88,6 +89,17 @@ RSpec.describe Order, :type => :model do
 
     expect( Order.by_user( @fai ).count ).to eq 2
     expect( Order.by_user( @ping ).count ).to eq 1
+  end
+
+  it 'can return only completed orders' do
+    fai_order = Order.place( user: @fai, item: @coke, stores: [ @seven, @family ] )
+
+    expect( Order.completed.count ).to eq 0
+
+    fai_order.fullfill!( @ping )
+
+    expect( Order.completed.count ).to eq 1
+
   end
 
 end
