@@ -24,7 +24,7 @@ var OrderList = React.createClass({
         var _refreshOrders = this.refreshOrders;
         this.interval = setInterval(function () {
             _refreshOrders();
-        }, 5000);
+        }, 30000);
     },
 
     componentWillUnmount: function () {
