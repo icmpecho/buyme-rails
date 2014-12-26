@@ -9,6 +9,7 @@ var RaisedButton = mui.RaisedButton;
 
 var StoreStore = require('../stores/StoreStore');
 var StoreActions = require('../actions/StoreActions');
+var MyOrderStore = require('../stores/MyOrderStore');
 var OrderActions = require('../actions/OrderActions');
 
 var OrderAdd = React.createClass({
@@ -24,17 +25,20 @@ var OrderAdd = React.createClass({
         StoreActions.getStores();
     },
     componentDidMount: function () {
-        StoreStore.addChangeListener(this._onChange);
+        StoreStore.addChangeListener(this._onStoreStoreChange);
+        MyOrderStore.addChangeListener(this._onMyOrderStoreChange);
     },
 
     componentWillUnmount: function () {
-        StoreStore.removeChangeListener(this._onChange);
+        StoreStore.removeChangeListener(this._onStoreStoreChange);
+        MyOrderStore.addChangeListener(this._onMyOrderStoreChange);
     },
     render: function () {
         return (
             <Paper zDepth={3} rounded={false} className="order-add">
                 <div>
                     <div className="half">
+                        <Input ref="itemId" type="text" name="itemId" placeholder="Item Id" description="Enter item ID."/>
                         <Input ref="item" type="text" name="item" placeholder="Item" description="Enter item name."/>
                     </div>
                     <div className="half">
@@ -54,11 +58,16 @@ var OrderAdd = React.createClass({
         );
     },
     _addOrder: function () {
-        var itemName = this.refs.item.getValue();
-        if (!itemName) {
-            alert('Enter item name.');
+        var itemId = this.refs.itemId.getValue();
+        if (!itemId) {
+            alert('Enter item ID name.');
             return;
         }
+        var itemName = this.refs.item.getValue();
+        //if (!itemName) {
+        //    alert('Enter item name.');
+        //    return;
+        //}
         var storeIds = [];
         for (var ref in this.refs) {
             if (ref.indexOf('store-') === 0 && this.refs[ref].state.checked) {
@@ -69,12 +78,19 @@ var OrderAdd = React.createClass({
             alert('Select stores.');
             return;
         }
-        OrderActions.addMyOrder(undefined, itemName, storeIds);
+        OrderActions.addMyOrder(itemId, itemName, storeIds);
     },
-    _onChange: function () {
+    _onStoreStoreChange: function () {
         this.setState({
             stores: StoreStore.getStores()
         });
+    },
+    _onMyOrderStoreChange: function () {
+        if (!!MyOrderStore.hasOrderAdded()) {
+            setTimeout(function () {
+                OrderActions.readMyAddedOrder();
+            }, 1000);
+        }
     }
 });
 

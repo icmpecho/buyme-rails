@@ -18,9 +18,9 @@ var OrderApi = assign({}, ApiUtils, {
     },
     addOrder: function (itemId, itemName, storeIds) {
         var data = {
-            id: itemId,
+            item_id: itemId,
             name: itemName,
-            stores: storeIds
+            store_ids: storeIds
         };
         console.log(data);
         return this.post('/orders').send(data);

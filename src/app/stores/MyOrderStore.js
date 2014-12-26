@@ -7,6 +7,7 @@ var assign = require('object-assign');
 
 var _orders = [];
 var _oldOrders = [];
+var _hasOrderAdded = false;
 
 function getMyOrders(data) {
     _orders = data.sort(function (a, b) {
@@ -22,6 +23,11 @@ function getMyOldOrders(data) {
 
 function addMyOrder(data) {
     _orders.unshift(data);
+    _hasOrderAdded = true;
+}
+
+function readMyAddedOrder(data) {
+    _hasOrderAdded = false;
 }
 
 function removeMyOrder(data) {
@@ -49,6 +55,9 @@ var MyOrderStore = assign({}, EventEmitter.prototype, {
     getMyOldOrders: function () {
         return _oldOrders;
     },
+    hasOrderAdded: function () {
+        return _hasOrderAdded;
+    },
     emitChange: function () {
         this.emit('change');
     },
@@ -60,7 +69,7 @@ var MyOrderStore = assign({}, EventEmitter.prototype, {
     }
 });
 
-AppDispatcher.register(function (payload) {
+MyOrderStore.dispatchToken = AppDispatcher.register(function (payload) {
     var action = payload.action;
     switch (action.actionType) {
         case ActionTypes.GET_MY_ORDERS_SUCCESS:
@@ -71,6 +80,9 @@ AppDispatcher.register(function (payload) {
             break;
         case ActionTypes.ADD_MY_ORDER_SUCCESS:
             addMyOrder(action.data);
+            break;
+        case ActionTypes.READ_MY_ADDED_ORDER_SUCCESS:
+            readMyAddedOrder();
             break;
         case ActionTypes.REMOVE_MY_ORDER_SUCCESS:
             removeMyOrder(action.data);

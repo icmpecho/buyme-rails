@@ -40,19 +40,22 @@ var OrderActions = {
         });
     },
     addMyOrder: function (itemId, itemName, storeIds) {
-        AppDispatcher.handleApiAction({
-            actionType: ActionTypes.ADD_MY_ORDER_SUCCESS,
-            data: {}
+        OrderApi.addOrder(itemId, itemName, storeIds).end(function (error, res) {
+            if (!!error) {
+                return console.log(error);
+            }
+            console.log(res.body);
+            AppDispatcher.handleApiAction({
+                actionType: ActionTypes.ADD_MY_ORDER_SUCCESS,
+                data: res.body
+            })
         });
-        //OrderApi.addOrder(itemId, itemName, storeIds).end(function (error, res) {
-        //    if (!!error) {
-        //        return console.log(error);
-        //    }
-        //    AppDispatcher.handleApiAction({
-        //        actionType: ActionTypes.ADD_ORDER_SUCCESS,
-        //        data: res.body
-        //    })
-        //});
+    },
+    readMyAddedOrder: function () {
+        AppDispatcher.handleApiAction({
+            actionType: ActionTypes.READ_MY_ADDED_ORDER_SUCCESS,
+            data: {}
+        })
     },
     removeMyOrder: function (id) {
         AppDispatcher.handleApiAction({
