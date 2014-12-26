@@ -28,7 +28,7 @@
     <% @store.orders.pendings.each do |order| %>
       <tr>
         <td><%= order.item.name %></td>
-        <td><%= order.user.email %></td>
+        <td><%= order.user.name %></td>
         <td><%= order.created_at.to_formatted_s(:db) %></td>
       </tr>
     <% end %>
