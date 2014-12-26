@@ -94,6 +94,12 @@ h2 {
     display: inline-block;
     margin-right: 10px;
 }
+.form-checkbox .mui-checkbox, .form-checkbox span {
+    display: inline-block;
+    margin-bottom: 8px;
+    margin-right: 8px;
+    vertical-align: bottom;
+}
 @media (max-width: 980px) {
     .content {
         width: 100%;

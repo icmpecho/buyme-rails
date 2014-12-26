@@ -22,8 +22,10 @@ var Login = React.createClass({
                         <br/>
                         <Input ref="email" type="text" name="email" placeholder="Email" description="Your account email address."/>
                         <Input ref="password" type="password" name="password" placeholder="Password" description="Your account password."/>
-                        <label for="remember">Remember me</label>
-                        <Checkbox ref="remember" name="remember"/>
+                        <div className="form-checkbox mui-input">
+                            <Checkbox ref="remember" name="remember"/>
+                            <span for="remember">Remember me</span>
+                        </div>
                         <RaisedButton ref="login" label="Log in" primary={true} onClick={this._onLoginButtonClick}/>
                         <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
                         <RaisedButton label="Google+" primary={false} onClick={this._onGoogleButtonClick}/>
