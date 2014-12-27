@@ -17,12 +17,11 @@ var User = React.createClass({
         return {
             page: 'login',
             showToast: false,
-            toastType: 'toast-success',
             toastMessage: ''
         };
     },
     render: function () {
-        var page = this.state.page === 'login' ? <Login changePage={this.changePage}/> : <Signup changePage={this.changePage}/>;
+        var page = this.state.page === 'login' ? <Login changePage={this.changePage} showToast={this.showToast}/> : <Signup changePage={this.changePage} showToast={this.showToast}/>;
         var toastIcon = <Icon icon="navigation-close" style={{color: 'white'}}/>;
         return (
             <div>
@@ -31,13 +30,19 @@ var User = React.createClass({
                     <div className="user">{page}</div>
                 </div>
                 <Footer />
-                <Toast open={this.state.showToast} message={this.state.toastMessage} action={toastIcon} className={this.state.toastType}/>
+                <Toast open={this.state.showToast} message={this.state.toastMessage} action={toastIcon} className="toast-error"/>
             </div>
         );
     },
     changePage: function (page) {
         this.setState({
             page: page
+        });
+    },
+    showToast: function (message) {
+        this.setState({
+            showToast: true,
+            toastMessage: message
         });
     }
 });

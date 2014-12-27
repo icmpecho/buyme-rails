@@ -37,7 +37,12 @@ var Login = React.createClass({
         );
     },
     _onLoginButtonClick: function () {
-        UserApi.login(this.refs.email.getValue(), this.refs.password.getValue(), this.refs.remember.state.checked);
+        var self = this;
+        UserApi.login(this.refs.email.getValue(), this.refs.password.getValue(), this.refs.remember.state.checked)
+            .then(function () {
+            }, function (error) {
+                self.props.showToast(error);
+            });
     },
     _onGoogleButtonClick: function () {
         window.location = '/users/auth/google_oauth2';

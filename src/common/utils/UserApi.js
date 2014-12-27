@@ -1,13 +1,14 @@
 'use strict';
 
 var assign = require('object-assign');
+var Q = require('q');
 
 var ApiUtils = require('./ApiUtils');
 
 var UserApi = assign({}, ApiUtils, {
     login: function (email, password, remember) {
+        var deferred = Q.defer();
         var data = {
-            //utf8: '✓',
             user: {
                 email: email,
                 password: password,
@@ -22,16 +23,21 @@ var UserApi = assign({}, ApiUtils, {
                     return console.log(error);
                 }
                 if (res.status !== 201) {
-                    alert(JSON.parse(res.text).error);
+                    deferred.reject(JSON.parse(res.text).error);
                     return;
                 }
                 window.location = '/';
+                deferred.resolve();
             });
+        return deferred.promise;
     },
     signup: function (email, password, confirmation) {
+        var deferred = Q.defer();
         if (password !== confirmation) {
-            alert('Password and confirmation password are not equal.');
-            return;
+            setTimeout(function () {
+                deferred.reject('Password and confirmation password are not equal.');
+            }, 100);
+            return deferred.promise;
         }
         var data = {
             user: {
@@ -44,20 +50,22 @@ var UserApi = assign({}, ApiUtils, {
         this.post('/users')
             .send(data)
             .end(function (error, res) {
-                console.log(res);
                 if (!!error) {
                     return console.log(error);
                 }
                 if (res.status !== 201) {
                     if (res.status === 422) {
-                        alert('The email address is already used.');
+                        deferred.reject('The email address is already used.');
                     }
                     return;
                 }
                 window.location = '/';
+                deferred.resolve();
             });
+        return deferred.promise;
     },
     logout: function () {
+        var deferred = Q.defer();
         var data = {
             _method: 'delete'
         };
@@ -67,11 +75,13 @@ var UserApi = assign({}, ApiUtils, {
             .set('Content-Type', 'application/x-www-form-urlencoded')
             .end(function (res) {
                 if (res.status !== 200) {
-                    alert('Failed to log out.');
+                    deferred.reject('Failed to log out.');
                     return;
                 }
                 window.location = '/';
+                deferred.resolve();
             });
+        return deferred.promise;
     }
 });
 

@@ -32,7 +32,12 @@ var Signup = React.createClass({
         );
     },
     _onSignupButtonClick: function () {
-        UserApi.signup(this.refs.email.getValue(), this.refs.password.getValue(), this.refs.confirmation.getValue());
+        var self = this;
+        UserApi.signup(this.refs.email.getValue(), this.refs.password.getValue(), this.refs.confirmation.getValue())
+            .then(function () {
+            }, function (error) {
+                self.props.showToast(error);
+            });
     },
     _onLoginButtonClick: function () {
         this.props.changePage('login');
