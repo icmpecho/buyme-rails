@@ -31,7 +31,6 @@ node_modules
 npm-debug.log
 
 public/js/
-public/lib
 
 thout-pg-config
 
