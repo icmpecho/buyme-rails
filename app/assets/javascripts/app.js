@@ -5845,6 +5845,7 @@ var Toast = React.createClass({displayName: "Toast",
 });
 
 module.exports = Toast;
+
 },{"./mixins/classable.js":"/Users/Aon/Projects/buyme-rails/node_modules/material-ui/src/js/mixins/classable.js","./mixins/click-awayable.js":"/Users/Aon/Projects/buyme-rails/node_modules/material-ui/src/js/mixins/click-awayable.js","react":"/Users/Aon/Projects/buyme-rails/node_modules/react/react.js"}],"/Users/Aon/Projects/buyme-rails/node_modules/material-ui/src/js/toggle.jsx":[function(require,module,exports){
 var React = require('react'),
     Classable = require('./mixins/classable.js'),
@@ -36565,6 +36566,10 @@ injectTapEventPlugin();
 var Router = require('react-router');
 var RouteHandler = Router.RouteHandler;
 
+var mui = require('material-ui');
+var Toast = mui.Toast;
+var Icon = mui.Icon;
+
 var Header = require('./../../common/components/Header');
 var Menu = require('./../../common/components/Menu');
 var Footer = require('./../../common/components/Footer');
@@ -36572,13 +36577,18 @@ var Home = require('./Home');
 
 var App = React.createClass({displayName: "App",
     getInitialState: function () {
-        return {};
+        return {
+            showToast: false,
+            toastType: 'toast-success',
+            toastMessage: ''
+        };
     },
     render: function () {
         var menuItems = [
             {route: 'me', text: 'Me'},
             {route: 'shop', text: 'Shop'}
         ];
+        var toastIcon = React.createElement(Icon, {icon: "navigation-close", style: {color: 'white'}});
         return (
             React.createElement("div", null, 
                 React.createElement(Header, {ref: "header", onMenuIconButtonClick: this._onMenuIconButtonClick, title: this.state.title, showButtons: true}), 
@@ -36586,7 +36596,8 @@ var App = React.createClass({displayName: "App",
                 React.createElement("div", {className: "content clearfix"}, 
                     React.createElement(RouteHandler, null)
                 ), 
-                React.createElement(Footer, null)
+                React.createElement(Footer, null), 
+                React.createElement(Toast, {open: this.state.showToast, message: this.state.toastMessage, action: toastIcon, className: this.state.toastType})
             )
         );
     },
@@ -36601,7 +36612,7 @@ var App = React.createClass({displayName: "App",
 });
 
 module.exports = App;
-},{"./../../common/components/Footer":"/Users/Aon/Projects/buyme-rails/src/common/components/Footer.js","./../../common/components/Header":"/Users/Aon/Projects/buyme-rails/src/common/components/Header.js","./../../common/components/Menu":"/Users/Aon/Projects/buyme-rails/src/common/components/Menu.js","./Home":"/Users/Aon/Projects/buyme-rails/src/app/components/Home.js","react":"/Users/Aon/Projects/buyme-rails/node_modules/react/react.js","react-router":"/Users/Aon/Projects/buyme-rails/node_modules/react-router/modules/index.js","react-tap-event-plugin":"/Users/Aon/Projects/buyme-rails/node_modules/react-tap-event-plugin/src/injectTapEventPlugin.js"}],"/Users/Aon/Projects/buyme-rails/src/app/components/Home.js":[function(require,module,exports){
+},{"./../../common/components/Footer":"/Users/Aon/Projects/buyme-rails/src/common/components/Footer.js","./../../common/components/Header":"/Users/Aon/Projects/buyme-rails/src/common/components/Header.js","./../../common/components/Menu":"/Users/Aon/Projects/buyme-rails/src/common/components/Menu.js","./Home":"/Users/Aon/Projects/buyme-rails/src/app/components/Home.js","material-ui":"/Users/Aon/Projects/buyme-rails/node_modules/material-ui/src/index.js","react":"/Users/Aon/Projects/buyme-rails/node_modules/react/react.js","react-router":"/Users/Aon/Projects/buyme-rails/node_modules/react-router/modules/index.js","react-tap-event-plugin":"/Users/Aon/Projects/buyme-rails/node_modules/react-tap-event-plugin/src/injectTapEventPlugin.js"}],"/Users/Aon/Projects/buyme-rails/src/app/components/Home.js":[function(require,module,exports){
 'use strict';
 
 var React = require('react');
@@ -37790,4 +37801,4 @@ var UserApi = assign({}, ApiUtils, {
 });
 
 module.exports = UserApi;
-},{"./ApiUtils":"/Users/Aon/Projects/buyme-rails/src/common/utils/ApiUtils.js","object-assign":"/Users/Aon/Projects/buyme-rails/node_modules/object-assign/index.js"}]},{},["/Users/Aon/Projects/buyme-rails/src/app/app.js","/Users/Aon/Projects/buyme-rails/src/app/actions/ItemActions.js","/Users/Aon/Projects/buyme-rails/src/app/actions/OrderActions.js","/Users/Aon/Projects/buyme-rails/src/app/actions/StoreActions.js","/Users/Aon/Projects/buyme-rails/src/app/components/App.js","/Users/Aon/Projects/buyme-rails/src/app/components/Home.js","/Users/Aon/Projects/buyme-rails/src/app/components/Me.js","/Users/Aon/Projects/buyme-rails/src/app/components/OrderAdd.js","/Users/Aon/Projects/buyme-rails/src/app/components/OrderItem.js","/Users/Aon/Projects/buyme-rails/src/app/components/OrderList.js","/Users/Aon/Projects/buyme-rails/src/app/components/Shop.js","/Users/Aon/Projects/buyme-rails/src/app/components/StoreItem.js","/Users/Aon/Projects/buyme-rails/src/app/components/StoreList.js","/Users/Aon/Projects/buyme-rails/src/app/constants/ActionTypes.js","/Users/Aon/Projects/buyme-rails/src/app/dispatcher/AppDispatcher.js","/Users/Aon/Projects/buyme-rails/src/app/stores/ItemStore.js","/Users/Aon/Projects/buyme-rails/src/app/stores/MyOrderStore.js","/Users/Aon/Projects/buyme-rails/src/app/stores/OrderStore.js","/Users/Aon/Projects/buyme-rails/src/app/stores/StoreOrderStore.js","/Users/Aon/Projects/buyme-rails/src/app/stores/StoreStore.js","/Users/Aon/Projects/buyme-rails/src/app/utils/ItemApi.js","/Users/Aon/Projects/buyme-rails/src/app/utils/OrderApi.js","/Users/Aon/Projects/buyme-rails/src/app/utils/StoreApi.js"]);
+},{"./ApiUtils":"/Users/Aon/Projects/buyme-rails/src/common/utils/ApiUtils.js","object-assign":"/Users/Aon/Projects/buyme-rails/node_modules/object-assign/index.js"}]},{},["/Users/Aon/Projects/buyme-rails/src/app/app.js","/Users/Aon/Projects/buyme-rails/src/app/actions/OrderActions.js","/Users/Aon/Projects/buyme-rails/src/app/actions/StoreActions.js","/Users/Aon/Projects/buyme-rails/src/app/components/App.js","/Users/Aon/Projects/buyme-rails/src/app/components/Home.js","/Users/Aon/Projects/buyme-rails/src/app/components/Me.js","/Users/Aon/Projects/buyme-rails/src/app/components/OrderAdd.js","/Users/Aon/Projects/buyme-rails/src/app/components/OrderItem.js","/Users/Aon/Projects/buyme-rails/src/app/components/OrderList.js","/Users/Aon/Projects/buyme-rails/src/app/components/Shop.js","/Users/Aon/Projects/buyme-rails/src/app/components/StoreItem.js","/Users/Aon/Projects/buyme-rails/src/app/components/StoreList.js","/Users/Aon/Projects/buyme-rails/src/app/constants/ActionTypes.js","/Users/Aon/Projects/buyme-rails/src/app/dispatcher/AppDispatcher.js","/Users/Aon/Projects/buyme-rails/src/app/stores/ItemStore.js","/Users/Aon/Projects/buyme-rails/src/app/stores/MyOrderStore.js","/Users/Aon/Projects/buyme-rails/src/app/stores/OrderStore.js","/Users/Aon/Projects/buyme-rails/src/app/stores/StoreOrderStore.js","/Users/Aon/Projects/buyme-rails/src/app/stores/StoreStore.js","/Users/Aon/Projects/buyme-rails/src/app/utils/ItemApi.js","/Users/Aon/Projects/buyme-rails/src/app/utils/OrderApi.js","/Users/Aon/Projects/buyme-rails/src/app/utils/StoreApi.js"]);
