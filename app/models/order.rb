@@ -46,11 +46,17 @@ class Order < ActiveRecord::Base
 
   # Instance methods
   def fullfill!( user )
-    if not fullfilled?
-      self.completed = Time.zone.now
-      self.buyer_id  = user.id
-      self.save
+    if status == :completed
+      raise "This order has been bought by someone else."
     end
+    if status == :canceled
+      raise "This order has been canceled."
+    end
+
+    self.completed = Time.zone.now
+    self.buyer_id  = user.id
+    self.save
+
   end
 
   def fullfilled?

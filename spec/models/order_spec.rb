@@ -84,7 +84,7 @@ RSpec.describe Order, :type => :model do
     fai_order.fullfill!( @ping )
     completed = fai_order.completed
 
-    fai_order.fullfill!( @ping )
+    expect{ fai_order.fullfill!( @ping ) }.to raise_error "This order has been bought by someone else."
     expect( fai_order.completed ).to eq completed
   end
 
@@ -149,5 +149,10 @@ RSpec.describe Order, :type => :model do
     expect( fai_order2.status ).to eq :canceled
   end
 
+  it 'can not be bought if canceled' do
+    fai_order = Order.place( user: @fai, item: @coke, stores: [ @seven, @family ] )
+    fai_order.cancel!
+    expect { fai_order.fullfill!( @ping) }.to raise_error "This order has been canceled."
+  end
 
 end
