@@ -64,6 +64,12 @@ class Order < ActiveRecord::Base
   end
 
   def cancel!
+    if status == :completed
+      raise "This order has been bought by someone else."
+    end
+    if status == :canceled
+      raise "This order has been canceled."
+    end
     self.canceled_at = Time.zone.now
     self.save
   end
