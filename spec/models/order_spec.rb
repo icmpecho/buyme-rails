@@ -147,6 +147,9 @@ RSpec.describe Order, :type => :model do
     fai_order2 = Order.place( user: @fai, item: @lays, stores: [ @seven, @family ] )
     fai_order2.cancel!
     expect( fai_order2.status ).to eq :canceled
+
+    fai_order3 = Order.place( user: @fai, item: @pepsi, stores: [ @seven, @family ], expire_at: Time.zone.now )
+    expect( fai_order3.status ).to eq :expired
   end
 
   it 'can not be bought if canceled' do
@@ -159,6 +162,11 @@ RSpec.describe Order, :type => :model do
     fai_order = Order.place( user: @fai, item: @coke, stores: [ @seven, @family ] )
     fai_order.fullfill!( @ping )
     expect { fai_order.cancel! }.to raise_error "This order has been bought by someone else."
+  end
+
+  it 'can not be bought if expired' do
+    fai_order = Order.place( user: @fai, item: @coke, stores: [ @seven, @family ], expire_at: Time.zone.now )
+    expect { fai_order.fullfill!( @ping) }.to raise_error "This order has been expired."
   end
 
 end
