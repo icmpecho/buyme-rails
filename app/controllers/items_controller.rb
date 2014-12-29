@@ -6,7 +6,7 @@ class ItemsController < ApplicationController
   # GET /items.json
   def index
     count = params[:count] || 5
-    @items = Item.all.limit( count )
+    @items = Item.top.limit( count )
     if params[:name]
       @items = @items.suggest(params[:name])
     end
