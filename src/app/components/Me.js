@@ -14,7 +14,7 @@ var Me = React.createClass({
         return {
             showAdd: false,
             showCurrent: true,
-            showHistory: true
+            showHistory: false
         };
     },
     render: function () {

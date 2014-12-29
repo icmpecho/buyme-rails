@@ -38695,7 +38695,7 @@ var Me = React.createClass({displayName: "Me",
         return {
             showAdd: false,
             showCurrent: true,
-            showHistory: true
+            showHistory: false
         };
     },
     render: function () {
