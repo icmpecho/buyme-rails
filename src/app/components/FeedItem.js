@@ -13,16 +13,9 @@ var FeedItem = React.createClass({
         order: React.PropTypes.object.isRequired,
         orderType: React.PropTypes.string.isRequired
     },
-    getInitialState: function () {
-        return {
-            orders: []
-        };
-    },
     render: function () {
         var order = this.props.order;
-        var buyer = !!this.props.order.buyer_name ? <div> Bought by {this.props.order.buyer_name}</div> : undefined;
-        var createdAt = this.props.orderType === 'all' || this.props.orderType === 'current' || this.props.orderType === 'store' ? <div>Created - {moment(order.created_at).fromNow()}</div> : undefined;
-        var completedAt = this.props.orderType === 'history' ? <div className={this._onOrderStatus()}>{this._onOrderStatus()} - {moment(this._setCancelTime()).fromNow()}</div> : undefined;
+        var order_event = this._CheckOrderEvent();
         return (
             <li className="order-item">
                 <Paper zDepth={3} rounded={false}>
@@ -30,7 +23,7 @@ var FeedItem = React.createClass({
                         <div className="mui-right">
                             
                         </div>
-                        <h2>{order.user_name} just ordered {order.item_name}<span className="mui-font-style-title"> - {moment(order.created_at).fromNow()}</span></h2>
+                        {order_event}
                         <div>
                             <ul className="order-store-list">
                                 {order.stores.map(function (store) {
@@ -63,6 +56,17 @@ var FeedItem = React.createClass({
         }
         else 
             return this.props.order.canceled_at;
+    },
+    _CheckOrderEvent: function (){
+        if (this.props.order.status === "active") {
+            return <h2> {this.props.order.user_name} just ordered {this.props.order.item_name}<span className="mui-font-style-title"> - {moment(this.props.order.created_at).fromNow()}</span></h2>;    
+        } 
+        else if (this.props.order.status === "completed") {
+            return <h2> {this.props.order.user_name} bought {this.props.order.item_name} for {this.props.order.buyer_name}<span className="mui-font-style-title"> - {moment(this.props.order.completed).fromNow()}</span></h2>
+        }
+        else if (this.props.order.status === "canceled") {
+            return <h2> {this.props.order.user_name} just canceled {this.props.order.item_name} <span className="mui-font-style-title"> - {moment(this.props.order.canceled_at).fromNow()}</span></h2>
+        }
     }
 });
 
