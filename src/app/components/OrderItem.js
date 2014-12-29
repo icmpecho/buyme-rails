@@ -1,7 +1,6 @@
 'use strict';
 
 var React = require('react');
-var Router = require('react-router');
 var ImageLoader = require('react-imageloader');
 var mui = require('material-ui');
 var Paper = mui.Paper;
@@ -9,11 +8,9 @@ var FloatingActionButton = mui.FloatingActionButton;
 var moment = require('moment');
 
 var OrderActions = require('../actions/OrderActions');
+var MenuActions = require('../actions/MenuActions');
 
 var OrderItems = React.createClass({
-    mixins: [
-        Router.Navigation
-    ],
     propTypes: {
         order: React.PropTypes.object.isRequired,
         orderType: React.PropTypes.string.isRequired,
@@ -88,8 +85,11 @@ var OrderItems = React.createClass({
         OrderActions.removeStoreOrder(id);
     },
     _onStoreClick: function (store) {
-        this.transitionTo('shop');
-        this.transitionTo('shopOrder', {storeId: store.id});
+        MenuActions.changeState({
+            name: 'shopOrder',
+            params: {storeId: store.id},
+            title: store.name
+        });
     },
     _onOrderStatus: function () {
         if (this.props.orderType === 'history') {

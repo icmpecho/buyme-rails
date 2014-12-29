@@ -6,6 +6,8 @@ var mui = require('material-ui');
 var Icon = mui.Icon;
 var LeftNav = mui.LeftNav;
 
+var MenuStore = require('../../app/stores/MenuStore');
+
 var Menu = React.createClass({
     mixins: [
         Router.Navigation,
@@ -19,6 +21,12 @@ var Menu = React.createClass({
         return {
             selectedIndex: null
         };
+    },
+    componentDidMount: function () {
+        MenuStore.addChangeListener(this._onChange);
+    },
+    componentWillUnmount: function () {
+        MenuStore.removeChangeListener(this._onChange);
     },
     render: function () {
         var header = <div className={"logo"} onClick={this._onHeaderClick}>Buy Me</div>;
@@ -46,6 +54,11 @@ var Menu = React.createClass({
         this.props.changeTitle();
         this.transitionTo('home');
         this.refs.leftNav.close();
+    },
+    _onChange: function () {
+        var state = MenuStore.getState();
+        this.props.changeTitle(state.title);
+        this.transitionTo(state.name, state.params);
     }
 });
 

@@ -7,10 +7,10 @@ var OrderList = require('./OrderList');
 
 var StoreStore = require('../stores/StoreStore');
 var StoreActions = require('../actions/StoreActions');
+var MenuActions = require('../actions/MenuActions');
 
 var ShopOrder = React.createClass({
     mixins: [
-        Router.Navigation,
         Router.State
     ],
     getInitialState: function () {
@@ -46,7 +46,10 @@ var ShopOrder = React.createClass({
         }
     },
     closeOrderList: function () {
-        this.transitionTo('shop');
+        MenuActions.changeState({
+            name: 'shop',
+            title: 'Shop'
+        });
     }
 });
 

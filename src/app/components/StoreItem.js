@@ -1,18 +1,13 @@
 'use strict';
 
 var React = require('react');
-var Router = require('react-router');
 var mui = require('material-ui');
 var Paper = mui.Paper;
 var FloatingActionButton = mui.FloatingActionButton;
 
-var Menu = require('../../common/components/Menu');
+var MenuActions = require('../actions/MenuActions');
 
 var StoreItems = React.createClass({
-    mixins: [
-        Router.Navigation,
-        Router.State
-    ],
     propTypes: {
         store: React.PropTypes.object.isRequired
     },
@@ -25,15 +20,20 @@ var StoreItems = React.createClass({
                         <div className="mui-right">
                             <FloatingActionButton icon="action-shopping-cart" secondary={true}/>
                         </div>
-                        <h2>{store.name} <span className="mui-font-style-title">({store.pending} orders)</span></h2>
+                        <h2>{store.name}
+                            <span className="mui-font-style-title">({store.pending} orders)</span>
+                        </h2>
                     </div>
                 </Paper>
             </li>
         );
     },
     _onButtonClick: function () {
-        this.transitionTo('shop');
-        this.transitionTo('shopOrder', {storeId: this.props.store.id});
+        MenuActions.changeState({
+            name: 'shopOrder',
+            params: {storeId: this.props.store.id},
+            title: this.props.store.name
+        });
     }
 });
 
