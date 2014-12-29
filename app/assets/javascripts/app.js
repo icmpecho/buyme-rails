@@ -38397,8 +38397,8 @@ var OrderActions = {
             }
         });
     },
-    addMyOrders: function (itemName, quantity, storeIds) {
-        OrderApi.addMyOrders(itemName, quantity, storeIds).end(function (error, res) {
+    addMyOrders: function (orders) {
+        OrderApi.addMyOrders(orders).end(function (error, res) {
             if (!!error) {
                 return console.log(error);
             }
@@ -38980,7 +38980,17 @@ var OrderAdd = React.createClass({displayName: "OrderAdd",
         }
         var quantity = this.refs.quantity.getValue();
         if (isNaN(quantity)) {
-            ToastActions.showToast('error', 'Please enter the item quantity.');
+            ToastActions.showToast('error', 'Please enter the quantity.');
+            return;
+        }
+        var inDays = this.refs.inDays.getValue();
+        if (isNaN(inDays)) {
+            ToastActions.showToast('error', 'Please enter the in days.');
+            return;
+        }
+        var inHours = this.refs.inHours.getValue();
+        if (isNaN(inHours)) {
+            ToastActions.showToast('error', 'Please enter the item in hours.');
             return;
         }
         var storeIds = [];
@@ -38993,7 +39003,13 @@ var OrderAdd = React.createClass({displayName: "OrderAdd",
             ToastActions.showToast('error', 'Please select the store(s).');
             return;
         }
-        OrderActions.addMyOrders(itemName, quantity, storeIds);
+        OrderActions.addMyOrders({
+            itemName: itemName,
+            quantity: quantity,
+            storeIds: storeIds,
+            inDays: inDays,
+            inHours: inHours
+        });
     },
     _onStoreStoreChange: function () {
         this.setState({
@@ -39874,12 +39890,20 @@ var OrderApi = assign({}, ApiUtils, {
             pending: pending
         });
     },
-    addMyOrders: function (itemName, count, storeIds) {
+    addMyOrders: function (orders) {
+        var expireAt = new Date;
+        console.log(expireAt.toString());
+        expireAt.setDate(expireAt.getDate() + parseInt(orders.inDays));
+        console.log(expireAt.toString());
+        expireAt.setHours(expireAt.getHours() + parseInt(orders.inHours));
+        console.log(expireAt.toString());
         var data = {
-            item_name: itemName,
-            count: count,
-            store_ids: storeIds
+            item_name: orders.itemName,
+            count: orders.count,
+            store_ids: orders.storeIds,
+            expire_at: expireAt.toString()
         };
+        console.log(data);
         return this.post('/orders').send(data);
     },
     cancelMyOrder: function (id) {
@@ -40153,4 +40177,4 @@ var UserApi = assign({}, ApiUtils, {
 });
 
 module.exports = UserApi;
-},{"./ApiUtils":"/Users/aon/Projects/buyme-rails/src/common/utils/ApiUtils.js","object-assign":"/Users/aon/Projects/buyme-rails/node_modules/object-assign/index.js","q":"/Users/aon/Projects/buyme-rails/node_modules/q/q.js","underscore":"/Users/aon/Projects/buyme-rails/node_modules/underscore/underscore.js"}]},{},["/Users/aon/Projects/buyme-rails/src/app/app.js","/Users/aon/Projects/buyme-rails/src/app/actions/ItemActions.js","/Users/aon/Projects/buyme-rails/src/app/actions/OrderActions.js","/Users/aon/Projects/buyme-rails/src/app/actions/StoreActions.js","/Users/aon/Projects/buyme-rails/src/app/actions/ToastActions.js","/Users/aon/Projects/buyme-rails/src/app/components/App.js","/Users/aon/Projects/buyme-rails/src/app/components/FeedItem.js","/Users/aon/Projects/buyme-rails/src/app/components/FeedList.js","/Users/aon/Projects/buyme-rails/src/app/components/Home.js","/Users/aon/Projects/buyme-rails/src/app/components/Me.js","/Users/aon/Projects/buyme-rails/src/app/components/OrderAdd.js","/Users/aon/Projects/buyme-rails/src/app/components/OrderItem.js","/Users/aon/Projects/buyme-rails/src/app/components/OrderList.js","/Users/aon/Projects/buyme-rails/src/app/components/Shop.js","/Users/aon/Projects/buyme-rails/src/app/components/ShopOrder.js","/Users/aon/Projects/buyme-rails/src/app/components/StoreItem.js","/Users/aon/Projects/buyme-rails/src/app/components/StoreList.js","/Users/aon/Projects/buyme-rails/src/app/constants/ActionTypes.js","/Users/aon/Projects/buyme-rails/src/app/dispatcher/AppDispatcher.js","/Users/aon/Projects/buyme-rails/src/app/stores/ItemStore.js","/Users/aon/Projects/buyme-rails/src/app/stores/MyOrderStore.js","/Users/aon/Projects/buyme-rails/src/app/stores/OrderStore.js","/Users/aon/Projects/buyme-rails/src/app/stores/StoreOrderStore.js","/Users/aon/Projects/buyme-rails/src/app/stores/StoreStore.js","/Users/aon/Projects/buyme-rails/src/app/stores/ToastStore.js","/Users/aon/Projects/buyme-rails/src/app/utils/ItemApi.js","/Users/aon/Projects/buyme-rails/src/app/utils/OrderApi.js","/Users/aon/Projects/buyme-rails/src/app/utils/StoreApi.js"]);
+},{"./ApiUtils":"/Users/aon/Projects/buyme-rails/src/common/utils/ApiUtils.js","object-assign":"/Users/aon/Projects/buyme-rails/node_modules/object-assign/index.js","q":"/Users/aon/Projects/buyme-rails/node_modules/q/q.js","underscore":"/Users/aon/Projects/buyme-rails/node_modules/underscore/underscore.js"}]},{},["/Users/aon/Projects/buyme-rails/src/app/app.js","/Users/aon/Projects/buyme-rails/src/app/actions/OrderActions.js","/Users/aon/Projects/buyme-rails/src/app/actions/StoreActions.js","/Users/aon/Projects/buyme-rails/src/app/actions/ToastActions.js","/Users/aon/Projects/buyme-rails/src/app/components/App.js","/Users/aon/Projects/buyme-rails/src/app/components/FeedItem.js","/Users/aon/Projects/buyme-rails/src/app/components/FeedList.js","/Users/aon/Projects/buyme-rails/src/app/components/Home.js","/Users/aon/Projects/buyme-rails/src/app/components/Me.js","/Users/aon/Projects/buyme-rails/src/app/components/OrderAdd.js","/Users/aon/Projects/buyme-rails/src/app/components/OrderItem.js","/Users/aon/Projects/buyme-rails/src/app/components/OrderList.js","/Users/aon/Projects/buyme-rails/src/app/components/Shop.js","/Users/aon/Projects/buyme-rails/src/app/components/ShopOrder.js","/Users/aon/Projects/buyme-rails/src/app/components/StoreItem.js","/Users/aon/Projects/buyme-rails/src/app/components/StoreList.js","/Users/aon/Projects/buyme-rails/src/app/constants/ActionTypes.js","/Users/aon/Projects/buyme-rails/src/app/dispatcher/AppDispatcher.js","/Users/aon/Projects/buyme-rails/src/app/stores/ItemStore.js","/Users/aon/Projects/buyme-rails/src/app/stores/MyOrderStore.js","/Users/aon/Projects/buyme-rails/src/app/stores/OrderStore.js","/Users/aon/Projects/buyme-rails/src/app/stores/StoreOrderStore.js","/Users/aon/Projects/buyme-rails/src/app/stores/StoreStore.js","/Users/aon/Projects/buyme-rails/src/app/stores/ToastStore.js","/Users/aon/Projects/buyme-rails/src/app/utils/ItemApi.js","/Users/aon/Projects/buyme-rails/src/app/utils/OrderApi.js","/Users/aon/Projects/buyme-rails/src/app/utils/StoreApi.js"]);

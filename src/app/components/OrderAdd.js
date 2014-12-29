@@ -89,7 +89,17 @@ var OrderAdd = React.createClass({
         }
         var quantity = this.refs.quantity.getValue();
         if (isNaN(quantity)) {
-            ToastActions.showToast('error', 'Please enter the item quantity.');
+            ToastActions.showToast('error', 'Please enter the quantity.');
+            return;
+        }
+        var inDays = this.refs.inDays.getValue();
+        if (isNaN(inDays)) {
+            ToastActions.showToast('error', 'Please enter the in days.');
+            return;
+        }
+        var inHours = this.refs.inHours.getValue();
+        if (isNaN(inHours)) {
+            ToastActions.showToast('error', 'Please enter the item in hours.');
             return;
         }
         var storeIds = [];
@@ -102,7 +112,13 @@ var OrderAdd = React.createClass({
             ToastActions.showToast('error', 'Please select the store(s).');
             return;
         }
-        OrderActions.addMyOrders(itemName, quantity, storeIds);
+        OrderActions.addMyOrders({
+            itemName: itemName,
+            quantity: quantity,
+            storeIds: storeIds,
+            inDays: inDays,
+            inHours: inHours
+        });
     },
     _onStoreStoreChange: function () {
         this.setState({
