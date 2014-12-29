@@ -114,7 +114,7 @@ var OrderAdd = React.createClass({
         }
         OrderActions.addMyOrders({
             itemName: itemName,
-            quantity: quantity,
+            count: quantity,
             storeIds: storeIds,
             inDays: inDays,
             inHours: inHours

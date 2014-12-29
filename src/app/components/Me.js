@@ -24,7 +24,7 @@ var Me = React.createClass({
         ];
         var orderAdd = !!this.state.showAdd ? <OrderAdd toggleOrderAdd={this.toggleOrderAdd}/> : undefined;
         var currentOrderList = !!this.state.showCurrent ? <OrderList ref="orders" title="Current" orderType="current"/> : undefined;
-        var historyOrderList = !this.state.showHistory ? <OrderList ref="oldOrders" title="History" orderType="history"/> : undefined;
+        var historyOrderList = !this.state.showCurrent ? <OrderList ref="oldOrders" title="History" orderType="history"/> : undefined;
         var addOrderLabel = !this.state.showAdd ? 'Add Order' : 'Cancel';
         return (
             <div className="me">

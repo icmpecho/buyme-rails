@@ -38862,7 +38862,7 @@ var Me = React.createClass({displayName: "Me",
         ];
         var orderAdd = !!this.state.showAdd ? React.createElement(OrderAdd, {toggleOrderAdd: this.toggleOrderAdd}) : undefined;
         var currentOrderList = !!this.state.showCurrent ? React.createElement(OrderList, {ref: "orders", title: "Current", orderType: "current"}) : undefined;
-        var historyOrderList = !this.state.showHistory ? React.createElement(OrderList, {ref: "oldOrders", title: "History", orderType: "history"}) : undefined;
+        var historyOrderList = !this.state.showCurrent ? React.createElement(OrderList, {ref: "oldOrders", title: "History", orderType: "history"}) : undefined;
         var addOrderLabel = !this.state.showAdd ? 'Add Order' : 'Cancel';
         return (
             React.createElement("div", {className: "me"}, 
@@ -39026,7 +39026,7 @@ var OrderAdd = React.createClass({displayName: "OrderAdd",
         }
         OrderActions.addMyOrders({
             itemName: itemName,
-            quantity: quantity,
+            count: quantity,
             storeIds: storeIds,
             inDays: inDays,
             inHours: inHours
@@ -39960,18 +39960,14 @@ var OrderApi = assign({}, ApiUtils, {
     },
     addMyOrders: function (orders) {
         var expireAt = new Date;
-        console.log(expireAt.toString());
         expireAt.setDate(expireAt.getDate() + parseInt(orders.inDays));
-        console.log(expireAt.toString());
         expireAt.setHours(expireAt.getHours() + parseInt(orders.inHours));
-        console.log(expireAt.toString());
         var data = {
             item_name: orders.itemName,
             count: orders.count,
             store_ids: orders.storeIds,
             expire_at: expireAt.toString()
         };
-        console.log(data);
         return this.post('/orders').send(data);
     },
     cancelMyOrder: function (id) {

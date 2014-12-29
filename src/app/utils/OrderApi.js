@@ -15,18 +15,14 @@ var OrderApi = assign({}, ApiUtils, {
     },
     addMyOrders: function (orders) {
         var expireAt = new Date;
-        console.log(expireAt.toString());
         expireAt.setDate(expireAt.getDate() + parseInt(orders.inDays));
-        console.log(expireAt.toString());
         expireAt.setHours(expireAt.getHours() + parseInt(orders.inHours));
-        console.log(expireAt.toString());
         var data = {
             item_name: orders.itemName,
             count: orders.count,
             store_ids: orders.storeIds,
             expire_at: expireAt.toString()
         };
-        console.log(data);
         return this.post('/orders').send(data);
     },
     cancelMyOrder: function (id) {

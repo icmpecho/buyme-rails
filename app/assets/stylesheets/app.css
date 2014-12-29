@@ -4,8 +4,10 @@
 
 .order-item {
     list-style: none;
-    padding: 10px 0;
+    padding: 10px 10px;
     margin: 0 auto;
+    width: 50%;
+    float: left;
 }
 
 .order-item-details {
@@ -59,6 +61,12 @@
 }
 
 @media (max-width: 767px) {
+    .order-item {
+        padding: 10px 0;
+        width: 100%;
+        float: none;
+    }
+
     .order-add input {
         max-width: 100%;
     }
