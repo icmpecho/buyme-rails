@@ -37,11 +37,11 @@ var Me = React.createClass({
                     </div>
                 </div>
                 <div className="mui-togglebar">
-                    <div className="mui-togglebar-wrap mui-font-style-caption">Show Current</div>
+                    <div className="mui-togglebar-wrap mui-font-style-caption">Show History</div>
                     <div className="mui-togglebar-wrap">
                         <Toggle toggled={this.state.showCurrent} onToggle={this._onCurrentToggleChange}/>
                     </div>
-                    <div className="mui-togglebar-wrap mui-font-style-caption">Show History</div>
+                    <div className="mui-togglebar-wrap mui-font-style-caption">Show Current</div>
                 </div>
                 {orderAdd}
                 {currentOrderList}

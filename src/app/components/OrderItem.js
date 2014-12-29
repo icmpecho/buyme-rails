@@ -28,6 +28,7 @@ var OrderItems = React.createClass({
         var createdAt = this.props.orderType === 'all' || this.props.orderType === 'current' || this.props.orderType === 'store' ? <div>Created {moment(order.created_at).fromNow()}</div> : undefined;
         var createdBy = this.props.orderType === 'all' || this.props.orderType === 'store' ? <div>Ordered By {order.user_name}</div> : undefined;
         var completedAt = this.props.orderType === 'history' ? <div className={this._onOrderStatus()}>{this._onOrderStatus()} {moment(this._setCancelTime()).fromNow()}</div> : undefined;
+        var expireAt = this.props.orderType === 'current' || this.props.orderType === 'store' ? <div>Expires {moment(order.expire_at).fromNow()}</div> : undefined;
         var deleteButton = !!this.props.deletable ? <FloatingActionButton icon={this._setLogoDeleteButton(this)} secondary={true} onClick={this._onDeleteButtonClick.bind(this, order.id)}/> : undefined;
         var buyButton = !!this.props.buyable ? <FloatingActionButton icon="action-done" secondary={true} onClick={this._onBuyButtonClick.bind(this, order.id)}/> : undefined;
         var self = this;
@@ -42,6 +43,7 @@ var OrderItems = React.createClass({
                                 {createdAt}
                                 {completedAt}
                                 {createdBy}
+                                {expireAt}
                                 {buyer}
                             </div>
                         </div>
