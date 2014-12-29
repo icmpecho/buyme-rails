@@ -121,6 +121,7 @@ RSpec.describe Order, :type => :model do
     expect( fai_order.canceled_at ).not_to be_nil
   end
 
+
   it 'can set expire time' do
     fai_order = Order.place( user: @fai, item: @coke, stores: [ @seven, @family ], expire_at: 10.days.from_now )
     expect( fai_order ).not_to be_nil
@@ -136,4 +137,17 @@ RSpec.describe Order, :type => :model do
       expect( Order.expired.count ).to eq 1
     end
   end
+
+  it 'can show current status' do
+    fai_order = Order.place( user: @fai, item: @coke, stores: [ @seven, @family ] )
+    expect( fai_order.status ).to eq :active
+    fai_order.fullfill! @ping
+    expect( fai_order.status ).to eq :completed
+
+    fai_order2 = Order.place( user: @fai, item: @lays, stores: [ @seven, @family ] )
+    fai_order2.cancel!
+    expect( fai_order2.status ).to eq :canceled
+  end
+
+
 end

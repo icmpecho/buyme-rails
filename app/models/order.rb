@@ -62,4 +62,14 @@ class Order < ActiveRecord::Base
     self.save
   end
 
+  def status
+    if completed
+      :completed
+    elsif canceled_at
+      :canceled
+    else
+      :active
+    end
+  end
+
 end
