@@ -40,16 +40,16 @@ var OrderAdd = React.createClass({
         ItemStore.removeChangeListener(this._onItemStoreChange);
     },
     render: function () {
-        var itemList = !!this.state.items && this.state.items.length > 0 ? <DropDownMenu ref="itemList" menuItems={this.state.items} onChange={this._onItemListChange}/> : undefined;
+        var itemList = !!this.state.items && this.state.items.length > 0 ? <DropDownMenu ref="itemList" menuItems={this.state.items} onChange={this._onItemListChange} className="item-list clearfix"/> : undefined;
         return (
             <Paper zDepth={3} rounded={false} className="order-add">
                 <div>
                     <div className="half">
                         <Input ref="itemName" type="text" name="itemName" placeholder="Item Name" description="Enter item name." onChange={this._onItemNameChange}/>
                         <Input ref="quantity" type="text" name="quantity" placeholder="Quantity" description="Enter quantity." defaultValue="1"/>
+                        {itemList}
                     </div>
                     <div className="half">
-                        {itemList}
                         <h5>Select Stores</h5>
                         {this.state.stores.map(function (store) {
                             return <div className="form-checkbox" key={'store-' + store.id}>

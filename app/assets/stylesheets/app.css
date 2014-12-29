@@ -33,3 +33,11 @@
 .store-item-details {
     padding: 20px;
 }
+
+.item-list.mui-drop-down-menu .mui-menu-control {
+    display: none;
+}
+
+.item-list.mui-drop-down-menu .mui-menu {
+    margin-top: -125px;
+}
