@@ -39167,7 +39167,7 @@ var StoreItems = React.createClass({displayName: "StoreItems",
                         React.createElement("div", {className: "mui-right"}, 
                             React.createElement(FloatingActionButton, {icon: "action-shopping-cart", secondary: true})
                         ), 
-                        React.createElement("h2", null, "Name - ", store.name)
+                        React.createElement("h2", null, store.name)
                     )
                 )
             )

@@ -19,7 +19,7 @@ var StoreItems = React.createClass({
                         <div className="mui-right">
                             <FloatingActionButton icon="action-shopping-cart" secondary={true}/>
                         </div>
-                        <h2>Name - {store.name}</h2>
+                        <h2>{store.name}</h2>
                     </div>
                 </Paper>
             </li>
