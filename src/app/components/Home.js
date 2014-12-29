@@ -2,13 +2,13 @@
 
 var React = require('react');
 
-var OrderList = require('./OrderList');
+var FeedList = require('./FeedList');
 
 var Home = React.createClass({
     render: function () {
         return (
             <div className="home">
-                <OrderList ref="orders" title="All Orders" orderType="all"/>
+                <FeedList ref="orders" title="All Orders" orderType="all"/>
             </div>
         );
     }
