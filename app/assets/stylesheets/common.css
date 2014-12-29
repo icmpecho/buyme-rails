@@ -66,7 +66,6 @@ h2 {
     float: left;
 }
 
-
 .row {
     width: 100%;
 }
@@ -150,5 +149,6 @@ h2 {
 @media (max-width: 767px) {
     .half {
         float: none;
+        width: 100%;
     }
 }

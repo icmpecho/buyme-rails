@@ -26,7 +26,7 @@
 
 .store-item {
     list-style: none;
-    padding: 10px 0;
+    padding: 10px;
     margin: 0 auto;
 }
 
@@ -40,4 +40,18 @@
 
 .item-list.mui-drop-down-menu .mui-menu {
     margin-top: -125px;
+}
+
+@media (max-width: 767px) {
+    .order-add input {
+        max-width: 100%;
+    }
+
+    .order-add .mui-input-bar {
+        max-width: 100%;
+    }
+
+    .order-add .half:nth-child(1) {
+        max-height: 135px;
+    }
 }

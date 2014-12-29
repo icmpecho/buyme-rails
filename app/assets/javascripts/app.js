@@ -38796,8 +38796,8 @@ var OrderAdd = React.createClass({displayName: "OrderAdd",
         StoreStore.addChangeListener(this._onStoreStoreChange);
         MyOrderStore.addChangeListener(this._onMyOrderStoreChange);
         ItemStore.addChangeListener(this._onItemStoreChange);
+        this._onItemNameClick();
     },
-
     componentWillUnmount: function () {
         StoreStore.removeChangeListener(this._onStoreStoreChange);
         MyOrderStore.removeChangeListener(this._onMyOrderStoreChange);

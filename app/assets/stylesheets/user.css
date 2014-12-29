@@ -1,22 +1,81 @@
-.user {
-    padding-top: 40px;
-    padding-bottom: 40px;
+@media (min-width: 768px) {
+    .user {
+        padding-top: 40px;
+        padding-bottom: 40px;
+    }
+
+    .login {
+        width: 400px;
+        margin: 50px auto;
+    }
+
+    .login > div {
+        padding: 40px;
+    }
+
+    .signup {
+        width: 400px;
+        margin: 50px auto;
+    }
+
+    .signup > div {
+        padding: 40px;
+    }
+
 }
 
-.login {
-    width: 400px;
-    margin: 50px auto;
-}
+@media (max-width: 767px) {
+    .login > div {
+        padding: 20px;
+    }
 
-.login > div {
-    padding: 40px;
-}
+    .login h1 {
+        margin-bottom: 0;
+    }
 
-.signup {
-    width: 400px;
-    margin: 50px auto;
-}
+    .login .mui-input {
+        margin-top: 18px;
+        margin-bottom: 36px;
+    }
 
-.signup > div {
-    padding: 40px;
+    .login .form-checkbox.mui-input {
+        margin-bottom: 14px;
+    }
+
+    .login input {
+        max-width: 100%;
+    }
+
+    .login .mui-input-bar {
+        max-width: 100%;
+    }
+
+    .login .mui-raised-button {
+        width: 100%;
+    }
+
+    .signup > div {
+        padding: 20px;
+    }
+
+    .signup h1 {
+        margin-bottom: 0;
+    }
+
+    .signup .mui-input {
+        margin-top: 18px;
+        margin-bottom: 36px;
+    }
+
+    .signup input {
+        max-width: 100%;
+    }
+
+    .signup .mui-raised-button {
+        width: 100%;
+    }
+
+    .login .mui-input-bar {
+        max-width: 100%;
+    }
 }
