@@ -4,7 +4,7 @@ class OrdersController < ApplicationController
   respond_to :html
 
   def index
-    @orders = Order.all
+    @orders = Order.all.order("updated_at")
     respond_with(@orders)
   end
 
