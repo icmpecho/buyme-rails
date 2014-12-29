@@ -2,7 +2,7 @@ json.extract! order, :id, :status, :item_id, :user_id, :buyer_id, :created_at, :
 json.item_name order.item.name
 json.user_name order.user.name
 json.user_email order.user.email
-if order.fullfilled?
+if order.buyer
   json.buyer_name order.buyer.name
   json.buyer_email order.buyer.email
 end
