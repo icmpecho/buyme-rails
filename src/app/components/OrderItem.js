@@ -25,9 +25,9 @@ var OrderItems = React.createClass({
     render: function () {
         var order = this.props.order;
         var buyer = !!this.props.order.buyer_name ? <div> Bought by {this.props.order.buyer_name}</div> : undefined;
-        var createdAt = this.props.orderType === 'all' || this.props.orderType === 'current' || this.props.orderType === 'store' ? <div>Created At - {moment(order.created_at).fromNow()}</div> : undefined;
-        var createdBy = this.props.orderType === 'all' || this.props.orderType === 'store' ? <div>Ordered By - {order.user_name}</div> : undefined;
-        var completedAt = this.props.orderType === 'history' ? <div className={this._onOrderStatus()}>{this._onOrderStatus()} - {moment(this._setCancelTime()).fromNow()}</div> : undefined;
+        var createdAt = this.props.orderType === 'all' || this.props.orderType === 'current' || this.props.orderType === 'store' ? <div>Created {moment(order.created_at).fromNow()}</div> : undefined;
+        var createdBy = this.props.orderType === 'all' || this.props.orderType === 'store' ? <div>Ordered By {order.user_name}</div> : undefined;
+        var completedAt = this.props.orderType === 'history' ? <div className={this._onOrderStatus()}>{this._onOrderStatus()} {moment(this._setCancelTime()).fromNow()}</div> : undefined;
         var deleteButton = !!this.props.deletable ? <FloatingActionButton icon={this._setLogoDeleteButton(this)} secondary={true} onClick={this._onDeleteButtonClick.bind(this, order.id)}/> : undefined;
         var buyButton = !!this.props.buyable ? <FloatingActionButton icon="action-done" secondary={true} onClick={this._onBuyButtonClick.bind(this, order.id)}/> : undefined;
         var self = this;
@@ -97,7 +97,7 @@ var OrderItems = React.createClass({
                 return "Completed";
             }
             else
-                return "Cancel";
+                return "Cancelled";
         }
     },
     _setCancelTime: function () {
