@@ -22,6 +22,7 @@ class OrdersController < ApplicationController
     raise ActionController::RoutingError.new('Not Found') if params[ :item_name ].empty?
     item = Item.find_or_create_by( name: params[ :item_name ].downcase )
     count = params[ :count ].to_i || 1
+    expire_at = params[ :expire_at ]
     store_ids = params[ :store_ids ]
     stores = []
     store_ids.each do |store_id|
@@ -29,7 +30,7 @@ class OrdersController < ApplicationController
     end
     @orders = []
     count.times do
-      @orders << Order.place( user: current_user, item: item, stores: stores )
+      @orders << Order.place( user: current_user, item: item, stores: stores, expire_at: expire_at )
     end
     respond_with(@orders, template: 'orders/index')
   end
