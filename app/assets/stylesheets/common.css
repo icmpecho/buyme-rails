@@ -7,13 +7,16 @@ html, body {
     height: auto;
     font-size: 16px;
 }
+
 html {
     position: relative;
     min-height: 100%;
 }
+
 body {
     margin: 0 0 60px;
 }
+
 ul li, ol li {
     list-style: none;
 }
@@ -69,7 +72,6 @@ h2 {
     width: 50%;
     float: left;
 }
-
 
 .row {
     width: 100%;
@@ -144,9 +146,11 @@ h2 {
     margin-right: 8px;
     vertical-align: bottom;
 }
+
 .Cancel {
     color: #d50000;
 }
+
 .Completed {
     color: #00c853;
 }
@@ -160,5 +164,6 @@ h2 {
 @media (max-width: 767px) {
     .half {
         float: none;
+        width: 100%;
     }
 }

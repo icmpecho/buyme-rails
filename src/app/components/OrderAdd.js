@@ -43,8 +43,14 @@ var OrderAdd = React.createClass({
             <Paper zDepth={3} rounded={false} className="order-add">
                 <div>
                     <div className="half">
-                        <Input ref="itemName" type="text" name="itemName" placeholder="Item Name" description="Enter item name." onChange={this._onItemNameChange} onClick={this._onItemNameClick}/>
-                        <Input ref="quantity" type="text" name="quantity" placeholder="Quantity" description="Enter quantity." defaultValue="1"/>
+                        <Input ref="itemName" type="text" name="itemName" placeholder="Item Name" description="Enter the item name." onChange={this._onItemNameChange} onClick={this._onItemNameClick}/>
+                        <Input ref="quantity" type="text" name="quantity" placeholder="Quantity" description="Enter the quantity." defaultValue="1"/>
+                        <div className="input-half">
+                            <Input ref="expireDays" type="text" name="expireDays" placeholder="Expire day(s)" description="Enter the expire day(s)." defaultValue="0"/>
+                        </div>
+                        <div className="input-half">
+                            <Input ref="expireDays" type="text" name="expireHours" placeholder="Expire hour(s)" description="Enter the expire hour(s)." defaultValue="1"/>
+                        </div>
                         {itemList}
                     </div>
                     <div className="half">

@@ -20,6 +20,18 @@
     margin: 20px 10px;
 }
 
+.order-add .input-half {
+    width: 170px;
+    float: left;
+}
+
+.order-add .input-half .mui-input,
+.order-add .input-half input,
+.order-add .input-half .mui-input-highlight,
+.order-add .input-half .mui-input-bar {
+    width: 150px;
+}
+
 .order-add > div {
     padding: 20px;
 }
@@ -53,5 +65,16 @@
 
     .order-add .half:nth-child(1) {
         max-height: 135px;
+    }
+
+    .order-add .input-half {
+        width: 100%;
+    }
+
+    .order-add .input-half .mui-input,
+    .order-add .input-half input,
+    .order-add .input-half .mui-input-highlight,
+    .order-add .input-half .mui-input-bar {
+        width: 100%;
     }
 }
