@@ -62,11 +62,13 @@ var App = React.createClass({
     },
     _onChange: function () {
         if (ToastStore.getToastCount() > 0) {
-            this.setState({
-                showToast: true,
-                toastType: ToastStore.getToastType(),
-                toastMessage: ToastStore.getToastMessage()
-            });
+            setTimeout(function () {
+                this.setState({
+                    showToast: true,
+                    toastType: ToastStore.getToastType(),
+                    toastMessage: ToastStore.getToastMessage()
+                });
+            }.bind(this), 100);
             setTimeout(function () {
                 ToastActions.hideToast();
             }.bind(this), 2000);

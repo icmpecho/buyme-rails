@@ -14,6 +14,7 @@ var MyOrderStore = require('../stores/MyOrderStore');
 var OrderActions = require('../actions/OrderActions');
 var ItemStore = require('../stores/ItemStore');
 var ItemActions = require('../actions/ItemActions');
+var ToastActions = require('../actions/ToastActions');
 var _ = require('underscore');
 
 var OrderAdd = React.createClass({
@@ -57,7 +58,7 @@ var OrderAdd = React.createClass({
                     </div>
                     <br/>
                     <div className="clearfix"></div>
-                        <RaisedButton label="Confirm" secondary={true} onClick={this._addOrder}/>
+                    <RaisedButton label="Confirm" secondary={true} onClick={this._addOrder}/>
                 </div>
             </Paper>
         );
@@ -71,12 +72,12 @@ var OrderAdd = React.createClass({
     _addOrder: function () {
         var itemName = this.refs.itemName.getValue();
         if (!itemName) {
-            alert('Enter item name.');
+            ToastActions.showToast('error', 'Please enter the item name.');
             return;
         }
         var quantity = this.refs.quantity.getValue();
         if (isNaN(quantity)) {
-            alert('Enter quantity.');
+            ToastActions.showToast('error', 'Please enter the item quantity.');
             return;
         }
         var storeIds = [];
@@ -86,7 +87,7 @@ var OrderAdd = React.createClass({
             }
         }
         if (storeIds.length === 0) {
-            alert('Select stores.');
+            ToastActions.showToast('error', 'Please select the store(s).');
             return;
         }
         OrderActions.addMyOrders(itemName, quantity, storeIds);
