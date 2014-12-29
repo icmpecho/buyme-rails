@@ -169,4 +169,9 @@ RSpec.describe Order, :type => :model do
     expect { fai_order.fullfill!( @ping) }.to raise_error "This order has been expired."
   end
 
+  it 'can be place with datetime string' do
+    fai_order = Order.place( user: @fai, item: @coke, stores: [ @seven, @family ], expire_at: 'Mon Dec 29 2014 22:23:43 GMT+0700 (ICT)' )
+    expect( fai_order ).to be_valid
+    expect( fai_order ).to be_persisted
+   end
 end
