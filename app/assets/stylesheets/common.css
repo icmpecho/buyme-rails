@@ -3,12 +3,17 @@
 }
 
 html, body {
-    margin: 0;
-    padding: 0;
-    height: 100%;
+    width: auto;
+    height: auto;
     font-size: 16px;
 }
-
+html {
+    position: relative;
+    min-height: 100%;
+}
+body {
+    margin: 0 0 60px;
+}
 ul li, ol li {
     list-style: none;
 }
@@ -44,17 +49,16 @@ h2 {
     margin: 0 auto;
 }
 
-#app {
-    height: 100%;
-    position: relative;
-}
-
 .footer {
     text-align: center;
     padding: 20px 30px;
     background-color: #286090;
     color: #ffffff;
     width: 100%;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 60px;
 }
 
 .clearfix {
