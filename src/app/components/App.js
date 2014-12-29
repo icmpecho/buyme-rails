@@ -19,7 +19,7 @@ var App = React.createClass({
     getInitialState: function () {
         return {
             showToast: false,
-            toastType: 'toast-success',
+            toastType: 'toast toast-success',
             toastMessage: ''
         };
     },

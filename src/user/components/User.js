@@ -30,7 +30,7 @@ var User = React.createClass({
                     <div className="user">{page}</div>
                 </div>
                 <Footer />
-                <Toast open={this.state.showToast} message={this.state.toastMessage} action={toastIcon} className="toast-error"/>
+                <Toast open={this.state.showToast} message={this.state.toastMessage} action={toastIcon} className="toast toast-error"/>
             </div>
         );
     },

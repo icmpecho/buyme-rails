@@ -2,12 +2,19 @@
 
 var assign = require('object-assign');
 var Q = require('q');
+var _ = require('underscore');
 
 var ApiUtils = require('./ApiUtils');
 
 var UserApi = assign({}, ApiUtils, {
     login: function (email, password, remember) {
         var deferred = Q.defer();
+        if (_.isEmpty(email) || _.isEmpty(password)) {
+            setTimeout(function () {
+                deferred.reject('Email and Password are required.');
+            }, 100);
+            return deferred.promise;
+        }
         var data = {
             user: {
                 email: email,
@@ -33,6 +40,12 @@ var UserApi = assign({}, ApiUtils, {
     },
     signup: function (email, password, confirmation) {
         var deferred = Q.defer();
+        if (_.isEmpty(email) || _.isEmpty(password) || _.isEmpty(confirmation)) {
+            setTimeout(function () {
+                deferred.reject('Email, Password and Password confirmation are required.');
+            }, 100);
+            return deferred.promise;
+        }
         if (password !== confirmation) {
             setTimeout(function () {
                 deferred.reject('Password and confirmation password are not equal.');
