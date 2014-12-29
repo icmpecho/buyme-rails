@@ -15,7 +15,7 @@ var ItemActions = {
                 AppDispatcher.handleApiAction({
                     actionType: ActionTypes.GET_ITEMS_SUCCESS,
                     data: res.body
-                })
+                });
             }
         });
     }

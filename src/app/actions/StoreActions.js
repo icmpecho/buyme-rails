@@ -15,7 +15,7 @@ var StoreActions = {
                 AppDispatcher.handleApiAction({
                     actionType: ActionTypes.GET_STORES_SUCCESS,
                     data: res.body
-                })
+                });
             }
         });
     },
@@ -28,7 +28,7 @@ var StoreActions = {
                 AppDispatcher.handleApiAction({
                     actionType: ActionTypes.GET_STORE_ORDERS_SUCCESS,
                     data: res.body.orders
-                })
+                });
             }
         });
     }

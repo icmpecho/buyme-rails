@@ -4,6 +4,7 @@ var AppDispatcher = require('../dispatcher/AppDispatcher');
 var ActionTypes = require('../constants/ActionTypes');
 
 var OrderApi = require('../utils/OrderApi');
+var ToastActions = require('./ToastActions');
 
 var OrderActions = {
     getOrders: function () {
@@ -15,7 +16,7 @@ var OrderActions = {
                 AppDispatcher.handleApiAction({
                     actionType: ActionTypes.GET_ORDERS_SUCCESS,
                     data: res.body
-                })
+                });
             }
         });
     },
@@ -28,7 +29,7 @@ var OrderActions = {
                 AppDispatcher.handleApiAction({
                     actionType: ActionTypes.GET_MY_ORDERS_SUCCESS,
                     data: res.body
-                })
+                });
             }
         });
     },
@@ -41,7 +42,7 @@ var OrderActions = {
                 AppDispatcher.handleApiAction({
                     actionType: ActionTypes.GET_MY_OLD_ORDERS_SUCCESS,
                     data: res.body
-                })
+                });
             }
         });
     },
@@ -54,7 +55,11 @@ var OrderActions = {
                 AppDispatcher.handleApiAction({
                     actionType: ActionTypes.ADD_MY_ORDER_SUCCESS,
                     data: res.body
-                })
+                });
+                ToastActions.showToast('success', 'Your order was added successfully.');
+            }
+            else {
+                ToastActions.showToast('error', 'Failed to add your order.');
             }
         });
     },
@@ -62,7 +67,7 @@ var OrderActions = {
         AppDispatcher.handleApiAction({
             actionType: ActionTypes.READ_MY_ADDED_ORDER_SUCCESS,
             data: {}
-        })
+        });
     },
     cancelMyOrder: function (id) {
         OrderApi.cancelMyOrder(id).end(function (error, res) {
@@ -76,6 +81,10 @@ var OrderActions = {
                         id: id
                     }
                 });
+                ToastActions.showToast('success', 'Your order was cancelled successfully.');
+            }
+            else {
+                ToastActions.showToast('error', 'Failed to cancel your order.');
             }
         });
     },
@@ -91,6 +100,10 @@ var OrderActions = {
                         id: id
                     }
                 });
+                ToastActions.showToast('success', 'Your order was removed successfully.');
+            }
+            else {
+                ToastActions.showToast('error', 'Failed to remove your order.');
             }
         });
     },
@@ -106,6 +119,10 @@ var OrderActions = {
                         id: id
                     }
                 });
+                ToastActions.showToast('success', 'The order was brought successfully.');
+            }
+            else {
+                ToastActions.showToast('error', 'Failed to buy the order.');
             }
         });
     }

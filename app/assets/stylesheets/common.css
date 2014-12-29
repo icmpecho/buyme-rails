@@ -85,6 +85,10 @@ h2 {
     z-index: 10;
 }
 
+.toast-hide {
+    visibility: hidden;
+}
+
 .toast-success {
     background: #00e676;
 }

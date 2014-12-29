@@ -15,13 +15,24 @@ var Menu = require('./../../common/components/Menu');
 var Footer = require('./../../common/components/Footer');
 var Home = require('./Home');
 
+var ToastStore = require('../stores/ToastStore');
+var ToastActions = require('../actions/ToastActions');
+
+
 var App = React.createClass({
     getInitialState: function () {
         return {
             showToast: false,
-            toastType: 'toast toast-success',
+            toastType: '',
             toastMessage: ''
         };
+    },
+    componentDidMount: function () {
+        ToastStore.addChangeListener(this._onChange);
+    },
+
+    componentWillUnmount: function () {
+        ToastStore.removeChangeListener(this._onChange);
     },
     render: function () {
         var menuItems = [
@@ -48,6 +59,25 @@ var App = React.createClass({
         this.setState({
             title: title
         });
+    },
+    _onChange: function () {
+        if (ToastStore.getToastCount() > 0) {
+            this.setState({
+                showToast: true,
+                toastType: ToastStore.getToastType(),
+                toastMessage: ToastStore.getToastMessage()
+            });
+            setTimeout(function () {
+                ToastActions.hideToast();
+            }.bind(this), 2000);
+        }
+        else {
+            this.setState({
+                showToast: false,
+                toastType: '',
+                toastMessage: ''
+            });
+        }
     }
 });
 

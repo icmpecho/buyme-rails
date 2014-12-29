@@ -38340,7 +38340,7 @@ var ItemActions = {
                 AppDispatcher.handleApiAction({
                     actionType: ActionTypes.GET_ITEMS_SUCCESS,
                     data: res.body
-                })
+                });
             }
         });
     }
@@ -38355,6 +38355,7 @@ var AppDispatcher = require('../dispatcher/AppDispatcher');
 var ActionTypes = require('../constants/ActionTypes');
 
 var OrderApi = require('../utils/OrderApi');
+var ToastActions = require('./ToastActions');
 
 var OrderActions = {
     getOrders: function () {
@@ -38366,7 +38367,7 @@ var OrderActions = {
                 AppDispatcher.handleApiAction({
                     actionType: ActionTypes.GET_ORDERS_SUCCESS,
                     data: res.body
-                })
+                });
             }
         });
     },
@@ -38379,7 +38380,7 @@ var OrderActions = {
                 AppDispatcher.handleApiAction({
                     actionType: ActionTypes.GET_MY_ORDERS_SUCCESS,
                     data: res.body
-                })
+                });
             }
         });
     },
@@ -38392,7 +38393,7 @@ var OrderActions = {
                 AppDispatcher.handleApiAction({
                     actionType: ActionTypes.GET_MY_OLD_ORDERS_SUCCESS,
                     data: res.body
-                })
+                });
             }
         });
     },
@@ -38405,7 +38406,11 @@ var OrderActions = {
                 AppDispatcher.handleApiAction({
                     actionType: ActionTypes.ADD_MY_ORDER_SUCCESS,
                     data: res.body
-                })
+                });
+                ToastActions.showToast('success', 'Your order was added successfully.');
+            }
+            else {
+                ToastActions.showToast('error', 'Failed to add your order.');
             }
         });
     },
@@ -38413,7 +38418,7 @@ var OrderActions = {
         AppDispatcher.handleApiAction({
             actionType: ActionTypes.READ_MY_ADDED_ORDER_SUCCESS,
             data: {}
-        })
+        });
     },
     cancelMyOrder: function (id) {
         OrderApi.cancelMyOrder(id).end(function (error, res) {
@@ -38427,6 +38432,10 @@ var OrderActions = {
                         id: id
                     }
                 });
+                ToastActions.showToast('success', 'Your order was cancelled successfully.');
+            }
+            else {
+                ToastActions.showToast('error', 'Failed to cancel your order.');
             }
         });
     },
@@ -38442,6 +38451,10 @@ var OrderActions = {
                         id: id
                     }
                 });
+                ToastActions.showToast('success', 'Your order was removed successfully.');
+            }
+            else {
+                ToastActions.showToast('error', 'Failed to remove your order.');
             }
         });
     },
@@ -38457,6 +38470,10 @@ var OrderActions = {
                         id: id
                     }
                 });
+                ToastActions.showToast('success', 'The order was brought successfully.');
+            }
+            else {
+                ToastActions.showToast('error', 'Failed to buy the order.');
             }
         });
     }
@@ -38464,7 +38481,7 @@ var OrderActions = {
 
 module.exports = OrderActions;
 
-},{"../constants/ActionTypes":"/Users/aon/Projects/buyme-rails/src/app/constants/ActionTypes.js","../dispatcher/AppDispatcher":"/Users/aon/Projects/buyme-rails/src/app/dispatcher/AppDispatcher.js","../utils/OrderApi":"/Users/aon/Projects/buyme-rails/src/app/utils/OrderApi.js"}],"/Users/aon/Projects/buyme-rails/src/app/actions/StoreActions.js":[function(require,module,exports){
+},{"../constants/ActionTypes":"/Users/aon/Projects/buyme-rails/src/app/constants/ActionTypes.js","../dispatcher/AppDispatcher":"/Users/aon/Projects/buyme-rails/src/app/dispatcher/AppDispatcher.js","../utils/OrderApi":"/Users/aon/Projects/buyme-rails/src/app/utils/OrderApi.js","./ToastActions":"/Users/aon/Projects/buyme-rails/src/app/actions/ToastActions.js"}],"/Users/aon/Projects/buyme-rails/src/app/actions/StoreActions.js":[function(require,module,exports){
 'use strict';
 
 var AppDispatcher = require('../dispatcher/AppDispatcher');
@@ -38482,7 +38499,7 @@ var StoreActions = {
                 AppDispatcher.handleApiAction({
                     actionType: ActionTypes.GET_STORES_SUCCESS,
                     data: res.body
-                })
+                });
             }
         });
     },
@@ -38495,7 +38512,7 @@ var StoreActions = {
                 AppDispatcher.handleApiAction({
                     actionType: ActionTypes.GET_STORE_ORDERS_SUCCESS,
                     data: res.body.orders
-                })
+                });
             }
         });
     }
@@ -38503,7 +38520,33 @@ var StoreActions = {
 
 module.exports = StoreActions;
 
-},{"../constants/ActionTypes":"/Users/aon/Projects/buyme-rails/src/app/constants/ActionTypes.js","../dispatcher/AppDispatcher":"/Users/aon/Projects/buyme-rails/src/app/dispatcher/AppDispatcher.js","../utils/StoreApi":"/Users/aon/Projects/buyme-rails/src/app/utils/StoreApi.js"}],"/Users/aon/Projects/buyme-rails/src/app/app.js":[function(require,module,exports){
+},{"../constants/ActionTypes":"/Users/aon/Projects/buyme-rails/src/app/constants/ActionTypes.js","../dispatcher/AppDispatcher":"/Users/aon/Projects/buyme-rails/src/app/dispatcher/AppDispatcher.js","../utils/StoreApi":"/Users/aon/Projects/buyme-rails/src/app/utils/StoreApi.js"}],"/Users/aon/Projects/buyme-rails/src/app/actions/ToastActions.js":[function(require,module,exports){
+'use strict';
+
+var AppDispatcher = require('../dispatcher/AppDispatcher');
+var ActionTypes = require('../constants/ActionTypes');
+
+var ToastActions = {
+    showToast: function (type, message) {
+        AppDispatcher.handleApiAction({
+            actionType: ActionTypes.SHOW_TOAST_SUCCESS,
+            data: {
+                type: type,
+                message: message
+            }
+        });
+    },
+    hideToast: function () {
+        AppDispatcher.handleApiAction({
+            actionType: ActionTypes.HIDE_TOAST_SUCCESS,
+            data: {}
+        });
+    }
+};
+
+module.exports = ToastActions;
+
+},{"../constants/ActionTypes":"/Users/aon/Projects/buyme-rails/src/app/constants/ActionTypes.js","../dispatcher/AppDispatcher":"/Users/aon/Projects/buyme-rails/src/app/dispatcher/AppDispatcher.js"}],"/Users/aon/Projects/buyme-rails/src/app/app.js":[function(require,module,exports){
 'use strict';
 
 var React = require('react');
@@ -38548,13 +38591,24 @@ var Menu = require('./../../common/components/Menu');
 var Footer = require('./../../common/components/Footer');
 var Home = require('./Home');
 
+var ToastStore = require('../stores/ToastStore');
+var ToastActions = require('../actions/ToastActions');
+
+
 var App = React.createClass({displayName: "App",
     getInitialState: function () {
         return {
             showToast: false,
-            toastType: 'toast toast-success',
+            toastType: '',
             toastMessage: ''
         };
+    },
+    componentDidMount: function () {
+        ToastStore.addChangeListener(this._onChange);
+    },
+
+    componentWillUnmount: function () {
+        ToastStore.removeChangeListener(this._onChange);
     },
     render: function () {
         var menuItems = [
@@ -38581,11 +38635,30 @@ var App = React.createClass({displayName: "App",
         this.setState({
             title: title
         });
+    },
+    _onChange: function () {
+        if (ToastStore.getToastCount() > 0) {
+            this.setState({
+                showToast: true,
+                toastType: ToastStore.getToastType(),
+                toastMessage: ToastStore.getToastMessage()
+            });
+            setTimeout(function () {
+                ToastActions.hideToast();
+            }.bind(this), 2000);
+        }
+        else {
+            this.setState({
+                showToast: false,
+                toastType: '',
+                toastMessage: ''
+            });
+        }
     }
 });
 
 module.exports = App;
-},{"./../../common/components/Footer":"/Users/aon/Projects/buyme-rails/src/common/components/Footer.js","./../../common/components/Header":"/Users/aon/Projects/buyme-rails/src/common/components/Header.js","./../../common/components/Menu":"/Users/aon/Projects/buyme-rails/src/common/components/Menu.js","./Home":"/Users/aon/Projects/buyme-rails/src/app/components/Home.js","material-ui":"/Users/aon/Projects/buyme-rails/node_modules/material-ui/src/index.js","react":"/Users/aon/Projects/buyme-rails/node_modules/react/react.js","react-router":"/Users/aon/Projects/buyme-rails/node_modules/react-router/modules/index.js","react-tap-event-plugin":"/Users/aon/Projects/buyme-rails/node_modules/react-tap-event-plugin/src/injectTapEventPlugin.js"}],"/Users/aon/Projects/buyme-rails/src/app/components/Home.js":[function(require,module,exports){
+},{"../actions/ToastActions":"/Users/aon/Projects/buyme-rails/src/app/actions/ToastActions.js","../stores/ToastStore":"/Users/aon/Projects/buyme-rails/src/app/stores/ToastStore.js","./../../common/components/Footer":"/Users/aon/Projects/buyme-rails/src/common/components/Footer.js","./../../common/components/Header":"/Users/aon/Projects/buyme-rails/src/common/components/Header.js","./../../common/components/Menu":"/Users/aon/Projects/buyme-rails/src/common/components/Menu.js","./Home":"/Users/aon/Projects/buyme-rails/src/app/components/Home.js","material-ui":"/Users/aon/Projects/buyme-rails/node_modules/material-ui/src/index.js","react":"/Users/aon/Projects/buyme-rails/node_modules/react/react.js","react-router":"/Users/aon/Projects/buyme-rails/node_modules/react-router/modules/index.js","react-tap-event-plugin":"/Users/aon/Projects/buyme-rails/node_modules/react-tap-event-plugin/src/injectTapEventPlugin.js"}],"/Users/aon/Projects/buyme-rails/src/app/components/Home.js":[function(require,module,exports){
 'use strict';
 
 var React = require('react');
@@ -39169,7 +39242,9 @@ var ActionTypes = keyMirror({
     REMOVE_MY_OLD_ORDER_SUCCESS: null,
     GET_STORES_SUCCESS: null,
     GET_STORE_ORDERS_SUCCESS: null,
-    REMOVE_STORE_ORDER_SUCCESS: null
+    REMOVE_STORE_ORDER_SUCCESS: null,
+    SHOW_TOAST_SUCCESS: null,
+    HIDE_TOAST_SUCCESS: null
 });
 
 module.exports = ActionTypes;
@@ -39485,6 +39560,71 @@ AppDispatcher.register(function (payload) {
 });
 
 module.exports = StoreStore;
+},{"../constants/ActionTypes":"/Users/aon/Projects/buyme-rails/src/app/constants/ActionTypes.js","../dispatcher/AppDispatcher":"/Users/aon/Projects/buyme-rails/src/app/dispatcher/AppDispatcher.js","events":"/Users/aon/Projects/buyme-rails/node_modules/browserify/node_modules/events/events.js","object-assign":"/Users/aon/Projects/buyme-rails/node_modules/object-assign/index.js"}],"/Users/aon/Projects/buyme-rails/src/app/stores/ToastStore.js":[function(require,module,exports){
+'use strict';
+
+var AppDispatcher = require('../dispatcher/AppDispatcher');
+var EventEmitter = require('events').EventEmitter;
+var ActionTypes = require('../constants/ActionTypes');
+var assign = require('object-assign');
+
+var _toastType = 'toast-hide';
+var _toastMessage = undefined;
+var _toastCount = 0;
+
+function showToast(data) {
+    _toastType = 'toast toast-' + data.type;
+    _toastMessage = data.message;
+    _toastCount = _toastCount + 1;
+}
+
+function hideToast() {
+    _toastType = 'toast-hide';
+    _toastMessage = undefined;
+    _toastCount = _toastCount - 1;
+    if (_toastCount <= 0) {
+        _toastCount = 0;
+    }
+}
+
+var ToastStore = assign({}, EventEmitter.prototype, {
+    getToastType: function () {
+        return _toastType;
+    },
+    getToastMessage: function () {
+        return _toastMessage;
+    },
+    getToastCount: function () {
+        return _toastCount;
+    },
+    emitChange: function () {
+        this.emit('change');
+    },
+    addChangeListener: function (callback) {
+        this.on('change', callback);
+    },
+    removeChangeListener: function (callback) {
+        this.removeListener('change', callback);
+    }
+});
+
+AppDispatcher.register(function (payload) {
+    var action = payload.action;
+    switch (action.actionType) {
+        case ActionTypes.SHOW_TOAST_SUCCESS:
+            showToast(action.data);
+            break;
+        case ActionTypes.HIDE_TOAST_SUCCESS:
+            hideToast();
+            break;
+        default:
+            return true;
+    }
+    ToastStore.emitChange();
+    return true;
+});
+
+module.exports = ToastStore;
 },{"../constants/ActionTypes":"/Users/aon/Projects/buyme-rails/src/app/constants/ActionTypes.js","../dispatcher/AppDispatcher":"/Users/aon/Projects/buyme-rails/src/app/dispatcher/AppDispatcher.js","events":"/Users/aon/Projects/buyme-rails/node_modules/browserify/node_modules/events/events.js","object-assign":"/Users/aon/Projects/buyme-rails/node_modules/object-assign/index.js"}],"/Users/aon/Projects/buyme-rails/src/app/utils/ItemApi.js":[function(require,module,exports){
 'use strict';
 

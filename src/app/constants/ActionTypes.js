@@ -13,7 +13,9 @@ var ActionTypes = keyMirror({
     REMOVE_MY_OLD_ORDER_SUCCESS: null,
     GET_STORES_SUCCESS: null,
     GET_STORE_ORDERS_SUCCESS: null,
-    REMOVE_STORE_ORDER_SUCCESS: null
+    REMOVE_STORE_ORDER_SUCCESS: null,
+    SHOW_TOAST_SUCCESS: null,
+    HIDE_TOAST_SUCCESS: null
 });
 
 module.exports = ActionTypes;
