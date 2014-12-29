@@ -20,16 +20,20 @@
     margin: 20px 10px;
 }
 
-.order-add .input-half {
-    width: 170px;
+.order-add .item-small {
+    width: 110px;
     float: left;
 }
 
-.order-add .input-half .mui-input,
-.order-add .input-half input,
-.order-add .input-half .mui-input-highlight,
-.order-add .input-half .mui-input-bar {
-    width: 150px;
+.order-add .item-small.item-small-last {
+    width: 100px;
+}
+
+.order-add .item-small .mui-input,
+.order-add .item-small input,
+.order-add .item-small .mui-input-highlight,
+.order-add .item-small .mui-input-bar {
+    width: 100px;
 }
 
 .order-add > div {
@@ -67,14 +71,24 @@
         max-height: 135px;
     }
 
-    .order-add .input-half {
-        width: 100%;
+    .order-add .expire-days {
+        width: 140px;
+        float: left;
     }
 
-    .order-add .input-half .mui-input,
-    .order-add .input-half input,
-    .order-add .input-half .mui-input-highlight,
-    .order-add .input-half .mui-input-bar {
-        width: 100%;
+    .order-add .item-small {
+        width: 90px;
+        float: left;
+    }
+
+    .order-add .item-small.item-small-last {
+        width: 80px;
+    }
+
+    .order-add .item-small .mui-input,
+    .order-add .item-small input,
+    .order-add .item-small .mui-input-highlight,
+    .order-add .item-small .mui-input-bar {
+        width: 80px;
     }
 }

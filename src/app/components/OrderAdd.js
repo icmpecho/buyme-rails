@@ -44,12 +44,14 @@ var OrderAdd = React.createClass({
                 <div>
                     <div className="half">
                         <Input ref="itemName" type="text" name="itemName" placeholder="Item Name" description="Enter the item name." onChange={this._onItemNameChange} onClick={this._onItemNameClick}/>
-                        <Input ref="quantity" type="text" name="quantity" placeholder="Quantity" description="Enter the quantity." defaultValue="1"/>
-                        <div className="input-half">
-                            <Input ref="expireDays" type="text" name="expireDays" placeholder="Expire day(s)" description="Enter the expire day(s)." defaultValue="0"/>
+                        <div className="item-small">
+                            <Input ref="quantity" type="text" name="quantity" placeholder="Quantity" description="Enter the quantity." defaultValue="1"/>
                         </div>
-                        <div className="input-half">
-                            <Input ref="expireDays" type="text" name="expireHours" placeholder="Expire hour(s)" description="Enter the expire hour(s)." defaultValue="1"/>
+                        <div className="item-small">
+                            <Input ref="expireDays" type="text" name="expireDays" placeholder="In Day(s)" description="Enter the in day(s)." defaultValue="0"/>
+                        </div>
+                        <div className="item-small item-small-last">
+                            <Input ref="expireDays" type="text" name="expireHours" placeholder="In Hour(s)" description="Enter the in hour(s)." defaultValue="1"/>
                         </div>
                         {itemList}
                     </div>
