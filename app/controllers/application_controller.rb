@@ -5,6 +5,6 @@ class ApplicationController < ActionController::Base
   # protect_from_forgery with: :exception
 
   rescue_from 'RuntimeError' do |error|
-    render json: { error: error.message } 
+    render json: { error: error.message }, status: 404
   end
 end
