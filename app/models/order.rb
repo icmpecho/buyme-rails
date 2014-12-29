@@ -52,6 +52,9 @@ class Order < ActiveRecord::Base
     if status == :canceled
       raise "This order has been canceled."
     end
+    if status == :expired
+      raise "This order has been expired."
+    end
 
     self.completed = Time.zone.now
     self.buyer_id  = user.id
@@ -79,6 +82,8 @@ class Order < ActiveRecord::Base
       :completed
     elsif canceled_at
       :canceled
+    elsif expire_at
+      :expired
     else
       :active
     end
