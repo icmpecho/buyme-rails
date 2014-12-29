@@ -1,15 +1,13 @@
 'use strict';
 
 var React = require('react');
+var Router = require('react-router');
 
 var StoreStore = require('../stores/StoreStore');
 var StoreActions = require('../actions/StoreActions');
 var StoreItem = require('./StoreItem');
 
 var StoreList = React.createClass({
-    propTypes: {
-        showOrderList: React.PropTypes.func.isRequired
-    },
     getInitialState: function () {
         return {
             stores: []
@@ -31,7 +29,7 @@ var StoreList = React.createClass({
             <div className="store-list">
                 <ul>
                     {this.state.stores.map(function (store) {
-                        return <StoreItem key={'store-' + store.id} store={store} showOrderList={showOrderList}></StoreItem>;
+                        return <StoreItem key={'store-' + store.id} store={store}></StoreItem>;
                     })}
                 </ul>
             </div>

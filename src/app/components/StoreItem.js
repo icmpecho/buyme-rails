@@ -1,14 +1,18 @@
 'use strict';
 
 var React = require('react');
+var Router = require('react-router');
 var mui = require('material-ui');
 var Paper = mui.Paper;
 var FloatingActionButton = mui.FloatingActionButton;
 
 var StoreItems = React.createClass({
+    mixins: [
+        Router.Navigation,
+        Router.State
+    ],
     propTypes: {
-        store: React.PropTypes.object.isRequired,
-        showOrderList: React.PropTypes.func.isRequired
+        store: React.PropTypes.object.isRequired
     },
     render: function () {
         var store = this.props.store;
@@ -26,7 +30,7 @@ var StoreItems = React.createClass({
         );
     },
     _onButtonClick: function () {
-        this.props.showOrderList(this.props.store);
+        this.transitionTo('shopOrder', {shopId: this.props.store.id});
     }
 });
 

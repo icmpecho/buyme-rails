@@ -1,0 +1,53 @@
+'use strict';
+
+var React = require('react');
+var Router = require('react-router');
+
+var OrderList = require('./OrderList');
+
+var StoreStore = require('../stores/StoreStore');
+var StoreActions = require('../actions/StoreActions');
+
+var ShopOrder = React.createClass({
+    mixins: [
+        Router.Navigation,
+        Router.State
+    ],
+    getInitialState: function () {
+        return {};
+    },
+    componentWillMount: function () {
+        StoreActions.getStores();
+    },
+    componentDidMount: function () {
+        StoreStore.addChangeListener(this._onChange);
+    },
+    componentWillUnmount: function () {
+        StoreStore.removeChangeListener(this._onChange);
+    },
+    render: function () {
+        var orderList = !!this.state.store ? <OrderList title={'Orders for ' + this.state.store.name} orderType="store" onBackButtonClick={this.closeOrderList} storeId={this.state.store.id}/> : undefined;
+        return (
+            <div>
+                {orderList}
+            </div>
+        );
+    },
+    _onChange: function () {
+        var stores = StoreStore.getStores();
+        var shopId = this.getParams().shopId;
+        for (var index = 0; index < stores.length; index++) {
+            if (stores[index].id === parseInt(shopId)) {
+                this.setState({
+                    store: stores[index]
+                });
+                break;
+            }
+        }
+    },
+    closeOrderList: function () {
+        this.transitionTo('shop');
+    }
+});
+
+module.exports = ShopOrder;

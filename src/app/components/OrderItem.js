@@ -1,6 +1,7 @@
 'use strict';
 
 var React = require('react');
+var Router = require('react-router');
 var ImageLoader = require('react-imageloader');
 var mui = require('material-ui');
 var Paper = mui.Paper;
@@ -10,6 +11,9 @@ var moment = require('moment');
 var OrderActions = require('../actions/OrderActions');
 
 var OrderItems = React.createClass({
+    mixins: [
+        Router.Navigation
+    ],
     propTypes: {
         order: React.PropTypes.object.isRequired,
         orderType: React.PropTypes.string.isRequired,
@@ -28,6 +32,7 @@ var OrderItems = React.createClass({
         var completedAt = this.props.orderType === 'history' ? <div>Completed - {moment(order.completed).fromNow()}</div> : undefined;
         var deleteButton = !!this.props.deletable ? <FloatingActionButton icon={this._setLogoDeleteButton(this)} secondary={true} onClick={this._onDeleteButtonClick.bind(this, order.id)}/> : undefined;
         var buyButton = !!this.props.buyable ? <FloatingActionButton icon="action-done" secondary={true} onClick={this._onBuyButtonClick.bind(this, order.id)}/> : undefined;
+        var self = this;
         return (
             <li className="order-item">
                 <Paper zDepth={3} rounded={false}>
@@ -45,7 +50,7 @@ var OrderItems = React.createClass({
                         <div>
                             <ul className="order-store-list">
                                 {order.stores.map(function (store) {
-                                    return <li key={'store-' + store.id}>
+                                    return <li key={'store-' + store.id} onClick={self._onStoreClick.bind(self, store.id)}>
                                         <ImageLoader src={"../images/" + store.name + ".png"}>
                                         {store.name}
                                         </ImageLoader>
@@ -79,6 +84,9 @@ var OrderItems = React.createClass({
     },
     _onBuyButtonClick: function (id) {
         OrderActions.removeStoreOrder(id);
+    },
+    _onStoreClick: function (shopId) {
+        this.transitionTo('shopOrder', {shopId: shopId});
     }
 });
 

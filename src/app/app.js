@@ -9,12 +9,14 @@ var App = require('./components/App');
 var Home = require('./components/Home');
 var Me = require('./components/Me');
 var Shop = require('./components/Shop');
+var ShopOrder = require('./components/ShopOrder');
 
 var routes = (
     <Route name="app" handler={App} path="/">
         <Route name="home" handler={Home}/>
         <Route name="me" handler={Me}/>
-        <Route name="shop" handler={Shop}/>
+        <Route name="shop" handler={Shop} />
+        <Route name="shopOrder" path="/shop/:shopId" handler={ShopOrder} />
         <DefaultRoute handler={Home}/>
         <NotFoundRoute handler={Home}/>
     </Route>

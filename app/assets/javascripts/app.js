@@ -38558,12 +38558,14 @@ var App = require('./components/App');
 var Home = require('./components/Home');
 var Me = require('./components/Me');
 var Shop = require('./components/Shop');
+var ShopOrder = require('./components/ShopOrder');
 
 var routes = (
     React.createElement(Route, {name: "app", handler: App, path: "/"}, 
         React.createElement(Route, {name: "home", handler: Home}), 
         React.createElement(Route, {name: "me", handler: Me}), 
         React.createElement(Route, {name: "shop", handler: Shop}), 
+        React.createElement(Route, {name: "shopOrder", path: "/shop/:shopId", handler: ShopOrder}), 
         React.createElement(DefaultRoute, {handler: Home}), 
         React.createElement(NotFoundRoute, {handler: Home})
     )
@@ -38573,7 +38575,7 @@ var routes = (
 Router.run(routes, function (Handler) {
     React.render(React.createElement(Handler, null), document.getElementById('app'));
 });
-},{"./components/App":"/Users/aon/Projects/buyme-rails/src/app/components/App.js","./components/Home":"/Users/aon/Projects/buyme-rails/src/app/components/Home.js","./components/Me":"/Users/aon/Projects/buyme-rails/src/app/components/Me.js","./components/Shop":"/Users/aon/Projects/buyme-rails/src/app/components/Shop.js","react":"/Users/aon/Projects/buyme-rails/node_modules/react/react.js","react-router":"/Users/aon/Projects/buyme-rails/node_modules/react-router/modules/index.js"}],"/Users/aon/Projects/buyme-rails/src/app/components/App.js":[function(require,module,exports){
+},{"./components/App":"/Users/aon/Projects/buyme-rails/src/app/components/App.js","./components/Home":"/Users/aon/Projects/buyme-rails/src/app/components/Home.js","./components/Me":"/Users/aon/Projects/buyme-rails/src/app/components/Me.js","./components/Shop":"/Users/aon/Projects/buyme-rails/src/app/components/Shop.js","./components/ShopOrder":"/Users/aon/Projects/buyme-rails/src/app/components/ShopOrder.js","react":"/Users/aon/Projects/buyme-rails/node_modules/react/react.js","react-router":"/Users/aon/Projects/buyme-rails/node_modules/react-router/modules/index.js"}],"/Users/aon/Projects/buyme-rails/src/app/components/App.js":[function(require,module,exports){
 'use strict';
 
 var React = require('react');
@@ -38796,7 +38798,6 @@ var OrderAdd = React.createClass({displayName: "OrderAdd",
         StoreStore.addChangeListener(this._onStoreStoreChange);
         MyOrderStore.addChangeListener(this._onMyOrderStoreChange);
         ItemStore.addChangeListener(this._onItemStoreChange);
-        this._onItemNameClick();
     },
     componentWillUnmount: function () {
         StoreStore.removeChangeListener(this._onStoreStoreChange);
@@ -38910,6 +38911,7 @@ module.exports = OrderAdd;
 'use strict';
 
 var React = require('react');
+var Router = require('react-router');
 var ImageLoader = require('react-imageloader');
 var mui = require('material-ui');
 var Paper = mui.Paper;
@@ -38919,6 +38921,9 @@ var moment = require('moment');
 var OrderActions = require('../actions/OrderActions');
 
 var OrderItems = React.createClass({displayName: "OrderItems",
+    mixins: [
+        Router.Navigation
+    ],
     propTypes: {
         order: React.PropTypes.object.isRequired,
         orderType: React.PropTypes.string.isRequired,
@@ -38937,6 +38942,7 @@ var OrderItems = React.createClass({displayName: "OrderItems",
         var completedAt = this.props.orderType === 'history' ? React.createElement("div", null, "Completed - ", moment(order.completed).fromNow()) : undefined;
         var deleteButton = !!this.props.deletable ? React.createElement(FloatingActionButton, {icon: this._setLogoDeleteButton(this), secondary: true, onClick: this._onDeleteButtonClick.bind(this, order.id)}) : undefined;
         var buyButton = !!this.props.buyable ? React.createElement(FloatingActionButton, {icon: "action-done", secondary: true, onClick: this._onBuyButtonClick.bind(this, order.id)}) : undefined;
+        var self = this;
         return (
             React.createElement("li", {className: "order-item"}, 
                 React.createElement(Paper, {zDepth: 3, rounded: false}, 
@@ -38954,7 +38960,7 @@ var OrderItems = React.createClass({displayName: "OrderItems",
                         React.createElement("div", null, 
                             React.createElement("ul", {className: "order-store-list"}, 
                                 order.stores.map(function (store) {
-                                    return React.createElement("li", {key: 'store-' + store.id}, 
+                                    return React.createElement("li", {key: 'store-' + store.id, onClick: self._onStoreClick.bind(self, store.id)}, 
                                         React.createElement(ImageLoader, {src: "../images/" + store.name + ".png"}, 
                                         store.name
                                         )
@@ -38988,11 +38994,14 @@ var OrderItems = React.createClass({displayName: "OrderItems",
     },
     _onBuyButtonClick: function (id) {
         OrderActions.removeStoreOrder(id);
+    },
+    _onStoreClick: function (shopId) {
+        this.transitionTo('shopOrder', {shopId: shopId});
     }
 });
 
 module.exports = OrderItems;
-},{"../actions/OrderActions":"/Users/aon/Projects/buyme-rails/src/app/actions/OrderActions.js","material-ui":"/Users/aon/Projects/buyme-rails/node_modules/material-ui/src/index.js","moment":"/Users/aon/Projects/buyme-rails/node_modules/moment/moment.js","react":"/Users/aon/Projects/buyme-rails/node_modules/react/react.js","react-imageloader":"/Users/aon/Projects/buyme-rails/node_modules/react-imageloader/lib/index.js"}],"/Users/aon/Projects/buyme-rails/src/app/components/OrderList.js":[function(require,module,exports){
+},{"../actions/OrderActions":"/Users/aon/Projects/buyme-rails/src/app/actions/OrderActions.js","material-ui":"/Users/aon/Projects/buyme-rails/node_modules/material-ui/src/index.js","moment":"/Users/aon/Projects/buyme-rails/node_modules/moment/moment.js","react":"/Users/aon/Projects/buyme-rails/node_modules/react/react.js","react-imageloader":"/Users/aon/Projects/buyme-rails/node_modules/react-imageloader/lib/index.js","react-router":"/Users/aon/Projects/buyme-rails/node_modules/react-router/modules/index.js"}],"/Users/aon/Projects/buyme-rails/src/app/components/OrderList.js":[function(require,module,exports){
 'use strict';
 
 var React = require('react');
@@ -39127,51 +39136,88 @@ module.exports = OrderList;
 var React = require('react');
 
 var StoreList = require('./StoreList');
-var OrderList = require('./OrderList');
 
 var Shop = React.createClass({displayName: "Shop",
-    getInitialState: function () {
-        return {
-            showOrderList: false
-        };
-    },
     render: function () {
-        var storeList = !this.state.showOrderList ? React.createElement(StoreList, {showOrderList: this.showOrderList}) : undefined;
-        var orderList = !!this.state.showOrderList ? React.createElement(OrderList, {title: 'Orders for ' + this.state.store.name, orderType: "store", onBackButtonClick: this.closeOrderList, storeId: this.state.store.id}) : undefined;
         return (
             React.createElement("div", null, 
-                storeList, 
-                orderList
+                React.createElement(StoreList, null)
             )
         );
-    },
-    showOrderList: function (store) {
-        this.setState({
-            showOrderList: true,
-            store: store
-        })
-    },
-    closeOrderList: function () {
-        this.setState({
-            showOrderList: false,
-            store: undefined
-        })
     }
 });
 
 module.exports = Shop;
-},{"./OrderList":"/Users/aon/Projects/buyme-rails/src/app/components/OrderList.js","./StoreList":"/Users/aon/Projects/buyme-rails/src/app/components/StoreList.js","react":"/Users/aon/Projects/buyme-rails/node_modules/react/react.js"}],"/Users/aon/Projects/buyme-rails/src/app/components/StoreItem.js":[function(require,module,exports){
+},{"./StoreList":"/Users/aon/Projects/buyme-rails/src/app/components/StoreList.js","react":"/Users/aon/Projects/buyme-rails/node_modules/react/react.js"}],"/Users/aon/Projects/buyme-rails/src/app/components/ShopOrder.js":[function(require,module,exports){
 'use strict';
 
 var React = require('react');
+var Router = require('react-router');
+
+var OrderList = require('./OrderList');
+
+var StoreStore = require('../stores/StoreStore');
+var StoreActions = require('../actions/StoreActions');
+
+var ShopOrder = React.createClass({displayName: "ShopOrder",
+    mixins: [
+        Router.Navigation,
+        Router.State
+    ],
+    getInitialState: function () {
+        return {};
+    },
+    componentWillMount: function () {
+        StoreActions.getStores();
+    },
+    componentDidMount: function () {
+        StoreStore.addChangeListener(this._onChange);
+    },
+    componentWillUnmount: function () {
+        StoreStore.removeChangeListener(this._onChange);
+    },
+    render: function () {
+        var orderList = !!this.state.store ? React.createElement(OrderList, {title: 'Orders for ' + this.state.store.name, orderType: "store", onBackButtonClick: this.closeOrderList, storeId: this.state.store.id}) : undefined;
+        return (
+            React.createElement("div", null, 
+                orderList
+            )
+        );
+    },
+    _onChange: function () {
+        var stores = StoreStore.getStores();
+        var shopId = this.getParams().shopId;
+        for (var index = 0; index < stores.length; index++) {
+            if (stores[index].id === parseInt(shopId)) {
+                this.setState({
+                    store: stores[index]
+                });
+                break;
+            }
+        }
+    },
+    closeOrderList: function () {
+        this.transitionTo('shop');
+    }
+});
+
+module.exports = ShopOrder;
+},{"../actions/StoreActions":"/Users/aon/Projects/buyme-rails/src/app/actions/StoreActions.js","../stores/StoreStore":"/Users/aon/Projects/buyme-rails/src/app/stores/StoreStore.js","./OrderList":"/Users/aon/Projects/buyme-rails/src/app/components/OrderList.js","react":"/Users/aon/Projects/buyme-rails/node_modules/react/react.js","react-router":"/Users/aon/Projects/buyme-rails/node_modules/react-router/modules/index.js"}],"/Users/aon/Projects/buyme-rails/src/app/components/StoreItem.js":[function(require,module,exports){
+'use strict';
+
+var React = require('react');
+var Router = require('react-router');
 var mui = require('material-ui');
 var Paper = mui.Paper;
 var FloatingActionButton = mui.FloatingActionButton;
 
 var StoreItems = React.createClass({displayName: "StoreItems",
+    mixins: [
+        Router.Navigation,
+        Router.State
+    ],
     propTypes: {
-        store: React.PropTypes.object.isRequired,
-        showOrderList: React.PropTypes.func.isRequired
+        store: React.PropTypes.object.isRequired
     },
     render: function () {
         var store = this.props.store;
@@ -39189,24 +39235,22 @@ var StoreItems = React.createClass({displayName: "StoreItems",
         );
     },
     _onButtonClick: function () {
-        this.props.showOrderList(this.props.store);
+        this.transitionTo('shopOrder', {shopId: this.props.store.id});
     }
 });
 
 module.exports = StoreItems;
-},{"material-ui":"/Users/aon/Projects/buyme-rails/node_modules/material-ui/src/index.js","react":"/Users/aon/Projects/buyme-rails/node_modules/react/react.js"}],"/Users/aon/Projects/buyme-rails/src/app/components/StoreList.js":[function(require,module,exports){
+},{"material-ui":"/Users/aon/Projects/buyme-rails/node_modules/material-ui/src/index.js","react":"/Users/aon/Projects/buyme-rails/node_modules/react/react.js","react-router":"/Users/aon/Projects/buyme-rails/node_modules/react-router/modules/index.js"}],"/Users/aon/Projects/buyme-rails/src/app/components/StoreList.js":[function(require,module,exports){
 'use strict';
 
 var React = require('react');
+var Router = require('react-router');
 
 var StoreStore = require('../stores/StoreStore');
 var StoreActions = require('../actions/StoreActions');
 var StoreItem = require('./StoreItem');
 
 var StoreList = React.createClass({displayName: "StoreList",
-    propTypes: {
-        showOrderList: React.PropTypes.func.isRequired
-    },
     getInitialState: function () {
         return {
             stores: []
@@ -39228,7 +39272,7 @@ var StoreList = React.createClass({displayName: "StoreList",
             React.createElement("div", {className: "store-list"}, 
                 React.createElement("ul", null, 
                     this.state.stores.map(function (store) {
-                        return React.createElement(StoreItem, {key: 'store-' + store.id, store: store, showOrderList: showOrderList});
+                        return React.createElement(StoreItem, {key: 'store-' + store.id, store: store});
                     })
                 )
             )
@@ -39242,7 +39286,7 @@ var StoreList = React.createClass({displayName: "StoreList",
 });
 
 module.exports = StoreList;
-},{"../actions/StoreActions":"/Users/aon/Projects/buyme-rails/src/app/actions/StoreActions.js","../stores/StoreStore":"/Users/aon/Projects/buyme-rails/src/app/stores/StoreStore.js","./StoreItem":"/Users/aon/Projects/buyme-rails/src/app/components/StoreItem.js","react":"/Users/aon/Projects/buyme-rails/node_modules/react/react.js"}],"/Users/aon/Projects/buyme-rails/src/app/constants/ActionTypes.js":[function(require,module,exports){
+},{"../actions/StoreActions":"/Users/aon/Projects/buyme-rails/src/app/actions/StoreActions.js","../stores/StoreStore":"/Users/aon/Projects/buyme-rails/src/app/stores/StoreStore.js","./StoreItem":"/Users/aon/Projects/buyme-rails/src/app/components/StoreItem.js","react":"/Users/aon/Projects/buyme-rails/node_modules/react/react.js","react-router":"/Users/aon/Projects/buyme-rails/node_modules/react-router/modules/index.js"}],"/Users/aon/Projects/buyme-rails/src/app/constants/ActionTypes.js":[function(require,module,exports){
 'use strict';
 
 var keyMirror = require('keymirror');
@@ -39953,4 +39997,4 @@ var UserApi = assign({}, ApiUtils, {
 });
 
 module.exports = UserApi;
-},{"./ApiUtils":"/Users/aon/Projects/buyme-rails/src/common/utils/ApiUtils.js","object-assign":"/Users/aon/Projects/buyme-rails/node_modules/object-assign/index.js","q":"/Users/aon/Projects/buyme-rails/node_modules/q/q.js","underscore":"/Users/aon/Projects/buyme-rails/node_modules/underscore/underscore.js"}]},{},["/Users/aon/Projects/buyme-rails/src/app/app.js","/Users/aon/Projects/buyme-rails/src/app/actions/OrderActions.js","/Users/aon/Projects/buyme-rails/src/app/actions/StoreActions.js","/Users/aon/Projects/buyme-rails/src/app/actions/ToastActions.js","/Users/aon/Projects/buyme-rails/src/app/components/App.js","/Users/aon/Projects/buyme-rails/src/app/components/Home.js","/Users/aon/Projects/buyme-rails/src/app/components/Me.js","/Users/aon/Projects/buyme-rails/src/app/components/OrderAdd.js","/Users/aon/Projects/buyme-rails/src/app/components/OrderItem.js","/Users/aon/Projects/buyme-rails/src/app/components/OrderList.js","/Users/aon/Projects/buyme-rails/src/app/components/Shop.js","/Users/aon/Projects/buyme-rails/src/app/components/StoreItem.js","/Users/aon/Projects/buyme-rails/src/app/components/StoreList.js","/Users/aon/Projects/buyme-rails/src/app/constants/ActionTypes.js","/Users/aon/Projects/buyme-rails/src/app/dispatcher/AppDispatcher.js","/Users/aon/Projects/buyme-rails/src/app/stores/ItemStore.js","/Users/aon/Projects/buyme-rails/src/app/stores/MyOrderStore.js","/Users/aon/Projects/buyme-rails/src/app/stores/OrderStore.js","/Users/aon/Projects/buyme-rails/src/app/stores/StoreOrderStore.js","/Users/aon/Projects/buyme-rails/src/app/stores/StoreStore.js","/Users/aon/Projects/buyme-rails/src/app/stores/ToastStore.js","/Users/aon/Projects/buyme-rails/src/app/utils/ItemApi.js","/Users/aon/Projects/buyme-rails/src/app/utils/OrderApi.js","/Users/aon/Projects/buyme-rails/src/app/utils/StoreApi.js"]);
+},{"./ApiUtils":"/Users/aon/Projects/buyme-rails/src/common/utils/ApiUtils.js","object-assign":"/Users/aon/Projects/buyme-rails/node_modules/object-assign/index.js","q":"/Users/aon/Projects/buyme-rails/node_modules/q/q.js","underscore":"/Users/aon/Projects/buyme-rails/node_modules/underscore/underscore.js"}]},{},["/Users/aon/Projects/buyme-rails/src/app/app.js","/Users/aon/Projects/buyme-rails/src/app/actions/ItemActions.js","/Users/aon/Projects/buyme-rails/src/app/actions/OrderActions.js","/Users/aon/Projects/buyme-rails/src/app/actions/StoreActions.js","/Users/aon/Projects/buyme-rails/src/app/actions/ToastActions.js","/Users/aon/Projects/buyme-rails/src/app/components/App.js","/Users/aon/Projects/buyme-rails/src/app/components/Home.js","/Users/aon/Projects/buyme-rails/src/app/components/Me.js","/Users/aon/Projects/buyme-rails/src/app/components/OrderAdd.js","/Users/aon/Projects/buyme-rails/src/app/components/OrderItem.js","/Users/aon/Projects/buyme-rails/src/app/components/OrderList.js","/Users/aon/Projects/buyme-rails/src/app/components/Shop.js","/Users/aon/Projects/buyme-rails/src/app/components/StoreItem.js","/Users/aon/Projects/buyme-rails/src/app/components/StoreList.js","/Users/aon/Projects/buyme-rails/src/app/constants/ActionTypes.js","/Users/aon/Projects/buyme-rails/src/app/dispatcher/AppDispatcher.js","/Users/aon/Projects/buyme-rails/src/app/stores/ItemStore.js","/Users/aon/Projects/buyme-rails/src/app/stores/MyOrderStore.js","/Users/aon/Projects/buyme-rails/src/app/stores/OrderStore.js","/Users/aon/Projects/buyme-rails/src/app/stores/StoreOrderStore.js","/Users/aon/Projects/buyme-rails/src/app/stores/StoreStore.js","/Users/aon/Projects/buyme-rails/src/app/stores/ToastStore.js","/Users/aon/Projects/buyme-rails/src/app/utils/ItemApi.js","/Users/aon/Projects/buyme-rails/src/app/utils/OrderApi.js","/Users/aon/Projects/buyme-rails/src/app/utils/StoreApi.js"]);
