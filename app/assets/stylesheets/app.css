@@ -58,6 +58,7 @@
 
 .item-list.mui-drop-down-menu .mui-menu {
     margin-top: -125px;
+    width: 300px;
 }
 
 @media (max-width: 767px) {
@@ -98,5 +99,9 @@
     .order-add .item-small .mui-input-highlight,
     .order-add .item-small .mui-input-bar {
         width: 80px;
+    }
+
+    .item-list.mui-drop-down-menu .mui-menu {
+        width: 240px;
     }
 }
