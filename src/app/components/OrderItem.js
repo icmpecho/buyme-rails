@@ -52,7 +52,7 @@ var OrderItems = React.createClass({
                         <div>
                             <ul className="order-store-list">
                                 {order.stores.map(function (store) {
-                                    return <li key={'store-' + store.id} onClick={self._onStoreClick.bind(self, store.id)}>
+                                    return <li key={'store-' + store.id} onClick={self._onStoreClick.bind(self, store)}>
                                         <ImageLoader src={"../images/" + store.name + ".png"}>
                                         {store.name}
                                         </ImageLoader>
@@ -87,8 +87,9 @@ var OrderItems = React.createClass({
     _onBuyButtonClick: function (id) {
         OrderActions.removeStoreOrder(id);
     },
-    _onStoreClick: function (shopId) {
-        this.transitionTo('shopOrder', {shopId: shopId});
+    _onStoreClick: function (store) {
+        this.transitionTo('shop');
+        this.transitionTo('shopOrder', {storeId: store.id});
     },
     _onOrderStatus: function () {
         if (this.props.orderType === 'history') {

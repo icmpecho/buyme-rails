@@ -10,9 +10,9 @@ var mui = require('material-ui');
 var Toast = mui.Toast;
 var Icon = mui.Icon;
 
-var Header = require('./../../common/components/Header');
-var Menu = require('./../../common/components/Menu');
-var Footer = require('./../../common/components/Footer');
+var Header = require('../../common/components/Header');
+var Menu = require('../../common/components/Menu');
+var Footer = require('../../common/components/Footer');
 var Home = require('./Home');
 
 var ToastStore = require('../stores/ToastStore');

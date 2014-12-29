@@ -35,9 +35,9 @@ var ShopOrder = React.createClass({
     },
     _onChange: function () {
         var stores = StoreStore.getStores();
-        var shopId = this.getParams().shopId;
+        var storeId = this.getParams().storeId;
         for (var index = 0; index < stores.length; index++) {
-            if (stores[index].id === parseInt(shopId)) {
+            if (stores[index].id === parseInt(storeId)) {
                 this.setState({
                     store: stores[index]
                 });

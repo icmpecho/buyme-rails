@@ -6,6 +6,8 @@ var mui = require('material-ui');
 var Paper = mui.Paper;
 var FloatingActionButton = mui.FloatingActionButton;
 
+var Menu = require('../../common/components/Menu');
+
 var StoreItems = React.createClass({
     mixins: [
         Router.Navigation,
@@ -30,7 +32,8 @@ var StoreItems = React.createClass({
         );
     },
     _onButtonClick: function () {
-        this.transitionTo('shopOrder', {shopId: this.props.store.id});
+        this.transitionTo('shop');
+        this.transitionTo('shopOrder', {storeId: this.props.store.id});
     }
 });
 

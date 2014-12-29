@@ -16,7 +16,7 @@ var routes = (
         <Route name="home" handler={Home}/>
         <Route name="me" handler={Me}/>
         <Route name="shop" handler={Shop} />
-        <Route name="shopOrder" path="/shop/:shopId" handler={ShopOrder} />
+        <Route name="shopOrder" path="/shop/:storeId" handler={ShopOrder} />
         <DefaultRoute handler={Home}/>
         <NotFoundRoute handler={Home}/>
     </Route>

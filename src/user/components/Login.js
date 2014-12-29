@@ -7,7 +7,7 @@ var Input = mui.Input;
 var RaisedButton = mui.RaisedButton;
 var Checkbox = mui.Checkbox;
 
-var UserApi = require('./../../common/utils/UserApi');
+var UserApi = require('../../common/utils/UserApi');
 
 var Login = React.createClass({
     propTypes: {

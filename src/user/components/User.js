@@ -7,8 +7,8 @@ var mui = require('material-ui');
 var Toast = mui.Toast;
 var Icon = mui.Icon;
 
-var Header = require('./../../common/components/Header');
-var Footer = require('./../../common/components/Footer');
+var Header = require('../../common/components/Header');
+var Footer = require('../../common/components/Footer');
 var Login = require('./Login');
 var Signup = require('./Signup');
 
