@@ -26,7 +26,7 @@ var OrderItems = React.createClass({
         var createdAt = this.props.orderType === 'all' || this.props.orderType === 'current' || this.props.orderType === 'store' ? <div>Created At - {moment(order.created_at).fromNow()}</div> : undefined;
         var createdBy = this.props.orderType === 'all' || this.props.orderType === 'store' ? <div>Ordered By - {order.user_name}</div> : undefined;
         var completedAt = this.props.orderType === 'history' ? <div>Completed - {moment(order.completed).fromNow()}</div> : undefined;
-        var deleteButton = !!this.props.deletable ? <FloatingActionButton icon="action-delete" secondary={true} onClick={this._onDeleteButtonClick.bind(this, order.id)}/> : undefined;
+        var deleteButton = !!this.props.deletable ? <FloatingActionButton icon={this._setLogoDeleteButton(this)} secondary={true} onClick={this._onDeleteButtonClick.bind(this, order.id)}/> : undefined;
         var buyButton = !!this.props.buyable ? <FloatingActionButton icon="action-done" secondary={true} onClick={this._onBuyButtonClick.bind(this, order.id)}/> : undefined;
         return (
             <li className="order-item">
@@ -60,6 +60,14 @@ var OrderItems = React.createClass({
                 </Paper>
             </li>
         );
+    },
+    _setLogoDeleteButton: function () {
+        if (this.props.orderType === 'current') {
+            return "navigation-close";
+        }
+        else if (this.props.orderType === 'history') {
+            return "action-delete";
+        }
     },
     _onDeleteButtonClick: function (id) {
         if (this.props.orderType === 'current') {
