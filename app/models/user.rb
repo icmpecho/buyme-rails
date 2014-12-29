@@ -7,13 +7,13 @@ class User < ActiveRecord::Base
 
   def self.find_for_google_oauth2(access_token, signed_in_resource=nil)
     data = access_token.info
-    user = User.where(:email => data["email"]).first
+    user = User.where(:email => data["email"].downcase).first
 
     # Uncomment the section below if you want users to be created if they don't exist
     unless user
         pass = Devise.friendly_token[0,20]
         user = User.create(
-           email: data["email"],
+           email: data["email"].downcase,
            password: pass,
            password_confirmation: pass
         )
