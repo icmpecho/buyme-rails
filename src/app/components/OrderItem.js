@@ -27,9 +27,10 @@ var OrderItems = React.createClass({
     },
     render: function () {
         var order = this.props.order;
+        var buyer = !!this.props.order.buyer_name ? <div> Bought by {this.props.order.buyer_name}</div> : undefined;
         var createdAt = this.props.orderType === 'all' || this.props.orderType === 'current' || this.props.orderType === 'store' ? <div>Created At - {moment(order.created_at).fromNow()}</div> : undefined;
         var createdBy = this.props.orderType === 'all' || this.props.orderType === 'store' ? <div>Ordered By - {order.user_name}</div> : undefined;
-        var completedAt = this.props.orderType === 'history' ? <div>Completed - {moment(order.completed).fromNow()}</div> : undefined;
+        var completedAt = this.props.orderType === 'history' ? <div className={this._onOrderStatus()}>{this._onOrderStatus()} - {moment(this._setCancelTime()).fromNow()}</div> : undefined;
         var deleteButton = !!this.props.deletable ? <FloatingActionButton icon={this._setLogoDeleteButton(this)} secondary={true} onClick={this._onDeleteButtonClick.bind(this, order.id)}/> : undefined;
         var buyButton = !!this.props.buyable ? <FloatingActionButton icon="action-done" secondary={true} onClick={this._onBuyButtonClick.bind(this, order.id)}/> : undefined;
         var self = this;
@@ -44,6 +45,7 @@ var OrderItems = React.createClass({
                                 {createdAt}
                                 {completedAt}
                                 {createdBy}
+                                {buyer}
                             </div>
                         </div>
                         <h2>{order.item_name}</h2>
@@ -87,6 +89,22 @@ var OrderItems = React.createClass({
     },
     _onStoreClick: function (shopId) {
         this.transitionTo('shopOrder', {shopId: shopId});
+    },
+    _onOrderStatus: function () {
+        if (this.props.orderType === 'history') {
+            if (this.props.order.completed !== null) {
+                return "Completed";
+            }
+            else
+                return "Cancel";
+        }
+    },
+    _setCancelTime: function () {
+        if (this.props.order.completed !== null) {
+            return this.props.order.completed;
+        }
+        else
+            return this.props.order.canceled_at;
     }
 });
 

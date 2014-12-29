@@ -7,16 +7,13 @@ html, body {
     height: auto;
     font-size: 16px;
 }
-
 html {
     position: relative;
     min-height: 100%;
 }
-
 body {
     margin: 0 0 60px;
 }
-
 ul li, ol li {
     list-style: none;
 }
@@ -73,6 +70,7 @@ h2 {
     float: left;
 }
 
+
 .row {
     width: 100%;
 }
@@ -106,9 +104,6 @@ h2 {
 
 .toast.mui-toast {
     padding: 0 15px;
-    min-height: 48px;
-    max-height: 96px;
-    height: auto;
 }
 
 .toast .mui-toast-message {
@@ -149,6 +144,12 @@ h2 {
     margin-right: 8px;
     vertical-align: bottom;
 }
+.Cancel {
+    color: #d50000;
+}
+.Completed {
+    color: #00c853;
+}
 
 @media (max-width: 980px) {
     .content {
@@ -159,6 +160,5 @@ h2 {
 @media (max-width: 767px) {
     .half {
         float: none;
-        width: 100%;
     }
 }

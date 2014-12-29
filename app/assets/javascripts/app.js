@@ -38937,9 +38937,10 @@ var OrderItems = React.createClass({displayName: "OrderItems",
     },
     render: function () {
         var order = this.props.order;
+        var buyer = !!this.props.order.buyer_name ? React.createElement("div", null, " Bought by ", this.props.order.buyer_name) : undefined;
         var createdAt = this.props.orderType === 'all' || this.props.orderType === 'current' || this.props.orderType === 'store' ? React.createElement("div", null, "Created At - ", moment(order.created_at).fromNow()) : undefined;
         var createdBy = this.props.orderType === 'all' || this.props.orderType === 'store' ? React.createElement("div", null, "Ordered By - ", order.user_name) : undefined;
-        var completedAt = this.props.orderType === 'history' ? React.createElement("div", null, "Completed - ", moment(order.completed).fromNow()) : undefined;
+        var completedAt = this.props.orderType === 'history' ? React.createElement("div", {className: this._onOrderStatus()}, this._onOrderStatus(), " - ", moment(this._setCancelTime()).fromNow()) : undefined;
         var deleteButton = !!this.props.deletable ? React.createElement(FloatingActionButton, {icon: this._setLogoDeleteButton(this), secondary: true, onClick: this._onDeleteButtonClick.bind(this, order.id)}) : undefined;
         var buyButton = !!this.props.buyable ? React.createElement(FloatingActionButton, {icon: "action-done", secondary: true, onClick: this._onBuyButtonClick.bind(this, order.id)}) : undefined;
         var self = this;
@@ -38953,7 +38954,8 @@ var OrderItems = React.createClass({displayName: "OrderItems",
                             React.createElement("div", {className: "date mui-font-style-caption"}, 
                                 createdAt, 
                                 completedAt, 
-                                createdBy
+                                createdBy, 
+                                buyer
                             )
                         ), 
                         React.createElement("h2", null, order.item_name), 
@@ -38997,6 +38999,22 @@ var OrderItems = React.createClass({displayName: "OrderItems",
     },
     _onStoreClick: function (shopId) {
         this.transitionTo('shopOrder', {shopId: shopId});
+    },
+    _onOrderStatus: function () {
+        if (this.props.orderType === 'history') {
+            if (this.props.order.completed !== null) {
+                return "Completed";
+            }
+            else
+                return "Cancel";
+        }
+    },
+    _setCancelTime: function () {
+        if (this.props.order.completed !== null) {
+            return this.props.order.completed;
+        }
+        else
+            return this.props.order.canceled_at;
     }
 });
 
@@ -39228,7 +39246,7 @@ var StoreItems = React.createClass({displayName: "StoreItems",
                         React.createElement("div", {className: "mui-right"}, 
                             React.createElement(FloatingActionButton, {icon: "action-shopping-cart", secondary: true})
                         ), 
-                        React.createElement("h2", null, "Name - ", store.name)
+                        React.createElement("h2", null, store.name)
                     )
                 )
             )
@@ -39997,4 +40015,4 @@ var UserApi = assign({}, ApiUtils, {
 });
 
 module.exports = UserApi;
-},{"./ApiUtils":"/Users/aon/Projects/buyme-rails/src/common/utils/ApiUtils.js","object-assign":"/Users/aon/Projects/buyme-rails/node_modules/object-assign/index.js","q":"/Users/aon/Projects/buyme-rails/node_modules/q/q.js","underscore":"/Users/aon/Projects/buyme-rails/node_modules/underscore/underscore.js"}]},{},["/Users/aon/Projects/buyme-rails/src/app/app.js","/Users/aon/Projects/buyme-rails/src/app/actions/ItemActions.js","/Users/aon/Projects/buyme-rails/src/app/actions/OrderActions.js","/Users/aon/Projects/buyme-rails/src/app/actions/StoreActions.js","/Users/aon/Projects/buyme-rails/src/app/actions/ToastActions.js","/Users/aon/Projects/buyme-rails/src/app/components/App.js","/Users/aon/Projects/buyme-rails/src/app/components/Home.js","/Users/aon/Projects/buyme-rails/src/app/components/Me.js","/Users/aon/Projects/buyme-rails/src/app/components/OrderAdd.js","/Users/aon/Projects/buyme-rails/src/app/components/OrderItem.js","/Users/aon/Projects/buyme-rails/src/app/components/OrderList.js","/Users/aon/Projects/buyme-rails/src/app/components/Shop.js","/Users/aon/Projects/buyme-rails/src/app/components/StoreItem.js","/Users/aon/Projects/buyme-rails/src/app/components/StoreList.js","/Users/aon/Projects/buyme-rails/src/app/constants/ActionTypes.js","/Users/aon/Projects/buyme-rails/src/app/dispatcher/AppDispatcher.js","/Users/aon/Projects/buyme-rails/src/app/stores/ItemStore.js","/Users/aon/Projects/buyme-rails/src/app/stores/MyOrderStore.js","/Users/aon/Projects/buyme-rails/src/app/stores/OrderStore.js","/Users/aon/Projects/buyme-rails/src/app/stores/StoreOrderStore.js","/Users/aon/Projects/buyme-rails/src/app/stores/StoreStore.js","/Users/aon/Projects/buyme-rails/src/app/stores/ToastStore.js","/Users/aon/Projects/buyme-rails/src/app/utils/ItemApi.js","/Users/aon/Projects/buyme-rails/src/app/utils/OrderApi.js","/Users/aon/Projects/buyme-rails/src/app/utils/StoreApi.js"]);
+},{"./ApiUtils":"/Users/aon/Projects/buyme-rails/src/common/utils/ApiUtils.js","object-assign":"/Users/aon/Projects/buyme-rails/node_modules/object-assign/index.js","q":"/Users/aon/Projects/buyme-rails/node_modules/q/q.js","underscore":"/Users/aon/Projects/buyme-rails/node_modules/underscore/underscore.js"}]},{},["/Users/aon/Projects/buyme-rails/src/app/app.js","/Users/aon/Projects/buyme-rails/src/app/actions/OrderActions.js","/Users/aon/Projects/buyme-rails/src/app/actions/StoreActions.js","/Users/aon/Projects/buyme-rails/src/app/actions/ToastActions.js","/Users/aon/Projects/buyme-rails/src/app/components/App.js","/Users/aon/Projects/buyme-rails/src/app/components/Home.js","/Users/aon/Projects/buyme-rails/src/app/components/Me.js","/Users/aon/Projects/buyme-rails/src/app/components/OrderAdd.js","/Users/aon/Projects/buyme-rails/src/app/components/OrderItem.js","/Users/aon/Projects/buyme-rails/src/app/components/OrderList.js","/Users/aon/Projects/buyme-rails/src/app/components/Shop.js","/Users/aon/Projects/buyme-rails/src/app/components/StoreItem.js","/Users/aon/Projects/buyme-rails/src/app/components/StoreList.js","/Users/aon/Projects/buyme-rails/src/app/constants/ActionTypes.js","/Users/aon/Projects/buyme-rails/src/app/dispatcher/AppDispatcher.js","/Users/aon/Projects/buyme-rails/src/app/stores/ItemStore.js","/Users/aon/Projects/buyme-rails/src/app/stores/MyOrderStore.js","/Users/aon/Projects/buyme-rails/src/app/stores/OrderStore.js","/Users/aon/Projects/buyme-rails/src/app/stores/StoreOrderStore.js","/Users/aon/Projects/buyme-rails/src/app/stores/StoreStore.js","/Users/aon/Projects/buyme-rails/src/app/stores/ToastStore.js","/Users/aon/Projects/buyme-rails/src/app/utils/ItemApi.js","/Users/aon/Projects/buyme-rails/src/app/utils/OrderApi.js","/Users/aon/Projects/buyme-rails/src/app/utils/StoreApi.js"]);
