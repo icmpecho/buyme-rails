@@ -48,10 +48,10 @@ var OrderAdd = React.createClass({
                             <Input ref="quantity" type="text" name="quantity" placeholder="Quantity" description="Enter the quantity." defaultValue="1"/>
                         </div>
                         <div className="item-small">
-                            <Input ref="expireDays" type="text" name="expireDays" placeholder="In Day(s)" description="Enter the in day(s)." defaultValue="0"/>
+                            <Input ref="inDays" type="text" name="inDays" placeholder="In Day(s)" description="Enter the in day(s)." defaultValue="0"/>
                         </div>
                         <div className="item-small item-small-last">
-                            <Input ref="expireDays" type="text" name="expireHours" placeholder="In Hour(s)" description="Enter the in hour(s)." defaultValue="1"/>
+                            <Input ref="inHours" type="text" name="inHours" placeholder="In Hour(s)" description="Enter the in hour(s)." defaultValue="1"/>
                         </div>
                         {itemList}
                     </div>
@@ -116,6 +116,8 @@ var OrderAdd = React.createClass({
             }, 1000);
             this.refs.itemName.setValue('');
             this.refs.quantity.setValue('1');
+            this.refs.inDays.setValue('0');
+            this.refs.inHours.setValue('1');
             for (var ref in this.refs) {
                 if (ref.indexOf('store-') === 0 && this.refs[ref].state.checked) {
                     this.refs[ref].check();

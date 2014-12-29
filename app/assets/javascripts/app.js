@@ -38830,8 +38830,7 @@ var Me = React.createClass({displayName: "Me",
     getInitialState: function () {
         return {
             showAdd: false,
-            showCurrent: true,
-            showHistory: false
+            showCurrent: true
         };
     },
     render: function () {
@@ -38842,7 +38841,7 @@ var Me = React.createClass({displayName: "Me",
         ];
         var orderAdd = !!this.state.showAdd ? React.createElement(OrderAdd, {toggleOrderAdd: this.toggleOrderAdd}) : undefined;
         var currentOrderList = !!this.state.showCurrent ? React.createElement(OrderList, {ref: "orders", title: "Current", orderType: "current"}) : undefined;
-        var historyOrderList = !!this.state.showHistory ? React.createElement(OrderList, {ref: "oldOrders", title: "History", orderType: "history"}) : undefined;
+        var historyOrderList = !this.state.showHistory ? React.createElement(OrderList, {ref: "oldOrders", title: "History", orderType: "history"}) : undefined;
         var addOrderLabel = !this.state.showAdd ? 'Add Order' : 'Cancel';
         return (
             React.createElement("div", {className: "me"}, 
@@ -38855,14 +38854,11 @@ var Me = React.createClass({displayName: "Me",
                     )
                 ), 
                 React.createElement("div", {className: "mui-togglebar"}, 
-                	React.createElement("div", {className: "mui-togglebar-wrap mui-font-style-caption"}, "Show Current"), 
-	                React.createElement("div", {className: "mui-togglebar-wrap"}, 
-	                	React.createElement(Toggle, {toggled: this.state.showCurrent, onToggle: this._onCurrentToggleChange})
-                	), 
-	                React.createElement("div", {className: "mui-togglebar-wrap mui-font-style-caption"}, "Show History"), 
-	                React.createElement("div", {className: "mui-togglebar-wrap"}, 
-	                	React.createElement(Toggle, {toggled: this.state.showHistory, onToggle: this._onHistoryToggleChange})
-                	)
+                    React.createElement("div", {className: "mui-togglebar-wrap mui-font-style-caption"}, "Show Current"), 
+                    React.createElement("div", {className: "mui-togglebar-wrap"}, 
+                        React.createElement(Toggle, {toggled: this.state.showCurrent, onToggle: this._onCurrentToggleChange})
+                    ), 
+                    React.createElement("div", {className: "mui-togglebar-wrap mui-font-style-caption"}, "Show History")
                 ), 
                 orderAdd, 
                 currentOrderList, 
@@ -38886,12 +38882,6 @@ var Me = React.createClass({displayName: "Me",
     _onCurrentToggleChange: function (e, toggled) {
         this.setState({
                 showCurrent: toggled
-            }
-        )
-    },
-    _onHistoryToggleChange: function (e, toggled) {
-        this.setState({
-                showHistory: toggled
             }
         )
     }
@@ -38949,10 +38939,10 @@ var OrderAdd = React.createClass({displayName: "OrderAdd",
                             React.createElement(Input, {ref: "quantity", type: "text", name: "quantity", placeholder: "Quantity", description: "Enter the quantity.", defaultValue: "1"})
                         ), 
                         React.createElement("div", {className: "item-small"}, 
-                            React.createElement(Input, {ref: "expireDays", type: "text", name: "expireDays", placeholder: "In Day(s)", description: "Enter the in day(s).", defaultValue: "0"})
+                            React.createElement(Input, {ref: "inDays", type: "text", name: "inDays", placeholder: "In Day(s)", description: "Enter the in day(s).", defaultValue: "0"})
                         ), 
                         React.createElement("div", {className: "item-small item-small-last"}, 
-                            React.createElement(Input, {ref: "expireDays", type: "text", name: "expireHours", placeholder: "In Hour(s)", description: "Enter the in hour(s).", defaultValue: "1"})
+                            React.createElement(Input, {ref: "inHours", type: "text", name: "inHours", placeholder: "In Hour(s)", description: "Enter the in hour(s).", defaultValue: "1"})
                         ), 
                         itemList
                     ), 
@@ -39017,6 +39007,8 @@ var OrderAdd = React.createClass({displayName: "OrderAdd",
             }, 1000);
             this.refs.itemName.setValue('');
             this.refs.quantity.setValue('1');
+            this.refs.inDays.setValue('0');
+            this.refs.inHours.setValue('1');
             for (var ref in this.refs) {
                 if (ref.indexOf('store-') === 0 && this.refs[ref].state.checked) {
                     this.refs[ref].check();

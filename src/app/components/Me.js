@@ -13,8 +13,7 @@ var Me = React.createClass({
     getInitialState: function () {
         return {
             showAdd: false,
-            showCurrent: true,
-            showHistory: false
+            showCurrent: true
         };
     },
     render: function () {
@@ -25,7 +24,7 @@ var Me = React.createClass({
         ];
         var orderAdd = !!this.state.showAdd ? <OrderAdd toggleOrderAdd={this.toggleOrderAdd}/> : undefined;
         var currentOrderList = !!this.state.showCurrent ? <OrderList ref="orders" title="Current" orderType="current"/> : undefined;
-        var historyOrderList = !!this.state.showHistory ? <OrderList ref="oldOrders" title="History" orderType="history"/> : undefined;
+        var historyOrderList = !this.state.showHistory ? <OrderList ref="oldOrders" title="History" orderType="history"/> : undefined;
         var addOrderLabel = !this.state.showAdd ? 'Add Order' : 'Cancel';
         return (
             <div className="me">
@@ -38,14 +37,11 @@ var Me = React.createClass({
                     </div>
                 </div>
                 <div className="mui-togglebar">
-                	<div className="mui-togglebar-wrap mui-font-style-caption">Show Current</div>
-	                <div className="mui-togglebar-wrap">
-	                	<Toggle toggled={this.state.showCurrent} onToggle={this._onCurrentToggleChange}/>
-                	</div>
-	                <div className="mui-togglebar-wrap mui-font-style-caption">Show History</div>
-	                <div className="mui-togglebar-wrap">
-	                	<Toggle toggled={this.state.showHistory} onToggle={this._onHistoryToggleChange}/>
-                	</div>
+                    <div className="mui-togglebar-wrap mui-font-style-caption">Show Current</div>
+                    <div className="mui-togglebar-wrap">
+                        <Toggle toggled={this.state.showCurrent} onToggle={this._onCurrentToggleChange}/>
+                    </div>
+                    <div className="mui-togglebar-wrap mui-font-style-caption">Show History</div>
                 </div>
                 {orderAdd}
                 {currentOrderList}
@@ -69,12 +65,6 @@ var Me = React.createClass({
     _onCurrentToggleChange: function (e, toggled) {
         this.setState({
                 showCurrent: toggled
-            }
-        )
-    },
-    _onHistoryToggleChange: function (e, toggled) {
-        this.setState({
-                showHistory: toggled
             }
         )
     }
