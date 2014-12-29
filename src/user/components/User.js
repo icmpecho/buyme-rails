@@ -17,7 +17,8 @@ var User = React.createClass({
         return {
             page: 'login',
             showToast: false,
-            toastMessage: ''
+            toastMessage: '',
+            toastCount: 0
         };
     },
     render: function () {
@@ -42,8 +43,23 @@ var User = React.createClass({
     showToast: function (message) {
         this.setState({
             showToast: true,
-            toastMessage: message
+            toastMessage: message,
+            toastCount: this.state.toastCount + 1
         });
+        setTimeout(function () {
+            if (this.state.toastCount === 1) {
+                this.setState({
+                    showToast: false,
+                    toastMessage: '',
+                    toastCount: 0
+                });
+            }
+            else if (this.state.toastCount > 1) {
+                this.setState({
+                    toastCount: this.state.toastCount - 1
+                });
+            }
+        }.bind(this), 2000);
     }
 });
 

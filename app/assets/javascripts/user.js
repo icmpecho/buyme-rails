@@ -34846,7 +34846,8 @@ var User = React.createClass({displayName: "User",
         return {
             page: 'login',
             showToast: false,
-            toastMessage: ''
+            toastMessage: '',
+            toastCount: 0
         };
     },
     render: function () {
@@ -34871,8 +34872,23 @@ var User = React.createClass({displayName: "User",
     showToast: function (message) {
         this.setState({
             showToast: true,
-            toastMessage: message
+            toastMessage: message,
+            toastCount: this.state.toastCount + 1
         });
+        setTimeout(function () {
+            if (this.state.toastCount === 1) {
+                this.setState({
+                    showToast: false,
+                    toastMessage: '',
+                    toastCount: 0
+                });
+            }
+            else if (this.state.toastCount > 1) {
+                this.setState({
+                    toastCount: this.state.toastCount - 1
+                });
+            }
+        }.bind(this), 2000);
     }
 });
 
@@ -34884,4 +34900,4 @@ var React = require('react');
 var User = require('./components/User');
 
 React.render(React.createElement(User, null), document.getElementById('user'));
-},{"./components/User":"/Users/aon/Projects/buyme-rails/src/user/components/User.js","react":"/Users/aon/Projects/buyme-rails/node_modules/react/react.js"}]},{},["/Users/aon/Projects/buyme-rails/src/user/user.js","/Users/aon/Projects/buyme-rails/src/user/components/Signup.js","/Users/aon/Projects/buyme-rails/src/user/components/User.js"]);
+},{"./components/User":"/Users/aon/Projects/buyme-rails/src/user/components/User.js","react":"/Users/aon/Projects/buyme-rails/node_modules/react/react.js"}]},{},["/Users/aon/Projects/buyme-rails/src/user/user.js","/Users/aon/Projects/buyme-rails/src/user/components/Login.js","/Users/aon/Projects/buyme-rails/src/user/components/Signup.js","/Users/aon/Projects/buyme-rails/src/user/components/User.js"]);
