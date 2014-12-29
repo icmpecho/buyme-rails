@@ -7,13 +7,16 @@ html, body {
     height: auto;
     font-size: 16px;
 }
+
 html {
     position: relative;
     min-height: 100%;
 }
+
 body {
     margin: 0 0 60px;
 }
+
 ul li, ol li {
     list-style: none;
 }
@@ -103,6 +106,9 @@ h2 {
 
 .toast.mui-toast {
     padding: 0 15px;
+    min-height: 48px;
+    max-height: 96px;
+    height: auto;
 }
 
 .toast .mui-toast-message {
