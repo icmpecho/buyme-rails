@@ -38791,7 +38791,6 @@ var OrderAdd = React.createClass({displayName: "OrderAdd",
     },
     componentWillMount: function () {
         StoreActions.getStores();
-        ItemActions.getItems();
     },
     componentDidMount: function () {
         StoreStore.addChangeListener(this._onStoreStoreChange);
@@ -38810,7 +38809,7 @@ var OrderAdd = React.createClass({displayName: "OrderAdd",
             React.createElement(Paper, {zDepth: 3, rounded: false, className: "order-add"}, 
                 React.createElement("div", null, 
                     React.createElement("div", {className: "half"}, 
-                        React.createElement(Input, {ref: "itemName", type: "text", name: "itemName", placeholder: "Item Name", description: "Enter item name.", onChange: this._onItemNameChange}), 
+                        React.createElement(Input, {ref: "itemName", type: "text", name: "itemName", placeholder: "Item Name", description: "Enter item name.", onChange: this._onItemNameChange, onClick: this._onItemNameClick}), 
                         React.createElement(Input, {ref: "quantity", type: "text", name: "quantity", placeholder: "Quantity", description: "Enter quantity.", defaultValue: "1"}), 
                         itemList
                     ), 
@@ -38828,12 +38827,18 @@ var OrderAdd = React.createClass({displayName: "OrderAdd",
             )
         );
     },
+    _onItemNameClick: function () {
+        this.setState({
+            items: []
+        });
+        ItemActions.getItems(this.refs.itemName.getValue());
+    },
     _onItemNameChange: _.debounce(function (e, value) {
         this.setState({
             items: []
         });
         ItemActions.getItems(value);
-    }, 1000),
+    }, 500),
     _addOrder: function () {
         var itemName = this.refs.itemName.getValue();
         if (!itemName) {
@@ -39648,7 +39653,7 @@ var ItemApi = assign({}, ApiUtils, {
         if (!!name) {
             return this.get('/items').query({name: name});
         }
-        return this.get('/items');
+        return this.get('/items').query({count: 5});
     }
 });
 
@@ -39948,4 +39953,4 @@ var UserApi = assign({}, ApiUtils, {
 });
 
 module.exports = UserApi;
-},{"./ApiUtils":"/Users/aon/Projects/buyme-rails/src/common/utils/ApiUtils.js","object-assign":"/Users/aon/Projects/buyme-rails/node_modules/object-assign/index.js","q":"/Users/aon/Projects/buyme-rails/node_modules/q/q.js","underscore":"/Users/aon/Projects/buyme-rails/node_modules/underscore/underscore.js"}]},{},["/Users/aon/Projects/buyme-rails/src/app/app.js","/Users/aon/Projects/buyme-rails/src/app/actions/OrderActions.js","/Users/aon/Projects/buyme-rails/src/app/actions/StoreActions.js","/Users/aon/Projects/buyme-rails/src/app/actions/ToastActions.js","/Users/aon/Projects/buyme-rails/src/app/components/App.js","/Users/aon/Projects/buyme-rails/src/app/components/Home.js","/Users/aon/Projects/buyme-rails/src/app/components/Me.js","/Users/aon/Projects/buyme-rails/src/app/components/OrderAdd.js","/Users/aon/Projects/buyme-rails/src/app/components/OrderItem.js","/Users/aon/Projects/buyme-rails/src/app/components/OrderList.js","/Users/aon/Projects/buyme-rails/src/app/components/Shop.js","/Users/aon/Projects/buyme-rails/src/app/components/StoreItem.js","/Users/aon/Projects/buyme-rails/src/app/components/StoreList.js","/Users/aon/Projects/buyme-rails/src/app/constants/ActionTypes.js","/Users/aon/Projects/buyme-rails/src/app/dispatcher/AppDispatcher.js","/Users/aon/Projects/buyme-rails/src/app/stores/ItemStore.js","/Users/aon/Projects/buyme-rails/src/app/stores/MyOrderStore.js","/Users/aon/Projects/buyme-rails/src/app/stores/OrderStore.js","/Users/aon/Projects/buyme-rails/src/app/stores/StoreOrderStore.js","/Users/aon/Projects/buyme-rails/src/app/stores/StoreStore.js","/Users/aon/Projects/buyme-rails/src/app/stores/ToastStore.js","/Users/aon/Projects/buyme-rails/src/app/utils/ItemApi.js","/Users/aon/Projects/buyme-rails/src/app/utils/OrderApi.js","/Users/aon/Projects/buyme-rails/src/app/utils/StoreApi.js"]);
+},{"./ApiUtils":"/Users/aon/Projects/buyme-rails/src/common/utils/ApiUtils.js","object-assign":"/Users/aon/Projects/buyme-rails/node_modules/object-assign/index.js","q":"/Users/aon/Projects/buyme-rails/node_modules/q/q.js","underscore":"/Users/aon/Projects/buyme-rails/node_modules/underscore/underscore.js"}]},{},["/Users/aon/Projects/buyme-rails/src/app/app.js","/Users/aon/Projects/buyme-rails/src/app/actions/ItemActions.js","/Users/aon/Projects/buyme-rails/src/app/actions/OrderActions.js","/Users/aon/Projects/buyme-rails/src/app/actions/StoreActions.js","/Users/aon/Projects/buyme-rails/src/app/actions/ToastActions.js","/Users/aon/Projects/buyme-rails/src/app/components/App.js","/Users/aon/Projects/buyme-rails/src/app/components/Home.js","/Users/aon/Projects/buyme-rails/src/app/components/Me.js","/Users/aon/Projects/buyme-rails/src/app/components/OrderAdd.js","/Users/aon/Projects/buyme-rails/src/app/components/OrderItem.js","/Users/aon/Projects/buyme-rails/src/app/components/OrderList.js","/Users/aon/Projects/buyme-rails/src/app/components/Shop.js","/Users/aon/Projects/buyme-rails/src/app/components/StoreItem.js","/Users/aon/Projects/buyme-rails/src/app/components/StoreList.js","/Users/aon/Projects/buyme-rails/src/app/constants/ActionTypes.js","/Users/aon/Projects/buyme-rails/src/app/dispatcher/AppDispatcher.js","/Users/aon/Projects/buyme-rails/src/app/stores/ItemStore.js","/Users/aon/Projects/buyme-rails/src/app/stores/MyOrderStore.js","/Users/aon/Projects/buyme-rails/src/app/stores/OrderStore.js","/Users/aon/Projects/buyme-rails/src/app/stores/StoreOrderStore.js","/Users/aon/Projects/buyme-rails/src/app/stores/StoreStore.js","/Users/aon/Projects/buyme-rails/src/app/stores/ToastStore.js","/Users/aon/Projects/buyme-rails/src/app/utils/ItemApi.js","/Users/aon/Projects/buyme-rails/src/app/utils/OrderApi.js","/Users/aon/Projects/buyme-rails/src/app/utils/StoreApi.js"]);

@@ -26,7 +26,6 @@ var OrderAdd = React.createClass({
     },
     componentWillMount: function () {
         StoreActions.getStores();
-        ItemActions.getItems();
     },
     componentDidMount: function () {
         StoreStore.addChangeListener(this._onStoreStoreChange);
@@ -45,7 +44,7 @@ var OrderAdd = React.createClass({
             <Paper zDepth={3} rounded={false} className="order-add">
                 <div>
                     <div className="half">
-                        <Input ref="itemName" type="text" name="itemName" placeholder="Item Name" description="Enter item name." onChange={this._onItemNameChange}/>
+                        <Input ref="itemName" type="text" name="itemName" placeholder="Item Name" description="Enter item name." onChange={this._onItemNameChange} onClick={this._onItemNameClick}/>
                         <Input ref="quantity" type="text" name="quantity" placeholder="Quantity" description="Enter quantity." defaultValue="1"/>
                         {itemList}
                     </div>
@@ -63,12 +62,18 @@ var OrderAdd = React.createClass({
             </Paper>
         );
     },
+    _onItemNameClick: function () {
+        this.setState({
+            items: []
+        });
+        ItemActions.getItems(this.refs.itemName.getValue());
+    },
     _onItemNameChange: _.debounce(function (e, value) {
         this.setState({
             items: []
         });
         ItemActions.getItems(value);
-    }, 1000),
+    }, 500),
     _addOrder: function () {
         var itemName = this.refs.itemName.getValue();
         if (!itemName) {

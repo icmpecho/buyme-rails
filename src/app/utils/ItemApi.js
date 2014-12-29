@@ -9,7 +9,7 @@ var ItemApi = assign({}, ApiUtils, {
         if (!!name) {
             return this.get('/items').query({name: name});
         }
-        return this.get('/items');
+        return this.get('/items').query({count: 5});
     }
 });
 
