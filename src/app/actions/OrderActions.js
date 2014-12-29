@@ -84,7 +84,7 @@ var OrderActions = {
                 ToastActions.showToast('success', 'Your order was cancelled successfully.');
             }
             else {
-                ToastActions.showToast('error', 'Failed to cancel your order.');
+                ToastActions.showToast('error', res.body.error);
             }
         });
     },
@@ -122,7 +122,7 @@ var OrderActions = {
                 ToastActions.showToast('success', 'The order was brought successfully.');
             }
             else {
-                ToastActions.showToast('error', 'Failed to buy the order.');
+                ToastActions.showToast('error', res.body.error);
             }
         });
     }
