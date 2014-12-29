@@ -29,11 +29,11 @@ class Order < ActiveRecord::Base
   end
 
   def self.pendings
-    self.where( completed: nil ).where( canceled_at: nil )
+    self.where( completed: nil ).where( canceled_at: nil ).where( "expire_at > ? or expire_at is null", Time.zone.now )
   end
 
   def self.completed
-    self.where( "completed is not null or canceled_at is not null" )
+    self.where( "completed is not null or canceled_at is not null or expire_at < ?", Time.zone.now )
   end
 
   def self.by_user( user )

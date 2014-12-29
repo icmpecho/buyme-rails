@@ -56,16 +56,19 @@ RSpec.describe Order, :type => :model do
     fai_order1 = Order.place( user: @fai, item: @coke, stores: [ @seven, @family ] )
     fai_order2 = Order.place( user: @fai, item: @coke, stores: [ @seven, @family ] )
     fai_order3 = Order.place( user: @fai, item: @coke, stores: [ @seven, @family ] )
+    fai_order4 = Order.place( user: @fai, item: @coke, stores: [ @seven, @family ], expire_at: 1.day.from_now )
 
-    expect( Order.pendings.count ).to eq 3
+    expect( Order.pendings.count ).to eq 4
 
     fai_order2.fullfill!( @ping )
-    expect( Order.pendings.count ).to eq 2
+    expect( Order.pendings.count ).to eq 3
 
     fai_order3.cancel!
-    expect( Order.pendings.count ).to eq 1
+    expect( Order.pendings.count ).to eq 2
 
-
+    Timecop.freeze( 2.days.from_now ) do
+      expect( Order.pendings.count ).to eq 1
+    end
   end
 
   it 'know if item already fullfilled' do
@@ -97,6 +100,7 @@ RSpec.describe Order, :type => :model do
   it 'can return only completed orders' do
     fai_order1 = Order.place( user: @fai, item: @coke, stores: [ @seven, @family ] )
     fai_order2 = Order.place( user: @fai, item: @lays, stores: [ @seven, @family ] )
+    fai_order4 = Order.place( user: @fai, item: @coke, stores: [ @seven, @family ], expire_at: 1.day.from_now )
     expect( Order.completed.count ).to eq 0
 
     fai_order1.fullfill!( @ping )
@@ -104,6 +108,10 @@ RSpec.describe Order, :type => :model do
 
     fai_order2.cancel!
     expect( Order.completed.count ).to eq 2
+
+    Timecop.freeze( 2.days.from_now ) do
+      expect( Order.completed.count ).to eq 3
+    end
   end
 
   it 'can be canceled' do
