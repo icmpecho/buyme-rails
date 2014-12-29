@@ -38818,8 +38818,8 @@ var OrderItems = React.createClass({displayName: "OrderItems",
     },
     render: function () {
         var order = this.props.order;
-        var createdAt = this.props.orderType === 'all' || this.props.orderType === 'current' ? React.createElement("div", null, "Created At - ", moment(order.created_at).fromNow()) : undefined;
-        var createdBy = this.props.orderType === 'all' ? React.createElement("div", null, "Ordered By - ", order.user_name) : undefined;
+        var createdAt = this.props.orderType === 'all' || this.props.orderType === 'current' || this.props.orderType === 'store' ? React.createElement("div", null, "Created At - ", moment(order.created_at).fromNow()) : undefined;
+        var createdBy = this.props.orderType === 'all' || this.props.orderType === 'store' ? React.createElement("div", null, "Ordered By - ", order.user_name) : undefined;
         var completedAt = this.props.orderType === 'history' ? React.createElement("div", null, "Completed - ", moment(order.completed).fromNow()) : undefined;
         var deleteButton = !!this.props.deletable ? React.createElement(FloatingActionButton, {icon: "action-delete", secondary: true, onClick: this._onDeleteButtonClick.bind(this, order.id)}) : undefined;
         var buyButton = !!this.props.buyable ? React.createElement(FloatingActionButton, {icon: "action-done", secondary: true, onClick: this._onBuyButtonClick.bind(this, order.id)}) : undefined;
