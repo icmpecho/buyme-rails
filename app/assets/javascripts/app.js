@@ -39127,7 +39127,7 @@ var OrderItems = React.createClass({displayName: "OrderItems",
         var completedAt = this.props.orderType === 'history' ? React.createElement("div", {className: this.props.order.status}, this._onOrderStatus(), " ", moment(this._setCancelTime()).fromNow()) : undefined;
         var expireAt = this.props.orderType === 'current' || this.props.orderType === 'store' ? React.createElement("div", null, "Expires ", moment(order.expire_at).fromNow()) : undefined;
         var deleteButton = !!this.props.deletable ? React.createElement(FloatingActionButton, {icon: this._setLogoDeleteButton(this), secondary: true, onClick: this._onDeleteButtonClick.bind(this, order.id)}) : undefined;
-        var buyButton = !!this.props.buyable ? React.createElement(FloatingActionButton, {icon: "action-done", secondary: true, onClick: this._onBuyButtonClick.bind(this, order.id)}) : undefined;
+        var buyButton = !!this.props.buyable ? React.createElement(FloatingActionButton, {icon: "action-add-shopping-cart", secondary: true, onClick: this._onBuyButtonClick.bind(this, order.id)}) : undefined;
         var self = this;
         return (
             React.createElement("li", {className: "order-item"}, 
@@ -40066,7 +40066,7 @@ var Header = React.createClass({displayName: "Header",
         };
     },
     render: function () {
-        var addButton = !!this.props.showButtons ? React.createElement(IconButton, {className: "mui-icon-button mui-enhanced-button", icon: "action-add-shopping-cart", onClick: this._onAddButtonClick}) : undefined;
+        var addButton = !!this.props.showButtons ? React.createElement(IconButton, {className: "mui-icon-button mui-enhanced-button", icon: "av-playlist-add", onClick: this._onAddButtonClick}) : undefined;
         var logoutButton = !!this.props.showButtons ? React.createElement(IconButton, {className: "mui-icon-button mui-enhanced-button", icon: "action-input", onClick: this._onLogoutButtonClick}) : undefined;
         var menuStyle = {
             visibility: !!this.props.showButtons ? 'visible' : 'hidden'

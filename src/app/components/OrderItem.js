@@ -30,7 +30,7 @@ var OrderItems = React.createClass({
         var completedAt = this.props.orderType === 'history' ? <div className={this.props.order.status}>{this._onOrderStatus()} {moment(this._setCancelTime()).fromNow()}</div> : undefined;
         var expireAt = this.props.orderType === 'current' || this.props.orderType === 'store' ? <div>Expires {moment(order.expire_at).fromNow()}</div> : undefined;
         var deleteButton = !!this.props.deletable ? <FloatingActionButton icon={this._setLogoDeleteButton(this)} secondary={true} onClick={this._onDeleteButtonClick.bind(this, order.id)}/> : undefined;
-        var buyButton = !!this.props.buyable ? <FloatingActionButton icon="action-done" secondary={true} onClick={this._onBuyButtonClick.bind(this, order.id)}/> : undefined;
+        var buyButton = !!this.props.buyable ? <FloatingActionButton icon="action-add-shopping-cart" secondary={true} onClick={this._onBuyButtonClick.bind(this, order.id)}/> : undefined;
         var self = this;
         return (
             <li className="order-item">

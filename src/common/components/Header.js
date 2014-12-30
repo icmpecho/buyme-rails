@@ -18,7 +18,7 @@ var Header = React.createClass({
         };
     },
     render: function () {
-        var addButton = !!this.props.showButtons ? <IconButton className="mui-icon-button mui-enhanced-button" icon="action-add-shopping-cart" onClick={this._onAddButtonClick}/> : undefined;
+        var addButton = !!this.props.showButtons ? <IconButton className="mui-icon-button mui-enhanced-button" icon="av-playlist-add" onClick={this._onAddButtonClick}/> : undefined;
         var logoutButton = !!this.props.showButtons ? <IconButton className="mui-icon-button mui-enhanced-button" icon="action-input" onClick={this._onLogoutButtonClick}/> : undefined;
         var menuStyle = {
             visibility: !!this.props.showButtons ? 'visible' : 'hidden'
