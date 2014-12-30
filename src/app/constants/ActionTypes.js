@@ -16,7 +16,9 @@ var ActionTypes = keyMirror({
     REMOVE_STORE_ORDER_SUCCESS: null,
     SHOW_TOAST_SUCCESS: null,
     HIDE_TOAST_SUCCESS: null,
-    CHANGE_STATE_SUCCESS: null
+    CHANGE_STATE_SUCCESS: null,
+    OPEN_ADD_DIALOG_SUCCESS: null,
+    ClOSE_ADD_DIALOG_SUCCESS: null
 });
 
 module.exports = ActionTypes;

@@ -5,6 +5,7 @@ var mui = require('material-ui');
 var IconButton = mui.IconButton;
 var Menu = require('./Menu');
 var UserApi = require('../utils/UserApi');
+var AppActions = require('../../app/actions/AppActions');
 
 var Header = React.createClass({
     propTypes: {
@@ -17,6 +18,7 @@ var Header = React.createClass({
         };
     },
     render: function () {
+        var addButton = !!this.props.showButtons ? <IconButton className="mui-icon-button mui-enhanced-button mui-right" icon="action-add-shopping-cart" onClick={this._onAddButtonClick}/> : undefined;
         var logoutButton = !!this.props.showButtons ? <IconButton className="mui-icon-button mui-enhanced-button mui-right" icon="action-input" onClick={this._onLogoutButtonClick}/> : undefined;
         var menuStyle = {
             visibility: !!this.props.showButtons ? 'visible' : 'hidden'
@@ -27,9 +29,13 @@ var Header = React.createClass({
                     <IconButton style={menuStyle} className="mui-app-bar-navigation-icon-button mui-icon-button mui-enhanced-button" icon="navigation-menu" onClick={this.props.onMenuIconButtonClick}/>
                     <h1 className="mui-app-bar-title">{this.props.title}</h1>
                     {logoutButton}
+                    {addButton}
                 </div>
             </div>
         );
+    },
+    _onAddButtonClick: function () {
+        AppActions.openAddDialog();
     },
     _onLogoutButtonClick: function () {
         UserApi.logout();

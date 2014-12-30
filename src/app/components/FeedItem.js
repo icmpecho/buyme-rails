@@ -7,7 +7,7 @@ var Paper = mui.Paper;
 var moment = require('moment');
 
 var OrderActions = require('../actions/OrderActions');
-var MenuActions = require('../actions/MenuActions');
+var AppActions = require('../actions/AppActions');
 
 var FeedItem = React.createClass({
     propTypes: {
@@ -76,7 +76,7 @@ var FeedItem = React.createClass({
         }
     },
     _onStoreClick: function (store) {
-        MenuActions.changeState({
+        AppActions.changeState({
             name: 'shopOrder',
             params: {storeId: store.id},
             title: store.name

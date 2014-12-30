@@ -6,7 +6,7 @@ var mui = require('material-ui');
 var Icon = mui.Icon;
 var LeftNav = mui.LeftNav;
 
-var MenuStore = require('../../app/stores/MenuStore');
+var AppStore = require('../../app/stores/AppStore');
 
 var Menu = React.createClass({
     mixins: [
@@ -23,10 +23,10 @@ var Menu = React.createClass({
         };
     },
     componentDidMount: function () {
-        MenuStore.addChangeListener(this._onChange);
+        AppStore.addChangeListener(this._onChange);
     },
     componentWillUnmount: function () {
-        MenuStore.removeChangeListener(this._onChange);
+        AppStore.removeChangeListener(this._onChange);
     },
     render: function () {
         var header = <div className={"logo"} onClick={this._onHeaderClick}>Buy Me</div>;
@@ -56,9 +56,11 @@ var Menu = React.createClass({
         this.refs.leftNav.close();
     },
     _onChange: function () {
-        var state = MenuStore.getState();
-        this.props.changeTitle(state.title);
-        this.transitionTo(state.name, state.params);
+        var state = AppStore.getState();
+        if (!!state) {
+            this.props.changeTitle(state.title);
+            this.transitionTo(state.name, state.params);
+        }
     }
 });
 

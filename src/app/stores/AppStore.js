@@ -5,15 +5,25 @@ var EventEmitter = require('events').EventEmitter;
 var ActionTypes = require('../constants/ActionTypes');
 var assign = require('object-assign');
 
-var _state = [];
+var _state = undefined;
+var _isShowAddDialog = false;
 
 function getState(data) {
     _state = data;
 }
 
-var MenuStore = assign({}, EventEmitter.prototype, {
+function showAddDialog(isShow) {
+    _isShowAddDialog = isShow;
+}
+
+var AppStore = assign({}, EventEmitter.prototype, {
     getState: function () {
-        return _state;
+        var state = _state;
+        getState();
+        return state;
+    },
+    isShowAddDialog: function () {
+        return _isShowAddDialog;
     },
     emitChange: function () {
         this.emit('change');
@@ -32,11 +42,17 @@ AppDispatcher.register(function (payload) {
         case ActionTypes.CHANGE_STATE_SUCCESS:
             getState(action.data);
             break;
+        case ActionTypes.OPEN_ADD_DIALOG_SUCCESS:
+            showAddDialog(true);
+            break;
+        case ActionTypes.ClOSE_ADD_DIALOG_SUCCESS:
+            showAddDialog(false);
+            break;
         default:
             return true;
     }
-    MenuStore.emitChange();
+    AppStore.emitChange();
     return true;
 });
 
-module.exports = MenuStore;
+module.exports = AppStore;

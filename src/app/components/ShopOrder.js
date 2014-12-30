@@ -7,7 +7,7 @@ var OrderList = require('./OrderList');
 
 var StoreStore = require('../stores/StoreStore');
 var StoreActions = require('../actions/StoreActions');
-var MenuActions = require('../actions/MenuActions');
+var AppActions = require('../actions/AppActions');
 
 var ShopOrder = React.createClass({
     mixins: [
@@ -46,7 +46,7 @@ var ShopOrder = React.createClass({
         }
     },
     closeOrderList: function () {
-        MenuActions.changeState({
+        AppActions.changeState({
             name: 'shop',
             title: 'Shop'
         });

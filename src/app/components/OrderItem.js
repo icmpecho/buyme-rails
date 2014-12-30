@@ -8,7 +8,7 @@ var FloatingActionButton = mui.FloatingActionButton;
 var moment = require('moment');
 
 var OrderActions = require('../actions/OrderActions');
-var MenuActions = require('../actions/MenuActions');
+var AppActions = require('../actions/AppActions');
 
 var OrderItems = React.createClass({
     propTypes: {
@@ -87,7 +87,7 @@ var OrderItems = React.createClass({
         OrderActions.removeStoreOrder(id);
     },
     _onStoreClick: function (store) {
-        MenuActions.changeState({
+        AppActions.changeState({
             name: 'shopOrder',
             params: {storeId: store.id},
             title: store.name

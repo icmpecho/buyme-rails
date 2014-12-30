@@ -38322,7 +38322,36 @@ module.exports = function(arr, fn, initial){
   }
 }.call(this));
 
-},{}],"/Users/aon/Projects/buyme-rails/src/app/actions/ItemActions.js":[function(require,module,exports){
+},{}],"/Users/aon/Projects/buyme-rails/src/app/actions/AppActions.js":[function(require,module,exports){
+'use strict';
+
+var AppDispatcher = require('../dispatcher/AppDispatcher');
+var ActionTypes = require('../constants/ActionTypes');
+
+var AppActions = {
+    changeState: function (state) {
+        AppDispatcher.handleApiAction({
+            actionType: ActionTypes.CHANGE_STATE_SUCCESS,
+            data: state
+        });
+    },
+    openAddDialog: function () {
+        AppDispatcher.handleApiAction({
+            actionType: ActionTypes.OPEN_ADD_DIALOG_SUCCESS,
+            data: {}
+        });
+    },
+    closeAddDialog: function () {
+        AppDispatcher.handleApiAction({
+            actionType: ActionTypes.ClOSE_ADD_DIALOG_SUCCESS,
+            data: {}
+        });
+    }
+};
+
+module.exports = AppActions;
+
+},{"../constants/ActionTypes":"/Users/aon/Projects/buyme-rails/src/app/constants/ActionTypes.js","../dispatcher/AppDispatcher":"/Users/aon/Projects/buyme-rails/src/app/dispatcher/AppDispatcher.js"}],"/Users/aon/Projects/buyme-rails/src/app/actions/ItemActions.js":[function(require,module,exports){
 'use strict';
 
 var AppDispatcher = require('../dispatcher/AppDispatcher');
@@ -38348,24 +38377,7 @@ var ItemActions = {
 
 module.exports = ItemActions;
 
-},{"../constants/ActionTypes":"/Users/aon/Projects/buyme-rails/src/app/constants/ActionTypes.js","../dispatcher/AppDispatcher":"/Users/aon/Projects/buyme-rails/src/app/dispatcher/AppDispatcher.js","../utils/ItemApi":"/Users/aon/Projects/buyme-rails/src/app/utils/ItemApi.js"}],"/Users/aon/Projects/buyme-rails/src/app/actions/MenuActions.js":[function(require,module,exports){
-'use strict';
-
-var AppDispatcher = require('../dispatcher/AppDispatcher');
-var ActionTypes = require('../constants/ActionTypes');
-
-var MenuActions = {
-    changeState: function (state) {
-        AppDispatcher.handleApiAction({
-            actionType: ActionTypes.CHANGE_STATE_SUCCESS,
-            data: state
-        });
-    }
-};
-
-module.exports = MenuActions;
-
-},{"../constants/ActionTypes":"/Users/aon/Projects/buyme-rails/src/app/constants/ActionTypes.js","../dispatcher/AppDispatcher":"/Users/aon/Projects/buyme-rails/src/app/dispatcher/AppDispatcher.js"}],"/Users/aon/Projects/buyme-rails/src/app/actions/OrderActions.js":[function(require,module,exports){
+},{"../constants/ActionTypes":"/Users/aon/Projects/buyme-rails/src/app/constants/ActionTypes.js","../dispatcher/AppDispatcher":"/Users/aon/Projects/buyme-rails/src/app/dispatcher/AppDispatcher.js","../utils/ItemApi":"/Users/aon/Projects/buyme-rails/src/app/utils/ItemApi.js"}],"/Users/aon/Projects/buyme-rails/src/app/actions/OrderActions.js":[function(require,module,exports){
 'use strict';
 
 var AppDispatcher = require('../dispatcher/AppDispatcher');
@@ -38609,25 +38621,29 @@ var Header = require('../../common/components/Header');
 var Menu = require('../../common/components/Menu');
 var Footer = require('../../common/components/Footer');
 var Home = require('./Home');
+var OrderAdd = require('./OrderAdd');
 
 var ToastStore = require('../stores/ToastStore');
 var ToastActions = require('../actions/ToastActions');
-
+var AppStore = require('../../app/stores/AppStore');
 
 var App = React.createClass({displayName: "App",
     getInitialState: function () {
         return {
+            showAdd: false,
             showToast: false,
             toastType: '',
             toastMessage: ''
         };
     },
     componentDidMount: function () {
-        ToastStore.addChangeListener(this._onChange);
+        ToastStore.addChangeListener(this._onToastStoreChange);
+        AppStore.addChangeListener(this._onAppStoreChange);
     },
 
     componentWillUnmount: function () {
-        ToastStore.removeChangeListener(this._onChange);
+        ToastStore.removeChangeListener(this._onToastStoreChange);
+        AppStore.removeChangeListener(this._onAppStoreChange);
     },
     render: function () {
         var menuItems = [
@@ -38635,10 +38651,12 @@ var App = React.createClass({displayName: "App",
             {route: 'shop', text: 'Shop'}
         ];
         var toastIcon = React.createElement(Icon, {icon: "navigation-close", style: {color: 'white'}});
+        var orderAdd = !!this.state.showAdd ? React.createElement(OrderAdd, {toggleOrderAdd: this.toggleOrderAdd}) : undefined;
         return (
             React.createElement("div", null, 
                 React.createElement(Header, {ref: "header", onMenuIconButtonClick: this._onMenuIconButtonClick, title: this.state.title, showButtons: true}), 
                 React.createElement(Menu, {ref: "leftNav", menuItems: menuItems, changeTitle: this.changeTitle}), 
+                orderAdd, 
                 React.createElement("div", {className: "content clearfix"}, 
                     React.createElement(RouteHandler, null)
                 ), 
@@ -38655,7 +38673,7 @@ var App = React.createClass({displayName: "App",
             title: title
         });
     },
-    _onChange: function () {
+    _onToastStoreChange: function () {
         if (ToastStore.getToastCount() > 0) {
             setTimeout(function () {
                 this.setState({
@@ -38675,11 +38693,16 @@ var App = React.createClass({displayName: "App",
                 toastMessage: ''
             });
         }
+    },
+    _onAppStoreChange: function () {
+        this.setState({
+            showAdd: AppStore.isShowAddDialog()
+        });
     }
 });
 
 module.exports = App;
-},{"../../common/components/Footer":"/Users/aon/Projects/buyme-rails/src/common/components/Footer.js","../../common/components/Header":"/Users/aon/Projects/buyme-rails/src/common/components/Header.js","../../common/components/Menu":"/Users/aon/Projects/buyme-rails/src/common/components/Menu.js","../actions/ToastActions":"/Users/aon/Projects/buyme-rails/src/app/actions/ToastActions.js","../stores/ToastStore":"/Users/aon/Projects/buyme-rails/src/app/stores/ToastStore.js","./Home":"/Users/aon/Projects/buyme-rails/src/app/components/Home.js","material-ui":"/Users/aon/Projects/buyme-rails/node_modules/material-ui/src/index.js","react":"/Users/aon/Projects/buyme-rails/node_modules/react/react.js","react-router":"/Users/aon/Projects/buyme-rails/node_modules/react-router/modules/index.js","react-tap-event-plugin":"/Users/aon/Projects/buyme-rails/node_modules/react-tap-event-plugin/src/injectTapEventPlugin.js"}],"/Users/aon/Projects/buyme-rails/src/app/components/FeedItem.js":[function(require,module,exports){
+},{"../../app/stores/AppStore":"/Users/aon/Projects/buyme-rails/src/app/stores/AppStore.js","../../common/components/Footer":"/Users/aon/Projects/buyme-rails/src/common/components/Footer.js","../../common/components/Header":"/Users/aon/Projects/buyme-rails/src/common/components/Header.js","../../common/components/Menu":"/Users/aon/Projects/buyme-rails/src/common/components/Menu.js","../actions/ToastActions":"/Users/aon/Projects/buyme-rails/src/app/actions/ToastActions.js","../stores/ToastStore":"/Users/aon/Projects/buyme-rails/src/app/stores/ToastStore.js","./Home":"/Users/aon/Projects/buyme-rails/src/app/components/Home.js","./OrderAdd":"/Users/aon/Projects/buyme-rails/src/app/components/OrderAdd.js","material-ui":"/Users/aon/Projects/buyme-rails/node_modules/material-ui/src/index.js","react":"/Users/aon/Projects/buyme-rails/node_modules/react/react.js","react-router":"/Users/aon/Projects/buyme-rails/node_modules/react-router/modules/index.js","react-tap-event-plugin":"/Users/aon/Projects/buyme-rails/node_modules/react-tap-event-plugin/src/injectTapEventPlugin.js"}],"/Users/aon/Projects/buyme-rails/src/app/components/FeedItem.js":[function(require,module,exports){
 'use strict';
 
 var React = require('react');
@@ -38689,7 +38712,7 @@ var Paper = mui.Paper;
 var moment = require('moment');
 
 var OrderActions = require('../actions/OrderActions');
-var MenuActions = require('../actions/MenuActions');
+var AppActions = require('../actions/AppActions');
 
 var FeedItem = React.createClass({displayName: "FeedItem",
     propTypes: {
@@ -38758,7 +38781,7 @@ var FeedItem = React.createClass({displayName: "FeedItem",
         }
     },
     _onStoreClick: function (store) {
-        MenuActions.changeState({
+        AppActions.changeState({
             name: 'shopOrder',
             params: {storeId: store.id},
             title: store.name
@@ -38767,7 +38790,7 @@ var FeedItem = React.createClass({displayName: "FeedItem",
 });
 
 module.exports = FeedItem;
-},{"../actions/MenuActions":"/Users/aon/Projects/buyme-rails/src/app/actions/MenuActions.js","../actions/OrderActions":"/Users/aon/Projects/buyme-rails/src/app/actions/OrderActions.js","material-ui":"/Users/aon/Projects/buyme-rails/node_modules/material-ui/src/index.js","moment":"/Users/aon/Projects/buyme-rails/node_modules/moment/moment.js","react":"/Users/aon/Projects/buyme-rails/node_modules/react/react.js","react-imageloader":"/Users/aon/Projects/buyme-rails/node_modules/react-imageloader/lib/index.js"}],"/Users/aon/Projects/buyme-rails/src/app/components/FeedList.js":[function(require,module,exports){
+},{"../actions/AppActions":"/Users/aon/Projects/buyme-rails/src/app/actions/AppActions.js","../actions/OrderActions":"/Users/aon/Projects/buyme-rails/src/app/actions/OrderActions.js","material-ui":"/Users/aon/Projects/buyme-rails/node_modules/material-ui/src/index.js","moment":"/Users/aon/Projects/buyme-rails/node_modules/moment/moment.js","react":"/Users/aon/Projects/buyme-rails/node_modules/react/react.js","react-imageloader":"/Users/aon/Projects/buyme-rails/node_modules/react-imageloader/lib/index.js"}],"/Users/aon/Projects/buyme-rails/src/app/components/FeedList.js":[function(require,module,exports){
 'use strict';
 
 var React = require('react');
@@ -38858,28 +38881,17 @@ var OrderAdd = require('./OrderAdd');
 var Me = React.createClass({displayName: "Me",
     getInitialState: function () {
         return {
-            showAdd: false,
             showCurrent: true
         };
     },
     render: function () {
-        var menuItems = [
-            {payload: '1', text: 'All'},
-            {payload: '2', text: 'Current'},
-            {payload: '3', text: 'History'}
-        ];
-        var orderAdd = !!this.state.showAdd ? React.createElement(OrderAdd, {toggleOrderAdd: this.toggleOrderAdd}) : undefined;
         var currentOrderList = !!this.state.showCurrent ? React.createElement(OrderList, {ref: "orders", title: "Current", orderType: "current"}) : undefined;
         var historyOrderList = !this.state.showCurrent ? React.createElement(OrderList, {ref: "oldOrders", title: "History", orderType: "history"}) : undefined;
-        var addOrderLabel = !this.state.showAdd ? 'Add Order' : 'Cancel';
         return (
             React.createElement("div", {className: "me"}, 
                 React.createElement("div", {className: "mui-toolbar"}, 
                     React.createElement("div", {className: "mui-toolbar-group mui-left"}, 
                         React.createElement(RaisedButton, {label: "Refresh", primary: false, onClick: this._refreshOrders})
-                    ), 
-                    React.createElement("div", {className: "mui-toolbar-group mui-right"}, 
-                        React.createElement(RaisedButton, {label: addOrderLabel, primary: true, onClick: this.toggleOrderAdd})
                     )
                 ), 
                 React.createElement("div", {className: "mui-togglebar"}, 
@@ -38889,16 +38901,10 @@ var Me = React.createClass({displayName: "Me",
                     ), 
                     React.createElement("div", {className: "mui-togglebar-wrap mui-font-style-caption"}, "Show Current")
                 ), 
-                orderAdd, 
                 currentOrderList, 
                 historyOrderList
             )
         );
-    },
-    toggleOrderAdd: function () {
-        this.setState({
-            showAdd: !this.state.showAdd
-        });
     },
     _refreshOrders: function () {
         if (this.refs.orders) {
@@ -38927,6 +38933,7 @@ var Input = mui.Input;
 var Checkbox = mui.Checkbox;
 var RaisedButton = mui.RaisedButton;
 var DropDownMenu = mui.DropDownMenu;
+var _ = require('underscore');
 
 var StoreStore = require('../stores/StoreStore');
 var StoreActions = require('../actions/StoreActions');
@@ -38935,7 +38942,7 @@ var OrderActions = require('../actions/OrderActions');
 var ItemStore = require('../stores/ItemStore');
 var ItemActions = require('../actions/ItemActions');
 var ToastActions = require('../actions/ToastActions');
-var _ = require('underscore');
+var AppActions = require('../actions/AppActions');
 
 var OrderAdd = React.createClass({displayName: "OrderAdd",
     getInitialState: function () {
@@ -38984,10 +38991,14 @@ var OrderAdd = React.createClass({displayName: "OrderAdd",
                     ), 
                     React.createElement("br", null), 
                     React.createElement("div", {className: "clearfix"}), 
-                    React.createElement(RaisedButton, {label: "Confirm", secondary: true, onClick: this._addOrder})
+                    React.createElement(RaisedButton, {label: "Confirm", secondary: true, onClick: this._addOrder}), 
+                    React.createElement(RaisedButton, {label: "Cancel", onClick: this._dismiss})
                 )
             )
         );
+    },
+    _dismiss: function () {
+        AppActions.closeAddDialog();
     },
     _onItemNameClick: function () {
         this.setState({
@@ -39086,7 +39097,7 @@ var OrderAdd = React.createClass({displayName: "OrderAdd",
 });
 
 module.exports = OrderAdd;
-},{"../actions/ItemActions":"/Users/aon/Projects/buyme-rails/src/app/actions/ItemActions.js","../actions/OrderActions":"/Users/aon/Projects/buyme-rails/src/app/actions/OrderActions.js","../actions/StoreActions":"/Users/aon/Projects/buyme-rails/src/app/actions/StoreActions.js","../actions/ToastActions":"/Users/aon/Projects/buyme-rails/src/app/actions/ToastActions.js","../stores/ItemStore":"/Users/aon/Projects/buyme-rails/src/app/stores/ItemStore.js","../stores/MyOrderStore":"/Users/aon/Projects/buyme-rails/src/app/stores/MyOrderStore.js","../stores/StoreStore":"/Users/aon/Projects/buyme-rails/src/app/stores/StoreStore.js","material-ui":"/Users/aon/Projects/buyme-rails/node_modules/material-ui/src/index.js","react":"/Users/aon/Projects/buyme-rails/node_modules/react/react.js","underscore":"/Users/aon/Projects/buyme-rails/node_modules/underscore/underscore.js"}],"/Users/aon/Projects/buyme-rails/src/app/components/OrderItem.js":[function(require,module,exports){
+},{"../actions/AppActions":"/Users/aon/Projects/buyme-rails/src/app/actions/AppActions.js","../actions/ItemActions":"/Users/aon/Projects/buyme-rails/src/app/actions/ItemActions.js","../actions/OrderActions":"/Users/aon/Projects/buyme-rails/src/app/actions/OrderActions.js","../actions/StoreActions":"/Users/aon/Projects/buyme-rails/src/app/actions/StoreActions.js","../actions/ToastActions":"/Users/aon/Projects/buyme-rails/src/app/actions/ToastActions.js","../stores/ItemStore":"/Users/aon/Projects/buyme-rails/src/app/stores/ItemStore.js","../stores/MyOrderStore":"/Users/aon/Projects/buyme-rails/src/app/stores/MyOrderStore.js","../stores/StoreStore":"/Users/aon/Projects/buyme-rails/src/app/stores/StoreStore.js","material-ui":"/Users/aon/Projects/buyme-rails/node_modules/material-ui/src/index.js","react":"/Users/aon/Projects/buyme-rails/node_modules/react/react.js","underscore":"/Users/aon/Projects/buyme-rails/node_modules/underscore/underscore.js"}],"/Users/aon/Projects/buyme-rails/src/app/components/OrderItem.js":[function(require,module,exports){
 'use strict';
 
 var React = require('react');
@@ -39097,7 +39108,7 @@ var FloatingActionButton = mui.FloatingActionButton;
 var moment = require('moment');
 
 var OrderActions = require('../actions/OrderActions');
-var MenuActions = require('../actions/MenuActions');
+var AppActions = require('../actions/AppActions');
 
 var OrderItems = React.createClass({displayName: "OrderItems",
     propTypes: {
@@ -39176,7 +39187,7 @@ var OrderItems = React.createClass({displayName: "OrderItems",
         OrderActions.removeStoreOrder(id);
     },
     _onStoreClick: function (store) {
-        MenuActions.changeState({
+        AppActions.changeState({
             name: 'shopOrder',
             params: {storeId: store.id},
             title: store.name
@@ -39201,7 +39212,7 @@ var OrderItems = React.createClass({displayName: "OrderItems",
 });
 
 module.exports = OrderItems;
-},{"../actions/MenuActions":"/Users/aon/Projects/buyme-rails/src/app/actions/MenuActions.js","../actions/OrderActions":"/Users/aon/Projects/buyme-rails/src/app/actions/OrderActions.js","material-ui":"/Users/aon/Projects/buyme-rails/node_modules/material-ui/src/index.js","moment":"/Users/aon/Projects/buyme-rails/node_modules/moment/moment.js","react":"/Users/aon/Projects/buyme-rails/node_modules/react/react.js","react-imageloader":"/Users/aon/Projects/buyme-rails/node_modules/react-imageloader/lib/index.js"}],"/Users/aon/Projects/buyme-rails/src/app/components/OrderList.js":[function(require,module,exports){
+},{"../actions/AppActions":"/Users/aon/Projects/buyme-rails/src/app/actions/AppActions.js","../actions/OrderActions":"/Users/aon/Projects/buyme-rails/src/app/actions/OrderActions.js","material-ui":"/Users/aon/Projects/buyme-rails/node_modules/material-ui/src/index.js","moment":"/Users/aon/Projects/buyme-rails/node_modules/moment/moment.js","react":"/Users/aon/Projects/buyme-rails/node_modules/react/react.js","react-imageloader":"/Users/aon/Projects/buyme-rails/node_modules/react-imageloader/lib/index.js"}],"/Users/aon/Projects/buyme-rails/src/app/components/OrderList.js":[function(require,module,exports){
 'use strict';
 
 var React = require('react');
@@ -39343,7 +39354,7 @@ var OrderList = require('./OrderList');
 
 var StoreStore = require('../stores/StoreStore');
 var StoreActions = require('../actions/StoreActions');
-var MenuActions = require('../actions/MenuActions');
+var AppActions = require('../actions/AppActions');
 
 var ShopOrder = React.createClass({displayName: "ShopOrder",
     mixins: [
@@ -39382,7 +39393,7 @@ var ShopOrder = React.createClass({displayName: "ShopOrder",
         }
     },
     closeOrderList: function () {
-        MenuActions.changeState({
+        AppActions.changeState({
             name: 'shop',
             title: 'Shop'
         });
@@ -39390,7 +39401,7 @@ var ShopOrder = React.createClass({displayName: "ShopOrder",
 });
 
 module.exports = ShopOrder;
-},{"../actions/MenuActions":"/Users/aon/Projects/buyme-rails/src/app/actions/MenuActions.js","../actions/StoreActions":"/Users/aon/Projects/buyme-rails/src/app/actions/StoreActions.js","../stores/StoreStore":"/Users/aon/Projects/buyme-rails/src/app/stores/StoreStore.js","./OrderList":"/Users/aon/Projects/buyme-rails/src/app/components/OrderList.js","react":"/Users/aon/Projects/buyme-rails/node_modules/react/react.js","react-router":"/Users/aon/Projects/buyme-rails/node_modules/react-router/modules/index.js"}],"/Users/aon/Projects/buyme-rails/src/app/components/StoreItem.js":[function(require,module,exports){
+},{"../actions/AppActions":"/Users/aon/Projects/buyme-rails/src/app/actions/AppActions.js","../actions/StoreActions":"/Users/aon/Projects/buyme-rails/src/app/actions/StoreActions.js","../stores/StoreStore":"/Users/aon/Projects/buyme-rails/src/app/stores/StoreStore.js","./OrderList":"/Users/aon/Projects/buyme-rails/src/app/components/OrderList.js","react":"/Users/aon/Projects/buyme-rails/node_modules/react/react.js","react-router":"/Users/aon/Projects/buyme-rails/node_modules/react-router/modules/index.js"}],"/Users/aon/Projects/buyme-rails/src/app/components/StoreItem.js":[function(require,module,exports){
 'use strict';
 
 var React = require('react');
@@ -39398,7 +39409,7 @@ var mui = require('material-ui');
 var Paper = mui.Paper;
 var FloatingActionButton = mui.FloatingActionButton;
 
-var MenuActions = require('../actions/MenuActions');
+var AppActions = require('../actions/AppActions');
 
 var StoreItems = React.createClass({displayName: "StoreItems",
     propTypes: {
@@ -39422,7 +39433,7 @@ var StoreItems = React.createClass({displayName: "StoreItems",
         );
     },
     _onButtonClick: function () {
-        MenuActions.changeState({
+        AppActions.changeState({
             name: 'shopOrder',
             params: {storeId: this.props.store.id},
             title: this.props.store.name
@@ -39431,7 +39442,7 @@ var StoreItems = React.createClass({displayName: "StoreItems",
 });
 
 module.exports = StoreItems;
-},{"../actions/MenuActions":"/Users/aon/Projects/buyme-rails/src/app/actions/MenuActions.js","material-ui":"/Users/aon/Projects/buyme-rails/node_modules/material-ui/src/index.js","react":"/Users/aon/Projects/buyme-rails/node_modules/react/react.js"}],"/Users/aon/Projects/buyme-rails/src/app/components/StoreList.js":[function(require,module,exports){
+},{"../actions/AppActions":"/Users/aon/Projects/buyme-rails/src/app/actions/AppActions.js","material-ui":"/Users/aon/Projects/buyme-rails/node_modules/material-ui/src/index.js","react":"/Users/aon/Projects/buyme-rails/node_modules/react/react.js"}],"/Users/aon/Projects/buyme-rails/src/app/components/StoreList.js":[function(require,module,exports){
 'use strict';
 
 var React = require('react');
@@ -39496,7 +39507,9 @@ var ActionTypes = keyMirror({
     REMOVE_STORE_ORDER_SUCCESS: null,
     SHOW_TOAST_SUCCESS: null,
     HIDE_TOAST_SUCCESS: null,
-    CHANGE_STATE_SUCCESS: null
+    CHANGE_STATE_SUCCESS: null,
+    OPEN_ADD_DIALOG_SUCCESS: null,
+    ClOSE_ADD_DIALOG_SUCCESS: null
 });
 
 module.exports = ActionTypes;
@@ -39523,7 +39536,66 @@ var AppDispatcher = assign(new Dispatcher(), {
 });
 
 module.exports = AppDispatcher;
-},{"flux":"/Users/aon/Projects/buyme-rails/node_modules/flux/index.js","object-assign":"/Users/aon/Projects/buyme-rails/node_modules/object-assign/index.js"}],"/Users/aon/Projects/buyme-rails/src/app/stores/ItemStore.js":[function(require,module,exports){
+},{"flux":"/Users/aon/Projects/buyme-rails/node_modules/flux/index.js","object-assign":"/Users/aon/Projects/buyme-rails/node_modules/object-assign/index.js"}],"/Users/aon/Projects/buyme-rails/src/app/stores/AppStore.js":[function(require,module,exports){
+'use strict';
+
+var AppDispatcher = require('../dispatcher/AppDispatcher');
+var EventEmitter = require('events').EventEmitter;
+var ActionTypes = require('../constants/ActionTypes');
+var assign = require('object-assign');
+
+var _state = undefined;
+var _isShowAddDialog = false;
+
+function getState(data) {
+    _state = data;
+}
+
+function showAddDialog(isShow) {
+    _isShowAddDialog = isShow;
+}
+
+var AppStore = assign({}, EventEmitter.prototype, {
+    getState: function () {
+        var state = _state;
+        getState();
+        return state;
+    },
+    isShowAddDialog: function () {
+        return _isShowAddDialog;
+    },
+    emitChange: function () {
+        this.emit('change');
+    },
+    addChangeListener: function (callback) {
+        this.on('change', callback);
+    },
+    removeChangeListener: function (callback) {
+        this.removeListener('change', callback);
+    }
+});
+
+AppDispatcher.register(function (payload) {
+    var action = payload.action;
+    switch (action.actionType) {
+        case ActionTypes.CHANGE_STATE_SUCCESS:
+            getState(action.data);
+            break;
+        case ActionTypes.OPEN_ADD_DIALOG_SUCCESS:
+            showAddDialog(true);
+            break;
+        case ActionTypes.ClOSE_ADD_DIALOG_SUCCESS:
+            showAddDialog(false);
+            break;
+        default:
+            return true;
+    }
+    AppStore.emitChange();
+    return true;
+});
+
+module.exports = AppStore;
+},{"../constants/ActionTypes":"/Users/aon/Projects/buyme-rails/src/app/constants/ActionTypes.js","../dispatcher/AppDispatcher":"/Users/aon/Projects/buyme-rails/src/app/dispatcher/AppDispatcher.js","events":"/Users/aon/Projects/buyme-rails/node_modules/browserify/node_modules/events/events.js","object-assign":"/Users/aon/Projects/buyme-rails/node_modules/object-assign/index.js"}],"/Users/aon/Projects/buyme-rails/src/app/stores/ItemStore.js":[function(require,module,exports){
 'use strict';
 
 var AppDispatcher = require('../dispatcher/AppDispatcher');
@@ -39566,49 +39638,6 @@ AppDispatcher.register(function (payload) {
 });
 
 module.exports = ItemStore;
-},{"../constants/ActionTypes":"/Users/aon/Projects/buyme-rails/src/app/constants/ActionTypes.js","../dispatcher/AppDispatcher":"/Users/aon/Projects/buyme-rails/src/app/dispatcher/AppDispatcher.js","events":"/Users/aon/Projects/buyme-rails/node_modules/browserify/node_modules/events/events.js","object-assign":"/Users/aon/Projects/buyme-rails/node_modules/object-assign/index.js"}],"/Users/aon/Projects/buyme-rails/src/app/stores/MenuStore.js":[function(require,module,exports){
-'use strict';
-
-var AppDispatcher = require('../dispatcher/AppDispatcher');
-var EventEmitter = require('events').EventEmitter;
-var ActionTypes = require('../constants/ActionTypes');
-var assign = require('object-assign');
-
-var _state = [];
-
-function getState(data) {
-    _state = data;
-}
-
-var MenuStore = assign({}, EventEmitter.prototype, {
-    getState: function () {
-        return _state;
-    },
-    emitChange: function () {
-        this.emit('change');
-    },
-    addChangeListener: function (callback) {
-        this.on('change', callback);
-    },
-    removeChangeListener: function (callback) {
-        this.removeListener('change', callback);
-    }
-});
-
-AppDispatcher.register(function (payload) {
-    var action = payload.action;
-    switch (action.actionType) {
-        case ActionTypes.CHANGE_STATE_SUCCESS:
-            getState(action.data);
-            break;
-        default:
-            return true;
-    }
-    MenuStore.emitChange();
-    return true;
-});
-
-module.exports = MenuStore;
 },{"../constants/ActionTypes":"/Users/aon/Projects/buyme-rails/src/app/constants/ActionTypes.js","../dispatcher/AppDispatcher":"/Users/aon/Projects/buyme-rails/src/app/dispatcher/AppDispatcher.js","events":"/Users/aon/Projects/buyme-rails/node_modules/browserify/node_modules/events/events.js","object-assign":"/Users/aon/Projects/buyme-rails/node_modules/object-assign/index.js"}],"/Users/aon/Projects/buyme-rails/src/app/stores/MyOrderStore.js":[function(require,module,exports){
 'use strict';
 
@@ -40018,6 +40047,7 @@ var mui = require('material-ui');
 var IconButton = mui.IconButton;
 var Menu = require('./Menu');
 var UserApi = require('../utils/UserApi');
+var AppActions = require('../../app/actions/AppActions');
 
 var Header = React.createClass({displayName: "Header",
     propTypes: {
@@ -40030,6 +40060,7 @@ var Header = React.createClass({displayName: "Header",
         };
     },
     render: function () {
+        var addButton = !!this.props.showButtons ? React.createElement(IconButton, {className: "mui-icon-button mui-enhanced-button mui-right", icon: "action-add-shopping-cart", onClick: this._onAddButtonClick}) : undefined;
         var logoutButton = !!this.props.showButtons ? React.createElement(IconButton, {className: "mui-icon-button mui-enhanced-button mui-right", icon: "action-input", onClick: this._onLogoutButtonClick}) : undefined;
         var menuStyle = {
             visibility: !!this.props.showButtons ? 'visible' : 'hidden'
@@ -40039,10 +40070,14 @@ var Header = React.createClass({displayName: "Header",
                 React.createElement("div", {className: "mui-paper-container"}, 
                     React.createElement(IconButton, {style: menuStyle, className: "mui-app-bar-navigation-icon-button mui-icon-button mui-enhanced-button", icon: "navigation-menu", onClick: this.props.onMenuIconButtonClick}), 
                     React.createElement("h1", {className: "mui-app-bar-title"}, this.props.title), 
-                    logoutButton
+                    logoutButton, 
+                    addButton
                 )
             )
         );
+    },
+    _onAddButtonClick: function () {
+        AppActions.openAddDialog();
     },
     _onLogoutButtonClick: function () {
         UserApi.logout();
@@ -40050,7 +40085,7 @@ var Header = React.createClass({displayName: "Header",
 });
 
 module.exports = Header;
-},{"../utils/UserApi":"/Users/aon/Projects/buyme-rails/src/common/utils/UserApi.js","./Menu":"/Users/aon/Projects/buyme-rails/src/common/components/Menu.js","material-ui":"/Users/aon/Projects/buyme-rails/node_modules/material-ui/src/index.js","react":"/Users/aon/Projects/buyme-rails/node_modules/react/react.js"}],"/Users/aon/Projects/buyme-rails/src/common/components/Menu.js":[function(require,module,exports){
+},{"../../app/actions/AppActions":"/Users/aon/Projects/buyme-rails/src/app/actions/AppActions.js","../utils/UserApi":"/Users/aon/Projects/buyme-rails/src/common/utils/UserApi.js","./Menu":"/Users/aon/Projects/buyme-rails/src/common/components/Menu.js","material-ui":"/Users/aon/Projects/buyme-rails/node_modules/material-ui/src/index.js","react":"/Users/aon/Projects/buyme-rails/node_modules/react/react.js"}],"/Users/aon/Projects/buyme-rails/src/common/components/Menu.js":[function(require,module,exports){
 'use strict';
 
 var React = require('react');
@@ -40059,7 +40094,7 @@ var mui = require('material-ui');
 var Icon = mui.Icon;
 var LeftNav = mui.LeftNav;
 
-var MenuStore = require('../../app/stores/MenuStore');
+var AppStore = require('../../app/stores/AppStore');
 
 var Menu = React.createClass({displayName: "Menu",
     mixins: [
@@ -40076,10 +40111,10 @@ var Menu = React.createClass({displayName: "Menu",
         };
     },
     componentDidMount: function () {
-        MenuStore.addChangeListener(this._onChange);
+        AppStore.addChangeListener(this._onChange);
     },
     componentWillUnmount: function () {
-        MenuStore.removeChangeListener(this._onChange);
+        AppStore.removeChangeListener(this._onChange);
     },
     render: function () {
         var header = React.createElement("div", {className: "logo", onClick: this._onHeaderClick}, "Buy Me");
@@ -40109,14 +40144,16 @@ var Menu = React.createClass({displayName: "Menu",
         this.refs.leftNav.close();
     },
     _onChange: function () {
-        var state = MenuStore.getState();
-        this.props.changeTitle(state.title);
-        this.transitionTo(state.name, state.params);
+        var state = AppStore.getState();
+        if (!!state) {
+            this.props.changeTitle(state.title);
+            this.transitionTo(state.name, state.params);
+        }
     }
 });
 
 module.exports = Menu;
-},{"../../app/stores/MenuStore":"/Users/aon/Projects/buyme-rails/src/app/stores/MenuStore.js","material-ui":"/Users/aon/Projects/buyme-rails/node_modules/material-ui/src/index.js","react":"/Users/aon/Projects/buyme-rails/node_modules/react/react.js","react-router":"/Users/aon/Projects/buyme-rails/node_modules/react-router/modules/index.js"}],"/Users/aon/Projects/buyme-rails/src/common/utils/ApiUtils.js":[function(require,module,exports){
+},{"../../app/stores/AppStore":"/Users/aon/Projects/buyme-rails/src/app/stores/AppStore.js","material-ui":"/Users/aon/Projects/buyme-rails/node_modules/material-ui/src/index.js","react":"/Users/aon/Projects/buyme-rails/node_modules/react/react.js","react-router":"/Users/aon/Projects/buyme-rails/node_modules/react-router/modules/index.js"}],"/Users/aon/Projects/buyme-rails/src/common/utils/ApiUtils.js":[function(require,module,exports){
 (function (process){
 'use strict';
 
@@ -40249,4 +40286,4 @@ var UserApi = assign({}, ApiUtils, {
 });
 
 module.exports = UserApi;
-},{"./ApiUtils":"/Users/aon/Projects/buyme-rails/src/common/utils/ApiUtils.js","object-assign":"/Users/aon/Projects/buyme-rails/node_modules/object-assign/index.js","q":"/Users/aon/Projects/buyme-rails/node_modules/q/q.js","underscore":"/Users/aon/Projects/buyme-rails/node_modules/underscore/underscore.js"}]},{},["/Users/aon/Projects/buyme-rails/src/app/app.js","/Users/aon/Projects/buyme-rails/src/app/actions/MenuActions.js","/Users/aon/Projects/buyme-rails/src/app/actions/OrderActions.js","/Users/aon/Projects/buyme-rails/src/app/actions/StoreActions.js","/Users/aon/Projects/buyme-rails/src/app/actions/ToastActions.js","/Users/aon/Projects/buyme-rails/src/app/components/App.js","/Users/aon/Projects/buyme-rails/src/app/components/FeedItem.js","/Users/aon/Projects/buyme-rails/src/app/components/FeedList.js","/Users/aon/Projects/buyme-rails/src/app/components/Home.js","/Users/aon/Projects/buyme-rails/src/app/components/Me.js","/Users/aon/Projects/buyme-rails/src/app/components/OrderAdd.js","/Users/aon/Projects/buyme-rails/src/app/components/OrderItem.js","/Users/aon/Projects/buyme-rails/src/app/components/OrderList.js","/Users/aon/Projects/buyme-rails/src/app/components/Shop.js","/Users/aon/Projects/buyme-rails/src/app/components/ShopOrder.js","/Users/aon/Projects/buyme-rails/src/app/components/StoreItem.js","/Users/aon/Projects/buyme-rails/src/app/components/StoreList.js","/Users/aon/Projects/buyme-rails/src/app/constants/ActionTypes.js","/Users/aon/Projects/buyme-rails/src/app/dispatcher/AppDispatcher.js","/Users/aon/Projects/buyme-rails/src/app/stores/ItemStore.js","/Users/aon/Projects/buyme-rails/src/app/stores/MenuStore.js","/Users/aon/Projects/buyme-rails/src/app/stores/MyOrderStore.js","/Users/aon/Projects/buyme-rails/src/app/stores/OrderStore.js","/Users/aon/Projects/buyme-rails/src/app/stores/StoreOrderStore.js","/Users/aon/Projects/buyme-rails/src/app/stores/StoreStore.js","/Users/aon/Projects/buyme-rails/src/app/stores/ToastStore.js","/Users/aon/Projects/buyme-rails/src/app/utils/ItemApi.js","/Users/aon/Projects/buyme-rails/src/app/utils/OrderApi.js","/Users/aon/Projects/buyme-rails/src/app/utils/StoreApi.js"]);
+},{"./ApiUtils":"/Users/aon/Projects/buyme-rails/src/common/utils/ApiUtils.js","object-assign":"/Users/aon/Projects/buyme-rails/node_modules/object-assign/index.js","q":"/Users/aon/Projects/buyme-rails/node_modules/q/q.js","underscore":"/Users/aon/Projects/buyme-rails/node_modules/underscore/underscore.js"}]},{},["/Users/aon/Projects/buyme-rails/src/app/app.js","/Users/aon/Projects/buyme-rails/src/app/actions/ItemActions.js","/Users/aon/Projects/buyme-rails/src/app/actions/OrderActions.js","/Users/aon/Projects/buyme-rails/src/app/actions/StoreActions.js","/Users/aon/Projects/buyme-rails/src/app/actions/ToastActions.js","/Users/aon/Projects/buyme-rails/src/app/components/App.js","/Users/aon/Projects/buyme-rails/src/app/components/FeedItem.js","/Users/aon/Projects/buyme-rails/src/app/components/FeedList.js","/Users/aon/Projects/buyme-rails/src/app/components/Home.js","/Users/aon/Projects/buyme-rails/src/app/components/Me.js","/Users/aon/Projects/buyme-rails/src/app/components/OrderAdd.js","/Users/aon/Projects/buyme-rails/src/app/components/OrderItem.js","/Users/aon/Projects/buyme-rails/src/app/components/OrderList.js","/Users/aon/Projects/buyme-rails/src/app/components/Shop.js","/Users/aon/Projects/buyme-rails/src/app/components/ShopOrder.js","/Users/aon/Projects/buyme-rails/src/app/components/StoreItem.js","/Users/aon/Projects/buyme-rails/src/app/components/StoreList.js","/Users/aon/Projects/buyme-rails/src/app/constants/ActionTypes.js","/Users/aon/Projects/buyme-rails/src/app/dispatcher/AppDispatcher.js","/Users/aon/Projects/buyme-rails/src/app/stores/AppStore.js","/Users/aon/Projects/buyme-rails/src/app/stores/ItemStore.js","/Users/aon/Projects/buyme-rails/src/app/stores/MyOrderStore.js","/Users/aon/Projects/buyme-rails/src/app/stores/OrderStore.js","/Users/aon/Projects/buyme-rails/src/app/stores/StoreOrderStore.js","/Users/aon/Projects/buyme-rails/src/app/stores/StoreStore.js","/Users/aon/Projects/buyme-rails/src/app/stores/ToastStore.js","/Users/aon/Projects/buyme-rails/src/app/utils/ItemApi.js","/Users/aon/Projects/buyme-rails/src/app/utils/OrderApi.js","/Users/aon/Projects/buyme-rails/src/app/utils/StoreApi.js"]);

@@ -7,6 +7,7 @@ var Input = mui.Input;
 var Checkbox = mui.Checkbox;
 var RaisedButton = mui.RaisedButton;
 var DropDownMenu = mui.DropDownMenu;
+var _ = require('underscore');
 
 var StoreStore = require('../stores/StoreStore');
 var StoreActions = require('../actions/StoreActions');
@@ -15,7 +16,7 @@ var OrderActions = require('../actions/OrderActions');
 var ItemStore = require('../stores/ItemStore');
 var ItemActions = require('../actions/ItemActions');
 var ToastActions = require('../actions/ToastActions');
-var _ = require('underscore');
+var AppActions = require('../actions/AppActions');
 
 var OrderAdd = React.createClass({
     getInitialState: function () {
@@ -65,9 +66,13 @@ var OrderAdd = React.createClass({
                     <br/>
                     <div className="clearfix"></div>
                     <RaisedButton label="Confirm" secondary={true} onClick={this._addOrder}/>
+                    <RaisedButton label="Cancel" onClick={this._dismiss}/>
                 </div>
             </Paper>
         );
+    },
+    _dismiss: function () {
+        AppActions.closeAddDialog();
     },
     _onItemNameClick: function () {
         this.setState({

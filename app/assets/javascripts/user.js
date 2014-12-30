@@ -32436,297 +32436,33 @@ module.exports = function injectTapEventPlugin () {
   });
 };
 
-},{"./ResponderEventPlugin.js":"/Users/aon/Projects/buyme-rails/node_modules/react-tap-event-plugin/src/ResponderEventPlugin.js","./TapEventPlugin.js":"/Users/aon/Projects/buyme-rails/node_modules/react-tap-event-plugin/src/TapEventPlugin.js","react":"/Users/aon/Projects/buyme-rails/node_modules/react/react.js","react/lib/EventPluginHub":"/Users/aon/Projects/buyme-rails/node_modules/react/lib/EventPluginHub.js"}],"/Users/aon/Projects/buyme-rails/node_modules/react/lib/AutoFocusMixin.js":[function(require,module,exports){
-module.exports=require("/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/AutoFocusMixin.js")
-},{"/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/AutoFocusMixin.js":"/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/AutoFocusMixin.js"}],"/Users/aon/Projects/buyme-rails/node_modules/react/lib/BeforeInputEventPlugin.js":[function(require,module,exports){
-module.exports=require("/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/BeforeInputEventPlugin.js")
-},{"/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/BeforeInputEventPlugin.js":"/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/BeforeInputEventPlugin.js"}],"/Users/aon/Projects/buyme-rails/node_modules/react/lib/CSSProperty.js":[function(require,module,exports){
-module.exports=require("/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/CSSProperty.js")
-},{"/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/CSSProperty.js":"/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/CSSProperty.js"}],"/Users/aon/Projects/buyme-rails/node_modules/react/lib/CSSPropertyOperations.js":[function(require,module,exports){
-module.exports=require("/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/CSSPropertyOperations.js")
-},{"/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/CSSPropertyOperations.js":"/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/CSSPropertyOperations.js"}],"/Users/aon/Projects/buyme-rails/node_modules/react/lib/CallbackQueue.js":[function(require,module,exports){
-module.exports=require("/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/CallbackQueue.js")
-},{"/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/CallbackQueue.js":"/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/CallbackQueue.js"}],"/Users/aon/Projects/buyme-rails/node_modules/react/lib/ChangeEventPlugin.js":[function(require,module,exports){
-module.exports=require("/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/ChangeEventPlugin.js")
-},{"/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/ChangeEventPlugin.js":"/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/ChangeEventPlugin.js"}],"/Users/aon/Projects/buyme-rails/node_modules/react/lib/ClientReactRootIndex.js":[function(require,module,exports){
-module.exports=require("/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/ClientReactRootIndex.js")
-},{"/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/ClientReactRootIndex.js":"/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/ClientReactRootIndex.js"}],"/Users/aon/Projects/buyme-rails/node_modules/react/lib/CompositionEventPlugin.js":[function(require,module,exports){
-module.exports=require("/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/CompositionEventPlugin.js")
-},{"/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/CompositionEventPlugin.js":"/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/CompositionEventPlugin.js"}],"/Users/aon/Projects/buyme-rails/node_modules/react/lib/DOMChildrenOperations.js":[function(require,module,exports){
-module.exports=require("/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/DOMChildrenOperations.js")
-},{"/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/DOMChildrenOperations.js":"/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/DOMChildrenOperations.js"}],"/Users/aon/Projects/buyme-rails/node_modules/react/lib/DOMProperty.js":[function(require,module,exports){
-module.exports=require("/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/DOMProperty.js")
-},{"/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/DOMProperty.js":"/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/DOMProperty.js"}],"/Users/aon/Projects/buyme-rails/node_modules/react/lib/DOMPropertyOperations.js":[function(require,module,exports){
-module.exports=require("/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/DOMPropertyOperations.js")
-},{"/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/DOMPropertyOperations.js":"/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/DOMPropertyOperations.js"}],"/Users/aon/Projects/buyme-rails/node_modules/react/lib/Danger.js":[function(require,module,exports){
-module.exports=require("/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/Danger.js")
-},{"/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/Danger.js":"/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/Danger.js"}],"/Users/aon/Projects/buyme-rails/node_modules/react/lib/DefaultEventPluginOrder.js":[function(require,module,exports){
-module.exports=require("/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/DefaultEventPluginOrder.js")
-},{"/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/DefaultEventPluginOrder.js":"/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/DefaultEventPluginOrder.js"}],"/Users/aon/Projects/buyme-rails/node_modules/react/lib/EnterLeaveEventPlugin.js":[function(require,module,exports){
-module.exports=require("/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/EnterLeaveEventPlugin.js")
-},{"/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/EnterLeaveEventPlugin.js":"/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/EnterLeaveEventPlugin.js"}],"/Users/aon/Projects/buyme-rails/node_modules/react/lib/EventConstants.js":[function(require,module,exports){
+},{"./ResponderEventPlugin.js":"/Users/aon/Projects/buyme-rails/node_modules/react-tap-event-plugin/src/ResponderEventPlugin.js","./TapEventPlugin.js":"/Users/aon/Projects/buyme-rails/node_modules/react-tap-event-plugin/src/TapEventPlugin.js","react":"/Users/aon/Projects/buyme-rails/node_modules/react/react.js","react/lib/EventPluginHub":"/Users/aon/Projects/buyme-rails/node_modules/react/lib/EventPluginHub.js"}],"/Users/aon/Projects/buyme-rails/node_modules/react/lib/EventConstants.js":[function(require,module,exports){
 module.exports=require("/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/EventConstants.js")
-},{"/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/EventConstants.js":"/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/EventConstants.js"}],"/Users/aon/Projects/buyme-rails/node_modules/react/lib/EventListener.js":[function(require,module,exports){
-module.exports=require("/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/EventListener.js")
-},{"/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/EventListener.js":"/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/EventListener.js"}],"/Users/aon/Projects/buyme-rails/node_modules/react/lib/EventPluginHub.js":[function(require,module,exports){
+},{"/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/EventConstants.js":"/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/EventConstants.js"}],"/Users/aon/Projects/buyme-rails/node_modules/react/lib/EventPluginHub.js":[function(require,module,exports){
 module.exports=require("/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/EventPluginHub.js")
-},{"/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/EventPluginHub.js":"/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/EventPluginHub.js"}],"/Users/aon/Projects/buyme-rails/node_modules/react/lib/EventPluginRegistry.js":[function(require,module,exports){
-module.exports=require("/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/EventPluginRegistry.js")
-},{"/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/EventPluginRegistry.js":"/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/EventPluginRegistry.js"}],"/Users/aon/Projects/buyme-rails/node_modules/react/lib/EventPluginUtils.js":[function(require,module,exports){
+},{"/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/EventPluginHub.js":"/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/EventPluginHub.js"}],"/Users/aon/Projects/buyme-rails/node_modules/react/lib/EventPluginUtils.js":[function(require,module,exports){
 module.exports=require("/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/EventPluginUtils.js")
 },{"/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/EventPluginUtils.js":"/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/EventPluginUtils.js"}],"/Users/aon/Projects/buyme-rails/node_modules/react/lib/EventPropagators.js":[function(require,module,exports){
 module.exports=require("/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/EventPropagators.js")
 },{"/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/EventPropagators.js":"/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/EventPropagators.js"}],"/Users/aon/Projects/buyme-rails/node_modules/react/lib/ExecutionEnvironment.js":[function(require,module,exports){
 module.exports=require("/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/ExecutionEnvironment.js")
-},{"/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/ExecutionEnvironment.js":"/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/ExecutionEnvironment.js"}],"/Users/aon/Projects/buyme-rails/node_modules/react/lib/HTMLDOMPropertyConfig.js":[function(require,module,exports){
-module.exports=require("/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/HTMLDOMPropertyConfig.js")
-},{"/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/HTMLDOMPropertyConfig.js":"/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/HTMLDOMPropertyConfig.js"}],"/Users/aon/Projects/buyme-rails/node_modules/react/lib/LinkedValueUtils.js":[function(require,module,exports){
-module.exports=require("/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/LinkedValueUtils.js")
-},{"/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/LinkedValueUtils.js":"/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/LinkedValueUtils.js"}],"/Users/aon/Projects/buyme-rails/node_modules/react/lib/LocalEventTrapMixin.js":[function(require,module,exports){
-module.exports=require("/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/LocalEventTrapMixin.js")
-},{"/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/LocalEventTrapMixin.js":"/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/LocalEventTrapMixin.js"}],"/Users/aon/Projects/buyme-rails/node_modules/react/lib/MobileSafariClickEventPlugin.js":[function(require,module,exports){
-module.exports=require("/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/MobileSafariClickEventPlugin.js")
-},{"/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/MobileSafariClickEventPlugin.js":"/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/MobileSafariClickEventPlugin.js"}],"/Users/aon/Projects/buyme-rails/node_modules/react/lib/Object.assign.js":[function(require,module,exports){
+},{"/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/ExecutionEnvironment.js":"/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/ExecutionEnvironment.js"}],"/Users/aon/Projects/buyme-rails/node_modules/react/lib/Object.assign.js":[function(require,module,exports){
 module.exports=require("/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/Object.assign.js")
-},{"/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/Object.assign.js":"/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/Object.assign.js"}],"/Users/aon/Projects/buyme-rails/node_modules/react/lib/PooledClass.js":[function(require,module,exports){
-module.exports=require("/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/PooledClass.js")
-},{"/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/PooledClass.js":"/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/PooledClass.js"}],"/Users/aon/Projects/buyme-rails/node_modules/react/lib/React.js":[function(require,module,exports){
-module.exports=require("/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/React.js")
-},{"/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/React.js":"/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/React.js"}],"/Users/aon/Projects/buyme-rails/node_modules/react/lib/ReactBrowserComponentMixin.js":[function(require,module,exports){
-module.exports=require("/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/ReactBrowserComponentMixin.js")
-},{"/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/ReactBrowserComponentMixin.js":"/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/ReactBrowserComponentMixin.js"}],"/Users/aon/Projects/buyme-rails/node_modules/react/lib/ReactBrowserEventEmitter.js":[function(require,module,exports){
-module.exports=require("/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/ReactBrowserEventEmitter.js")
-},{"/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/ReactBrowserEventEmitter.js":"/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/ReactBrowserEventEmitter.js"}],"/Users/aon/Projects/buyme-rails/node_modules/react/lib/ReactChildren.js":[function(require,module,exports){
-module.exports=require("/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/ReactChildren.js")
-},{"/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/ReactChildren.js":"/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/ReactChildren.js"}],"/Users/aon/Projects/buyme-rails/node_modules/react/lib/ReactComponent.js":[function(require,module,exports){
-module.exports=require("/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/ReactComponent.js")
-},{"/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/ReactComponent.js":"/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/ReactComponent.js"}],"/Users/aon/Projects/buyme-rails/node_modules/react/lib/ReactComponentBrowserEnvironment.js":[function(require,module,exports){
-module.exports=require("/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/ReactComponentBrowserEnvironment.js")
-},{"/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/ReactComponentBrowserEnvironment.js":"/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/ReactComponentBrowserEnvironment.js"}],"/Users/aon/Projects/buyme-rails/node_modules/react/lib/ReactCompositeComponent.js":[function(require,module,exports){
-module.exports=require("/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/ReactCompositeComponent.js")
-},{"/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/ReactCompositeComponent.js":"/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/ReactCompositeComponent.js"}],"/Users/aon/Projects/buyme-rails/node_modules/react/lib/ReactContext.js":[function(require,module,exports){
-module.exports=require("/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/ReactContext.js")
-},{"/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/ReactContext.js":"/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/ReactContext.js"}],"/Users/aon/Projects/buyme-rails/node_modules/react/lib/ReactCurrentOwner.js":[function(require,module,exports){
-module.exports=require("/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/ReactCurrentOwner.js")
-},{"/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/ReactCurrentOwner.js":"/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/ReactCurrentOwner.js"}],"/Users/aon/Projects/buyme-rails/node_modules/react/lib/ReactDOM.js":[function(require,module,exports){
-module.exports=require("/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/ReactDOM.js")
-},{"/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/ReactDOM.js":"/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/ReactDOM.js"}],"/Users/aon/Projects/buyme-rails/node_modules/react/lib/ReactDOMButton.js":[function(require,module,exports){
-module.exports=require("/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/ReactDOMButton.js")
-},{"/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/ReactDOMButton.js":"/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/ReactDOMButton.js"}],"/Users/aon/Projects/buyme-rails/node_modules/react/lib/ReactDOMComponent.js":[function(require,module,exports){
-module.exports=require("/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/ReactDOMComponent.js")
-},{"/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/ReactDOMComponent.js":"/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/ReactDOMComponent.js"}],"/Users/aon/Projects/buyme-rails/node_modules/react/lib/ReactDOMForm.js":[function(require,module,exports){
-module.exports=require("/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/ReactDOMForm.js")
-},{"/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/ReactDOMForm.js":"/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/ReactDOMForm.js"}],"/Users/aon/Projects/buyme-rails/node_modules/react/lib/ReactDOMIDOperations.js":[function(require,module,exports){
-module.exports=require("/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/ReactDOMIDOperations.js")
-},{"/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/ReactDOMIDOperations.js":"/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/ReactDOMIDOperations.js"}],"/Users/aon/Projects/buyme-rails/node_modules/react/lib/ReactDOMImg.js":[function(require,module,exports){
-module.exports=require("/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/ReactDOMImg.js")
-},{"/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/ReactDOMImg.js":"/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/ReactDOMImg.js"}],"/Users/aon/Projects/buyme-rails/node_modules/react/lib/ReactDOMInput.js":[function(require,module,exports){
-module.exports=require("/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/ReactDOMInput.js")
-},{"/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/ReactDOMInput.js":"/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/ReactDOMInput.js"}],"/Users/aon/Projects/buyme-rails/node_modules/react/lib/ReactDOMOption.js":[function(require,module,exports){
-module.exports=require("/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/ReactDOMOption.js")
-},{"/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/ReactDOMOption.js":"/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/ReactDOMOption.js"}],"/Users/aon/Projects/buyme-rails/node_modules/react/lib/ReactDOMSelect.js":[function(require,module,exports){
-module.exports=require("/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/ReactDOMSelect.js")
-},{"/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/ReactDOMSelect.js":"/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/ReactDOMSelect.js"}],"/Users/aon/Projects/buyme-rails/node_modules/react/lib/ReactDOMSelection.js":[function(require,module,exports){
-module.exports=require("/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/ReactDOMSelection.js")
-},{"/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/ReactDOMSelection.js":"/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/ReactDOMSelection.js"}],"/Users/aon/Projects/buyme-rails/node_modules/react/lib/ReactDOMTextarea.js":[function(require,module,exports){
-module.exports=require("/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/ReactDOMTextarea.js")
-},{"/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/ReactDOMTextarea.js":"/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/ReactDOMTextarea.js"}],"/Users/aon/Projects/buyme-rails/node_modules/react/lib/ReactDefaultBatchingStrategy.js":[function(require,module,exports){
-module.exports=require("/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/ReactDefaultBatchingStrategy.js")
-},{"/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/ReactDefaultBatchingStrategy.js":"/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/ReactDefaultBatchingStrategy.js"}],"/Users/aon/Projects/buyme-rails/node_modules/react/lib/ReactDefaultInjection.js":[function(require,module,exports){
-module.exports=require("/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/ReactDefaultInjection.js")
-},{"/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/ReactDefaultInjection.js":"/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/ReactDefaultInjection.js"}],"/Users/aon/Projects/buyme-rails/node_modules/react/lib/ReactDefaultPerf.js":[function(require,module,exports){
-module.exports=require("/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/ReactDefaultPerf.js")
-},{"/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/ReactDefaultPerf.js":"/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/ReactDefaultPerf.js"}],"/Users/aon/Projects/buyme-rails/node_modules/react/lib/ReactDefaultPerfAnalysis.js":[function(require,module,exports){
-module.exports=require("/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/ReactDefaultPerfAnalysis.js")
-},{"/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/ReactDefaultPerfAnalysis.js":"/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/ReactDefaultPerfAnalysis.js"}],"/Users/aon/Projects/buyme-rails/node_modules/react/lib/ReactElement.js":[function(require,module,exports){
-module.exports=require("/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/ReactElement.js")
-},{"/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/ReactElement.js":"/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/ReactElement.js"}],"/Users/aon/Projects/buyme-rails/node_modules/react/lib/ReactElementValidator.js":[function(require,module,exports){
-module.exports=require("/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/ReactElementValidator.js")
-},{"/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/ReactElementValidator.js":"/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/ReactElementValidator.js"}],"/Users/aon/Projects/buyme-rails/node_modules/react/lib/ReactEmptyComponent.js":[function(require,module,exports){
-module.exports=require("/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/ReactEmptyComponent.js")
-},{"/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/ReactEmptyComponent.js":"/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/ReactEmptyComponent.js"}],"/Users/aon/Projects/buyme-rails/node_modules/react/lib/ReactErrorUtils.js":[function(require,module,exports){
-module.exports=require("/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/ReactErrorUtils.js")
-},{"/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/ReactErrorUtils.js":"/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/ReactErrorUtils.js"}],"/Users/aon/Projects/buyme-rails/node_modules/react/lib/ReactEventEmitterMixin.js":[function(require,module,exports){
-module.exports=require("/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/ReactEventEmitterMixin.js")
-},{"/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/ReactEventEmitterMixin.js":"/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/ReactEventEmitterMixin.js"}],"/Users/aon/Projects/buyme-rails/node_modules/react/lib/ReactEventListener.js":[function(require,module,exports){
-module.exports=require("/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/ReactEventListener.js")
-},{"/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/ReactEventListener.js":"/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/ReactEventListener.js"}],"/Users/aon/Projects/buyme-rails/node_modules/react/lib/ReactInjection.js":[function(require,module,exports){
-module.exports=require("/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/ReactInjection.js")
-},{"/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/ReactInjection.js":"/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/ReactInjection.js"}],"/Users/aon/Projects/buyme-rails/node_modules/react/lib/ReactInputSelection.js":[function(require,module,exports){
-module.exports=require("/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/ReactInputSelection.js")
-},{"/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/ReactInputSelection.js":"/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/ReactInputSelection.js"}],"/Users/aon/Projects/buyme-rails/node_modules/react/lib/ReactInstanceHandles.js":[function(require,module,exports){
-module.exports=require("/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/ReactInstanceHandles.js")
-},{"/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/ReactInstanceHandles.js":"/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/ReactInstanceHandles.js"}],"/Users/aon/Projects/buyme-rails/node_modules/react/lib/ReactLegacyElement.js":[function(require,module,exports){
-module.exports=require("/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/ReactLegacyElement.js")
-},{"/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/ReactLegacyElement.js":"/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/ReactLegacyElement.js"}],"/Users/aon/Projects/buyme-rails/node_modules/react/lib/ReactMarkupChecksum.js":[function(require,module,exports){
-module.exports=require("/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/ReactMarkupChecksum.js")
-},{"/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/ReactMarkupChecksum.js":"/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/ReactMarkupChecksum.js"}],"/Users/aon/Projects/buyme-rails/node_modules/react/lib/ReactMount.js":[function(require,module,exports){
-module.exports=require("/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/ReactMount.js")
-},{"/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/ReactMount.js":"/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/ReactMount.js"}],"/Users/aon/Projects/buyme-rails/node_modules/react/lib/ReactMultiChild.js":[function(require,module,exports){
-module.exports=require("/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/ReactMultiChild.js")
-},{"/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/ReactMultiChild.js":"/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/ReactMultiChild.js"}],"/Users/aon/Projects/buyme-rails/node_modules/react/lib/ReactMultiChildUpdateTypes.js":[function(require,module,exports){
-module.exports=require("/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/ReactMultiChildUpdateTypes.js")
-},{"/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/ReactMultiChildUpdateTypes.js":"/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/ReactMultiChildUpdateTypes.js"}],"/Users/aon/Projects/buyme-rails/node_modules/react/lib/ReactNativeComponent.js":[function(require,module,exports){
-module.exports=require("/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/ReactNativeComponent.js")
-},{"/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/ReactNativeComponent.js":"/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/ReactNativeComponent.js"}],"/Users/aon/Projects/buyme-rails/node_modules/react/lib/ReactOwner.js":[function(require,module,exports){
-module.exports=require("/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/ReactOwner.js")
-},{"/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/ReactOwner.js":"/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/ReactOwner.js"}],"/Users/aon/Projects/buyme-rails/node_modules/react/lib/ReactPerf.js":[function(require,module,exports){
-module.exports=require("/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/ReactPerf.js")
-},{"/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/ReactPerf.js":"/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/ReactPerf.js"}],"/Users/aon/Projects/buyme-rails/node_modules/react/lib/ReactPropTransferer.js":[function(require,module,exports){
-module.exports=require("/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/ReactPropTransferer.js")
-},{"/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/ReactPropTransferer.js":"/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/ReactPropTransferer.js"}],"/Users/aon/Projects/buyme-rails/node_modules/react/lib/ReactPropTypeLocationNames.js":[function(require,module,exports){
-module.exports=require("/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/ReactPropTypeLocationNames.js")
-},{"/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/ReactPropTypeLocationNames.js":"/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/ReactPropTypeLocationNames.js"}],"/Users/aon/Projects/buyme-rails/node_modules/react/lib/ReactPropTypeLocations.js":[function(require,module,exports){
-module.exports=require("/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/ReactPropTypeLocations.js")
-},{"/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/ReactPropTypeLocations.js":"/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/ReactPropTypeLocations.js"}],"/Users/aon/Projects/buyme-rails/node_modules/react/lib/ReactPropTypes.js":[function(require,module,exports){
-module.exports=require("/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/ReactPropTypes.js")
-},{"/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/ReactPropTypes.js":"/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/ReactPropTypes.js"}],"/Users/aon/Projects/buyme-rails/node_modules/react/lib/ReactPutListenerQueue.js":[function(require,module,exports){
-module.exports=require("/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/ReactPutListenerQueue.js")
-},{"/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/ReactPutListenerQueue.js":"/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/ReactPutListenerQueue.js"}],"/Users/aon/Projects/buyme-rails/node_modules/react/lib/ReactReconcileTransaction.js":[function(require,module,exports){
-module.exports=require("/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/ReactReconcileTransaction.js")
-},{"/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/ReactReconcileTransaction.js":"/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/ReactReconcileTransaction.js"}],"/Users/aon/Projects/buyme-rails/node_modules/react/lib/ReactRootIndex.js":[function(require,module,exports){
-module.exports=require("/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/ReactRootIndex.js")
-},{"/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/ReactRootIndex.js":"/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/ReactRootIndex.js"}],"/Users/aon/Projects/buyme-rails/node_modules/react/lib/ReactServerRendering.js":[function(require,module,exports){
-module.exports=require("/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/ReactServerRendering.js")
-},{"/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/ReactServerRendering.js":"/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/ReactServerRendering.js"}],"/Users/aon/Projects/buyme-rails/node_modules/react/lib/ReactServerRenderingTransaction.js":[function(require,module,exports){
-module.exports=require("/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/ReactServerRenderingTransaction.js")
-},{"/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/ReactServerRenderingTransaction.js":"/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/ReactServerRenderingTransaction.js"}],"/Users/aon/Projects/buyme-rails/node_modules/react/lib/ReactTextComponent.js":[function(require,module,exports){
-module.exports=require("/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/ReactTextComponent.js")
-},{"/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/ReactTextComponent.js":"/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/ReactTextComponent.js"}],"/Users/aon/Projects/buyme-rails/node_modules/react/lib/ReactUpdates.js":[function(require,module,exports){
-module.exports=require("/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/ReactUpdates.js")
-},{"/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/ReactUpdates.js":"/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/ReactUpdates.js"}],"/Users/aon/Projects/buyme-rails/node_modules/react/lib/SVGDOMPropertyConfig.js":[function(require,module,exports){
-module.exports=require("/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/SVGDOMPropertyConfig.js")
-},{"/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/SVGDOMPropertyConfig.js":"/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/SVGDOMPropertyConfig.js"}],"/Users/aon/Projects/buyme-rails/node_modules/react/lib/SelectEventPlugin.js":[function(require,module,exports){
-module.exports=require("/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/SelectEventPlugin.js")
-},{"/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/SelectEventPlugin.js":"/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/SelectEventPlugin.js"}],"/Users/aon/Projects/buyme-rails/node_modules/react/lib/ServerReactRootIndex.js":[function(require,module,exports){
-module.exports=require("/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/ServerReactRootIndex.js")
-},{"/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/ServerReactRootIndex.js":"/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/ServerReactRootIndex.js"}],"/Users/aon/Projects/buyme-rails/node_modules/react/lib/SimpleEventPlugin.js":[function(require,module,exports){
-module.exports=require("/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/SimpleEventPlugin.js")
-},{"/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/SimpleEventPlugin.js":"/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/SimpleEventPlugin.js"}],"/Users/aon/Projects/buyme-rails/node_modules/react/lib/SyntheticClipboardEvent.js":[function(require,module,exports){
-module.exports=require("/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/SyntheticClipboardEvent.js")
-},{"/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/SyntheticClipboardEvent.js":"/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/SyntheticClipboardEvent.js"}],"/Users/aon/Projects/buyme-rails/node_modules/react/lib/SyntheticCompositionEvent.js":[function(require,module,exports){
-module.exports=require("/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/SyntheticCompositionEvent.js")
-},{"/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/SyntheticCompositionEvent.js":"/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/SyntheticCompositionEvent.js"}],"/Users/aon/Projects/buyme-rails/node_modules/react/lib/SyntheticDragEvent.js":[function(require,module,exports){
-module.exports=require("/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/SyntheticDragEvent.js")
-},{"/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/SyntheticDragEvent.js":"/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/SyntheticDragEvent.js"}],"/Users/aon/Projects/buyme-rails/node_modules/react/lib/SyntheticEvent.js":[function(require,module,exports){
+},{"/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/Object.assign.js":"/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/Object.assign.js"}],"/Users/aon/Projects/buyme-rails/node_modules/react/lib/SyntheticEvent.js":[function(require,module,exports){
 module.exports=require("/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/SyntheticEvent.js")
-},{"/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/SyntheticEvent.js":"/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/SyntheticEvent.js"}],"/Users/aon/Projects/buyme-rails/node_modules/react/lib/SyntheticFocusEvent.js":[function(require,module,exports){
-module.exports=require("/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/SyntheticFocusEvent.js")
-},{"/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/SyntheticFocusEvent.js":"/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/SyntheticFocusEvent.js"}],"/Users/aon/Projects/buyme-rails/node_modules/react/lib/SyntheticInputEvent.js":[function(require,module,exports){
-module.exports=require("/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/SyntheticInputEvent.js")
-},{"/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/SyntheticInputEvent.js":"/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/SyntheticInputEvent.js"}],"/Users/aon/Projects/buyme-rails/node_modules/react/lib/SyntheticKeyboardEvent.js":[function(require,module,exports){
-module.exports=require("/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/SyntheticKeyboardEvent.js")
-},{"/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/SyntheticKeyboardEvent.js":"/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/SyntheticKeyboardEvent.js"}],"/Users/aon/Projects/buyme-rails/node_modules/react/lib/SyntheticMouseEvent.js":[function(require,module,exports){
-module.exports=require("/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/SyntheticMouseEvent.js")
-},{"/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/SyntheticMouseEvent.js":"/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/SyntheticMouseEvent.js"}],"/Users/aon/Projects/buyme-rails/node_modules/react/lib/SyntheticTouchEvent.js":[function(require,module,exports){
-module.exports=require("/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/SyntheticTouchEvent.js")
-},{"/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/SyntheticTouchEvent.js":"/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/SyntheticTouchEvent.js"}],"/Users/aon/Projects/buyme-rails/node_modules/react/lib/SyntheticUIEvent.js":[function(require,module,exports){
+},{"/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/SyntheticEvent.js":"/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/SyntheticEvent.js"}],"/Users/aon/Projects/buyme-rails/node_modules/react/lib/SyntheticUIEvent.js":[function(require,module,exports){
 module.exports=require("/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/SyntheticUIEvent.js")
-},{"/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/SyntheticUIEvent.js":"/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/SyntheticUIEvent.js"}],"/Users/aon/Projects/buyme-rails/node_modules/react/lib/SyntheticWheelEvent.js":[function(require,module,exports){
-module.exports=require("/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/SyntheticWheelEvent.js")
-},{"/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/SyntheticWheelEvent.js":"/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/SyntheticWheelEvent.js"}],"/Users/aon/Projects/buyme-rails/node_modules/react/lib/Transaction.js":[function(require,module,exports){
-module.exports=require("/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/Transaction.js")
-},{"/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/Transaction.js":"/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/Transaction.js"}],"/Users/aon/Projects/buyme-rails/node_modules/react/lib/ViewportMetrics.js":[function(require,module,exports){
+},{"/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/SyntheticUIEvent.js":"/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/SyntheticUIEvent.js"}],"/Users/aon/Projects/buyme-rails/node_modules/react/lib/ViewportMetrics.js":[function(require,module,exports){
 module.exports=require("/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/ViewportMetrics.js")
 },{"/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/ViewportMetrics.js":"/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/ViewportMetrics.js"}],"/Users/aon/Projects/buyme-rails/node_modules/react/lib/accumulateInto.js":[function(require,module,exports){
 module.exports=require("/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/accumulateInto.js")
-},{"/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/accumulateInto.js":"/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/accumulateInto.js"}],"/Users/aon/Projects/buyme-rails/node_modules/react/lib/adler32.js":[function(require,module,exports){
-module.exports=require("/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/adler32.js")
-},{"/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/adler32.js":"/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/adler32.js"}],"/Users/aon/Projects/buyme-rails/node_modules/react/lib/camelize.js":[function(require,module,exports){
-module.exports=require("/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/camelize.js")
-},{"/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/camelize.js":"/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/camelize.js"}],"/Users/aon/Projects/buyme-rails/node_modules/react/lib/camelizeStyleName.js":[function(require,module,exports){
-module.exports=require("/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/camelizeStyleName.js")
-},{"/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/camelizeStyleName.js":"/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/camelizeStyleName.js"}],"/Users/aon/Projects/buyme-rails/node_modules/react/lib/containsNode.js":[function(require,module,exports){
-module.exports=require("/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/containsNode.js")
-},{"/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/containsNode.js":"/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/containsNode.js"}],"/Users/aon/Projects/buyme-rails/node_modules/react/lib/createArrayFrom.js":[function(require,module,exports){
-module.exports=require("/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/createArrayFrom.js")
-},{"/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/createArrayFrom.js":"/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/createArrayFrom.js"}],"/Users/aon/Projects/buyme-rails/node_modules/react/lib/createFullPageComponent.js":[function(require,module,exports){
-module.exports=require("/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/createFullPageComponent.js")
-},{"/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/createFullPageComponent.js":"/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/createFullPageComponent.js"}],"/Users/aon/Projects/buyme-rails/node_modules/react/lib/createNodesFromMarkup.js":[function(require,module,exports){
-module.exports=require("/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/createNodesFromMarkup.js")
-},{"/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/createNodesFromMarkup.js":"/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/createNodesFromMarkup.js"}],"/Users/aon/Projects/buyme-rails/node_modules/react/lib/cx.js":[function(require,module,exports){
+},{"/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/accumulateInto.js":"/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/accumulateInto.js"}],"/Users/aon/Projects/buyme-rails/node_modules/react/lib/cx.js":[function(require,module,exports){
 module.exports=require("/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/cx.js")
-},{"/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/cx.js":"/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/cx.js"}],"/Users/aon/Projects/buyme-rails/node_modules/react/lib/dangerousStyleValue.js":[function(require,module,exports){
-module.exports=require("/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/dangerousStyleValue.js")
-},{"/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/dangerousStyleValue.js":"/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/dangerousStyleValue.js"}],"/Users/aon/Projects/buyme-rails/node_modules/react/lib/deprecated.js":[function(require,module,exports){
-module.exports=require("/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/deprecated.js")
-},{"/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/deprecated.js":"/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/deprecated.js"}],"/Users/aon/Projects/buyme-rails/node_modules/react/lib/emptyFunction.js":[function(require,module,exports){
-module.exports=require("/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/emptyFunction.js")
-},{"/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/emptyFunction.js":"/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/emptyFunction.js"}],"/Users/aon/Projects/buyme-rails/node_modules/react/lib/emptyObject.js":[function(require,module,exports){
-module.exports=require("/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/emptyObject.js")
-},{"/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/emptyObject.js":"/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/emptyObject.js"}],"/Users/aon/Projects/buyme-rails/node_modules/react/lib/escapeTextForBrowser.js":[function(require,module,exports){
-module.exports=require("/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/escapeTextForBrowser.js")
-},{"/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/escapeTextForBrowser.js":"/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/escapeTextForBrowser.js"}],"/Users/aon/Projects/buyme-rails/node_modules/react/lib/flattenChildren.js":[function(require,module,exports){
-module.exports=require("/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/flattenChildren.js")
-},{"/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/flattenChildren.js":"/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/flattenChildren.js"}],"/Users/aon/Projects/buyme-rails/node_modules/react/lib/focusNode.js":[function(require,module,exports){
-module.exports=require("/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/focusNode.js")
-},{"/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/focusNode.js":"/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/focusNode.js"}],"/Users/aon/Projects/buyme-rails/node_modules/react/lib/forEachAccumulated.js":[function(require,module,exports){
-module.exports=require("/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/forEachAccumulated.js")
-},{"/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/forEachAccumulated.js":"/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/forEachAccumulated.js"}],"/Users/aon/Projects/buyme-rails/node_modules/react/lib/getActiveElement.js":[function(require,module,exports){
-module.exports=require("/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/getActiveElement.js")
-},{"/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/getActiveElement.js":"/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/getActiveElement.js"}],"/Users/aon/Projects/buyme-rails/node_modules/react/lib/getEventCharCode.js":[function(require,module,exports){
-module.exports=require("/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/getEventCharCode.js")
-},{"/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/getEventCharCode.js":"/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/getEventCharCode.js"}],"/Users/aon/Projects/buyme-rails/node_modules/react/lib/getEventKey.js":[function(require,module,exports){
-module.exports=require("/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/getEventKey.js")
-},{"/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/getEventKey.js":"/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/getEventKey.js"}],"/Users/aon/Projects/buyme-rails/node_modules/react/lib/getEventModifierState.js":[function(require,module,exports){
-module.exports=require("/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/getEventModifierState.js")
-},{"/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/getEventModifierState.js":"/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/getEventModifierState.js"}],"/Users/aon/Projects/buyme-rails/node_modules/react/lib/getEventTarget.js":[function(require,module,exports){
-module.exports=require("/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/getEventTarget.js")
-},{"/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/getEventTarget.js":"/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/getEventTarget.js"}],"/Users/aon/Projects/buyme-rails/node_modules/react/lib/getMarkupWrap.js":[function(require,module,exports){
-module.exports=require("/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/getMarkupWrap.js")
-},{"/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/getMarkupWrap.js":"/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/getMarkupWrap.js"}],"/Users/aon/Projects/buyme-rails/node_modules/react/lib/getNodeForCharacterOffset.js":[function(require,module,exports){
-module.exports=require("/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/getNodeForCharacterOffset.js")
-},{"/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/getNodeForCharacterOffset.js":"/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/getNodeForCharacterOffset.js"}],"/Users/aon/Projects/buyme-rails/node_modules/react/lib/getReactRootElementInContainer.js":[function(require,module,exports){
-module.exports=require("/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/getReactRootElementInContainer.js")
-},{"/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/getReactRootElementInContainer.js":"/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/getReactRootElementInContainer.js"}],"/Users/aon/Projects/buyme-rails/node_modules/react/lib/getTextContentAccessor.js":[function(require,module,exports){
-module.exports=require("/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/getTextContentAccessor.js")
-},{"/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/getTextContentAccessor.js":"/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/getTextContentAccessor.js"}],"/Users/aon/Projects/buyme-rails/node_modules/react/lib/getUnboundedScrollPosition.js":[function(require,module,exports){
-module.exports=require("/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/getUnboundedScrollPosition.js")
-},{"/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/getUnboundedScrollPosition.js":"/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/getUnboundedScrollPosition.js"}],"/Users/aon/Projects/buyme-rails/node_modules/react/lib/hyphenate.js":[function(require,module,exports){
-module.exports=require("/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/hyphenate.js")
-},{"/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/hyphenate.js":"/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/hyphenate.js"}],"/Users/aon/Projects/buyme-rails/node_modules/react/lib/hyphenateStyleName.js":[function(require,module,exports){
-module.exports=require("/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/hyphenateStyleName.js")
-},{"/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/hyphenateStyleName.js":"/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/hyphenateStyleName.js"}],"/Users/aon/Projects/buyme-rails/node_modules/react/lib/instantiateReactComponent.js":[function(require,module,exports){
-module.exports=require("/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/instantiateReactComponent.js")
-},{"/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/instantiateReactComponent.js":"/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/instantiateReactComponent.js"}],"/Users/aon/Projects/buyme-rails/node_modules/react/lib/invariant.js":[function(require,module,exports){
+},{"/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/cx.js":"/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/cx.js"}],"/Users/aon/Projects/buyme-rails/node_modules/react/lib/invariant.js":[function(require,module,exports){
 module.exports=require("/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/invariant.js")
-},{"/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/invariant.js":"/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/invariant.js"}],"/Users/aon/Projects/buyme-rails/node_modules/react/lib/isEventSupported.js":[function(require,module,exports){
-module.exports=require("/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/isEventSupported.js")
-},{"/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/isEventSupported.js":"/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/isEventSupported.js"}],"/Users/aon/Projects/buyme-rails/node_modules/react/lib/isNode.js":[function(require,module,exports){
-module.exports=require("/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/isNode.js")
-},{"/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/isNode.js":"/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/isNode.js"}],"/Users/aon/Projects/buyme-rails/node_modules/react/lib/isTextInputElement.js":[function(require,module,exports){
-module.exports=require("/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/isTextInputElement.js")
-},{"/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/isTextInputElement.js":"/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/isTextInputElement.js"}],"/Users/aon/Projects/buyme-rails/node_modules/react/lib/isTextNode.js":[function(require,module,exports){
-module.exports=require("/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/isTextNode.js")
-},{"/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/isTextNode.js":"/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/isTextNode.js"}],"/Users/aon/Projects/buyme-rails/node_modules/react/lib/joinClasses.js":[function(require,module,exports){
-module.exports=require("/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/joinClasses.js")
-},{"/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/joinClasses.js":"/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/joinClasses.js"}],"/Users/aon/Projects/buyme-rails/node_modules/react/lib/keyMirror.js":[function(require,module,exports){
-module.exports=require("/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/keyMirror.js")
-},{"/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/keyMirror.js":"/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/keyMirror.js"}],"/Users/aon/Projects/buyme-rails/node_modules/react/lib/keyOf.js":[function(require,module,exports){
+},{"/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/invariant.js":"/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/invariant.js"}],"/Users/aon/Projects/buyme-rails/node_modules/react/lib/keyOf.js":[function(require,module,exports){
 module.exports=require("/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/keyOf.js")
-},{"/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/keyOf.js":"/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/keyOf.js"}],"/Users/aon/Projects/buyme-rails/node_modules/react/lib/mapObject.js":[function(require,module,exports){
-module.exports=require("/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/mapObject.js")
-},{"/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/mapObject.js":"/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/mapObject.js"}],"/Users/aon/Projects/buyme-rails/node_modules/react/lib/memoizeStringOnly.js":[function(require,module,exports){
-module.exports=require("/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/memoizeStringOnly.js")
-},{"/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/memoizeStringOnly.js":"/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/memoizeStringOnly.js"}],"/Users/aon/Projects/buyme-rails/node_modules/react/lib/monitorCodeUse.js":[function(require,module,exports){
-module.exports=require("/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/monitorCodeUse.js")
-},{"/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/monitorCodeUse.js":"/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/monitorCodeUse.js"}],"/Users/aon/Projects/buyme-rails/node_modules/react/lib/onlyChild.js":[function(require,module,exports){
-module.exports=require("/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/onlyChild.js")
-},{"/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/onlyChild.js":"/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/onlyChild.js"}],"/Users/aon/Projects/buyme-rails/node_modules/react/lib/performance.js":[function(require,module,exports){
-module.exports=require("/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/performance.js")
-},{"/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/performance.js":"/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/performance.js"}],"/Users/aon/Projects/buyme-rails/node_modules/react/lib/performanceNow.js":[function(require,module,exports){
-module.exports=require("/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/performanceNow.js")
-},{"/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/performanceNow.js":"/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/performanceNow.js"}],"/Users/aon/Projects/buyme-rails/node_modules/react/lib/setInnerHTML.js":[function(require,module,exports){
-module.exports=require("/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/setInnerHTML.js")
-},{"/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/setInnerHTML.js":"/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/setInnerHTML.js"}],"/Users/aon/Projects/buyme-rails/node_modules/react/lib/shallowEqual.js":[function(require,module,exports){
-module.exports=require("/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/shallowEqual.js")
-},{"/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/shallowEqual.js":"/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/shallowEqual.js"}],"/Users/aon/Projects/buyme-rails/node_modules/react/lib/shouldUpdateReactComponent.js":[function(require,module,exports){
-module.exports=require("/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/shouldUpdateReactComponent.js")
-},{"/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/shouldUpdateReactComponent.js":"/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/shouldUpdateReactComponent.js"}],"/Users/aon/Projects/buyme-rails/node_modules/react/lib/toArray.js":[function(require,module,exports){
-module.exports=require("/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/toArray.js")
-},{"/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/toArray.js":"/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/toArray.js"}],"/Users/aon/Projects/buyme-rails/node_modules/react/lib/traverseAllChildren.js":[function(require,module,exports){
-module.exports=require("/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/traverseAllChildren.js")
-},{"/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/traverseAllChildren.js":"/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/traverseAllChildren.js"}],"/Users/aon/Projects/buyme-rails/node_modules/react/lib/warning.js":[function(require,module,exports){
+},{"/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/keyOf.js":"/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/keyOf.js"}],"/Users/aon/Projects/buyme-rails/node_modules/react/lib/warning.js":[function(require,module,exports){
 module.exports=require("/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/warning.js")
 },{"/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/warning.js":"/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/lib/warning.js"}],"/Users/aon/Projects/buyme-rails/node_modules/react/react.js":[function(require,module,exports){
 module.exports=require("/Users/aon/Projects/buyme-rails/node_modules/material-ui/node_modules/react/react.js")
@@ -35421,7 +35157,36 @@ module.exports = function(arr, fn, initial){
   }
 }.call(this));
 
-},{}],"/Users/aon/Projects/buyme-rails/src/app/constants/ActionTypes.js":[function(require,module,exports){
+},{}],"/Users/aon/Projects/buyme-rails/src/app/actions/AppActions.js":[function(require,module,exports){
+'use strict';
+
+var AppDispatcher = require('../dispatcher/AppDispatcher');
+var ActionTypes = require('../constants/ActionTypes');
+
+var AppActions = {
+    changeState: function (state) {
+        AppDispatcher.handleApiAction({
+            actionType: ActionTypes.CHANGE_STATE_SUCCESS,
+            data: state
+        });
+    },
+    openAddDialog: function () {
+        AppDispatcher.handleApiAction({
+            actionType: ActionTypes.OPEN_ADD_DIALOG_SUCCESS,
+            data: {}
+        });
+    },
+    closeAddDialog: function () {
+        AppDispatcher.handleApiAction({
+            actionType: ActionTypes.ClOSE_ADD_DIALOG_SUCCESS,
+            data: {}
+        });
+    }
+};
+
+module.exports = AppActions;
+
+},{"../constants/ActionTypes":"/Users/aon/Projects/buyme-rails/src/app/constants/ActionTypes.js","../dispatcher/AppDispatcher":"/Users/aon/Projects/buyme-rails/src/app/dispatcher/AppDispatcher.js"}],"/Users/aon/Projects/buyme-rails/src/app/constants/ActionTypes.js":[function(require,module,exports){
 'use strict';
 
 var keyMirror = require('keymirror');
@@ -35440,7 +35205,9 @@ var ActionTypes = keyMirror({
     REMOVE_STORE_ORDER_SUCCESS: null,
     SHOW_TOAST_SUCCESS: null,
     HIDE_TOAST_SUCCESS: null,
-    CHANGE_STATE_SUCCESS: null
+    CHANGE_STATE_SUCCESS: null,
+    OPEN_ADD_DIALOG_SUCCESS: null,
+    ClOSE_ADD_DIALOG_SUCCESS: null
 });
 
 module.exports = ActionTypes;
@@ -35467,7 +35234,7 @@ var AppDispatcher = assign(new Dispatcher(), {
 });
 
 module.exports = AppDispatcher;
-},{"flux":"/Users/aon/Projects/buyme-rails/node_modules/flux/index.js","object-assign":"/Users/aon/Projects/buyme-rails/node_modules/object-assign/index.js"}],"/Users/aon/Projects/buyme-rails/src/app/stores/MenuStore.js":[function(require,module,exports){
+},{"flux":"/Users/aon/Projects/buyme-rails/node_modules/flux/index.js","object-assign":"/Users/aon/Projects/buyme-rails/node_modules/object-assign/index.js"}],"/Users/aon/Projects/buyme-rails/src/app/stores/AppStore.js":[function(require,module,exports){
 'use strict';
 
 var AppDispatcher = require('../dispatcher/AppDispatcher');
@@ -35475,15 +35242,25 @@ var EventEmitter = require('events').EventEmitter;
 var ActionTypes = require('../constants/ActionTypes');
 var assign = require('object-assign');
 
-var _state = [];
+var _state = undefined;
+var _isShowAddDialog = false;
 
 function getState(data) {
     _state = data;
 }
 
-var MenuStore = assign({}, EventEmitter.prototype, {
+function showAddDialog(isShow) {
+    _isShowAddDialog = isShow;
+}
+
+var AppStore = assign({}, EventEmitter.prototype, {
     getState: function () {
-        return _state;
+        var state = _state;
+        getState();
+        return state;
+    },
+    isShowAddDialog: function () {
+        return _isShowAddDialog;
     },
     emitChange: function () {
         this.emit('change');
@@ -35502,14 +35279,20 @@ AppDispatcher.register(function (payload) {
         case ActionTypes.CHANGE_STATE_SUCCESS:
             getState(action.data);
             break;
+        case ActionTypes.OPEN_ADD_DIALOG_SUCCESS:
+            showAddDialog(true);
+            break;
+        case ActionTypes.ClOSE_ADD_DIALOG_SUCCESS:
+            showAddDialog(false);
+            break;
         default:
             return true;
     }
-    MenuStore.emitChange();
+    AppStore.emitChange();
     return true;
 });
 
-module.exports = MenuStore;
+module.exports = AppStore;
 },{"../constants/ActionTypes":"/Users/aon/Projects/buyme-rails/src/app/constants/ActionTypes.js","../dispatcher/AppDispatcher":"/Users/aon/Projects/buyme-rails/src/app/dispatcher/AppDispatcher.js","events":"/Users/aon/Projects/buyme-rails/node_modules/browserify/node_modules/events/events.js","object-assign":"/Users/aon/Projects/buyme-rails/node_modules/object-assign/index.js"}],"/Users/aon/Projects/buyme-rails/src/common/components/Footer.js":[function(require,module,exports){
 'use strict';
 
@@ -35534,6 +35317,7 @@ var mui = require('material-ui');
 var IconButton = mui.IconButton;
 var Menu = require('./Menu');
 var UserApi = require('../utils/UserApi');
+var AppActions = require('../../app/actions/AppActions');
 
 var Header = React.createClass({displayName: "Header",
     propTypes: {
@@ -35546,6 +35330,7 @@ var Header = React.createClass({displayName: "Header",
         };
     },
     render: function () {
+        var addButton = !!this.props.showButtons ? React.createElement(IconButton, {className: "mui-icon-button mui-enhanced-button mui-right", icon: "action-add-shopping-cart", onClick: this._onAddButtonClick}) : undefined;
         var logoutButton = !!this.props.showButtons ? React.createElement(IconButton, {className: "mui-icon-button mui-enhanced-button mui-right", icon: "action-input", onClick: this._onLogoutButtonClick}) : undefined;
         var menuStyle = {
             visibility: !!this.props.showButtons ? 'visible' : 'hidden'
@@ -35555,10 +35340,14 @@ var Header = React.createClass({displayName: "Header",
                 React.createElement("div", {className: "mui-paper-container"}, 
                     React.createElement(IconButton, {style: menuStyle, className: "mui-app-bar-navigation-icon-button mui-icon-button mui-enhanced-button", icon: "navigation-menu", onClick: this.props.onMenuIconButtonClick}), 
                     React.createElement("h1", {className: "mui-app-bar-title"}, this.props.title), 
-                    logoutButton
+                    logoutButton, 
+                    addButton
                 )
             )
         );
+    },
+    _onAddButtonClick: function () {
+        AppActions.openAddDialog();
     },
     _onLogoutButtonClick: function () {
         UserApi.logout();
@@ -35566,7 +35355,7 @@ var Header = React.createClass({displayName: "Header",
 });
 
 module.exports = Header;
-},{"../utils/UserApi":"/Users/aon/Projects/buyme-rails/src/common/utils/UserApi.js","./Menu":"/Users/aon/Projects/buyme-rails/src/common/components/Menu.js","material-ui":"/Users/aon/Projects/buyme-rails/node_modules/material-ui/src/index.js","react":"/Users/aon/Projects/buyme-rails/node_modules/react/react.js"}],"/Users/aon/Projects/buyme-rails/src/common/components/Menu.js":[function(require,module,exports){
+},{"../../app/actions/AppActions":"/Users/aon/Projects/buyme-rails/src/app/actions/AppActions.js","../utils/UserApi":"/Users/aon/Projects/buyme-rails/src/common/utils/UserApi.js","./Menu":"/Users/aon/Projects/buyme-rails/src/common/components/Menu.js","material-ui":"/Users/aon/Projects/buyme-rails/node_modules/material-ui/src/index.js","react":"/Users/aon/Projects/buyme-rails/node_modules/react/react.js"}],"/Users/aon/Projects/buyme-rails/src/common/components/Menu.js":[function(require,module,exports){
 'use strict';
 
 var React = require('react');
@@ -35575,7 +35364,7 @@ var mui = require('material-ui');
 var Icon = mui.Icon;
 var LeftNav = mui.LeftNav;
 
-var MenuStore = require('../../app/stores/MenuStore');
+var AppStore = require('../../app/stores/AppStore');
 
 var Menu = React.createClass({displayName: "Menu",
     mixins: [
@@ -35592,10 +35381,10 @@ var Menu = React.createClass({displayName: "Menu",
         };
     },
     componentDidMount: function () {
-        MenuStore.addChangeListener(this._onChange);
+        AppStore.addChangeListener(this._onChange);
     },
     componentWillUnmount: function () {
-        MenuStore.removeChangeListener(this._onChange);
+        AppStore.removeChangeListener(this._onChange);
     },
     render: function () {
         var header = React.createElement("div", {className: "logo", onClick: this._onHeaderClick}, "Buy Me");
@@ -35625,14 +35414,16 @@ var Menu = React.createClass({displayName: "Menu",
         this.refs.leftNav.close();
     },
     _onChange: function () {
-        var state = MenuStore.getState();
-        this.props.changeTitle(state.title);
-        this.transitionTo(state.name, state.params);
+        var state = AppStore.getState();
+        if (!!state) {
+            this.props.changeTitle(state.title);
+            this.transitionTo(state.name, state.params);
+        }
     }
 });
 
 module.exports = Menu;
-},{"../../app/stores/MenuStore":"/Users/aon/Projects/buyme-rails/src/app/stores/MenuStore.js","material-ui":"/Users/aon/Projects/buyme-rails/node_modules/material-ui/src/index.js","react":"/Users/aon/Projects/buyme-rails/node_modules/react/react.js","react-router":"/Users/aon/Projects/buyme-rails/node_modules/react-router/modules/index.js"}],"/Users/aon/Projects/buyme-rails/src/common/utils/ApiUtils.js":[function(require,module,exports){
+},{"../../app/stores/AppStore":"/Users/aon/Projects/buyme-rails/src/app/stores/AppStore.js","material-ui":"/Users/aon/Projects/buyme-rails/node_modules/material-ui/src/index.js","react":"/Users/aon/Projects/buyme-rails/node_modules/react/react.js","react-router":"/Users/aon/Projects/buyme-rails/node_modules/react-router/modules/index.js"}],"/Users/aon/Projects/buyme-rails/src/common/utils/ApiUtils.js":[function(require,module,exports){
 (function (process){
 'use strict';
 
@@ -35943,4 +35734,4 @@ var React = require('react');
 var User = require('./components/User');
 
 React.render(React.createElement(User, null), document.getElementById('user'));
-},{"./components/User":"/Users/aon/Projects/buyme-rails/src/user/components/User.js","react":"/Users/aon/Projects/buyme-rails/node_modules/react/react.js"}]},{},["/Users/aon/Projects/buyme-rails/src/user/user.js","/Users/aon/Projects/buyme-rails/src/user/components/Login.js","/Users/aon/Projects/buyme-rails/src/user/components/Signup.js","/Users/aon/Projects/buyme-rails/src/user/components/User.js"]);
+},{"./components/User":"/Users/aon/Projects/buyme-rails/src/user/components/User.js","react":"/Users/aon/Projects/buyme-rails/node_modules/react/react.js"}]},{},["/Users/aon/Projects/buyme-rails/src/user/user.js","/Users/aon/Projects/buyme-rails/src/user/components/Signup.js","/Users/aon/Projects/buyme-rails/src/user/components/User.js"]);

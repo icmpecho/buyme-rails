@@ -14,25 +14,29 @@ var Header = require('../../common/components/Header');
 var Menu = require('../../common/components/Menu');
 var Footer = require('../../common/components/Footer');
 var Home = require('./Home');
+var OrderAdd = require('./OrderAdd');
 
 var ToastStore = require('../stores/ToastStore');
 var ToastActions = require('../actions/ToastActions');
-
+var AppStore = require('../../app/stores/AppStore');
 
 var App = React.createClass({
     getInitialState: function () {
         return {
+            showAdd: false,
             showToast: false,
             toastType: '',
             toastMessage: ''
         };
     },
     componentDidMount: function () {
-        ToastStore.addChangeListener(this._onChange);
+        ToastStore.addChangeListener(this._onToastStoreChange);
+        AppStore.addChangeListener(this._onAppStoreChange);
     },
 
     componentWillUnmount: function () {
-        ToastStore.removeChangeListener(this._onChange);
+        ToastStore.removeChangeListener(this._onToastStoreChange);
+        AppStore.removeChangeListener(this._onAppStoreChange);
     },
     render: function () {
         var menuItems = [
@@ -40,10 +44,12 @@ var App = React.createClass({
             {route: 'shop', text: 'Shop'}
         ];
         var toastIcon = <Icon icon="navigation-close" style={{color: 'white'}}/>;
+        var orderAdd = !!this.state.showAdd ? <OrderAdd toggleOrderAdd={this.toggleOrderAdd}/> : undefined;
         return (
             <div>
                 <Header ref="header" onMenuIconButtonClick={this._onMenuIconButtonClick} title={this.state.title} showButtons={true}/>
                 <Menu ref="leftNav" menuItems={menuItems} changeTitle={this.changeTitle}/>
+                {orderAdd}
                 <div className="content clearfix">
                     <RouteHandler />
                 </div>
@@ -60,7 +66,7 @@ var App = React.createClass({
             title: title
         });
     },
-    _onChange: function () {
+    _onToastStoreChange: function () {
         if (ToastStore.getToastCount() > 0) {
             setTimeout(function () {
                 this.setState({
@@ -80,6 +86,11 @@ var App = React.createClass({
                 toastMessage: ''
             });
         }
+    },
+    _onAppStoreChange: function () {
+        this.setState({
+            showAdd: AppStore.isShowAddDialog()
+        });
     }
 });
 

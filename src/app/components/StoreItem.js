@@ -5,7 +5,7 @@ var mui = require('material-ui');
 var Paper = mui.Paper;
 var FloatingActionButton = mui.FloatingActionButton;
 
-var MenuActions = require('../actions/MenuActions');
+var AppActions = require('../actions/AppActions');
 
 var StoreItems = React.createClass({
     propTypes: {
@@ -29,7 +29,7 @@ var StoreItems = React.createClass({
         );
     },
     _onButtonClick: function () {
-        MenuActions.changeState({
+        AppActions.changeState({
             name: 'shopOrder',
             params: {storeId: this.props.store.id},
             title: this.props.store.name
