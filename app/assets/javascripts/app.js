@@ -39089,11 +39089,11 @@ var OrderAdd = React.createClass({displayName: "OrderAdd",
                         ), 
                         React.createElement("div", {className: "half"}, 
                             React.createElement("h5", null, "Select Stores"), 
-                        this.state.stores.map(function (store) {
-                            return React.createElement("div", {className: "form-checkbox", key: 'store-' + store.id}, 
-                                React.createElement(Checkbox, {ref: 'store-' + store.id, name: 'store-' + store.id, value: 'store-' + store.id}), store.name);
-                        }), 
-                        React.createElement("br", null)
+                            this.state.stores.map(function (store) {
+                                return React.createElement("div", {className: "form-checkbox", key: 'store-' + store.id}, 
+                                    React.createElement(Checkbox, {ref: 'store-' + store.id, name: 'store-' + store.id, value: 'store-' + store.id}), store.name);
+                            }), 
+                            React.createElement("br", null)
                         ), 
                         React.createElement("br", null), 
                         React.createElement("div", {className: "clearfix"}), 
@@ -39184,7 +39184,7 @@ var OrderAdd = React.createClass({displayName: "OrderAdd",
         }
     },
     _onItemStoreChange: function () {
-        var items = [];
+        var items = [{}];
         ItemStore.getItems().map(function (item) {
             items.push({
                 payload: item.id,

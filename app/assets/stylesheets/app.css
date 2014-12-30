@@ -83,6 +83,10 @@
     width: 300px;
 }
 
+.item-list .mui-menu-item:first-child {
+    display: none;
+}
+
 @media (max-width: 767px) {
     .order-item {
         padding: 10px 0;

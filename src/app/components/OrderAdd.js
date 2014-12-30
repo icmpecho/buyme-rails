@@ -59,11 +59,11 @@ var OrderAdd = React.createClass({
                         </div>
                         <div className="half">
                             <h5>Select Stores</h5>
-                        {this.state.stores.map(function (store) {
-                            return <div className="form-checkbox" key={'store-' + store.id}>
-                                <Checkbox ref={'store-' + store.id} name={'store-' + store.id} value={'store-' + store.id}/>{store.name}</div>;
-                        })}
-                        <br/>
+                            {this.state.stores.map(function (store) {
+                                return <div className="form-checkbox" key={'store-' + store.id}>
+                                    <Checkbox ref={'store-' + store.id} name={'store-' + store.id} value={'store-' + store.id}/>{store.name}</div>;
+                            })}
+                            <br/>
                         </div>
                         <br/>
                         <div className="clearfix"></div>
@@ -154,7 +154,7 @@ var OrderAdd = React.createClass({
         }
     },
     _onItemStoreChange: function () {
-        var items = [];
+        var items = [{}];
         ItemStore.getItems().map(function (item) {
             items.push({
                 payload: item.id,
