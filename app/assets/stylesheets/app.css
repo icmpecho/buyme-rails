@@ -14,6 +14,22 @@
     padding: 20px;
 }
 
+.feed-list {
+    padding: 0 10px;
+}
+
+.feed-item {
+    list-style: none;
+    padding: 10px 10px;
+    margin: 0 auto;
+    width: 50%;
+    float: left;
+}
+
+.feed-item-details {
+    padding: 20px;
+}
+
 .order-add .mui-dialog-window-contents {
     width: 370px;
 }
@@ -69,6 +85,12 @@
 
 @media (max-width: 767px) {
     .order-item {
+        padding: 10px 0;
+        width: 100%;
+        float: none;
+    }
+
+    .feed-item {
         padding: 10px 0;
         width: 100%;
         float: none;

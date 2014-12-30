@@ -4,7 +4,6 @@ var React = require('react');
 var mui = require('material-ui');
 var FlatButton = mui.FlatButton;
 
-var OrderStore = require('../stores/OrderStore');
 var MyOrderStore = require('../stores/MyOrderStore');
 var StoreOrderStore = require('../stores/StoreOrderStore');
 var OrderActions = require('../actions/OrderActions');
@@ -26,9 +25,6 @@ var OrderList = React.createClass({
     },
     componentDidMount: function () {
         switch (this.props.orderType) {
-            case 'all':
-                OrderStore.addChangeListener(this._onChange);
-                break;
             case 'current':
             case 'history':
                 MyOrderStore.addChangeListener(this._onChange);
@@ -48,9 +44,6 @@ var OrderList = React.createClass({
 
     componentWillUnmount: function () {
         switch (this.props.orderType) {
-            case 'all':
-                OrderStore.removeChangeListener(this._onChange);
-                break;
             case 'current':
             case 'history':
                 MyOrderStore.removeChangeListener(this._onChange);
@@ -81,11 +74,6 @@ var OrderList = React.createClass({
     },
     _onChange: function () {
         switch (this.props.orderType) {
-            case 'all':
-                this.setState({
-                    orders: OrderStore.getOrders()
-                });
-                break;
             case 'current':
                 this.setState({
                     orders: MyOrderStore.getMyOrders()
@@ -107,9 +95,6 @@ var OrderList = React.createClass({
     },
     refreshOrders: function (storeId) {
         switch (this.props.orderType) {
-            case 'all':
-                OrderActions.getOrders();
-                break;
             case 'current':
                 OrderActions.getMyOrders();
                 break;

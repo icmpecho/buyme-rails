@@ -10,8 +10,7 @@ var FeedItem = require('./FeedItem');
 
 var FeedList = React.createClass({
     propTypes: {
-        title: React.PropTypes.string.isRequired,
-        orderType: React.PropTypes.string.isRequired
+        title: React.PropTypes.string.isRequired
     },
     getInitialState: function () {
         return {
@@ -19,14 +18,13 @@ var FeedList = React.createClass({
         };
     },
     componentWillMount: function () {
-        this.refreshOrders(this.props.storeId);
+        this.refreshOrders();
     },
     componentDidMount: function () {
         OrderStore.addChangeListener(this._onChange);
         var _refreshOrders = this.refreshOrders;
-        var _storeId = this.props.storeId;
         this.interval = setInterval(function () {
-            _refreshOrders(_storeId);
+            _refreshOrders();
         }, 30000);
     },
 
@@ -35,16 +33,12 @@ var FeedList = React.createClass({
         clearInterval(this.interval);
     },
     render: function () {
-        var orderType = this.props.orderType;
-        var buyable = this.props.orderType === 'store';
-        var backButton = !!buyable ? <FlatButton label="Back" primary={true} onClick={this.props.onBackButtonClick}/> : undefined;
-        var deletable = this.props.orderType === 'current' || this.props.orderType === 'history';
         return (
-            <div className="order-list">
-                <h3>{this.props.title} {backButton}</h3>
+            <div className="feed-list">
+                <h3>{this.props.title}</h3>
                 <ul>
                     {this.state.orders.map(function (order) {
-                        return <FeedItem key={'order-' + order.id} order={order} orderType={orderType} deletable={deletable} buyable={buyable}></FeedItem>;
+                        return <FeedItem key={'order-' + order.id} order={order}></FeedItem>;
                     })}
                 </ul>
             </div>
@@ -55,7 +49,7 @@ var FeedList = React.createClass({
             orders: OrderStore.getOrders()
         });
     },
-    refreshOrders: function (storeId) {
+    refreshOrders: function () {
         OrderActions.getOrders();
     }
 });

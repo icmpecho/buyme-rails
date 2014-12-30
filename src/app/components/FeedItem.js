@@ -10,22 +10,21 @@ var OrderActions = require('../actions/OrderActions');
 
 var FeedItem = React.createClass({
     propTypes: {
-        order: React.PropTypes.object.isRequired,
-        orderType: React.PropTypes.string.isRequired
+        order: React.PropTypes.object.isRequired
     },
     render: function () {
         var order = this.props.order;
         var order_event = this._CheckOrderEvent();
         return (
-            <li className="order-item">
+            <li className="feed-item">
                 <Paper zDepth={3} rounded={false}>
-                    <div className="order-item-details">
+                    <div className="feed-item-details">
                         <div className="mui-right">
                             
                         </div>
                         {order_event}
                         <div>
-                            <ul className="order-store-list">
+                            <ul>
                                 {order.stores.map(function (store) {
                                     return <li key={'store-' + store.id}>
                                         <ImageLoader src={"../images/" + store.name + ".png"}>

@@ -8,7 +8,7 @@ var Home = React.createClass({
     render: function () {
         return (
             <div className="home">
-                <FeedList ref="orders" title="All Orders" orderType="all"/>
+                <FeedList ref="orders" title="All Orders"/>
             </div>
         );
     }
