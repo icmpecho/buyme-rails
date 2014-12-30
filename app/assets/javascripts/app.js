@@ -38881,7 +38881,7 @@ var Home = React.createClass({displayName: "Home",
     render: function () {
         return (
             React.createElement("div", {className: "home"}, 
-                React.createElement(FeedList, {ref: "orders", title: "All Orders"})
+                React.createElement(FeedList, {ref: "orders", title: "All Events"})
             )
         );
     }
