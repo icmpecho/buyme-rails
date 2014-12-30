@@ -39098,7 +39098,6 @@ var OrderAdd = React.createClass({displayName: "OrderAdd",
             this.setState({
                 items: []
             });
-            ItemActions.getItems();
         }
     },
     _onItemStoreChange: function () {

@@ -150,7 +150,6 @@ var OrderAdd = React.createClass({
             this.setState({
                 items: []
             });
-            ItemActions.getItems();
         }
     },
     _onItemStoreChange: function () {
