@@ -21,7 +21,7 @@ var Signup = React.createClass({
                         <h1>Sign Up</h1>
                         <br/>
                         <Input ref="email" type="text" name="email" placeholder="Email" description="Enter your email address."/>
-                        <Input ref="password" type="password" name="password" placeholder="Password" description="Enter a password with 8 characters minimum."/>
+                        <Input ref="password" type="password" name="password" placeholder="Password" description="Enter a password with 8 characters minimum." className="mui-input-large"/>
                         <Input ref="confirmation" type="password" name="confirmation" placeholder="Password confirmation" description="Enter the confirmation password."/>
                         <RaisedButton ref="signup" label="Sign up" primary={true} onClick={this._onSignupButtonClick}/>
                         <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>

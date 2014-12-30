@@ -35331,7 +35331,7 @@ var Header = React.createClass({displayName: "Header",
         };
     },
     render: function () {
-        var addButton = !!this.props.showButtons ? React.createElement(IconButton, {className: "mui-icon-button mui-enhanced-button", icon: "action-add-shopping-cart", onClick: this._onAddButtonClick}) : undefined;
+        var addButton = !!this.props.showButtons ? React.createElement(IconButton, {className: "mui-icon-button mui-enhanced-button", icon: "av-playlist-add", onClick: this._onAddButtonClick}) : undefined;
         var logoutButton = !!this.props.showButtons ? React.createElement(IconButton, {className: "mui-icon-button mui-enhanced-button", icon: "action-input", onClick: this._onLogoutButtonClick}) : undefined;
         var menuStyle = {
             visibility: !!this.props.showButtons ? 'visible' : 'hidden'
@@ -35644,7 +35644,7 @@ var Signup = React.createClass({displayName: "Signup",
                         React.createElement("h1", null, "Sign Up"), 
                         React.createElement("br", null), 
                         React.createElement(Input, {ref: "email", type: "text", name: "email", placeholder: "Email", description: "Enter your email address."}), 
-                        React.createElement(Input, {ref: "password", type: "password", name: "password", placeholder: "Password", description: "Enter a password with 8 characters minimum."}), 
+                        React.createElement(Input, {ref: "password", type: "password", name: "password", placeholder: "Password", description: "Enter a password with 8 characters minimum.", className: "mui-input-large"}), 
                         React.createElement(Input, {ref: "confirmation", type: "password", name: "confirmation", placeholder: "Password confirmation", description: "Enter the confirmation password."}), 
                         React.createElement(RaisedButton, {ref: "signup", label: "Sign up", primary: true, onClick: this._onSignupButtonClick}), 
                         React.createElement("span", null, "     "), 
