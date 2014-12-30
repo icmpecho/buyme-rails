@@ -8,17 +8,28 @@ var assign = require('object-assign');
 var _orders = [];
 var _oldOrders = [];
 var _hasOrderAdded = false;
+var _hasMoreHistory = true;
+var _currentHistoryPage = 0;
 
 function getMyOrders(data) {
-    _orders = data.sort(function (a, b) {
-        return b.id - a.id
-    });
+    _orders = data
 }
 
 function getMyOldOrders(data) {
-    _oldOrders = data.sort(function (a, b) {
-        return b.id - a.id
-    });
+    _currentHistoryPage = data.page;
+    if (data.orders.length === 0) {
+        _hasMoreHistory = false;
+    }
+    else {
+        _oldOrders = _oldOrders.concat(data.orders);
+        _hasMoreHistory = true;
+    }
+}
+
+function resetMyOldOrders() {
+    _oldOrders = [];
+    _hasMoreHistory = true;
+    _currentHistoryPage = 0;
 }
 
 function addMyOrders(data) {
@@ -26,7 +37,7 @@ function addMyOrders(data) {
     _hasOrderAdded = true;
 }
 
-function readMyAddedOrder(data) {
+function readMyAddedOrder() {
     _hasOrderAdded = false;
 }
 
@@ -58,6 +69,12 @@ var MyOrderStore = assign({}, EventEmitter.prototype, {
     hasOrderAdded: function () {
         return _hasOrderAdded;
     },
+    getCurrentHistoryPage: function () {
+        return _currentHistoryPage;
+    },
+    hasMoreHistory: function () {
+        return _hasMoreHistory;
+    },
     emitChange: function () {
         this.emit('change');
     },
@@ -77,6 +94,9 @@ MyOrderStore.dispatchToken = AppDispatcher.register(function (payload) {
             break;
         case ActionTypes.GET_MY_OLD_ORDERS_SUCCESS:
             getMyOldOrders(action.data);
+            break;
+        case ActionTypes.RESET_MY_OLD_ORDERS_SUCCESS:
+            resetMyOldOrders();
             break;
         case ActionTypes.ADD_MY_ORDER_SUCCESS:
         case ActionTypes.PLUS_ONE_ORDER_SUCCESS:

@@ -31400,6 +31400,70 @@ function extend() {
     return target
 }
 
+},{}],"/Users/aon/Projects/buyme-rails/node_modules/react-infinite-scroll/src/react-infinite-scroll.js":[function(require,module,exports){
+function topPosition(domElt) {
+  if (!domElt) {
+    return 0;
+  }
+  return domElt.offsetTop + topPosition(domElt.offsetParent);
+}
+
+module.exports = function (React) {
+  if (React.addons && React.addons.InfiniteScroll) {
+    return React.addons.InfiniteScroll;
+  }
+  React.addons = React.addons || {};
+  var InfiniteScroll = React.addons.InfiniteScroll = React.createClass({
+    getDefaultProps: function () {
+      return {
+        pageStart: 0,
+        hasMore: false,
+        loadMore: function () {},
+        threshold: 250
+      };
+    },
+    componentDidMount: function () {
+      this.pageLoaded = this.props.pageStart;
+      this.attachScrollListener();
+    },
+    componentDidUpdate: function () {
+      this.attachScrollListener();
+    },
+    render: function () {
+      var props = this.props;
+      return React.DOM.div(null, props.children, props.hasMore && (props.loader || InfiniteScroll._defaultLoader));
+    },
+    scrollListener: function () {
+      var el = this.getDOMNode();
+      var scrollTop = (window.pageYOffset !== undefined) ? window.pageYOffset : (document.documentElement || document.body.parentNode || document.body).scrollTop;
+      if (topPosition(el) + el.offsetHeight - scrollTop - window.innerHeight < Number(this.props.threshold)) {
+        this.detachScrollListener();
+        // call loadMore after detachScrollListener to allow
+        // for non-async loadMore functions
+        this.props.loadMore(this.pageLoaded += 1);
+      }
+    },
+    attachScrollListener: function () {
+      if (!this.props.hasMore) {
+        return;
+      }
+      window.addEventListener('scroll', this.scrollListener);
+      window.addEventListener('resize', this.scrollListener);
+      this.scrollListener();
+    },
+    detachScrollListener: function () {
+      window.removeEventListener('scroll', this.scrollListener);
+      window.removeEventListener('resize', this.scrollListener);
+    },
+    componentWillUnmount: function () {
+      this.detachScrollListener();
+    }
+  });
+  InfiniteScroll.setDefaultLoader = function (loader) {
+    InfiniteScroll._defaultLoader = loader;
+  };
+  return InfiniteScroll;
+};
 },{}],"/Users/aon/Projects/buyme-rails/node_modules/react-loadermixin/lib/index.js":[function(require,module,exports){
 var PropTypes, React, ReactLoaderMixin, merge,
   __slice = [].slice;
@@ -38413,17 +38477,30 @@ var OrderActions = {
             }
         });
     },
-    getMyOldOrders: function () {
-        OrderApi.getMyOrders(false).end(function (error, res) {
-            if (!!error) {
-                return console.log(error);
-            }
-            if (res.status === 200) {
-                AppDispatcher.handleApiAction({
-                    actionType: ActionTypes.GET_MY_OLD_ORDERS_SUCCESS,
-                    data: res.body
-                });
-            }
+    getMyOldOrders: function (page) {
+        OrderApi.getMyOrders(false)
+            .query({
+                page: page
+            })
+            .end(function (error, res) {
+                if (!!error) {
+                    return console.log(error);
+                }
+                if (res.status === 200) {
+                    AppDispatcher.handleApiAction({
+                        actionType: ActionTypes.GET_MY_OLD_ORDERS_SUCCESS,
+                        data: {
+                            orders: res.body,
+                            page: page
+                        }
+                    });
+                }
+            });
+    },
+    resetMyOldOrders: function () {
+        AppDispatcher.handleApiAction({
+            actionType: ActionTypes.RESET_MY_OLD_ORDERS_SUCCESS,
+            data: {}
         });
     },
     addMyOrders: function (orders) {
@@ -38934,10 +39011,10 @@ var Me = React.createClass({displayName: "Me",
         );
     },
     _refreshOrders: function () {
-        if (this.refs.orders) {
+        if (!!this.state.showCurrent) {
             this.refs.orders.refreshOrders();
         }
-        if (this.refs.oldOrders) {
+        if (!this.state.showCurrent) {
             this.refs.oldOrders.refreshOrders();
         }
     },
@@ -39245,6 +39322,7 @@ module.exports = OrderItems;
 'use strict';
 
 var React = require('react');
+var InfiniteScroll = require('react-infinite-scroll')(React);
 var mui = require('material-ui');
 var FlatButton = mui.FlatButton;
 
@@ -39261,11 +39339,18 @@ var OrderList = React.createClass({displayName: "OrderList",
     },
     getInitialState: function () {
         return {
-            orders: []
+            orders: [],
+            hasOrdersRendered: true,
+            hasMoreHistory: true
         };
     },
     componentWillMount: function () {
-        this.refreshOrders(this.props.storeId);
+        if (this.props.orderType !== 'history') {
+            this.refreshOrders(this.props.storeId);
+        }
+        else {
+            OrderActions.resetMyOldOrders();
+        }
     },
     componentDidMount: function () {
         switch (this.props.orderType) {
@@ -39279,13 +39364,14 @@ var OrderList = React.createClass({displayName: "OrderList",
             default:
                 return;
         }
-        var _refreshOrders = this.refreshOrders;
-        var _storeId = this.props.storeId;
-        this.interval = setInterval(function () {
-            _refreshOrders(_storeId);
-        }, 30000);
+        if (this.props.orderType !== 'history') {
+            var _refreshOrders = this.refreshOrders;
+            var _storeId = this.props.storeId;
+            this.interval = setInterval(function () {
+                _refreshOrders(_storeId);
+            }, 30000);
+        }
     },
-
     componentWillUnmount: function () {
         switch (this.props.orderType) {
             case 'current':
@@ -39298,20 +39384,28 @@ var OrderList = React.createClass({displayName: "OrderList",
             default:
                 return;
         }
-        clearInterval(this.interval);
+        if (this.props.orderType !== 'history') {
+            clearInterval(this.interval);
+        }
     },
     render: function () {
         var orderType = this.props.orderType;
         var buyable = this.props.orderType === 'store';
         var backButton = !!buyable ? React.createElement(FlatButton, {label: "Back", primary: true, onClick: this.props.onBackButtonClick}) : undefined;
         var deletable = this.props.orderType === 'current' || this.props.orderType === 'history';
+        var orders = this.state.orders.map(function (order) {
+            return React.createElement(OrderItem, {key: 'order-' + order.id, order: order, orderType: orderType, deletable: deletable, buyable: buyable});
+        });
+        if (this.props.orderType === 'history') {
+            orders = React.createElement(InfiniteScroll, {loadMore: this._loadMoreHistory, hasMore: this.state.hasMoreHistory}, 
+                    orders
+            );
+        }
         return (
             React.createElement("div", {className: "order-list"}, 
                 React.createElement("h3", null, this.props.title, " ", backButton), 
                 React.createElement("ul", null, 
-                    this.state.orders.map(function (order) {
-                        return React.createElement(OrderItem, {key: 'order-' + order.id, order: order, orderType: orderType, deletable: deletable, buyable: buyable});
-                    })
+                    orders
                 )
             )
         );
@@ -39325,7 +39419,9 @@ var OrderList = React.createClass({displayName: "OrderList",
                 break;
             case 'history':
                 this.setState({
-                    orders: MyOrderStore.getMyOldOrders()
+                    orders: MyOrderStore.getMyOldOrders(),
+                    hasOrdersRendered: true,
+                    hasMoreHistory: MyOrderStore.hasMoreHistory()
                 });
                 break;
             case 'store':
@@ -39343,7 +39439,7 @@ var OrderList = React.createClass({displayName: "OrderList",
                 OrderActions.getMyOrders();
                 break;
             case 'history':
-                OrderActions.getMyOldOrders();
+                OrderActions.resetMyOldOrders();
                 break;
             case 'store':
                 StoreActions.getStoreOrders(storeId);
@@ -39351,11 +39447,19 @@ var OrderList = React.createClass({displayName: "OrderList",
             default:
                 return;
         }
+    },
+    _loadMoreHistory: function (page) {
+        if (!!this.state.hasOrdersRendered) {
+            this.setState({
+                hasOrdersRendered: false
+            });
+            OrderActions.getMyOldOrders(MyOrderStore.getCurrentHistoryPage() + 1);
+        }
     }
 });
 
 module.exports = OrderList;
-},{"../actions/OrderActions":"/Users/aon/Projects/buyme-rails/src/app/actions/OrderActions.js","../actions/StoreActions":"/Users/aon/Projects/buyme-rails/src/app/actions/StoreActions.js","../stores/MyOrderStore":"/Users/aon/Projects/buyme-rails/src/app/stores/MyOrderStore.js","../stores/StoreOrderStore":"/Users/aon/Projects/buyme-rails/src/app/stores/StoreOrderStore.js","./OrderItem":"/Users/aon/Projects/buyme-rails/src/app/components/OrderItem.js","material-ui":"/Users/aon/Projects/buyme-rails/node_modules/material-ui/src/index.js","react":"/Users/aon/Projects/buyme-rails/node_modules/react/react.js"}],"/Users/aon/Projects/buyme-rails/src/app/components/Shop.js":[function(require,module,exports){
+},{"../actions/OrderActions":"/Users/aon/Projects/buyme-rails/src/app/actions/OrderActions.js","../actions/StoreActions":"/Users/aon/Projects/buyme-rails/src/app/actions/StoreActions.js","../stores/MyOrderStore":"/Users/aon/Projects/buyme-rails/src/app/stores/MyOrderStore.js","../stores/StoreOrderStore":"/Users/aon/Projects/buyme-rails/src/app/stores/StoreOrderStore.js","./OrderItem":"/Users/aon/Projects/buyme-rails/src/app/components/OrderItem.js","material-ui":"/Users/aon/Projects/buyme-rails/node_modules/material-ui/src/index.js","react":"/Users/aon/Projects/buyme-rails/node_modules/react/react.js","react-infinite-scroll":"/Users/aon/Projects/buyme-rails/node_modules/react-infinite-scroll/src/react-infinite-scroll.js"}],"/Users/aon/Projects/buyme-rails/src/app/components/Shop.js":[function(require,module,exports){
 'use strict';
 
 var React = require('react');
@@ -39532,6 +39636,7 @@ var ActionTypes = keyMirror({
     GET_ORDERS_SUCCESS: null,
     GET_MY_ORDERS_SUCCESS: null,
     GET_MY_OLD_ORDERS_SUCCESS: null,
+    RESET_MY_OLD_ORDERS_SUCCESS: null,
     ADD_MY_ORDER_SUCCESS: null,
     PLUS_ONE_ORDER_SUCCESS: null,
     READ_MY_ADDED_ORDER_SUCCESS: null,
@@ -39684,17 +39789,28 @@ var assign = require('object-assign');
 var _orders = [];
 var _oldOrders = [];
 var _hasOrderAdded = false;
+var _hasMoreHistory = true;
+var _currentHistoryPage = 0;
 
 function getMyOrders(data) {
-    _orders = data.sort(function (a, b) {
-        return b.id - a.id
-    });
+    _orders = data
 }
 
 function getMyOldOrders(data) {
-    _oldOrders = data.sort(function (a, b) {
-        return b.id - a.id
-    });
+    _currentHistoryPage = data.page;
+    if (data.orders.length === 0) {
+        _hasMoreHistory = false;
+    }
+    else {
+        _oldOrders = _oldOrders.concat(data.orders);
+        _hasMoreHistory = true;
+    }
+}
+
+function resetMyOldOrders() {
+    _oldOrders = [];
+    _hasMoreHistory = true;
+    _currentHistoryPage = 0;
 }
 
 function addMyOrders(data) {
@@ -39702,7 +39818,7 @@ function addMyOrders(data) {
     _hasOrderAdded = true;
 }
 
-function readMyAddedOrder(data) {
+function readMyAddedOrder() {
     _hasOrderAdded = false;
 }
 
@@ -39734,6 +39850,12 @@ var MyOrderStore = assign({}, EventEmitter.prototype, {
     hasOrderAdded: function () {
         return _hasOrderAdded;
     },
+    getCurrentHistoryPage: function () {
+        return _currentHistoryPage;
+    },
+    hasMoreHistory: function () {
+        return _hasMoreHistory;
+    },
     emitChange: function () {
         this.emit('change');
     },
@@ -39753,6 +39875,9 @@ MyOrderStore.dispatchToken = AppDispatcher.register(function (payload) {
             break;
         case ActionTypes.GET_MY_OLD_ORDERS_SUCCESS:
             getMyOldOrders(action.data);
+            break;
+        case ActionTypes.RESET_MY_OLD_ORDERS_SUCCESS:
+            resetMyOldOrders();
             break;
         case ActionTypes.ADD_MY_ORDER_SUCCESS:
         case ActionTypes.PLUS_ONE_ORDER_SUCCESS:
@@ -39786,9 +39911,7 @@ var assign = require('object-assign');
 var _orders = [];
 
 function getOrders(data) {
-    _orders = data.sort(function (a, b) {
-        return b.id - a.id
-    });
+    _orders = data;
 }
 
 var OrderStore = assign({}, EventEmitter.prototype, {
@@ -39831,9 +39954,7 @@ var assign = require('object-assign');
 var _orders = [];
 
 function getStoreOrders(data) {
-    _orders = data.sort(function (a, b) {
-        return b.id - a.id
-    });
+    _orders = data;
 }
 
 function removeStoreOrder(data) {

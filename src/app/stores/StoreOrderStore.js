@@ -8,9 +8,7 @@ var assign = require('object-assign');
 var _orders = [];
 
 function getStoreOrders(data) {
-    _orders = data.sort(function (a, b) {
-        return b.id - a.id
-    });
+    _orders = data;
 }
 
 function removeStoreOrder(data) {

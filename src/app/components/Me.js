@@ -38,10 +38,10 @@ var Me = React.createClass({
         );
     },
     _refreshOrders: function () {
-        if (this.refs.orders) {
+        if (!!this.state.showCurrent) {
             this.refs.orders.refreshOrders();
         }
-        if (this.refs.oldOrders) {
+        if (!this.state.showCurrent) {
             this.refs.oldOrders.refreshOrders();
         }
     },

@@ -33,17 +33,30 @@ var OrderActions = {
             }
         });
     },
-    getMyOldOrders: function () {
-        OrderApi.getMyOrders(false).end(function (error, res) {
-            if (!!error) {
-                return console.log(error);
-            }
-            if (res.status === 200) {
-                AppDispatcher.handleApiAction({
-                    actionType: ActionTypes.GET_MY_OLD_ORDERS_SUCCESS,
-                    data: res.body
-                });
-            }
+    getMyOldOrders: function (page) {
+        OrderApi.getMyOrders(false)
+            .query({
+                page: page
+            })
+            .end(function (error, res) {
+                if (!!error) {
+                    return console.log(error);
+                }
+                if (res.status === 200) {
+                    AppDispatcher.handleApiAction({
+                        actionType: ActionTypes.GET_MY_OLD_ORDERS_SUCCESS,
+                        data: {
+                            orders: res.body,
+                            page: page
+                        }
+                    });
+                }
+            });
+    },
+    resetMyOldOrders: function () {
+        AppDispatcher.handleApiAction({
+            actionType: ActionTypes.RESET_MY_OLD_ORDERS_SUCCESS,
+            data: {}
         });
     },
     addMyOrders: function (orders) {

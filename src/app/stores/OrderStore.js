@@ -8,9 +8,7 @@ var assign = require('object-assign');
 var _orders = [];
 
 function getOrders(data) {
-    _orders = data.sort(function (a, b) {
-        return b.id - a.id
-    });
+    _orders = data;
 }
 
 var OrderStore = assign({}, EventEmitter.prototype, {
