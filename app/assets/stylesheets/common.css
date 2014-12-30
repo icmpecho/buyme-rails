@@ -161,11 +161,11 @@ h2 {
     vertical-align: bottom;
 }
 
-.Cancel {
+.canceled {
     color: #d50000;
 }
 
-.Completed {
+.completed {
     color: #00c853;
 }
 
