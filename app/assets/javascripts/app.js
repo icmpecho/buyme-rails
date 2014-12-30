@@ -39430,6 +39430,7 @@ module.exports = ShopOrder;
 'use strict';
 
 var React = require('react');
+var ImageLoader = require('react-imageloader');
 var mui = require('material-ui');
 var Paper = mui.Paper;
 var FloatingActionButton = mui.FloatingActionButton;
@@ -39449,7 +39450,11 @@ var StoreItems = React.createClass({displayName: "StoreItems",
                         React.createElement("div", {className: "mui-right"}, 
                             React.createElement(FloatingActionButton, {icon: "action-shopping-cart", secondary: true})
                         ), 
-                        React.createElement("h2", null, store.name, 
+                        React.createElement("h2", null, 
+                            React.createElement(ImageLoader, {src: "../images/" + store.name + ".png"}, 
+                            store.name
+                            ), 
+                            React.createElement("span", null, "  "), 
                             React.createElement("span", {className: "mui-font-style-title"}, "(", store.pending, " orders)")
                         )
                     )
@@ -39467,7 +39472,7 @@ var StoreItems = React.createClass({displayName: "StoreItems",
 });
 
 module.exports = StoreItems;
-},{"../actions/AppActions":"/Users/aon/Projects/buyme-rails/src/app/actions/AppActions.js","material-ui":"/Users/aon/Projects/buyme-rails/node_modules/material-ui/src/index.js","react":"/Users/aon/Projects/buyme-rails/node_modules/react/react.js"}],"/Users/aon/Projects/buyme-rails/src/app/components/StoreList.js":[function(require,module,exports){
+},{"../actions/AppActions":"/Users/aon/Projects/buyme-rails/src/app/actions/AppActions.js","material-ui":"/Users/aon/Projects/buyme-rails/node_modules/material-ui/src/index.js","react":"/Users/aon/Projects/buyme-rails/node_modules/react/react.js","react-imageloader":"/Users/aon/Projects/buyme-rails/node_modules/react-imageloader/lib/index.js"}],"/Users/aon/Projects/buyme-rails/src/app/components/StoreList.js":[function(require,module,exports){
 'use strict';
 
 var React = require('react');

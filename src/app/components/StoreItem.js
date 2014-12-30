@@ -1,6 +1,7 @@
 'use strict';
 
 var React = require('react');
+var ImageLoader = require('react-imageloader');
 var mui = require('material-ui');
 var Paper = mui.Paper;
 var FloatingActionButton = mui.FloatingActionButton;
@@ -20,7 +21,11 @@ var StoreItems = React.createClass({
                         <div className="mui-right">
                             <FloatingActionButton icon="action-shopping-cart" secondary={true}/>
                         </div>
-                        <h2>{store.name}
+                        <h2>
+                            <ImageLoader src={"../images/" + store.name + ".png"}>
+                            {store.name}
+                            </ImageLoader>
+                            <span>&nbsp;&nbsp;</span>
                             <span className="mui-font-style-title">({store.pending} orders)</span>
                         </h2>
                     </div>
