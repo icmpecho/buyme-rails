@@ -42,10 +42,16 @@
     padding: 20px;
 }
 
+.store-list {
+    padding: 0 10px;
+}
+
 .store-item {
     list-style: none;
-    padding: 10px;
+    padding: 10px 10px;
     margin: 0 auto;
+    width: 50%;
+    float: left;
 }
 
 .store-item-details {
@@ -103,5 +109,11 @@
 
     .item-list.mui-drop-down-menu .mui-menu {
         width: 240px;
+    }
+
+    .store-item {
+        padding: 10px 0;
+        width: 100%;
+        float: none;
     }
 }
