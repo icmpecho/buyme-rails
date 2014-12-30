@@ -22,9 +22,16 @@
         padding: 40px;
     }
 
+    .signup-padding {
+        display: none;
+    }
 }
 
 @media (max-width: 767px) {
+    .login {
+        margin-bottom: -20px;
+    }
+
     .login > div {
         padding: 20px;
     }
@@ -52,6 +59,14 @@
 
     .login .mui-raised-button {
         width: 100%;
+    }
+
+    .login {
+        margin-bottom: -20px;
+    }
+
+    .signup {
+        margin-bottom: -20px;
     }
 
     .signup > div {

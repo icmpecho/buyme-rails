@@ -35648,7 +35648,8 @@ var Signup = React.createClass({displayName: "Signup",
                         React.createElement(Input, {ref: "confirmation", type: "password", name: "confirmation", placeholder: "Password confirmation", description: "Enter the confirmation password."}), 
                         React.createElement(RaisedButton, {ref: "signup", label: "Sign up", primary: true, onClick: this._onSignupButtonClick}), 
                         React.createElement("span", null, "     "), 
-                        React.createElement(RaisedButton, {ref: "login", label: "Log in", onClick: this._onLoginButtonClick})
+                        React.createElement(RaisedButton, {ref: "login", label: "Log in", onClick: this._onLoginButtonClick}), 
+                        React.createElement("div", {className: "signup-padding"}, " ")
                     )
                 )
             )
