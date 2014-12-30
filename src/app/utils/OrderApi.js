@@ -25,6 +25,9 @@ var OrderApi = assign({}, ApiUtils, {
         };
         return this.post('/orders').send(data);
     },
+    plusOneOrder: function (id) {
+
+    },
     cancelMyOrder: function (id) {
         return this.post('/orders/' + id + '/cancel');
     },

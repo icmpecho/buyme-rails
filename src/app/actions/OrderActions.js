@@ -63,6 +63,23 @@ var OrderActions = {
             }
         });
     },
+    plusOneOrder: function (id) {
+        OrderApi.plusOneOrder(id).end(function (error, res) {
+            if (!!error) {
+                return console.log(error);
+            }
+            if (res.status === 200) {
+                AppDispatcher.handleApiAction({
+                    actionType: ActionTypes.PLUS_ONE_ORDER_SUCCESS,
+                    data: res.body
+                });
+                ToastActions.showToast('success', 'Your order was added successfully.');
+            }
+            else {
+                ToastActions.showToast('error', 'Failed to add your order.');
+            }
+        });
+    },
     readMyAddedOrder: function () {
         AppDispatcher.handleApiAction({
             actionType: ActionTypes.READ_MY_ADDED_ORDER_SUCCESS,

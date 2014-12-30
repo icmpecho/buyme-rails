@@ -38443,6 +38443,23 @@ var OrderActions = {
             }
         });
     },
+    plusOneOrder: function (id) {
+        OrderApi.plusOneOrder(id).end(function (error, res) {
+            if (!!error) {
+                return console.log(error);
+            }
+            if (res.status === 200) {
+                AppDispatcher.handleApiAction({
+                    actionType: ActionTypes.PLUS_ONE_ORDER_SUCCESS,
+                    data: res.body
+                });
+                ToastActions.showToast('success', 'Your order was added successfully.');
+            }
+            else {
+                ToastActions.showToast('error', 'Failed to add your order.');
+            }
+        });
+    },
     readMyAddedOrder: function () {
         AppDispatcher.handleApiAction({
             actionType: ActionTypes.READ_MY_ADDED_ORDER_SUCCESS,
@@ -38709,6 +38726,7 @@ var React = require('react');
 var ImageLoader = require('react-imageloader');
 var mui = require('material-ui');
 var Paper = mui.Paper;
+var FloatingActionButton = mui.FloatingActionButton;
 var moment = require('moment');
 
 var OrderActions = require('../actions/OrderActions');
@@ -38721,13 +38739,14 @@ var FeedItem = React.createClass({displayName: "FeedItem",
     render: function () {
         var order = this.props.order;
         var order_event = this._CheckOrderEvent();
+        var plusOne = this.props.order.status === 'active' ? React.createElement(FloatingActionButton, {icon: "social-plus-one", secondary: true, onClick: this._onPlusOneButtonClick.bind(this, order.id)}) : undefined;
         var self = this;
         return (
             React.createElement("li", {className: "feed-item"}, 
                 React.createElement(Paper, {zDepth: 3, rounded: false}, 
                     React.createElement("div", {className: "feed-item-details"}, 
-                        React.createElement("div", {className: "mui-right"}
-
+                        React.createElement("div", {className: "mui-right"}, 
+                            plusOne
                         ), 
                         order_event, 
                         React.createElement("div", null, 
@@ -38751,10 +38770,10 @@ var FeedItem = React.createClass({displayName: "FeedItem",
     },
     _onOrderStatus: function () {
         if (this.props.order.completed !== null) {
-            return "Completed";
+            return 'Completed';
         }
         else
-            return "Cancel";
+            return 'Cancel';
     },
     _setCancelTime: function () {
         if (this.props.order.completed !== null) {
@@ -38764,17 +38783,17 @@ var FeedItem = React.createClass({displayName: "FeedItem",
             return this.props.order.canceled_at;
     },
     _CheckOrderEvent: function () {
-        if (this.props.order.status === "active") {
+        if (this.props.order.status === 'active') {
             return React.createElement("h2", null, " ", this.props.order.user_name, " just ordered ", this.props.order.item_name, 
                 React.createElement("span", {className: "mui-font-style-title"}, " - ", moment(this.props.order.created_at).fromNow())
             );
         }
-        else if (this.props.order.status === "completed") {
+        else if (this.props.order.status === 'completed') {
             return React.createElement("h2", null, " ", this.props.order.user_name, " bought ", this.props.order.item_name, " for ", this.props.order.buyer_name, 
                 React.createElement("span", {className: "mui-font-style-title"}, " - ", moment(this.props.order.completed).fromNow())
             )
         }
-        else if (this.props.order.status === "canceled") {
+        else if (this.props.order.status === 'canceled') {
             return React.createElement("h2", null, " ", this.props.order.user_name, " just canceled ", this.props.order.item_name, 
                 React.createElement("span", {className: "mui-font-style-title"}, " - ", moment(this.props.order.canceled_at).fromNow())
             )
@@ -38786,6 +38805,9 @@ var FeedItem = React.createClass({displayName: "FeedItem",
             params: {storeId: store.id},
             title: store.name
         });
+    },
+    _onPlusOneButtonClick: function (id) {
+        OrderActions.plusOneOrder(id);
     }
 });
 
@@ -39502,6 +39524,7 @@ var ActionTypes = keyMirror({
     GET_MY_ORDERS_SUCCESS: null,
     GET_MY_OLD_ORDERS_SUCCESS: null,
     ADD_MY_ORDER_SUCCESS: null,
+    PLUS_ONE_ORDER_SUCCESS: null,
     READ_MY_ADDED_ORDER_SUCCESS: null,
     CANCEL_MY_ORDER_SUCCESS: null,
     REMOVE_MY_OLD_ORDER_SUCCESS: null,
@@ -39723,6 +39746,7 @@ MyOrderStore.dispatchToken = AppDispatcher.register(function (payload) {
             getMyOldOrders(action.data);
             break;
         case ActionTypes.ADD_MY_ORDER_SUCCESS:
+        case ActionTypes.PLUS_ONE_ORDER_SUCCESS:
             addMyOrders(action.data);
             break;
         case ActionTypes.READ_MY_ADDED_ORDER_SUCCESS:
@@ -39996,6 +40020,9 @@ var OrderApi = assign({}, ApiUtils, {
             expire_at: expireAt.toString()
         };
         return this.post('/orders').send(data);
+    },
+    plusOneOrder: function (id) {
+
     },
     cancelMyOrder: function (id) {
         return this.post('/orders/' + id + '/cancel');

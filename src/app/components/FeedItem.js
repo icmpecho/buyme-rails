@@ -4,6 +4,7 @@ var React = require('react');
 var ImageLoader = require('react-imageloader');
 var mui = require('material-ui');
 var Paper = mui.Paper;
+var FloatingActionButton = mui.FloatingActionButton;
 var moment = require('moment');
 
 var OrderActions = require('../actions/OrderActions');
@@ -16,13 +17,14 @@ var FeedItem = React.createClass({
     render: function () {
         var order = this.props.order;
         var order_event = this._CheckOrderEvent();
+        var plusOne = this.props.order.status === 'active' ? <FloatingActionButton icon="social-plus-one" secondary={true} onClick={this._onPlusOneButtonClick.bind(this, order.id)}/> : undefined;
         var self = this;
         return (
             <li className="feed-item">
                 <Paper zDepth={3} rounded={false}>
                     <div className="feed-item-details">
                         <div className="mui-right">
-
+                            {plusOne}
                         </div>
                         {order_event}
                         <div>
@@ -46,10 +48,10 @@ var FeedItem = React.createClass({
     },
     _onOrderStatus: function () {
         if (this.props.order.completed !== null) {
-            return "Completed";
+            return 'Completed';
         }
         else
-            return "Cancel";
+            return 'Cancel';
     },
     _setCancelTime: function () {
         if (this.props.order.completed !== null) {
@@ -59,17 +61,17 @@ var FeedItem = React.createClass({
             return this.props.order.canceled_at;
     },
     _CheckOrderEvent: function () {
-        if (this.props.order.status === "active") {
+        if (this.props.order.status === 'active') {
             return <h2> {this.props.order.user_name} just ordered {this.props.order.item_name}
                 <span className="mui-font-style-title"> - {moment(this.props.order.created_at).fromNow()}</span>
             </h2>;
         }
-        else if (this.props.order.status === "completed") {
+        else if (this.props.order.status === 'completed') {
             return <h2> {this.props.order.user_name} bought {this.props.order.item_name} for {this.props.order.buyer_name}
                 <span className="mui-font-style-title"> - {moment(this.props.order.completed).fromNow()}</span>
             </h2>
         }
-        else if (this.props.order.status === "canceled") {
+        else if (this.props.order.status === 'canceled') {
             return <h2> {this.props.order.user_name} just canceled {this.props.order.item_name}
                 <span className="mui-font-style-title"> - {moment(this.props.order.canceled_at).fromNow()}</span>
             </h2>
@@ -81,6 +83,9 @@ var FeedItem = React.createClass({
             params: {storeId: store.id},
             title: store.name
         });
+    },
+    _onPlusOneButtonClick: function (id) {
+        OrderActions.plusOneOrder(id);
     }
 });
 
