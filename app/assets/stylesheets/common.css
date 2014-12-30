@@ -33,6 +33,11 @@ h2 {
     height: 64px;
 }
 
+.header .mui-paper-container {
+    max-width: 1024px;
+    margin: 0 auto;
+}
+
 .logo {
     background-color: #286090;
     color: #ffffff;
