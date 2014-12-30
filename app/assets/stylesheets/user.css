@@ -21,10 +21,6 @@
     .signup > div {
         padding: 40px;
     }
-
-    .signup-padding {
-        display: none;
-    }
 }
 
 @media (max-width: 767px) {
@@ -78,8 +74,8 @@
     }
 
     .signup .mui-input {
-        margin-top: 18px;
-        margin-bottom: 36px;
+        margin-top: 21px;
+        margin-bottom: 42px;
     }
 
     .signup input {

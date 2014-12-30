@@ -26,7 +26,6 @@ var Signup = React.createClass({
                         <RaisedButton ref="signup" label="Sign up" primary={true} onClick={this._onSignupButtonClick}/>
                         <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
                         <RaisedButton ref="login" label="Log in" onClick={this._onLoginButtonClick}/>
-                        <div className="signup-padding">&nbsp;</div>
                     </div>
                 </Paper>
             </div>
