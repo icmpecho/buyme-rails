@@ -63,6 +63,7 @@ var OrderAdd = React.createClass({
                             return <div className="form-checkbox" key={'store-' + store.id}>
                                 <Checkbox ref={'store-' + store.id} name={'store-' + store.id} value={'store-' + store.id}/>{store.name}</div>;
                         })}
+                        <br/>
                         </div>
                         <br/>
                         <div className="clearfix"></div>

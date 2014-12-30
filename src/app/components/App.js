@@ -49,8 +49,8 @@ var App = React.createClass({
             <div>
                 <Header ref="header" onMenuIconButtonClick={this._onMenuIconButtonClick} title={this.state.title} showButtons={true}/>
                 <Menu ref="leftNav" menuItems={menuItems} changeTitle={this.changeTitle}/>
-                {orderAdd}
                 <div className="content clearfix">
+                    {orderAdd}
                     <RouteHandler />
                 </div>
                 <Footer />

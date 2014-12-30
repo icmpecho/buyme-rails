@@ -177,7 +177,7 @@ h2 {
 
 @media (max-width: 767px) {
     .half {
-        float: none;
         width: 100%;
+        display: block;
     }
 }

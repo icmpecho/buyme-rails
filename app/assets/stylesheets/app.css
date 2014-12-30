@@ -30,12 +30,6 @@
     padding: 20px;
 }
 
-.order-add-container {
-    padding-top: 60px;
-    width: 1000px;
-    margin: 0 auto -80px auto;
-}
-
 .order-add .mui-dialog-window-contents {
     width: 370px;
 }
@@ -116,6 +110,7 @@
 
     .order-add .half:nth-child(1) {
         max-height: 135px;
+        margin-bottom: 60px;
     }
 
     .order-add .expire-days {
