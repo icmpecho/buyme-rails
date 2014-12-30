@@ -39156,7 +39156,7 @@ var OrderItems = React.createClass({displayName: "OrderItems",
         var buyer = !!this.props.order.buyer_name ? React.createElement("div", null, " Bought by ", this.props.order.buyer_name) : undefined;
         var createdAt = this.props.orderType === 'all' || this.props.orderType === 'current' || this.props.orderType === 'store' ? React.createElement("div", null, "Created ", moment(order.created_at).fromNow()) : undefined;
         var createdBy = this.props.orderType === 'all' || this.props.orderType === 'store' ? React.createElement("div", null, "Ordered By ", order.user_name) : undefined;
-        var completedAt = this.props.orderType === 'history' ? React.createElement("div", {className: this._onOrderStatus()}, this._onOrderStatus(), " ", moment(this._setCancelTime()).fromNow()) : undefined;
+        var completedAt = this.props.orderType === 'history' ? React.createElement("div", {className: this.props.order.status}, this._onOrderStatus(), " ", moment(this._setCancelTime()).fromNow()) : undefined;
         var expireAt = this.props.orderType === 'current' || this.props.orderType === 'store' ? React.createElement("div", null, "Expires ", moment(order.expire_at).fromNow()) : undefined;
         var deleteButton = !!this.props.deletable ? React.createElement(FloatingActionButton, {icon: this._setLogoDeleteButton(this), secondary: true, onClick: this._onDeleteButtonClick.bind(this, order.id)}) : undefined;
         var buyButton = !!this.props.buyable ? React.createElement(FloatingActionButton, {icon: "action-done", secondary: true, onClick: this._onBuyButtonClick.bind(this, order.id)}) : undefined;
@@ -39222,11 +39222,12 @@ var OrderItems = React.createClass({displayName: "OrderItems",
     },
     _onOrderStatus: function () {
         if (this.props.orderType === 'history') {
-            if (this.props.order.completed !== null) {
+            if (this.props.order.status === 'completed') {
                 return "Completed";
             }
-            else
+            else if (this.props.order.status === 'canceled') {
                 return "Cancelled";
+            }
         }
     },
     _setCancelTime: function () {
