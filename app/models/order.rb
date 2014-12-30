@@ -82,7 +82,7 @@ class Order < ActiveRecord::Base
       :completed
     elsif canceled_at
       :canceled
-    elsif expire_at
+    elsif expire_at and expire_at < Time.zone.now
       :expired
     else
       :active
