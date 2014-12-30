@@ -18,8 +18,8 @@ var Header = React.createClass({
         };
     },
     render: function () {
-        var addButton = !!this.props.showButtons ? <IconButton className="mui-icon-button mui-enhanced-button mui-right" icon="action-add-shopping-cart" onClick={this._onAddButtonClick}/> : undefined;
-        var logoutButton = !!this.props.showButtons ? <IconButton className="mui-icon-button mui-enhanced-button mui-right" icon="action-input" onClick={this._onLogoutButtonClick}/> : undefined;
+        var addButton = !!this.props.showButtons ? <IconButton className="mui-icon-button mui-enhanced-button" icon="action-add-shopping-cart" onClick={this._onAddButtonClick}/> : undefined;
+        var logoutButton = !!this.props.showButtons ? <IconButton className="mui-icon-button mui-enhanced-button" icon="action-input" onClick={this._onLogoutButtonClick}/> : undefined;
         var menuStyle = {
             visibility: !!this.props.showButtons ? 'visible' : 'hidden'
         };
@@ -28,8 +28,11 @@ var Header = React.createClass({
                 <div className="mui-paper-container">
                     <IconButton style={menuStyle} className="mui-app-bar-navigation-icon-button mui-icon-button mui-enhanced-button" icon="navigation-menu" onClick={this.props.onMenuIconButtonClick}/>
                     <h1 className="mui-app-bar-title">{this.props.title}</h1>
-                    {logoutButton}
-                    {addButton}
+                    <span className="mui-right">
+                       {addButton}
+                        <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                        {logoutButton}
+                    </span>
                 </div>
             </div>
         );

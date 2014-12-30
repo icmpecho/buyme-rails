@@ -7,6 +7,7 @@ var Icon = mui.Icon;
 var LeftNav = mui.LeftNav;
 
 var AppStore = require('../../app/stores/AppStore');
+var AppActions = require('../../app/actions/AppActions');
 
 var Menu = React.createClass({
     mixins: [
@@ -49,17 +50,20 @@ var Menu = React.createClass({
     _onLeftNavChange: function (e, key, payload) {
         this.props.changeTitle(payload.text);
         this.transitionTo(payload.route);
+        AppActions.closeAddDialog();
     },
     _onHeaderClick: function () {
         this.props.changeTitle();
         this.transitionTo('home');
         this.refs.leftNav.close();
+        AppActions.closeAddDialog();
     },
     _onChange: function () {
         var state = AppStore.getState();
         if (!!state) {
             this.props.changeTitle(state.title);
             this.transitionTo(state.name, state.params);
+            AppActions.closeAddDialog();
         }
     }
 });

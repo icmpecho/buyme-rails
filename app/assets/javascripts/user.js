@@ -35330,8 +35330,8 @@ var Header = React.createClass({displayName: "Header",
         };
     },
     render: function () {
-        var addButton = !!this.props.showButtons ? React.createElement(IconButton, {className: "mui-icon-button mui-enhanced-button mui-right", icon: "action-add-shopping-cart", onClick: this._onAddButtonClick}) : undefined;
-        var logoutButton = !!this.props.showButtons ? React.createElement(IconButton, {className: "mui-icon-button mui-enhanced-button mui-right", icon: "action-input", onClick: this._onLogoutButtonClick}) : undefined;
+        var addButton = !!this.props.showButtons ? React.createElement(IconButton, {className: "mui-icon-button mui-enhanced-button", icon: "action-add-shopping-cart", onClick: this._onAddButtonClick}) : undefined;
+        var logoutButton = !!this.props.showButtons ? React.createElement(IconButton, {className: "mui-icon-button mui-enhanced-button", icon: "action-input", onClick: this._onLogoutButtonClick}) : undefined;
         var menuStyle = {
             visibility: !!this.props.showButtons ? 'visible' : 'hidden'
         };
@@ -35340,8 +35340,11 @@ var Header = React.createClass({displayName: "Header",
                 React.createElement("div", {className: "mui-paper-container"}, 
                     React.createElement(IconButton, {style: menuStyle, className: "mui-app-bar-navigation-icon-button mui-icon-button mui-enhanced-button", icon: "navigation-menu", onClick: this.props.onMenuIconButtonClick}), 
                     React.createElement("h1", {className: "mui-app-bar-title"}, this.props.title), 
-                    logoutButton, 
-                    addButton
+                    React.createElement("span", {className: "mui-right"}, 
+                       addButton, 
+                        React.createElement("span", null, "    "), 
+                        logoutButton
+                    )
                 )
             )
         );
@@ -35365,6 +35368,7 @@ var Icon = mui.Icon;
 var LeftNav = mui.LeftNav;
 
 var AppStore = require('../../app/stores/AppStore');
+var AppActions = require('../../app/actions/AppActions');
 
 var Menu = React.createClass({displayName: "Menu",
     mixins: [
@@ -35407,23 +35411,26 @@ var Menu = React.createClass({displayName: "Menu",
     _onLeftNavChange: function (e, key, payload) {
         this.props.changeTitle(payload.text);
         this.transitionTo(payload.route);
+        AppActions.closeAddDialog();
     },
     _onHeaderClick: function () {
         this.props.changeTitle();
         this.transitionTo('home');
         this.refs.leftNav.close();
+        AppActions.closeAddDialog();
     },
     _onChange: function () {
         var state = AppStore.getState();
         if (!!state) {
             this.props.changeTitle(state.title);
             this.transitionTo(state.name, state.params);
+            AppActions.closeAddDialog();
         }
     }
 });
 
 module.exports = Menu;
-},{"../../app/stores/AppStore":"/Users/aon/Projects/buyme-rails/src/app/stores/AppStore.js","material-ui":"/Users/aon/Projects/buyme-rails/node_modules/material-ui/src/index.js","react":"/Users/aon/Projects/buyme-rails/node_modules/react/react.js","react-router":"/Users/aon/Projects/buyme-rails/node_modules/react-router/modules/index.js"}],"/Users/aon/Projects/buyme-rails/src/common/utils/ApiUtils.js":[function(require,module,exports){
+},{"../../app/actions/AppActions":"/Users/aon/Projects/buyme-rails/src/app/actions/AppActions.js","../../app/stores/AppStore":"/Users/aon/Projects/buyme-rails/src/app/stores/AppStore.js","material-ui":"/Users/aon/Projects/buyme-rails/node_modules/material-ui/src/index.js","react":"/Users/aon/Projects/buyme-rails/node_modules/react/react.js","react-router":"/Users/aon/Projects/buyme-rails/node_modules/react-router/modules/index.js"}],"/Users/aon/Projects/buyme-rails/src/common/utils/ApiUtils.js":[function(require,module,exports){
 (function (process){
 'use strict';
 

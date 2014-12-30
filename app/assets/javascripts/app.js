@@ -38967,32 +38967,35 @@ var OrderAdd = React.createClass({displayName: "OrderAdd",
     render: function () {
         var itemList = !!this.state.items && this.state.items.length > 0 ? React.createElement(DropDownMenu, {ref: "itemList", menuItems: this.state.items, onChange: this._onItemListChange, className: "item-list clearfix"}) : undefined;
         return (
-            React.createElement(Paper, {zDepth: 3, rounded: false, className: "order-add"}, 
-                React.createElement("div", null, 
-                    React.createElement("div", {className: "half"}, 
-                        React.createElement(Input, {ref: "itemName", type: "text", name: "itemName", placeholder: "Item Name", description: "Enter the item name.", onChange: this._onItemNameChange, onClick: this._onItemNameClick}), 
-                        React.createElement("div", {className: "item-small"}, 
-                            React.createElement(Input, {ref: "quantity", type: "text", name: "quantity", placeholder: "Quantity", description: "Enter the quantity.", defaultValue: "1"})
-                        ), 
-                        React.createElement("div", {className: "item-small"}, 
-                            React.createElement(Input, {ref: "inDays", type: "text", name: "inDays", placeholder: "In Day(s)", description: "Enter the in day(s).", defaultValue: "0"})
-                        ), 
-                        React.createElement("div", {className: "item-small item-small-last"}, 
-                            React.createElement(Input, {ref: "inHours", type: "text", name: "inHours", placeholder: "In Hour(s)", description: "Enter the in hour(s).", defaultValue: "1"})
-                        ), 
+            React.createElement("div", {className: "order-add-container"}, 
+                React.createElement(Paper, {zDepth: 3, rounded: false, className: "order-add"}, 
+                    React.createElement("div", null, 
+                        React.createElement("div", {className: "half"}, 
+                            React.createElement(Input, {ref: "itemName", type: "text", name: "itemName", placeholder: "Item Name", description: "Enter the item name.", onChange: this._onItemNameChange, onClick: this._onItemNameClick}), 
+                            React.createElement("div", {className: "item-small"}, 
+                                React.createElement(Input, {ref: "quantity", type: "text", name: "quantity", placeholder: "Quantity", description: "Enter the quantity.", defaultValue: "1"})
+                            ), 
+                            React.createElement("div", {className: "item-small"}, 
+                                React.createElement(Input, {ref: "inDays", type: "text", name: "inDays", placeholder: "In Day(s)", description: "Enter the in day(s).", defaultValue: "0"})
+                            ), 
+                            React.createElement("div", {className: "item-small item-small-last"}, 
+                                React.createElement(Input, {ref: "inHours", type: "text", name: "inHours", placeholder: "In Hour(s)", description: "Enter the in hour(s).", defaultValue: "1"})
+                            ), 
                         itemList
-                    ), 
-                    React.createElement("div", {className: "half"}, 
-                        React.createElement("h5", null, "Select Stores"), 
+                        ), 
+                        React.createElement("div", {className: "half"}, 
+                            React.createElement("h5", null, "Select Stores"), 
                         this.state.stores.map(function (store) {
                             return React.createElement("div", {className: "form-checkbox", key: 'store-' + store.id}, 
                                 React.createElement(Checkbox, {ref: 'store-' + store.id, name: 'store-' + store.id, value: 'store-' + store.id}), store.name);
                         })
-                    ), 
-                    React.createElement("br", null), 
-                    React.createElement("div", {className: "clearfix"}), 
-                    React.createElement(RaisedButton, {label: "Confirm", secondary: true, onClick: this._addOrder}), 
-                    React.createElement(RaisedButton, {label: "Cancel", onClick: this._dismiss})
+                        ), 
+                        React.createElement("br", null), 
+                        React.createElement("div", {className: "clearfix"}), 
+                        React.createElement(RaisedButton, {label: "Confirm", secondary: true, onClick: this._addOrder}), 
+                        React.createElement("span", null, "    "), 
+                        React.createElement(RaisedButton, {label: "Cancel", onClick: this._dismiss})
+                    )
                 )
             )
         );
@@ -40060,8 +40063,8 @@ var Header = React.createClass({displayName: "Header",
         };
     },
     render: function () {
-        var addButton = !!this.props.showButtons ? React.createElement(IconButton, {className: "mui-icon-button mui-enhanced-button mui-right", icon: "action-add-shopping-cart", onClick: this._onAddButtonClick}) : undefined;
-        var logoutButton = !!this.props.showButtons ? React.createElement(IconButton, {className: "mui-icon-button mui-enhanced-button mui-right", icon: "action-input", onClick: this._onLogoutButtonClick}) : undefined;
+        var addButton = !!this.props.showButtons ? React.createElement(IconButton, {className: "mui-icon-button mui-enhanced-button", icon: "action-add-shopping-cart", onClick: this._onAddButtonClick}) : undefined;
+        var logoutButton = !!this.props.showButtons ? React.createElement(IconButton, {className: "mui-icon-button mui-enhanced-button", icon: "action-input", onClick: this._onLogoutButtonClick}) : undefined;
         var menuStyle = {
             visibility: !!this.props.showButtons ? 'visible' : 'hidden'
         };
@@ -40070,8 +40073,11 @@ var Header = React.createClass({displayName: "Header",
                 React.createElement("div", {className: "mui-paper-container"}, 
                     React.createElement(IconButton, {style: menuStyle, className: "mui-app-bar-navigation-icon-button mui-icon-button mui-enhanced-button", icon: "navigation-menu", onClick: this.props.onMenuIconButtonClick}), 
                     React.createElement("h1", {className: "mui-app-bar-title"}, this.props.title), 
-                    logoutButton, 
-                    addButton
+                    React.createElement("span", {className: "mui-right"}, 
+                       addButton, 
+                        React.createElement("span", null, "    "), 
+                        logoutButton
+                    )
                 )
             )
         );
@@ -40095,6 +40101,7 @@ var Icon = mui.Icon;
 var LeftNav = mui.LeftNav;
 
 var AppStore = require('../../app/stores/AppStore');
+var AppActions = require('../../app/actions/AppActions');
 
 var Menu = React.createClass({displayName: "Menu",
     mixins: [
@@ -40137,23 +40144,26 @@ var Menu = React.createClass({displayName: "Menu",
     _onLeftNavChange: function (e, key, payload) {
         this.props.changeTitle(payload.text);
         this.transitionTo(payload.route);
+        AppActions.closeAddDialog();
     },
     _onHeaderClick: function () {
         this.props.changeTitle();
         this.transitionTo('home');
         this.refs.leftNav.close();
+        AppActions.closeAddDialog();
     },
     _onChange: function () {
         var state = AppStore.getState();
         if (!!state) {
             this.props.changeTitle(state.title);
             this.transitionTo(state.name, state.params);
+            AppActions.closeAddDialog();
         }
     }
 });
 
 module.exports = Menu;
-},{"../../app/stores/AppStore":"/Users/aon/Projects/buyme-rails/src/app/stores/AppStore.js","material-ui":"/Users/aon/Projects/buyme-rails/node_modules/material-ui/src/index.js","react":"/Users/aon/Projects/buyme-rails/node_modules/react/react.js","react-router":"/Users/aon/Projects/buyme-rails/node_modules/react-router/modules/index.js"}],"/Users/aon/Projects/buyme-rails/src/common/utils/ApiUtils.js":[function(require,module,exports){
+},{"../../app/actions/AppActions":"/Users/aon/Projects/buyme-rails/src/app/actions/AppActions.js","../../app/stores/AppStore":"/Users/aon/Projects/buyme-rails/src/app/stores/AppStore.js","material-ui":"/Users/aon/Projects/buyme-rails/node_modules/material-ui/src/index.js","react":"/Users/aon/Projects/buyme-rails/node_modules/react/react.js","react-router":"/Users/aon/Projects/buyme-rails/node_modules/react-router/modules/index.js"}],"/Users/aon/Projects/buyme-rails/src/common/utils/ApiUtils.js":[function(require,module,exports){
 (function (process){
 'use strict';
 

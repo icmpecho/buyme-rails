@@ -41,34 +41,37 @@ var OrderAdd = React.createClass({
     render: function () {
         var itemList = !!this.state.items && this.state.items.length > 0 ? <DropDownMenu ref="itemList" menuItems={this.state.items} onChange={this._onItemListChange} className="item-list clearfix"/> : undefined;
         return (
-            <Paper zDepth={3} rounded={false} className="order-add">
-                <div>
-                    <div className="half">
-                        <Input ref="itemName" type="text" name="itemName" placeholder="Item Name" description="Enter the item name." onChange={this._onItemNameChange} onClick={this._onItemNameClick}/>
-                        <div className="item-small">
-                            <Input ref="quantity" type="text" name="quantity" placeholder="Quantity" description="Enter the quantity." defaultValue="1"/>
-                        </div>
-                        <div className="item-small">
-                            <Input ref="inDays" type="text" name="inDays" placeholder="In Day(s)" description="Enter the in day(s)." defaultValue="0"/>
-                        </div>
-                        <div className="item-small item-small-last">
-                            <Input ref="inHours" type="text" name="inHours" placeholder="In Hour(s)" description="Enter the in hour(s)." defaultValue="1"/>
-                        </div>
+            <div className="order-add-container">
+                <Paper zDepth={3} rounded={false} className="order-add">
+                    <div>
+                        <div className="half">
+                            <Input ref="itemName" type="text" name="itemName" placeholder="Item Name" description="Enter the item name." onChange={this._onItemNameChange} onClick={this._onItemNameClick}/>
+                            <div className="item-small">
+                                <Input ref="quantity" type="text" name="quantity" placeholder="Quantity" description="Enter the quantity." defaultValue="1"/>
+                            </div>
+                            <div className="item-small">
+                                <Input ref="inDays" type="text" name="inDays" placeholder="In Day(s)" description="Enter the in day(s)." defaultValue="0"/>
+                            </div>
+                            <div className="item-small item-small-last">
+                                <Input ref="inHours" type="text" name="inHours" placeholder="In Hour(s)" description="Enter the in hour(s)." defaultValue="1"/>
+                            </div>
                         {itemList}
-                    </div>
-                    <div className="half">
-                        <h5>Select Stores</h5>
+                        </div>
+                        <div className="half">
+                            <h5>Select Stores</h5>
                         {this.state.stores.map(function (store) {
                             return <div className="form-checkbox" key={'store-' + store.id}>
                                 <Checkbox ref={'store-' + store.id} name={'store-' + store.id} value={'store-' + store.id}/>{store.name}</div>;
                         })}
+                        </div>
+                        <br/>
+                        <div className="clearfix"></div>
+                        <RaisedButton label="Confirm" secondary={true} onClick={this._addOrder}/>
+                        <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                        <RaisedButton label="Cancel" onClick={this._dismiss}/>
                     </div>
-                    <br/>
-                    <div className="clearfix"></div>
-                    <RaisedButton label="Confirm" secondary={true} onClick={this._addOrder}/>
-                    <RaisedButton label="Cancel" onClick={this._dismiss}/>
-                </div>
-            </Paper>
+                </Paper>
+            </div>
         );
     },
     _dismiss: function () {
