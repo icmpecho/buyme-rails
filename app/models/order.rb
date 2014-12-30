@@ -3,6 +3,7 @@ class Order < ActiveRecord::Base
   belongs_to :user
   belongs_to :buyer, :class_name => 'User', :foreign_key => 'buyer_id'
   has_and_belongs_to_many :stores
+  self.per_page = 10
 
   # Class methods
   def self.place( args )

@@ -5,6 +5,7 @@ class OrdersController < ApplicationController
 
   def index
     @orders = Order.all.order("updated_at desc")
+    @orders = @orders.paginate(:page => params[:page]) if params[:page]
     respond_with(@orders)
   end
 
@@ -63,6 +64,7 @@ class OrdersController < ApplicationController
     elsif pending == 'false'
       @orders = @orders.completed
     end
+    @orders = @orders.paginate(:page => params[:page]) if params[:page]
     respond_with( @orders, template: 'orders/index' )
   end
 
