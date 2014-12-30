@@ -24,13 +24,13 @@ var Me = React.createClass({
                     <div className="mui-toolbar-group mui-left">
                         <RaisedButton label="Refresh" primary={false} onClick={this._refreshOrders}/>
                     </div>
-                </div>
-                <div className="mui-togglebar">
-                    <div className="mui-togglebar-wrap mui-font-style-caption">Show History</div>
-                    <div className="mui-togglebar-wrap">
-                        <Toggle toggled={this.state.showCurrent} onToggle={this._onCurrentToggleChange}/>
+                    <div className="mui-togglebar mui-right">
+                        <div className="mui-togglebar-wrap mui-font-style-caption">History</div>
+                        <div className="mui-togglebar-wrap">
+                            <Toggle toggled={this.state.showCurrent} onToggle={this._onCurrentToggleChange}/>
+                        </div>
+                        <div className="mui-togglebar-wrap mui-font-style-caption mui-togglebar-wrap-last">Current</div>
                     </div>
-                    <div className="mui-togglebar-wrap mui-font-style-caption">Show Current</div>
                 </div>
                 {currentOrderList}
                 {historyOrderList}

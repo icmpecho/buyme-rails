@@ -81,7 +81,6 @@ h2 {
     width: 100%;
     display: block;
     margin-top: 20px;
-    margin-bottom: 20px;
 }
 
 .toast {
@@ -126,13 +125,16 @@ h2 {
 }
 
 .mui-togglebar {
-    margin: 0 10px;
-    border-bottom: 1px solid #e1e1e1;
+    line-height: 56px;
 }
 
 .mui-togglebar-wrap {
     display: inline-block;
     margin-right: 8px;
+}
+
+.mui-togglebar-wrap-last {
+    margin-right: 0;
 }
 
 .order-store-list li {

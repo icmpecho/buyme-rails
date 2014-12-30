@@ -38892,14 +38892,14 @@ var Me = React.createClass({displayName: "Me",
                 React.createElement("div", {className: "mui-toolbar"}, 
                     React.createElement("div", {className: "mui-toolbar-group mui-left"}, 
                         React.createElement(RaisedButton, {label: "Refresh", primary: false, onClick: this._refreshOrders})
-                    )
-                ), 
-                React.createElement("div", {className: "mui-togglebar"}, 
-                    React.createElement("div", {className: "mui-togglebar-wrap mui-font-style-caption"}, "Show History"), 
-                    React.createElement("div", {className: "mui-togglebar-wrap"}, 
-                        React.createElement(Toggle, {toggled: this.state.showCurrent, onToggle: this._onCurrentToggleChange})
                     ), 
-                    React.createElement("div", {className: "mui-togglebar-wrap mui-font-style-caption"}, "Show Current")
+                    React.createElement("div", {className: "mui-togglebar mui-right"}, 
+                        React.createElement("div", {className: "mui-togglebar-wrap mui-font-style-caption"}, "History"), 
+                        React.createElement("div", {className: "mui-togglebar-wrap"}, 
+                            React.createElement(Toggle, {toggled: this.state.showCurrent, onToggle: this._onCurrentToggleChange})
+                        ), 
+                        React.createElement("div", {className: "mui-togglebar-wrap mui-font-style-caption mui-togglebar-wrap-last"}, "Current")
+                    )
                 ), 
                 currentOrderList, 
                 historyOrderList
