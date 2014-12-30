@@ -53,6 +53,7 @@ h2 {
 
 .content {
     padding-top: 64px;
+    padding-bottom: 20px;
     width: 980px;
     margin: 0 auto;
 }
@@ -145,6 +146,12 @@ h2 {
 .order-store-list li {
     display: inline-block;
     margin-right: 10px;
+}
+.order-store-list:after {
+    clear: both;
+}
+.store-list li {
+    display: inline-block;
 }
 
 .form-checkbox .mui-checkbox, .form-checkbox span {

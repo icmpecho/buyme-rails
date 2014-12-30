@@ -49,7 +49,7 @@ var OrderItems = React.createClass({
                         </div>
                         <h2>{order.item_name}</h2>
                         <div>
-                            <ul>
+                            <ul className="order-store-list">
                                 {order.stores.map(function (store) {
                                     return <li key={'store-' + store.id} onClick={self._onStoreClick.bind(self, store)}>
                                         <ImageLoader src={"../images/" + store.name + ".png"}>
@@ -57,10 +57,8 @@ var OrderItems = React.createClass({
                                         </ImageLoader>
                                     </li>;
                                 })}
-                                <li>
-                                    <span className="mui-font-style-caption">Available stores</span>
-                                </li>
                             </ul>
+                            <span className="mui-font-style-caption">Available stores</span>
                         </div>
                     </div>
                 </Paper>
