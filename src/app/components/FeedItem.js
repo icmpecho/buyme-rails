@@ -60,24 +60,28 @@ var FeedItem = React.createClass({
     },
     _CheckOrderEvent: function () {
         if (this.props.order.status === 'active') {
-            return <h2>{this.props.order.user_name} just ordered {this.props.order.item_name}
-                <span className="mui-font-style-title"> - {moment(this.props.order.created_at).fromNow()}</span>
-            </h2>;
+            return  <div>
+                        <h2>{this.props.order.user_name} just ordered {this.props.order.item_name}</h2>
+                        <p className="mui-font-style-subhead-1">{moment(this.props.order.created_at).fromNow()}</p>
+                    </div>    
         }
         else if (this.props.order.status === 'completed') {
-            return <h2>{this.props.order.buyer_name} bought {this.props.order.item_name} for {this.props.order.user_name}
-                <span className="mui-font-style-title"> - {moment(this.props.order.completed).fromNow()}</span>
-            </h2>
+            return  <div>
+                        <h2>{this.props.order.buyer_name} bought {this.props.order.item_name} for {this.props.order.user_name}</h2>
+                        <p className="mui-font-style-subhead-1">{moment(this.props.order.completed).fromNow()}</p>
+                    </div>    
         }
         else if (this.props.order.status === 'canceled') {
-            return <h2>{this.props.order.user_name} just canceled {this.props.order.item_name}
-                <span className="mui-font-style-title"> - {moment(this.props.order.canceled_at).fromNow()}</span>
-            </h2>
+            return  <div>
+                        <h2>{this.props.order.user_name} just canceled {this.props.order.item_name}</h2>
+                        <p className="mui-font-style-subhead-1">{moment(this.props.order.canceled_at).fromNow()}</p>
+                    </div>    
         }
         else if (this.props.order.status === 'expired') {
-            return <h2>{this.props.order.user_name}'s order for {this.props.order.item_name} had been expired 
-                <span className="mui-font-style-title"> - {moment(this.props.order.expire_at).fromNow()}</span>
-            </h2>
+            return  <div>
+                        <h2>{this.props.order.user_name}'s order for {this.props.order.item_name} had been expired</h2> 
+                        <p className="mui-font-style-subhead-1">{moment(this.props.order.expire_at).fromNow()}</p>
+                    </div>
         }
         else 
             return <h2> Unknown status</h2>
