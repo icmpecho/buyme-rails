@@ -1,5 +1,5 @@
 class OrdersController < ApplicationController
-  before_action :set_order, only: [:show, :edit, :update, :destroy, :buy, :cancel]
+  before_action :set_order, only: [:show, :edit, :update, :destroy, :buy, :cancel, :plus_one]
   before_action :authenticate_user!, except: [:index]
   respond_to :html
 
@@ -63,6 +63,19 @@ class OrdersController < ApplicationController
     elsif pending == 'false'
       @orders = @orders.completed
     end
+    respond_with( @orders, template: 'orders/index' )
+  end
+
+  def plus_one
+    item = Item.find( @order.item_id )
+    count = 1
+    expire_at = @order.expire_at
+    stores = []
+    @order.stores.each do |store|
+      stores << store
+    end
+    @orders = []
+    @orders << Order.place( user: current_user, item: item, stores: stores, expire_at: expire_at )
     respond_with( @orders, template: 'orders/index' )
   end
 
