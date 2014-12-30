@@ -38689,6 +38689,7 @@ var Paper = mui.Paper;
 var moment = require('moment');
 
 var OrderActions = require('../actions/OrderActions');
+var MenuActions = require('../actions/MenuActions');
 
 var FeedItem = React.createClass({displayName: "FeedItem",
     propTypes: {
@@ -38697,18 +38698,19 @@ var FeedItem = React.createClass({displayName: "FeedItem",
     render: function () {
         var order = this.props.order;
         var order_event = this._CheckOrderEvent();
+        var self = this;
         return (
             React.createElement("li", {className: "feed-item"}, 
                 React.createElement(Paper, {zDepth: 3, rounded: false}, 
                     React.createElement("div", {className: "feed-item-details"}, 
                         React.createElement("div", {className: "mui-right"}
-                            
+
                         ), 
                         order_event, 
                         React.createElement("div", null, 
                             React.createElement("ul", null, 
                                 order.stores.map(function (store) {
-                                    return React.createElement("li", {key: 'store-' + store.id}, 
+                                    return React.createElement("li", {key: 'store-' + store.id, onClick: self._onStoreClick.bind(self, store)}, 
                                         React.createElement(ImageLoader, {src: "../images/" + store.name + ".png"}, 
                                         store.name
                                         )
@@ -38725,34 +38727,47 @@ var FeedItem = React.createClass({displayName: "FeedItem",
         );
     },
     _onOrderStatus: function () {
-        if (this.props.order.completed !== null){
+        if (this.props.order.completed !== null) {
             return "Completed";
         }
-        else 
+        else
             return "Cancel";
     },
     _setCancelTime: function () {
-        if (this.props.order.completed !== null){
+        if (this.props.order.completed !== null) {
             return this.props.order.completed;
         }
-        else 
+        else
             return this.props.order.canceled_at;
     },
-    _CheckOrderEvent: function (){
+    _CheckOrderEvent: function () {
         if (this.props.order.status === "active") {
-            return React.createElement("h2", null, " ", this.props.order.user_name, " just ordered ", this.props.order.item_name, React.createElement("span", {className: "mui-font-style-title"}, " - ", moment(this.props.order.created_at).fromNow()));    
-        } 
+            return React.createElement("h2", null, " ", this.props.order.user_name, " just ordered ", this.props.order.item_name, 
+                React.createElement("span", {className: "mui-font-style-title"}, " - ", moment(this.props.order.created_at).fromNow())
+            );
+        }
         else if (this.props.order.status === "completed") {
-            return React.createElement("h2", null, " ", this.props.order.user_name, " bought ", this.props.order.item_name, " for ", this.props.order.buyer_name, React.createElement("span", {className: "mui-font-style-title"}, " - ", moment(this.props.order.completed).fromNow()))
+            return React.createElement("h2", null, " ", this.props.order.user_name, " bought ", this.props.order.item_name, " for ", this.props.order.buyer_name, 
+                React.createElement("span", {className: "mui-font-style-title"}, " - ", moment(this.props.order.completed).fromNow())
+            )
         }
         else if (this.props.order.status === "canceled") {
-            return React.createElement("h2", null, " ", this.props.order.user_name, " just canceled ", this.props.order.item_name, " ", React.createElement("span", {className: "mui-font-style-title"}, " - ", moment(this.props.order.canceled_at).fromNow()))
+            return React.createElement("h2", null, " ", this.props.order.user_name, " just canceled ", this.props.order.item_name, 
+                React.createElement("span", {className: "mui-font-style-title"}, " - ", moment(this.props.order.canceled_at).fromNow())
+            )
         }
+    },
+    _onStoreClick: function (store) {
+        MenuActions.changeState({
+            name: 'shopOrder',
+            params: {storeId: store.id},
+            title: store.name
+        });
     }
 });
 
 module.exports = FeedItem;
-},{"../actions/OrderActions":"/Users/aon/Projects/buyme-rails/src/app/actions/OrderActions.js","material-ui":"/Users/aon/Projects/buyme-rails/node_modules/material-ui/src/index.js","moment":"/Users/aon/Projects/buyme-rails/node_modules/moment/moment.js","react":"/Users/aon/Projects/buyme-rails/node_modules/react/react.js","react-imageloader":"/Users/aon/Projects/buyme-rails/node_modules/react-imageloader/lib/index.js"}],"/Users/aon/Projects/buyme-rails/src/app/components/FeedList.js":[function(require,module,exports){
+},{"../actions/MenuActions":"/Users/aon/Projects/buyme-rails/src/app/actions/MenuActions.js","../actions/OrderActions":"/Users/aon/Projects/buyme-rails/src/app/actions/OrderActions.js","material-ui":"/Users/aon/Projects/buyme-rails/node_modules/material-ui/src/index.js","moment":"/Users/aon/Projects/buyme-rails/node_modules/moment/moment.js","react":"/Users/aon/Projects/buyme-rails/node_modules/react/react.js","react-imageloader":"/Users/aon/Projects/buyme-rails/node_modules/react-imageloader/lib/index.js"}],"/Users/aon/Projects/buyme-rails/src/app/components/FeedList.js":[function(require,module,exports){
 'use strict';
 
 var React = require('react');
