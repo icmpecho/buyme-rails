@@ -4,10 +4,9 @@
 
 .order-item {
     list-style: none;
-    padding: 10px 10px;
-    margin: 0 auto;
+    padding: 10px;
     width: 50%;
-    float: left;
+    display: inline-block;
 }
 
 .order-item-details {
@@ -23,7 +22,8 @@
     padding: 10px 10px;
     margin: 0 auto;
     width: 50%;
-    float: left;
+    vertical-align: top;
+    display: inline-block;
 }
 
 .feed-item-details {

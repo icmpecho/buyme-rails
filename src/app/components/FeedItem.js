@@ -17,7 +17,7 @@ var FeedItem = React.createClass({
     render: function () {
         var order = this.props.order;
         var order_event = this._CheckOrderEvent();
-        var plusOne = this.props.order.status === 'active' ? <FloatingActionButton icon="social-plus-one" secondary={true} onClick={this._onPlusOneButtonClick.bind(this, order.id)}/> : undefined;
+        var plusOne = this.props.order.status === 'active' ? <FloatingActionButton icon="social-plus-one" mini={true} secondary={true} onClick={this._onPlusOneButtonClick.bind(this, order.id)}/> : undefined;
         var self = this;
         return (
             <li className="feed-item">
@@ -28,7 +28,7 @@ var FeedItem = React.createClass({
                         </div>
                         {order_event}
                         <div>
-                            <ul>
+                            <ul className="order-store-list">
                                 {order.stores.map(function (store) {
                                     return <li key={'store-' + store.id} onClick={self._onStoreClick.bind(self, store)}>
                                         <ImageLoader src={"../images/" + store.name + ".png"}>
@@ -36,10 +36,8 @@ var FeedItem = React.createClass({
                                         </ImageLoader>
                                     </li>;
                                 })}
-                                <li>
-                                    <span className="mui-font-style-caption">Available stores</span>
-                                </li>
                             </ul>
+                            <span className="mui-font-style-caption">Available stores</span>
                         </div>
                     </div>
                 </Paper>
@@ -62,20 +60,27 @@ var FeedItem = React.createClass({
     },
     _CheckOrderEvent: function () {
         if (this.props.order.status === 'active') {
-            return <h2> {this.props.order.user_name} just ordered {this.props.order.item_name}
+            return <h2>{this.props.order.user_name} just ordered {this.props.order.item_name}
                 <span className="mui-font-style-title"> - {moment(this.props.order.created_at).fromNow()}</span>
             </h2>;
         }
         else if (this.props.order.status === 'completed') {
-            return <h2> {this.props.order.user_name} bought {this.props.order.item_name} for {this.props.order.buyer_name}
+            return <h2>{this.props.order.buyer_name} bought {this.props.order.item_name} for {this.props.order.user_name}
                 <span className="mui-font-style-title"> - {moment(this.props.order.completed).fromNow()}</span>
             </h2>
         }
         else if (this.props.order.status === 'canceled') {
-            return <h2> {this.props.order.user_name} just canceled {this.props.order.item_name}
+            return <h2>{this.props.order.user_name} just canceled {this.props.order.item_name}
                 <span className="mui-font-style-title"> - {moment(this.props.order.canceled_at).fromNow()}</span>
             </h2>
         }
+        else if (this.props.order.status === 'expired') {
+            return <h2>{this.props.order.user_name}'s order for {this.props.order.item_name} had been expired 
+                <span className="mui-font-style-title"> - {moment(this.props.order.expire_at).fromNow()}</span>
+            </h2>
+        }
+        else 
+            return <h2> Unknown status</h2>
     },
     _onStoreClick: function (store) {
         AppActions.changeState({
