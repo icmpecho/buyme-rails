@@ -22,7 +22,8 @@ var OrderAdd = React.createClass({
     getInitialState: function () {
         return {
             stores: [],
-            items: []
+            items: [],
+            isButtonsDisabled: false
         };
     },
     componentWillMount: function () {
@@ -67,9 +68,9 @@ var OrderAdd = React.createClass({
                         </div>
                         <br/>
                         <div className="clearfix"></div>
-                        <RaisedButton label="Confirm" secondary={true} onClick={this._addOrder}/>
+                        <RaisedButton label="Confirm" secondary={true} onClick={this._addOrder} disabled={this.state.isButtonsDisabled}/>
                         <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
-                        <RaisedButton label="Cancel" onClick={this._dismiss}/>
+                        <RaisedButton label="Cancel" onClick={this._dismiss} disabled={this.state.isButtonsDisabled}/>
                     </div>
                 </Paper>
             </div>
@@ -121,6 +122,9 @@ var OrderAdd = React.createClass({
             ToastActions.showToast('error', 'Please select the store(s).');
             return;
         }
+        this.setState({
+            isButtonsDisabled: true
+        });
         OrderActions.addMyOrders({
             itemName: itemName,
             count: quantity,
@@ -149,7 +153,8 @@ var OrderAdd = React.createClass({
                 }
             }
             this.setState({
-                items: []
+                items: [],
+                isButtonsDisabled: false
             });
         }
     },

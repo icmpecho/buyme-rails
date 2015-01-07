@@ -72,6 +72,10 @@ var OrderActions = {
                 ToastActions.showToast('success', 'Your order was added successfully.');
             }
             else {
+                AppDispatcher.handleApiAction({
+                    actionType: ActionTypes.ADD_MY_ORDER_FAILURE,
+                    data: {}
+                });
                 ToastActions.showToast('error', 'Failed to add your order.');
             }
         });
@@ -89,6 +93,10 @@ var OrderActions = {
                 ToastActions.showToast('success', 'Your order was added successfully.');
             }
             else {
+                AppDispatcher.handleApiAction({
+                    actionType: ActionTypes.PLUS_ONE_ORDER_FAILURE,
+                    data: {}
+                });
                 ToastActions.showToast('error', 'Failed to add your order.');
             }
         });

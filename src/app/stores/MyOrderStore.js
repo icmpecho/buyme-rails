@@ -102,6 +102,9 @@ MyOrderStore.dispatchToken = AppDispatcher.register(function (payload) {
         case ActionTypes.PLUS_ONE_ORDER_SUCCESS:
             addMyOrders(action.data);
             break;
+        case ActionTypes.ADD_MY_ORDER_FAILURE:
+        case ActionTypes.PLUS_ONE_ORDER_FAILURE:
+            break;
         case ActionTypes.READ_MY_ADDED_ORDER_SUCCESS:
             readMyAddedOrder();
             break;
